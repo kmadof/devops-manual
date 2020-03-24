@@ -13,6 +13,8 @@ trigger:
     exclude:
     - gated-checkin/azure-pipelines-gc.yml
 
+pr: none
+
 pool:
   vmImage: 'ubuntu-latest'
 
