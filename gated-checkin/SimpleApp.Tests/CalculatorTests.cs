@@ -8,6 +8,7 @@ namespace SimpleApp.Tests
         [Theory]
         [InlineData(2, 4)]
         [InlineData(3, 5)]
+        [InlineData(1, 1)]
         public void ShouldAddTwoReturnCorrectResult(int value, int result)
         {
             Calculator.AddTwo(value).Should().Be(result);
