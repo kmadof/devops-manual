@@ -5,10 +5,12 @@ namespace SimpleApp.Tests
 {
     public class CalculatorTests
     {
-        [Fact]
-        public void ShouldAddTwoReturnCorrectResult()
+        [Theory]
+        [InlineData(2, 4)]
+        [InlineData(3, 5)]
+        public void ShouldAddTwoReturnCorrectResult(int value, int result)
         {
-            Calculator.AddTwo(2).Should().Be(4);
+            Calculator.AddTwo(value).Should().Be(result);
         }
     }
 }
