@@ -3,7 +3,7 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-trigger:
+pr:
   branches:
     include:
     - master
@@ -11,7 +11,7 @@ trigger:
     include:
     - gated-checkin/*
     exclude:
-    - gated-checkin/azure-pipelines-gc.yml
+    - gated-checkin/azure-pipelines.yml
 
 pool:
   vmImage: 'ubuntu-latest'
