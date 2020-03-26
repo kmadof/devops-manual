@@ -22,8 +22,6 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- script: echo Hello,  $(Build.SourcesDirectory)!
-  displayName: 'Run a one-line script'
 
 - task: DotNetCoreCLI@2
   displayName: Restore nuget packages
@@ -48,10 +46,6 @@ steps:
     arguments: '--configuration $(buildConfiguration) --collect:"XPlat Code Coverage" -- RunConfiguration.DisableAppDomain=true'
     workingDirectory: $(Build.SourcesDirectory)
 
-- script: dir
-  workingDirectory: $(Agent.TempDirectory)
-  displayName: List contents of a folder
-
 - task: DotNetCoreCLI@2
   inputs:
     command: custom
@@ -67,3 +61,6 @@ steps:
   inputs:
     codeCoverageTool: Cobertura
     summaryFileLocation: $(Build.SourcesDirectory)/coverlet/reports/Cobertura.xml  
+
+- script: echo Some steps to create artifacts!
+  displayName: 'Run a one-line script'
