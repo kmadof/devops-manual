@@ -20,13 +20,10 @@ pr:
     exclude:
     - gated-checkin-with-template/azure-pipelines.yml
 
-pool:
-  vmImage: 'ubuntu-latest'
-
 variables:
   buildConfiguration: 'Release'
 
 extends:
   template: build-and-test.yaml
   parameters:
-      buildConfiguration: $(buildConfiguration) # set to a non-boolean value to have the build fail
+      buildConfiguration: $(buildConfiguration)
