@@ -1,0 +1,44 @@
+parameters:
+- name: buildConfiguration # name of the parameter; required
+  default: false
+
+steps:
+
+- task: DotNetCoreCLI@2
+  displayName: Restore nuget packages
+  inputs:
+    command: restore
+    projects: '**/*.csproj'
+    workingDirectory: $(Build.SourcesDirectory)
+
+- task: DotNetCoreCLI@2
+  displayName: Build
+  inputs:
+    command: build
+    projects: '$(Build.SourcesDirectory)/gated-checkin/GatedCheckin.sln'
+    arguments: '--configuration ${{ parameters.buildConfiguration }}'
+
+# You just added coverlet.collector to use 'XPlat Code Coverage'
+- task: DotNetCoreCLI@2
+  displayName: Test
+  inputs:
+    command: test
+    projects: '**/*Tests/*.csproj'
+    arguments: '--configuration ${{ parameters.buildConfiguration }} --collect:"XPlat Code Coverage" -- RunConfiguration.DisableAppDomain=true'
+    workingDirectory: $(Build.SourcesDirectory)
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: custom
+    custom: tool
+    arguments: install --tool-path . dotnet-reportgenerator-globaltool
+  displayName: Install ReportGenerator tool
+
+- script: ./reportgenerator -reports:$(Agent.TempDirectory)/**/coverage.cobertura.xml -targetdir:$(Build.SourcesDirectory)/coverlet/reports -reporttypes:"Cobertura"
+  displayName: Create reports
+
+- task: PublishCodeCoverageResults@1
+  displayName: 'Publish code coverage'
+  inputs:
+    codeCoverageTool: Cobertura
+    summaryFileLocation: $(Build.SourcesDirectory)/coverlet/reports/Cobertura.xml  
