@@ -1,6 +1,6 @@
 parameters:
 - name: buildConfiguration # name of the parameter; required
-  default: false
+  default: 'Release'
 
 steps:
 
