@@ -20,8 +20,9 @@ pr:
     exclude:
     - gated-checkin-with-template/azure-pipelines.yml
 
-pool:
-  vmImage: 'ubuntu-latest'
+# Not allowed here
+#pool:
+#  vmImage: 'ubuntu-latest'
 
 variables:
   buildConfiguration: 'Release'
