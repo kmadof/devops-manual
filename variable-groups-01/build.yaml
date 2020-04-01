@@ -9,4 +9,5 @@ stages:
   jobs:
     - job:
       steps:
+      - script: echo $(isProd)
       - script: echo $(name) # uses macro syntax | run time expression doesn't work for templates $[variables.name] 
