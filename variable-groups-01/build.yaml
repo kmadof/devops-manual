@@ -8,5 +8,4 @@ stages:
   jobs:
     - job:
       steps:
-      - script: echo $(name) # uses macro syntax
-      - script: echo $[variables.name] # uses runtime expression
+      - script: echo $(name) # uses macro syntax | run time expression doesn't work for templates $[variables.name] 
