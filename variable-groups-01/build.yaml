@@ -2,8 +2,6 @@ stages:
 - stage:
   displayName: 'Build and Restore'
   variables:
-  - name: isProd
-    value: true
   - ${{ if eq(variables['isProd'], false) }}:
     - template: qa.yaml
   - ${{ if eq(variables['isProd'], true) }}:
