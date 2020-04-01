@@ -4,11 +4,8 @@ stages:
   variables:
   - name: isProd
     value: true
-  - ${{ if eq(variables['isProd'], 'false') }}:
-    - group: QA
-  - ${{ if eq(variables['isProd'], 'true') }}:
-    - group: PROD
-  - jobs:
+  - template: qa.yml
+  jobs:
     - job:
       steps:
       - script: echo $(name) # uses macro syntax
