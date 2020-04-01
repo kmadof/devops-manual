@@ -4,7 +4,7 @@ stages:
   variables:
   - name: isProd
     value: true
-  - template: qa.yml
+  - template: qa.yaml
   jobs:
     - job:
       steps:
