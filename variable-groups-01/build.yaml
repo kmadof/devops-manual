@@ -4,9 +4,9 @@ stages:
   variables:
   - name: isProd
     value: true
-  - ${{ if eq(variables['isProd'], 'false') }}:
+  - ${{ if eq(variables['isProd'], false) }}:
     - template: qa.yaml
-  - ${{ if eq(variables['isProd'], 'true') }}:
+  - ${{ if eq(variables['isProd'], true) }}:
     - template: prod.yaml
   jobs:
     - job:
