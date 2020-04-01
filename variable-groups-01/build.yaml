@@ -1,0 +1,13 @@
+stages:
+- stage:
+  displayName: 'Build and Restore'
+  variables:
+  - ${{ if eq(variables['isProd'], 'false') }}:
+    - group: QA
+  - ${{ if eq(variables['isProd'], 'false') }}:
+    - group: PROD
+  - jobs:
+    - job:
+      steps:
+      - script: echo $(name) # uses macro syntax
+      - script: echo $[variables.name] # uses runtime expression
