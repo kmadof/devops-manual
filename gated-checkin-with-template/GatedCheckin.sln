@@ -3,14 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29911.84
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleApp", "SimpleApp\SimpleApp.csproj", "{6F8209A3-17B3-4440-9C49-64577BCB1055}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleApp", "SimpleApp\SimpleApp.csproj", "{6F8209A3-17B3-4440-9C49-64577BCB1055}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleApp.Tests", "SimpleApp.Tests\SimpleApp.Tests.csproj", "{2C70DA26-4811-4504-AFBF-2B655CD753DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleApp.Tests", "SimpleApp.Tests\SimpleApp.Tests.csproj", "{2C70DA26-4811-4504-AFBF-2B655CD753DD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B635648E-D26A-4A39-9CA6-71E1E7F40AA5}"
 	ProjectSection(SolutionItems) = preProject
 		azure-pipelines-gc.yml = azure-pipelines-gc.yml
 		azure-pipelines.yml = azure-pipelines.yml
+		build-and-test.yaml = build-and-test.yaml
 	EndProjectSection
 EndProject
 Global
