@@ -2,6 +2,14 @@ stages:
 - stage:
   displayName: 'Build and Restore'
   variables:
+  - name: env
+    value:
+      ${{ if eq(variables['Build.SourceBranchName'], 'master') }}: a
+      ${{ if eq(variables['Build.SourceBranchName'], 'dev') }}: b
+  - name: group
+    value:
+      ${{ if eq(variables['isProd'], false) }}: QA
+      ${{ if eq(variables['isProd'], true) }}: PROD
   - ${{ if eq(variables['isProd'], false) }}:
     - template: qa.yaml
   - ${{ if eq(variables['isProd'], true) }}:
@@ -10,4 +18,14 @@ stages:
     - job:
       steps:
       - script: echo $(isProd)
+      - script: echo $(env)
+      - script: echo $(group)
       - script: echo $(name) # uses macro syntax | run time expression doesn't work for templates $[variables.name] 
+
+
+variables:
+- group: my-global
+- name: env
+  value:
+    ${{ if eq(variables['Build.SourceBranchName'], 'master') }}: a
+    ${{ if eq(variables['Build.SourceBranchName'], 'dev') }}: b
