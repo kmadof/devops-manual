@@ -1,10 +1,17 @@
+parameters:
+- name: environment
+  displayName: Environment
+  type: string
+  default: QA
+  values:
+  - QA
+  - PROD
+
 stages:
 - stage:
   displayName: 'Build and Restore'
   variables:
-  - group:
-    ${{ if eq(variables['isProd'], false) }}: QA
-    ${{ if eq(variables['isProd'], true) }}: PROD
+  - group: ${{ parameters.environment }}
   jobs:
     - job:
       steps:
