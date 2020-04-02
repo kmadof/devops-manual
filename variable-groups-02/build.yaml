@@ -1,0 +1,15 @@
+variables:
+  isProd: true
+
+stages:
+- stage: Test
+  displayName: Build and restore
+  variables:
+  - ${{ if eq(variables['isProd'], 'false') }}:
+    - group: QA
+  - ${{ if eq(variables['isProd'], 'true') }}:
+    - group: PROD
+  jobs:
+  - job: A
+    steps:
+    - bash: echo $(groupname)
