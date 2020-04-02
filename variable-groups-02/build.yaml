@@ -12,4 +12,4 @@ stages:
   jobs:
   - job: A
     steps:
-    - bash: echo $(groupname)
+    - bash: echo $(name)
