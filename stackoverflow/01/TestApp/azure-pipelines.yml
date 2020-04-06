@@ -13,6 +13,11 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
+- task: NuGetCommand@2
+    displayName: 'NuGet restore'
+    inputs:
+    restoreSolution: 'stackoverflow/01/**/*.sln'
+
 - task: VSBuild@1
   inputs:
     solution: 'stackoverflow/01/**/*.sln'
