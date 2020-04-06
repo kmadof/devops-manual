@@ -16,7 +16,7 @@ steps:
 - task: NuGetCommand@2
     displayName: 'NuGet restore'
     inputs:
-    restoreSolution: 'stackoverflow/01/**/*.sln'
+    restoreSolution: 'stackoverflow/01/TestApp/TestApp.sln'
 
 - task: VSBuild@1
   inputs:
