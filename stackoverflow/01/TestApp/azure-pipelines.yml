@@ -14,13 +14,13 @@ steps:
   displayName: 'Run a one-line script'
 
 - task: NuGetToolInstaller@0
-    displayName: 'Use NuGet 4.4.1'
-    inputs:
+  displayName: 'Use NuGet 4.4.1'
+  inputs:
     versionSpec: 4.4.1
 
 - task: NuGetCommand@2
-    displayName: 'NuGet restore'
-    inputs:
+  displayName: 'NuGet restore'
+  inputs:
     restoreSolution: 'stackoverflow/01/TestApp/TestApp.sln'
 
 - task: VSBuild@1
