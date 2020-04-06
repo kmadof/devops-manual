@@ -15,7 +15,7 @@ steps:
 
 - task: VSBuild@1
   inputs:
-    solution: '*.sln'
+    solution: 'stackoverflow/01/**/*.sln'
     msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactstagingdirectory)\\"'
     restoreNugetPackages: true
 
