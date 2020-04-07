@@ -27,17 +27,18 @@ steps:
   inputs:
     solution: 'stackoverflow/01/**/*.sln'
     msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactstagingdirectory)\\"'
-    restoreNugetPackages: true
+    restoreNugetPackages: false
 
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
     script: |
       # Write your PowerShell commands here.
-      
+
+      echo '$(build.artifactstagingdirectory)'
       ls '$(build.artifactstagingdirectory)'
 
 - script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
+    echo '$(build.artifactstagingdirectory)'
+    ls '$(build.artifactstagingdirectory)'
   displayName: 'Run a multi-line script'
