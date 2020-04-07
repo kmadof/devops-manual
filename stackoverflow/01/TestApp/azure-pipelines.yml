@@ -29,58 +29,6 @@ steps:
     msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactstagingdirectory)\\"'
     restoreNugetPackages: true
 
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
-    script: |
-      # Write your PowerShell commands here.
-
-      echo 'build.artifactstagingdirectory'
-      echo '$(build.artifactstagingdirectory)'
-      Get-ChildItem -Path '$(build.artifactstagingdirectory)' -Recurse -File -Force -ErrorAction SilentlyContinue | Select-Object FullName
-
-      echo 'Agent.BuildDirectory'
-      echo '$(Agent.BuildDirectory)'
-      Get-ChildItem -Path '$(Agent.BuildDirectory)' -Recurse -File -Force -ErrorAction SilentlyContinue | Select-Object FullName
-
-      echo 'Agent.HomeDirectory'
-      echo '$(Agent.HomeDirectory)'
-      Get-ChildItem -Path '$(Agent.HomeDirectory)' -Recurse -File -Force -ErrorAction SilentlyContinue | Select-Object FullName
-
-      echo 'Agent.TempDirectory'
-      echo '$(Agent.TempDirectory)'
-      Get-ChildItem -Path '$(Agent.TempDirectory)' -Recurse -File -Force -ErrorAction SilentlyContinue | Select-Object FullName
-
-      echo 'Agent.ToolsDirectory'
-      echo '$(Agent.ToolsDirectory)'
-      Get-ChildItem -Path '$(Agent.ToolsDirectory)' -Recurse -File -Force -ErrorAction SilentlyContinue | Select-Object FullName
-
-      echo 'Agent.WorkFolder'
-      echo '$(Agent.WorkFolder)'
-      Get-ChildItem -Path '$(Agent.WorkFolder)' -Recurse -File -Force -ErrorAction SilentlyContinue | Select-Object FullName
-
-      echo 'Build.BinariesDirectory'
-      echo '$(Build.BinariesDirectory)'
-      Get-ChildItem -Path '$(Build.BinariesDirectory)' -Recurse -File -Force -ErrorAction SilentlyContinue | Select-Object FullName
-
-      echo 'Build.SourcesDirectory'
-      echo '$(Build.SourcesDirectory)'
-      Get-ChildItem -Path '$(Build.SourcesDirectory)' -Recurse -File -Force -ErrorAction SilentlyContinue | Select-Object FullName
-
-      echo 'Build.StagingDirectory'
-      echo '$(Build.StagingDirectory)'
-      Get-ChildItem -Path '$(Build.StagingDirectory)' -Recurse -File -Force -ErrorAction SilentlyContinue | Select-Object FullName
-
-      echo 'Pipeline.Workspace'
-      echo '$(Pipeline.Workspace)'
-      Get-ChildItem -Path '$(Pipeline.Workspace)' -Recurse -File -Force -ErrorAction SilentlyContinue | Select-Object FullName
-
-      echo 'System.DefaultWorkingDirectory'
-      echo '$(System.DefaultWorkingDirectory)'
-      Get-ChildItem -Path '$(System.DefaultWorkingDirectory)' -Recurse -File -Force -ErrorAction SilentlyContinue | Select-Object FullName
-      echo ' '
-      ls '$(build.artifactstagingdirectory)'
-
 - script: |
     echo '$(build.artifactstagingdirectory)'
     ls '$(build.artifactstagingdirectory)'
