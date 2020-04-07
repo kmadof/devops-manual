@@ -67,7 +67,7 @@ steps:
 
       echo 'Build.SourcesDirectory'
       echo '$(Build.SourcesDirectory)'
-      Get-ChildItem -Path '$(Build.SourcesDirectory)' -Recurse $type -Force -ErrorAction SilentlyContinue | Select-Object FullName
+      Get-ChildItem -Path '$(Build.SourcesDirectory)' -Recurse -File -Force -ErrorAction SilentlyContinue | Select-Object FullName
 
       echo 'Build.StagingDirectory'
       echo '$(Build.StagingDirectory)'
