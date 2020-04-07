@@ -36,6 +36,8 @@ steps:
       # Write your PowerShell commands here.
 
       echo '$(build.artifactstagingdirectory)'
+      Get-ChildItem -Path '$(build.artifactstagingdirectory)' -Recurse -Directory -Force -ErrorAction SilentlyContinue | Select-Object FullName
+      echo ' '
       ls '$(build.artifactstagingdirectory)'
 
 - script: |
