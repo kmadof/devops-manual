@@ -33,3 +33,10 @@ steps:
     echo '$(build.artifactstagingdirectory)'
     ls '$(build.artifactstagingdirectory)'
   displayName: 'Run a multi-line script'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact'
+  inputs:
+    PathtoPublish: '$(build.artifactstagingdirectory)'
+    ArtifactName: 'SO-01'
+  condition: succeededOrFailed()
