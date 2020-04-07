@@ -1,0 +1,27 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- task: PowerShell@2
+  displayName: List all directories
+  inputs:
+    targetType: 'inline'
+    script: |
+      $agent_ip = $(curl -s https://ipinfo.io/json | jq -r .ip)
+
+      echo $agent_ip
+
+      Invoke-RestMethod -Uri ('http://ipinfo.io/'+(Invoke-WebRequest -uri "http://ifconfig.me/ip").Content
+
+
