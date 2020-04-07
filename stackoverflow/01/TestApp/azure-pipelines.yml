@@ -35,38 +35,40 @@ steps:
     script: |
       # Write your PowerShell commands here.
 
+      $type = '-File'
+
       echo '$(build.artifactstagingdirectory)'
-      Get-ChildItem -Path '$(build.artifactstagingdirectory)' -Recurse -Directory -Force -ErrorAction SilentlyContinue | Select-Object FullName
+      Get-ChildItem -Path '$(build.artifactstagingdirectory)' -Recurse $type -Force -ErrorAction SilentlyContinue | Select-Object FullName
 
       echo '$(Agent.BuildDirectory)'
-      Get-ChildItem -Path '$(Agent.BuildDirectory)' -Recurse -Directory -Force -ErrorAction SilentlyContinue | Select-Object FullName
+      Get-ChildItem -Path '$(Agent.BuildDirectory)' -Recurse $type -Force -ErrorAction SilentlyContinue | Select-Object FullName
 
       echo '$(Agent.HomeDirectory)'
-      Get-ChildItem -Path '$(Agent.HomeDirectory)' -Recurse -Directory -Force -ErrorAction SilentlyContinue | Select-Object FullName
+      Get-ChildItem -Path '$(Agent.HomeDirectory)' -Recurse $type -Force -ErrorAction SilentlyContinue | Select-Object FullName
 
       echo '$(Agent.TempDirectory)'
-      Get-ChildItem -Path '$(Agent.TempDirectory)' -Recurse -Directory -Force -ErrorAction SilentlyContinue | Select-Object FullName
+      Get-ChildItem -Path '$(Agent.TempDirectory)' -Recurse $type -Force -ErrorAction SilentlyContinue | Select-Object FullName
 
       echo '$(Agent.ToolsDirectory)'
-      Get-ChildItem -Path '$(Agent.ToolsDirectory)' -Recurse -Directory -Force -ErrorAction SilentlyContinue | Select-Object FullName
+      Get-ChildItem -Path '$(Agent.ToolsDirectory)' -Recurse $type -Force -ErrorAction SilentlyContinue | Select-Object FullName
 
       echo '$(Agent.WorkFolder)'
-      Get-ChildItem -Path '$(Agent.WorkFolder)' -Recurse -Directory -Force -ErrorAction SilentlyContinue | Select-Object FullName
+      Get-ChildItem -Path '$(Agent.WorkFolder)' -Recurse $type -Force -ErrorAction SilentlyContinue | Select-Object FullName
 
       echo '$(Build.BinariesDirectory)'
-      Get-ChildItem -Path '$(Build.BinariesDirectory)' -Recurse -Directory -Force -ErrorAction SilentlyContinue | Select-Object FullName
+      Get-ChildItem -Path '$(Build.BinariesDirectory)' -Recurse $type -Force -ErrorAction SilentlyContinue | Select-Object FullName
 
       echo '$(Build.SourcesDirectory)'
-      Get-ChildItem -Path '$(Build.SourcesDirectory)' -Recurse -Directory -Force -ErrorAction SilentlyContinue | Select-Object FullName
+      Get-ChildItem -Path '$(Build.SourcesDirectory)' -Recurse $type -Force -ErrorAction SilentlyContinue | Select-Object FullName
 
       echo '$(Build.StagingDirectory)'
-      Get-ChildItem -Path '$(Build.StagingDirectory)' -Recurse -Directory -Force -ErrorAction SilentlyContinue | Select-Object FullName
+      Get-ChildItem -Path '$(Build.StagingDirectory)' -Recurse $type -Force -ErrorAction SilentlyContinue | Select-Object FullName
 
       echo '$(Pipeline.Workspace)'
-      Get-ChildItem -Path '$(Pipeline.Workspace)' -Recurse -Directory -Force -ErrorAction SilentlyContinue | Select-Object FullName
+      Get-ChildItem -Path '$(Pipeline.Workspace)' -Recurse $type -Force -ErrorAction SilentlyContinue | Select-Object FullName
 
       echo '$(System.DefaultWorkingDirectory)'
-      Get-ChildItem -Path '$(System.DefaultWorkingDirectory)' -Recurse -Directory -Force -ErrorAction SilentlyContinue | Select-Object FullName
+      Get-ChildItem -Path '$(System.DefaultWorkingDirectory)' -Recurse $type -Force -ErrorAction SilentlyContinue | Select-Object FullName
       echo ' '
       ls '$(build.artifactstagingdirectory)'
 
