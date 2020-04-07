@@ -15,8 +15,8 @@ steps:
 
 - task: PublishBuildArtifacts@1
   inputs:
-    pathtoPublish: '$(Build.SourcesDirectory)\stackoverflow\03\file1.txt' 
-    artifactName: 'drop1' 
+    pathtoPublish: '$(Build.SourcesDirectory)\stackoverflow\03\file2.txt' 
+    artifactName: 'drop2' 
     #publishLocation: 'Container' # Options: container, filePath
     #targetPath: # Required when publishLocation == FilePath
     #parallel: false # Optional
