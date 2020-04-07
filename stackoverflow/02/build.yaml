@@ -14,7 +14,7 @@ steps:
   displayName: 'Run a one-line script'
 
 - task: PowerShell@2
-  displayName: List all directories
+  displayName: Get IP address
   inputs:
     targetType: 'inline'
     script: |
@@ -22,6 +22,6 @@ steps:
 
       echo $agent_ip
 
-      Invoke-RestMethod -Uri ('http://ipinfo.io/'+(Invoke-WebRequest -uri "http://ifconfig.me/ip").Content
+      Invoke-RestMethod -Uri ('http://ipinfo.io/'+(Invoke-WebRequest -uri "http://ifconfig.me/ip").Content)
 
 
