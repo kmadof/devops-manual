@@ -6,11 +6,31 @@ trigger:
     include:
       - stackoverflow/05/*
 
-pool:
-  vmImage: 'windows-latest'
+variables:
+  dotnetVersion: '3.1.103'
 
-steps:
-- task: UseDotNet@2
-  displayName: 'Use .Net Core sdk 3.x'
-  inputs:
-    version: 3.1.103
+jobs:
+- job: Windows
+  pool:
+    vmImage: 'windows-latest'
+  steps:
+  - task: UseDotNet@2
+    displayName: 'Use .Net Core sdk 3.x'
+    inputs:
+      version: $(dotnetVersion)
+- job: Linux
+  pool:
+    vmImage: 'ubuntu-latest'
+  steps:
+  - task: UseDotNet@2
+    displayName: 'Use .Net Core sdk 3.x'
+    inputs:
+      version: $(dotnetVersion)
+- job: macOS
+  pool:
+    vmImage: 'macOS-latest'
+  steps:
+  - task: UseDotNet@2
+    displayName: 'Use .Net Core sdk 3.x'
+    inputs:
+      version: $(dotnetVersion)
