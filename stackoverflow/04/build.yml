@@ -10,7 +10,6 @@ parameters:
   - P
 - name: releaseName
   type: string
-  default: ''
 
 trigger:
   branches:
