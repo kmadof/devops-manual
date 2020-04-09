@@ -3,7 +3,7 @@ trigger:
     include:
       - master
   paths:
-    exclude:
+    include:
       - variable-groups-02/*
 
 variables:

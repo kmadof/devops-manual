@@ -12,7 +12,7 @@ trigger:
     include:
       - master
   paths:
-    exclude:
+    include:
       - variable-groups-01/*
 
 stages:

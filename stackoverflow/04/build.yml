@@ -17,7 +17,7 @@ trigger:
     include:
       - master
   paths:
-    exclude:
+    include:
       - stackoverflow/04/*
 
 pool:
