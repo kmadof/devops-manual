@@ -1,0 +1,23 @@
+parameters:
+- name: deployEnvironment
+  displayName: Select your target environment.
+  type: string
+  default: Build_only
+  values:
+  - Build_only
+  - TST
+  - PP
+  - P
+- name: releaseName
+  type: string
+  default: ''
+
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
