@@ -7,7 +7,7 @@ trigger:
       - stackoverflow/05/*
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'macOS-latest'
 
 steps:
 - task: UseDotNet@2
