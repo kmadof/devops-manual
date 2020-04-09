@@ -4,7 +4,12 @@
 # https://aka.ms/yaml
 
 trigger:
-- master
+  branches:
+    include:
+      - master
+  paths:
+    exclude:
+      - stackoverflow/02/*
 
 pool:
   vmImage: 'windows-latest'

@@ -13,7 +13,12 @@ parameters:
   default: ''
 
 trigger:
-- master
+  branches:
+    include:
+      - master
+  paths:
+    exclude:
+      - stackoverflow/04/*
 
 pool:
   vmImage: 'windows-latest'
