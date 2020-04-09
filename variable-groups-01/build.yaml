@@ -7,6 +7,14 @@ parameters:
   - QA
   - PROD
 
+trigger:
+  branches:
+    include:
+      - master
+  paths:
+    exclude:
+      - variable-groups-01/*
+
 stages:
 - stage:
   displayName: 'Build and Restore'

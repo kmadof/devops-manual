@@ -1,3 +1,11 @@
+trigger:
+  branches:
+    include:
+      - master
+  paths:
+    exclude:
+      - variable-groups-02/*
+
 variables:
   isProd: true
 
