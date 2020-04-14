@@ -18,7 +18,7 @@ steps:
   displayName: Login to ACR
   inputs:
     command: login
-    containerRegistry: dockerRegistryServiceConnection1
+    containerRegistry: devopsmanual-acr
 
 - task: Docker@2
   displayName: Build and Push
@@ -33,4 +33,4 @@ steps:
   displayName: Logout of ACR
   inputs:
     command: logout
-    containerRegistry: dockerRegistryServiceConnection1
+    containerRegistry: devopsmanual-acr
