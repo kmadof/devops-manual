@@ -26,7 +26,7 @@ steps:
   inputs:
     repository: $(imageName)
     command: buildAndPush
-    Dockerfile: build-docker-image/SampleAppForDocker/Dockerfile
+    Dockerfile: build-docker-image/SampleAppForDocker/DOCKERFILE
     tags: |
       build-on-agent
 
