@@ -24,7 +24,4 @@ steps:
     workingDirectory: $(Build.SourcesDirectory)/build-docker-image/SampleAppForDocker/
     scriptLocation: inlineScript
     inlineScript: |
-      az --version
-      az account show
-      az acr list
       az acr build --image sampleappfordocker:build-on-acr --registry devopsmanual --file DOCKERFILE .
