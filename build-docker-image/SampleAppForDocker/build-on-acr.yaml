@@ -1,0 +1,36 @@
+
+trigger:
+  branches:
+    include:
+    - '*'
+    exclude:
+    - master
+  paths:
+    include:
+    - build-docker-image/*
+
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: Docker@2
+  displayName: Login to ACR
+  inputs:
+    command: login
+    containerRegistry: dockerRegistryServiceConnection1
+
+- task: Docker@2
+  displayName: Build and Push
+  inputs:
+    repository: $(imageName)
+    command: buildAndPush
+    Dockerfile: build-docker-image/SampleAppForDocker/Dockerfile
+    tags: |
+      build-on-agent
+
+- task: Docker@2
+  displayName: Logout of ACR
+  inputs:
+    command: logout
+    containerRegistry: dockerRegistryServiceConnection1

@@ -5,6 +5,12 @@ VisualStudioVersion = 16.0.29911.84
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleAppForDocker", "SampleAppForDocker.csproj", "{F9C723A8-6C86-45D3-A6A7-E5A030A682FD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B3F305EE-0BC6-45C0-824D-481D982DABC0}"
+	ProjectSection(SolutionItems) = preProject
+		build-on-acr.yaml = build-on-acr.yaml
+		build-on-agent.yaml = build-on-agent.yaml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
