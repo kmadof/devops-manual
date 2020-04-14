@@ -7,7 +7,9 @@ trigger:
     - master
   paths:
     include:
-    - build-docker-image/*
+    - build-docker-image/SampleAppForDocker/*
+    exclude:
+    - build-docker-image/SampleAppForDocker/*.ymal
 
 
 pool:
