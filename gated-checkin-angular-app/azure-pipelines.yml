@@ -9,23 +9,18 @@ trigger:
     - master
   paths:
     include:
-    - gated-checkin-with-template/*
+    - gated-checkin-angular-app/*
     exclude:
-    - gated-checkin-with-template/azure-pipelines-gc.yml
+    - gated-checkin-angular-app/azure-pipelines-gc.yml
 
 pr: none
 
 pool:
   vmImage: 'ubuntu-latest'
 
-variables:
-  buildConfiguration: 'Release'
-
 steps:
 
 - template: build-and-test.yaml
-  parameters:
-      buildConfiguration: $(buildConfiguration)
 
 - script: echo Some steps to create artifacts!
   displayName: 'Run a one-line script'

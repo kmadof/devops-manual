@@ -16,18 +16,13 @@ pr:
     - master
   paths:
     include:
-    - gated-checkin-with-template/*
+    - gated-checkin-angular-app/*
     exclude:
-    - gated-checkin-with-template/azure-pipelines.yml
+    - gated-checkin-angular-app/azure-pipelines.yml
 
 # Not allowed here
 #pool:
 #  vmImage: 'ubuntu-latest'
 
-variables:
-  buildConfiguration: 'Release'
-
 extends:
   template: build-and-test.yaml
-  parameters:
-      buildConfiguration: $(buildConfiguration)
