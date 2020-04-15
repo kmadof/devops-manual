@@ -24,4 +24,8 @@ steps:
 
 - task: ArchiveFiles@2
   inputs:
-    rootFolderOrFile: '$(Build.SourcesDirectory)/gated-checkin-angular-app/dist/help' 
+    rootFolderOrFile: '$(Build.SourcesDirectory)/gated-checkin-angular-app/dist/help/' 
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    artifactName: 'angularApp' 
