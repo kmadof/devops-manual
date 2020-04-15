@@ -1,0 +1,33 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+  branches:
+    include:
+    - '*'
+    exclude:
+    - master
+
+pr:
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - gated-checkin-with-template/*
+    exclude:
+    - gated-checkin-with-template/azure-pipelines.yml
+
+# Not allowed here
+#pool:
+#  vmImage: 'ubuntu-latest'
+
+variables:
+  buildConfiguration: 'Release'
+
+extends:
+  template: build-and-test.yaml
+  parameters:
+      buildConfiguration: $(buildConfiguration)
