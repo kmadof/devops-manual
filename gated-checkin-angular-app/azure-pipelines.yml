@@ -22,5 +22,6 @@ steps:
 
 - template: build-and-test.yaml
 
-- script: echo Some steps to create artifacts!
-  displayName: 'Run a one-line script'
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(Build.SourcesDirectory)/gated-checkin-angular-app/dist/help' 
