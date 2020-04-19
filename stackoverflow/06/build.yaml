@@ -18,7 +18,7 @@ steps:
     command: 'publish'
     publishWebProjects: false
     projects: 'stackoverflow/06/SimpleApp.csproj'
-    argumnets: '-c Release -o $(Build.ArtifactStagingDirectory)'
+    argumnets: '-o $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: false
     modifyOutputPath: false
 
