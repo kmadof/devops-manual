@@ -24,7 +24,7 @@ steps:
 
 - bash: ls $(Build.ArtifactStagingDirectory)
 
-- task: PublishBuildArtifact@1
+- task: PublishBuildArtifacts@1
   inputs:
     PathToPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
