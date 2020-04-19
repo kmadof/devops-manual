@@ -1,5 +1,12 @@
 trigger:
-- master
+  branches:
+    include:
+      - master
+  paths:
+    include:
+      - stackoverflow/06/*
+
+#https://stackoverflow.com/questions/61306564/azure-devops-build-pipeline-doesnt-build-executables
 
 pool:
  vmImage: 'ubuntu-latest'
