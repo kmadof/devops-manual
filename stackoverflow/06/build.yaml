@@ -22,7 +22,7 @@ steps:
     zipAfterPublish: false
     modifyOutputPath: false
 
-- bash: ls $(Build.ArtifactStagingDirectory)
+- pwsh: ls $(Build.ArtifactStagingDirectory)
 
 - task: PublishBuildArtifacts@1
   inputs:
