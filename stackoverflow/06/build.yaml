@@ -17,7 +17,7 @@ steps:
   inputs:
     command: 'publish'
     publishWebProjects: false
-    projects: '*.csproj'
+    projects: '**/*.csproj'
     argumnets: '-c Release -o $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: false
     workingDirectory: stackoverflow/06
