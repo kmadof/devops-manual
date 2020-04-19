@@ -20,6 +20,7 @@ steps:
     projects: 'stackoverflow/06/SimpleApp.csproj'
     argumnets: '-c Release -o $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: false
+    modifyOutputPath: false
 
 - bash: ls $(Build.ArtifactStagingDirectory)
 
