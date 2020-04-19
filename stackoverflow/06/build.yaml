@@ -9,7 +9,7 @@ trigger:
 #https://stackoverflow.com/questions/61306564/azure-devops-build-pipeline-doesnt-build-executables
 
 pool:
- vmImage: 'ubuntu-latest'
+ vmImage: 'windows-latest'
 
 
 steps:
