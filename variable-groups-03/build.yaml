@@ -1,0 +1,22 @@
+trigger:
+  branches:
+    include:
+      - master
+  paths:
+    include:
+      - variable-groups-03/*
+
+variables:
+- group: PROD
+- name: my-bare-variable
+  value: 'value of my-bare-variable'
+
+steps:
+- script: echo $(isProd) # variable defined in pipeline variables
+- script: echo $(my-bare-variable) # variable defined in YAML
+- script: echo $(name) # uses macro syntax 
+- script: echo $[variables.name] # uses runtime expression
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: 'env | sort'
