@@ -34,4 +34,4 @@ steps:
         # Output releases in JSON
         Write-Host $result.value
         Write-Host $result
--pwsh: Start-Sleep -Seconds 60
+- pwsh: Start-Sleep -Seconds 60
