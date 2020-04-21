@@ -30,4 +30,6 @@ steps:
         $result = Invoke-RestMethod -Uri $uri -Method Get -Headers $AzureDevOpsAuthenicationHeader
 
         Write-Host $result
+        Write-Host "##vso[task.setvariable variable=high]$result"
+
 # - pwsh: Start-Sleep -Seconds 60
