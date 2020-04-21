@@ -10,5 +10,7 @@
         <!-- Optional elements -->
         <!-- ... -->
     </metadata>
-    <!-- Optional 'files' node -->
+    <files>
+        <file src="bin\Release\netstandard2.0\*" target="lib" />
+    </files>
 </package>
