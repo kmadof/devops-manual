@@ -1,3 +1,11 @@
+trigger:
+  branches:
+    include:
+      - master
+  paths:
+    include:
+      - stackoverflow/07-call-to-azure-devops-from-pipeline/*
+
 variables: 
 - name: 'devopsAccount' # new variable defined in YAML
   value: 'thecodemanual'
