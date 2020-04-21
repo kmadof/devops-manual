@@ -25,7 +25,7 @@ steps:
   displayName: "dotnet pack"
   inputs:
     command: 'pack'
-    arguments: '--configuration $(buildConfiguration) -p:NuspecFile=$(System.DefaultWorkingDirectory)/stackoverflow/08-nuget-packager/package.nuspec'
+    arguments: '-p:NuspecFile=$(System.DefaultWorkingDirectory)/stackoverflow/08-nuget-packager/package.nuspec'
     packagesToPack: '$(System.DefaultWorkingDirectory)/stackoverflow/08-nuget-packager/SampleApp.csproj'
     versioningScheme: 'off'
     outputDir: '$(Build.ArtifactStagingDirectory)'
