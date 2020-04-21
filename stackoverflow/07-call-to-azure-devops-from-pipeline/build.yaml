@@ -21,13 +21,15 @@ steps:
         # Encode the Personal Access Token (PAT)
         $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f 'Basic',$env:SYSTEM_ACCESSTOKEN)))
 
+        $AzureDevOpsAuthenicationHeader = @{Authorization = 'Basic ' + [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(":$(System.AccessToken)")) }
+
         # Get a list of releases
         $uri = "https://dev.azure.com/$(devopsAccount)/$(projectName)/_apis/build/builds/$(Build.BuildId)/logs/6?api-version=5.1"
 
         Write-Host $uri
 
         # Invoke the REST call
-        $result = Invoke-RestMethod -Uri $uri -Method Get -ContentType "application/json" -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)}
+        $result = Invoke-RestMethod -Uri $uri -Method Get -ContentType "application/json" -Headers $AzureDevOpsAuthenicationHeader
 
         # Output releases in JSON
         Write-Host $result.value
