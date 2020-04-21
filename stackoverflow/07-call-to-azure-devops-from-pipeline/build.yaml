@@ -33,5 +33,4 @@ steps:
 
         # Output releases in JSON
         Write-Host $result.value
-  env:
-    MY_MAPPED_TOKEN: $(token) # Maps the secret variable $(token) from my-var-group
+-pwsh: Start-Sleep -Seconds 60
