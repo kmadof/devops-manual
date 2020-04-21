@@ -1,0 +1,34 @@
+﻿# ASP.NET Core
+# Build and test ASP.NET Core projects targeting .NET Core.
+# Add steps that run tests, create a NuGet package, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
+trigger:
+  branches:
+    include:
+      - master
+  paths:
+    include:
+      - stackoverflow/08-nuget-packager/*
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+# these variables are available throughout the build file
+# just the build configuration is defined, in this case we are building Release packages
+variables:
+  buildConfiguration: 'Release'
+
+steps:
+
+- task: DotNetCoreCLI@2
+  displayName: "dotnet pack"
+  inputs:
+    command: 'pack'
+    arguments: '--configuration $(buildConfiguration) -p:NuspecFile=package.nuspec'
+    packagesToPack: 'SampleApp.csproj'
+    versioningScheme: 'off'
+    workingDirectory: $(System.DefaultWorkingDirectory)/stackoverflow/08-nuget-packager
+    outputDir: '$(Build.ArtifactStagingDirectory)'
+    
+- bash: ls $(Build.ArtifactStagingDirectory)
