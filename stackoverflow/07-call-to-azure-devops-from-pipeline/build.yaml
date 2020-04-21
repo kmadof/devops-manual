@@ -1,5 +1,4 @@
 variables: 
-- group: 'my-var-group' # variable group
 - name: 'devopsAccount' # new variable defined in YAML
   value: 'thecodemanual'
 - name: 'projectName' # new variable defined in YAML
