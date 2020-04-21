@@ -22,7 +22,7 @@ steps:
         $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f 'Basic',$env:SYSTEM_ACCESSTOKEN)))
 
         # Get a list of releases
-        $uri = "https://dev.azure.comm/$(devopsAccount)/$(projectName)/_apis/build/builds/$(Build.BuildId)/logs/6?api-version=5.1"
+        $uri = "https://dev.azure.com/$(devopsAccount)/$(projectName)/_apis/build/builds/$(Build.BuildId)/logs/6?api-version=5.1"
 
         Write-Host $uri
 
