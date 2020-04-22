@@ -37,3 +37,13 @@ steps:
   inputs:
     command: logout
     containerRegistry: devopsmanual-acr
+
+- task: AzureRmWebAppDeployment@4
+  displayName: 'Deploy Azure App Service'
+  inputs:
+    azureSubscription: rg-the-code-manual
+    appType: webAppContainer
+    WebAppName: test-container-application
+    DockerNamespace: devopsmanual.azurecr.io
+    DockerRepository: sampleappfordocker
+    DockerImageTag: '$(Build.BuildNumber)'
