@@ -30,6 +30,7 @@ steps:
     Dockerfile: build-docker-image/SampleAppForDocker/DOCKERFILE
     tags: |
       build-on-agent
+      $(Build.BuildNumber)
 
 - task: Docker@2
   displayName: Logout of ACR
