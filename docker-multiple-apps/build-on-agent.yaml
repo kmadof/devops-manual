@@ -27,7 +27,7 @@ steps:
   inputs:
     repository: $(imageName)
     command: build
-    Dockerfile: docker-multiple-apps/DOCKERFILE
+    Dockerfile: docker-multiple-apps/Dockerfile
     tags: |
       build-on-agent
 
