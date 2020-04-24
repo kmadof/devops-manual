@@ -1,4 +1,6 @@
 steps:
 - template: template.yaml
   parameters:
-    project: ["test1", "test2"]
+    settings: 
+    - test1
+    - test2

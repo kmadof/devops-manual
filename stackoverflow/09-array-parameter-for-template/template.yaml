@@ -1,4 +1,9 @@
 parameters:
+- name: 'settings'
+  type: object
+  default: {}
+
 steps:
-- ${{ each project in parameters.project }}:
-  - bash: echo `${{ project }}`
+- bash: echo `${{ parameters.settings }}`
+# - ${{ each project in parameters.project }}:
+#   - bash: echo `${{ project }}`
