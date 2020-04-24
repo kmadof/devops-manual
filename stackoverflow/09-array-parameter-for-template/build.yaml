@@ -1,6 +1,6 @@
 steps:
 - template: template.yaml
   parameters:
-    settings: 
+    instances: 
     - test1
     - test2
