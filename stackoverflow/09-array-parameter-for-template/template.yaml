@@ -1,4 +1,4 @@
 parameters:
 steps:
-- ${{ each instance in parameters.instances }}:
-  - bash: echo `${{ instance }}`
+- ${{ each project in parameters.project }}:
+  - bash: echo `${{ project }}`
