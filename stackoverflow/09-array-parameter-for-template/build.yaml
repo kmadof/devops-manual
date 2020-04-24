@@ -1,5 +1,5 @@
 steps:
-- template: template.yml
+- template: template.yaml
   parameters:
     project:
     - test1
