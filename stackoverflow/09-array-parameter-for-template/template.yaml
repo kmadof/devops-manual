@@ -8,4 +8,4 @@ parameters:
 
 steps:
 - ${{ each instance in parameters.instances }}:
-  - script: 'echo ${{ parameters.server }}:${{ instance }}''
+  - script: echo ${{ parameters.server }}:${{ instance }}
