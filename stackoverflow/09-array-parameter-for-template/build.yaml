@@ -1,6 +1,4 @@
 steps:
 - template: template.yaml
   parameters:
-    project:
-    - test1
-    - test2
+    project: ["test1", "test2"]
