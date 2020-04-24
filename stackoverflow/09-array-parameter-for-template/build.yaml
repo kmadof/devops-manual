@@ -1,7 +1,5 @@
 steps:
 - template: template.yaml
   parameters:
-    instances:
     - instance1
     - instance2
-    server: serverName

@@ -1,4 +1,4 @@
 parameters:
 steps:
 - ${{ each instance in parameters.instances }}:
-  - bash: echo `${{ parameters.server }}:${{ instance }}`
+  - bash: echo `${{ instance }}`
