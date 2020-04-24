@@ -1,0 +1,85 @@
+2020/04/14 10:45:37 Downloading source code...
+2020/04/14 10:45:38 Finished downloading source code
+2020/04/14 10:45:38 Using acb_vol_511a7dd5-990f-4052-bda6-5c23eef6eaff as the home volume
+2020/04/14 10:45:38 Setting up Docker configuration...
+2020/04/14 10:45:39 Successfully set up Docker configuration
+2020/04/14 10:45:39 Logging in to registry: devopsmanual.azurecr.io
+2020/04/14 10:45:41 Successfully logged into devopsmanual.azurecr.io
+2020/04/14 10:45:41 Executing step ID: build. Timeout(sec): 28800, Working directory: '', Network: ''
+2020/04/14 10:45:41 Scanning for dependencies...
+2020/04/14 10:45:41 Successfully scanned dependencies
+2020/04/14 10:45:41 Launching container with name: build
+Sending build context to Docker daemon  841.2kB
+Step 1/10 : FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build-env
+3.1: Pulling from dotnet/core/sdk
+f15005b0235f: Pulling fs layer
+41ebfd3d2fd0: Pulling fs layer
+b998346ba308: Pulling fs layer
+f01ec562c947: Pulling fs layer
+f1346a3967dc: Pulling fs layer
+e78c878ea56d: Pulling fs layer
+f01ec562c947: Waiting
+f1346a3967dc: Waiting
+cdfe8cdc8dc6: Pulling fs layer
+cdfe8cdc8dc6: Waiting
+e78c878ea56d: Waiting
+41ebfd3d2fd0: Verifying Checksum
+41ebfd3d2fd0: Download complete
+b998346ba308: Verifying Checksum
+b998346ba308: Download complete
+f1346a3967dc: Verifying Checksum
+f1346a3967dc: Download complete
+f15005b0235f: Verifying Checksum
+f15005b0235f: Download complete
+f01ec562c947: Verifying Checksum
+f01ec562c947: Download complete
+cdfe8cdc8dc6: Verifying Checksum
+cdfe8cdc8dc6: Download complete
+e78c878ea56d: Verifying Checksum
+e78c878ea56d: Download complete
+f15005b0235f: Pull complete
+41ebfd3d2fd0: Pull complete
+b998346ba308: Pull complete
+f01ec562c947: Pull complete
+f1346a3967dc: Pull complete
+e78c878ea56d: Pull complete
+cdfe8cdc8dc6: Pull complete
+Digest: sha256:cad1f51e65af52e5551e5182b163326c8fceca93d0dbb9e8de8d85b95748e4e2
+Status: Downloaded newer image for mcr.microsoft.com/dotnet/core/sdk:3.1
+ ---> 597ba2726813
+Step 2/10 : WORKDIR /app
+ ---> Running in 59f84f5d33d3
+Removing intermediate container 59f84f5d33d3
+ ---> 629d8cf40dac
+Step 3/10 : COPY *.csproj ./
+ ---> 3e78cc297d01
+Step 4/10 : RUN dotnet restore
+ ---> Running in 2d1ae50ed7ae
+  Restore completed in 160.06 ms for /app/SampleAppForDocker.csproj.
+Removing intermediate container 2d1ae50ed7ae
+ ---> 7bddd10dd4d5
+Step 5/10 : COPY . ./
+ ---> be3cc3a2a502
+Step 6/10 : RUN dotnet publish -c Release -o out --no-restore
+ ---> Running in 194205e000c6
+Microsoft (R) Build Engine version 16.5.0+d4cbfca49 for .NET Core
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+/usr/share/dotnet/sdk/3.1.201/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(234,5): error MSB4018: The "ResolvePackageAssets" task failed unexpectedly. [/app/SampleAppForDocker.csproj]
+/usr/share/dotnet/sdk/3.1.201/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(234,5): error MSB4018: NuGet.Packaging.Core.PackagingException: Unable to find fallback package folder 'C:\Program Files\dotnet\sdk\NuGetFallbackFolder'. [/app/SampleAppForDocker.csproj]
+/usr/share/dotnet/sdk/3.1.201/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(234,5): error MSB4018:    at NuGet.Packaging.FallbackPackagePathResolver..ctor(String userPackageFolder, IEnumerable`1 fallbackPackageFolders) [/app/SampleAppForDocker.csproj]
+/usr/share/dotnet/sdk/3.1.201/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(234,5): error MSB4018:    at Microsoft.NET.Build.Tasks.NuGetPackageResolver.CreateResolver(IEnumerable`1 packageFolders) [/app/SampleAppForDocker.csproj]
+/usr/share/dotnet/sdk/3.1.201/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(234,5): error MSB4018:    at Microsoft.NET.Build.Tasks.NuGetPackageResolver.CreateResolver(LockFile lockFile) [/app/SampleAppForDocker.csproj]
+/usr/share/dotnet/sdk/3.1.201/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(234,5): error MSB4018:    at Microsoft.NET.Build.Tasks.ResolvePackageAssets.CacheWriter..ctor(ResolvePackageAssets task) [/app/SampleAppForDocker.csproj]
+/usr/share/dotnet/sdk/3.1.201/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(234,5): error MSB4018:    at Microsoft.NET.Build.Tasks.ResolvePackageAssets.CacheReader.CreateReaderFromDisk(ResolvePackageAssets task, Byte[] settingsHash) [/app/SampleAppForDocker.csproj]
+/usr/share/dotnet/sdk/3.1.201/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(234,5): error MSB4018:    at Microsoft.NET.Build.Tasks.ResolvePackageAssets.CacheReader..ctor(ResolvePackageAssets task) [/app/SampleAppForDocker.csproj]
+/usr/share/dotnet/sdk/3.1.201/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(234,5): error MSB4018:    at Microsoft.NET.Build.Tasks.ResolvePackageAssets.ReadItemGroups() [/app/SampleAppForDocker.csproj]
+/usr/share/dotnet/sdk/3.1.201/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(234,5): error MSB4018:    at Microsoft.NET.Build.Tasks.ResolvePackageAssets.ExecuteCore() [/app/SampleAppForDocker.csproj]
+/usr/share/dotnet/sdk/3.1.201/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(234,5): error MSB4018:    at Microsoft.NET.Build.Tasks.TaskBase.Execute() [/app/SampleAppForDocker.csproj]
+/usr/share/dotnet/sdk/3.1.201/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(234,5): error MSB4018:    at Microsoft.Build.BackEnd.TaskExecutionHost.Microsoft.Build.BackEnd.ITaskExecutionHost.Execute() [/app/SampleAppForDocker.csproj]
+/usr/share/dotnet/sdk/3.1.201/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(234,5): error MSB4018:    at Microsoft.Build.BackEnd.TaskBuilder.ExecuteInstantiatedTask(ITaskExecutionHost taskExecutionHost, TaskLoggingContext taskLoggingContext, TaskHost taskHost, ItemBucket bucket, TaskExecutionMode howToExecuteTask) [/app/SampleAppForDocker.csproj]
+The command '/bin/sh -c dotnet publish -c Release -o out --no-restore' returned a non-zero code: 1
+2020/04/14 10:46:10 Container failed during run: build. No retries remaining.
+failed to run step ID: build: exit status 1
+
+Run ID: cb2 failed after 34s. Error: failed during run, err: exit status 1
