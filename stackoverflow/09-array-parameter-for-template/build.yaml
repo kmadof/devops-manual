@@ -1,5 +1,6 @@
 steps:
 - template: template.yml
   parameters:
-  - test1
-  - test2
+    project:
+    - test1
+    - test2
