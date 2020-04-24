@@ -4,3 +4,4 @@ steps:
     instances: 
     - test1
     - test2
+    server: someServer

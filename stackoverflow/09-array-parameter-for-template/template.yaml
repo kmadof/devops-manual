@@ -2,7 +2,10 @@ parameters:
 - name: 'instances'
   type: object
   default: {}
+- name: 'server'
+  type: string
+  default: ''
 
 steps:
 - ${{ each instance in parameters.instances }}:
-  - bash: echo `${{ instance }}`
+  - bash: echo '${{ parameters.server }}:${{ instance }}''
