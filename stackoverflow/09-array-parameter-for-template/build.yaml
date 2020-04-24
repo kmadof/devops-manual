@@ -1,3 +1,14 @@
+trigger:
+  branches:
+    include:
+      - master
+  paths:
+    include:
+      - stackoverflow/09-array-parameter-for-template/*
+
+pool:
+  vmImage: 'ubuntu-latest'
+
 steps:
 - template: template.yaml
   parameters:
