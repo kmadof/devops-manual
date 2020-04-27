@@ -1,0 +1,53 @@
+trigger:
+  branches:
+    include:
+      - solution-a
+    exclude:
+      - '*'
+  paths:
+    include:
+      - stackoverflow/11-complex-branch-policy/*
+      
+trigger:
+  branches:
+    include:
+    - '*'
+    exclude:
+    - master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+- stage: A
+  jobs:
+  - job:
+    steps:
+    - bash: echo "Hello world stage A first job"
+
+# stage B runs if A fails
+- stage: B
+  condition: failed()
+  jobs:
+  - job:
+    steps:
+    - bash: echo "Hello world stage B first job"
+
+
+# stage C runs if B succeeds
+- stage: C
+  dependsOn:
+  - A
+  - B
+  condition: succeeded('B')
+  jobs:
+  - job:
+    steps:
+    - bash: echo "Hello world stage C first job"
+
+
+- stage: D
+  jobs:
+  - job:
+    steps:
+    - bash: echo "Hello world stage D first job"
