@@ -8,12 +8,13 @@ trigger:
     include:
       - stackoverflow/11-complex-branch-policy/*
       
-trigger:
+pr:
   branches:
     include:
-    - '*'
-    exclude:
     - master
+  paths:
+    include:
+    - stackoverflow/11-complex-branch-policy/*
 
 pool:
   vmImage: 'ubuntu-latest'
