@@ -6,6 +6,9 @@ trigger:
     include:
       - stackoverflow/05/*
 
+# no PR triggers
+pr: none
+
 variables:
   dotnetVersion: '3.1.103'
 

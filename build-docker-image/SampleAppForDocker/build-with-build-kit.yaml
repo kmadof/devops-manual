@@ -11,6 +11,9 @@ trigger:
     exclude:
     - build-docker-image/SampleAppForDocker/*.ymal
 
+# no PR triggers
+pr: none
+
 variables:
   imageName: 'SampleAppForDocker'
   DOCKER_BUILDKIT: 1

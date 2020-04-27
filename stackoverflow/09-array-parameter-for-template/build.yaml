@@ -6,6 +6,9 @@ trigger:
     include:
       - stackoverflow/09-array-parameter-for-template/*
 
+# no PR triggers
+pr: none
+
 pool:
   vmImage: 'ubuntu-latest'
 

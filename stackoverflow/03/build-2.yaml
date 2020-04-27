@@ -11,6 +11,9 @@ trigger:
     include:
       - stackoverflow/03/*
 
+# no PR triggers
+pr: none
+
 pool:
   vmImage: 'windows-latest'
 

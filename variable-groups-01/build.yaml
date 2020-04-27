@@ -15,6 +15,9 @@ trigger:
     include:
       - variable-groups-01/*
 
+# no PR triggers
+pr: none
+
 stages:
 - stage:
   displayName: 'Build and Restore'

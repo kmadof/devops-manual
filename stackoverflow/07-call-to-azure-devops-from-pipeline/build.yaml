@@ -6,6 +6,9 @@ trigger:
     include:
       - stackoverflow/07-call-to-azure-devops-from-pipeline/*
 
+# no PR triggers
+pr: none
+
 variables: 
 - name: 'devopsAccount' # new variable defined in YAML
   value: 'thecodemanual'

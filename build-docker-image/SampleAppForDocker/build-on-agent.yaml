@@ -11,6 +11,8 @@ trigger:
     exclude:
     - build-docker-image/SampleAppForDocker/*.ymal
 
+# no PR triggers
+pr: none
 
 pool:
   vmImage: 'ubuntu-latest'

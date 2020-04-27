@@ -20,6 +20,9 @@ trigger:
     include:
       - stackoverflow/04/*
 
+# no PR triggers
+pr: none
+
 pool:
   vmImage: 'windows-latest'
 
