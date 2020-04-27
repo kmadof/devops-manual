@@ -6,6 +6,9 @@ trigger:
     include:
       - variable-groups-03/*
 
+# no PR triggers
+pr: none
+
 variables:
 - group: PROD
 - name: my-bare-variable

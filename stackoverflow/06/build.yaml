@@ -6,6 +6,9 @@ trigger:
     include:
       - stackoverflow/06/*
 
+# no PR triggers
+pr: none
+
 #https://stackoverflow.com/questions/61306564/azure-devops-build-pipeline-doesnt-build-executables
 
 pool:

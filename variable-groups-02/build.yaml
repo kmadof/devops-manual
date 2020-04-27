@@ -6,6 +6,9 @@ trigger:
     include:
       - variable-groups-02/*
 
+# no PR triggers
+pr: none
+
 variables:
   isProd: true
 

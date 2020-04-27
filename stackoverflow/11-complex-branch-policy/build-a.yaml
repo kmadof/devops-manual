@@ -7,13 +7,6 @@ trigger:
   paths:
     include:
       - stackoverflow/11-complex-branch-policy/*
-      
-trigger:
-  branches:
-    include:
-    - '*'
-    exclude:
-    - master
 
 pr:
   branches:

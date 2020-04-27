@@ -6,6 +6,9 @@ trigger:
     include:
       - stackoverflow/10-multistage/*
 
+# no PR triggers
+pr: none
+
 pool:
   vmImage: 'ubuntu-latest'
 
