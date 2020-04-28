@@ -21,6 +21,21 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
+- script: |
+    echo $(ConnectionStrings--DefaultConnection)
+  displayName: 'Run a one-line script'
+  condition: always()
+
+- script: |
+    echo $(ConnectionStrings:DefaultConnection)
+  displayName: 'Run a one-line script'
+  condition: always()
+
+- script: |
+    echo $(ConnectionStrings.DefaultConnection)
+  displayName: 'Run a one-line script'
+  condition: always()
+
 - task: NuGetToolInstaller@1
   displayName: 'Use NuGet 5.5.1'
   inputs:
