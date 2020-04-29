@@ -17,6 +17,17 @@ pool:
 #https://stackoverflow.com/questions/61497425/azure-devops-azurecli-task-with-scriptpath-option-failed-to-authenticate-to-crea
 
 steps:
+- task: replacetokens@3
+  inputs:
+    targetFiles: 'stackoverflow/12-container-instance/create-container-instance.sh'
+    encoding: 'auto'
+    writeBOM: true
+    actionOnMissing: 'warn'
+    keepToken: false
+    tokenPrefix: '#{'
+    tokenSuffix: '}#'
+    useLegacyPattern: false
+    enableTelemetry: true
 - task: AzureCLI@2
   displayName: 'Run tests 1'
   inputs:
