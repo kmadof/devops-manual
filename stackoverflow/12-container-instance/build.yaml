@@ -1,0 +1,33 @@
+trigger:
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - stackoverflow/12-container-instance/*
+    exclude:
+    - '*'
+
+# no PR triggers
+pr: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+#https://stackoverflow.com/questions/61497425/azure-devops-azurecli-task-with-scriptpath-option-failed-to-authenticate-to-crea
+
+steps:
+- task: AzureCLI@1
+  displayName: 'Run tests 1'
+  inputs:
+    azureSubscription: $(AZURE_SUBSCRIPTION)
+    scriptType: 'bash'
+    scriptLocation: 'scriptPath'
+    scriptPath: 'create-container-instance.sh'
+
+- task: AzureCLI@1
+    displayName: 'Run tests 2'
+    inputs:
+      azureSubscription: '$(AZURE_SUBSCRIPTION)'
+      scriptLocation: 'inlineScript'
+      inlineScript: 'az container create -g TheCodeManual --name myapp2 --image $(Image) --registry-password $(RegistryPassword) --registry-user $(RegistryUser)'
