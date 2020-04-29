@@ -6,6 +6,7 @@ trigger:
     include:
     - stackoverflow/13-multistage/*
     exclude:
+    - '*'
 
 # no PR triggers
 pr: none
@@ -19,6 +20,7 @@ stages:
   - job:
     steps:
     - bash: echo "Hello world stage A first job"
+    - pwsh: throw "This is an error."
 
 # stage B runs if A fails
 - stage: B
