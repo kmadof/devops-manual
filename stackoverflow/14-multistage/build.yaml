@@ -17,7 +17,7 @@ pool:
 stages:
 - stage: A
   jobs:
-  - job:
+  - job: JA
     steps:
     - bash: echo "Hello world stage A first job"
     - task: YodLabs.VariableTasks.AddTag.AddTag@0
@@ -29,11 +29,15 @@ stages:
       inputs:
         targetType: 'inline'
         script: 'env | sort'
+    - script: |
+        echo "This is job Foo."
+        echo "##vso[task.setvariable variable=doThing;isOutput=true]Yes" #The variable doThing is set to true
+      name: DetermineResult
 
 # stage B runs if A fails
 - stage: B
-  condition: always()
+  condition: eq(stageDependencies.A.JA.outputs['DetermineResult.doThing'], 'Yes') #map doThing and check if true
   jobs:
-  - job:
+  - job: JB
     steps:
     - bash: echo "Hello world stage B first job"
