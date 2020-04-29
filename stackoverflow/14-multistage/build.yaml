@@ -1,0 +1,39 @@
+trigger:
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - stackoverflow/14-multistage/*
+    exclude:
+    - '*'
+
+# no PR triggers
+pr: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+- stage: A
+  jobs:
+  - job:
+    steps:
+    - bash: echo "Hello world stage A first job"
+    - task: YodLabs.VariableTasks.AddTag.AddTag@0
+      displayName: Adding environment tag to build
+      inputs:
+        tags: |
+          deploy
+    - task: Bash@3
+      inputs:
+        targetType: 'inline'
+        script: 'env | sort'
+
+# stage B runs if A fails
+- stage: B
+  condition: always()
+  jobs:
+  - job:
+    steps:
+    - bash: echo "Hello world stage B first job"
