@@ -23,7 +23,7 @@ steps:
     azureSubscription: 'rg-the-code-manual'
     scriptType: 'bash'
     scriptLocation: 'scriptPath'
-    scriptPath: 'create-container-instance.sh'
+    scriptPath: '12-container-instance/create-container-instance.sh'
 
 - task: AzureCLI@2
   displayName: 'Run tests 2'
