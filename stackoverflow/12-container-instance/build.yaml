@@ -30,6 +30,7 @@ steps:
     enableTelemetry: true
 - task: AzureCLI@2
   displayName: 'Run tests 1'
+  enabled: false
   inputs:
     azureSubscription: 'rg-the-code-manual'
     scriptType: 'bash'
@@ -38,6 +39,7 @@ steps:
 
 - task: AzureCLI@2
   displayName: 'Run tests 2'
+  enabled: false
   inputs:
     azureSubscription: 'rg-the-code-manual'
     scriptType: 'bash'
