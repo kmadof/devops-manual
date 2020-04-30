@@ -1,0 +1,16 @@
+resources:
+  pipelines:
+  - pipeline: buildpipeline
+    source: madof.dm-so-15-b
+    trigger:
+    branches:
+      include:
+      - master
+      - feature/*
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: echo Deploy Step 
+  displayName: 'Deploy'

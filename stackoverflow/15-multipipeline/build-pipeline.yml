@@ -1,0 +1,28 @@
+name: $(date:yyyy).$(date:MM).$(date:dd)$(rev:.r)
+
+trigger:
+- master
+- feature/*
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  artifactsName: "artifacts"
+
+steps:
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+    Write-Host "Executing Build"
+    Write-Host "Creating Artifacts"
+    New-Item -Type Directory -Path $(artifactsName)
+    $artifactPath = Join-Path -Path $(artifactsName) -ChildPath "$(Build.BuildNumber).txt"
+    Set-Content -Path $artifactPath -Value "$(Get-Date)"
+    pwsh: true
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: $(artifactsName)
+    artifactName: buildartifacts
