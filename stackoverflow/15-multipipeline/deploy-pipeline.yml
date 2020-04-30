@@ -1,7 +1,7 @@
 resources:
   pipelines:
   - pipeline: buildpipeline
-    source: madof.dm-so-15-b
+    source: stackoverflow\kmadof.dm-so-15-a
     trigger:
       branches:
         include:
