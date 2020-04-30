@@ -16,7 +16,7 @@ steps:
     targetType: 'inline'
     script: |
       Write-Host "Executing Build"
-      Write-Host "Creating Artifacts"
+      Write-Host "Creating Super Artifacts"
       New-Item -Type Directory -Path $(artifactsName)
       $artifactPath = Join-Path -Path $(artifactsName) -ChildPath "$(Build.BuildNumber).txt"
       Set-Content -Path $artifactPath -Value "$(Get-Date)"
