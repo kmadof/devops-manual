@@ -15,11 +15,11 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-    Write-Host "Executing Build"
-    Write-Host "Creating Artifacts"
-    New-Item -Type Directory -Path $(artifactsName)
-    $artifactPath = Join-Path -Path $(artifactsName) -ChildPath "$(Build.BuildNumber).txt"
-    Set-Content -Path $artifactPath -Value "$(Get-Date)"
+      Write-Host "Executing Build"
+      Write-Host "Creating Artifacts"
+      New-Item -Type Directory -Path $(artifactsName)
+      $artifactPath = Join-Path -Path $(artifactsName) -ChildPath "$(Build.BuildNumber).txt"
+      Set-Content -Path $artifactPath -Value "$(Get-Date)"
     pwsh: true
 
 - task: PublishPipelineArtifact@1
