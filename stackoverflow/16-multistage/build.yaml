@@ -1,10 +1,17 @@
+parameters:
+- name: test
+  displayName: Run Tests?
+  type: boolean
+  default: true
+
+
 trigger:
   branches:
     include:
     - master
   paths:
     include:
-    - stackoverflow/13-multistage/*
+    - stackoverflow/16-multistage/*
     exclude:
     - '*'
 
@@ -17,16 +24,21 @@ pool:
 stages:
 - stage: A
   jobs:
-  - job: 'Job A'
+  - job: Job_A
     steps:
     - bash: echo "Hello world stage A first job"
-    - pwsh: throw "This is an error."
-  - job: 'Job B'
-    dependsOn: 'Job A'
-    condition: failed('Job A')
+    - ${{ if eq(parameters.test, true) }}:
+      - pwsh: throw "This is an error."
+  - job: Job_A_2
     steps:
     - bash: echo "Hello world stage A first job"
-    - pwsh: throw "This is an error."
+    - ${{ if eq(parameters.test, false) }}:
+      - pwsh: throw "This is an error."
+  - job: Job_B
+    dependsOn: 'Job_A'
+    condition: failed('Job_A')
+    steps:
+    - bash: echo "Hello world stage A second job"
    
 
 # stage B runs if A fails
