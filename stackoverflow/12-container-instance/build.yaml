@@ -78,3 +78,24 @@ steps:
 
       Write-Host "Trying to read $env:arr"
       echo '$(arr)'
+
+- task: PowerShell@2
+  displayName: Run CSharp code
+  inputs:
+    targetType: 'inline'
+    script: |
+      $code = @"
+      using System;
+      namespace HelloWorld
+      {
+        public class Program
+        {
+          public static void Main(){
+            Console.WriteLine("Hello world!");
+          }
+        }
+      }
+      "@
+
+      Add-Type -TypeDefinition $code -Language CSharp	
+      iex "[HelloWorld.Program]::Main()"
