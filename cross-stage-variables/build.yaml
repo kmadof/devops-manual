@@ -1,0 +1,38 @@
+trigger:
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - cross-stage-variables/*
+    exclude:
+    - '*'
+
+# no PR triggers
+pr: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+- stage: A
+  jobs:
+  - job: JA
+    steps:
+    - script: |
+        echo "This is job Foo."
+        echo "##vso[task.setvariable variable=doThing;isOutput=true]Yes" #The variable doThing is set to true
+      name: DetermineResult
+  - job: JA_2
+    condition: eq(dependencies.JA.outputs['DetermineResult.doThing'], 'Yes')
+    steps:
+    - script: |
+      echo "This is job Bar."
+
+# stage B runs if A fails
+#- stage: B
+#  condition: eq(stageDependencies.A.JA.outputs['DetermineResult.doThing'], 'Yes') #map doThing and check if true
+#  jobs:
+#  - job: JB
+#    steps:
+#    - bash: echo "Hello world stage B first job"
