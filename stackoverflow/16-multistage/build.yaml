@@ -32,7 +32,8 @@ stages:
   - job: Job_A_2
     steps:
     - bash: echo "Hello world stage A first job"
-    - pwsh: throw "This is an error."
+    - ${{ if eq(parameters.test, false) }}:
+      - pwsh: throw "This is an error."
   - job: Job_B
     dependsOn: 'Job_A'
     condition: failed('Job_A')
