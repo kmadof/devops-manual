@@ -1,0 +1,38 @@
+trigger:
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - stackoverflow/13-multistage/*
+    exclude:
+    - '*'
+
+# no PR triggers
+pr: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+- stage: A
+  jobs:
+  - job: 'Job A'
+    steps:
+    - bash: echo "Hello world stage A first job"
+    - pwsh: throw "This is an error."
+  - job: 'Job B'
+    dependsOn: 'Job A'
+    condition: failed('Job A')
+    steps:
+    - bash: echo "Hello world stage A first job"
+    - pwsh: throw "This is an error."
+   
+
+# stage B runs if A fails
+- stage: B
+  condition: always()
+  jobs:
+  - job:
+    steps:
+    - bash: echo "Hello world stage B first job"
