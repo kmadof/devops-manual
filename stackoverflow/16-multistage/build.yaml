@@ -4,7 +4,7 @@ trigger:
     - master
   paths:
     include:
-    - stackoverflow/13-multistage/*
+    - stackoverflow/16-multistage/*
     exclude:
     - '*'
 
