@@ -25,8 +25,7 @@ stages:
     dependsOn: 'Job_A'
     condition: failed('Job_A')
     steps:
-    - bash: echo "Hello world stage A first job"
-    - pwsh: throw "This is an error."
+    - bash: echo "Hello world stage A second job"
    
 
 # stage B runs if A fails
