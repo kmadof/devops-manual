@@ -55,10 +55,10 @@ steps:
 
       echo 'Build.SourcesDirectory'
       echo '$(Build.SourcesDirectory)'
-      Get-ChildItem -Path '$(Build.SourcesDirectory)' -Recurse -Directory -Force -ErrorAction SilentlyContinue | Select-Object FullName
       
       $paths = Get-ChildItem -Path '$(Build.SourcesDirectory)' -Recurse -Directory -Force -ErrorAction SilentlyContinue | Select-Object FullName
       echo "##vso[task.setvariable variable=paths;]$paths"
+      echo $paths
 
 - task: PowerShell@2
   displayName: List all directories from variable
