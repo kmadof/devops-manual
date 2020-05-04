@@ -61,6 +61,12 @@ steps:
       echo test
       echo $paths
 
+      $arr = Get-ChildItem '$(Build.SourcesDirectory)' | 
+       Where-Object {$_.PSIsContainer} | 
+       Foreach-Object {$_.Name}
+
+      echo "##vso[task.setvariable variable=arr;]$arr"
+
 - task: PowerShell@2
   displayName: List all directories from variable
   inputs:
@@ -69,3 +75,6 @@ steps:
       # Write your PowerShell commands here.
       Write-Host "Trying to read $env:paths"
       echo '$(paths)'
+
+      Write-Host "Trying to read $env:arr"
+      echo '$(arr)'
