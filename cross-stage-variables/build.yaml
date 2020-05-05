@@ -28,7 +28,6 @@ stages:
     steps:
     - script: |
       echo "This is job Bar."
-
 # stage B runs if A fails
 #- stage: B
 #  condition: eq(stageDependencies.A.JA.outputs['DetermineResult.doThing'], 'Yes') #map doThing and check if true
