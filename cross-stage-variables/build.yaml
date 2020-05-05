@@ -23,8 +23,11 @@ stages:
         echo "This is job Foo."
         echo "##vso[task.setvariable variable=doThing;isOutput=true]Yes" #The variable doThing is set to true
       name: DetermineResult
+    - script: echo $(DetermineResult.doThing)
+      name: echovar
   - job: JA_2
-    condition: eq(dependencies.JA.outputs['JA.DetermineResult.doThing'], 'Yes')
+    dependsOn: AA
+    condition: eq(dependencies.JA.outputs['DetermineResult.doThing'], 'Yes')
     steps:
     - script: |
         echo "This is job Bar."
