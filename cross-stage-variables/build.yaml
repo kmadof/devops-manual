@@ -26,7 +26,7 @@ stages:
     - script: echo $(DetermineResult.doThing)
       name: echovar
   - job: JA_2
-    dependsOn: AA
+    dependsOn: JA
     condition: eq(dependencies.JA.outputs['DetermineResult.doThing'], 'Yes')
     steps:
     - script: |
