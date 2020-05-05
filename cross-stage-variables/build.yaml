@@ -23,16 +23,20 @@ stages:
         echo "This is job Foo."
         echo "##vso[task.setvariable variable=doThing;isOutput=true]Yes" #The variable doThing is set to true
       name: DetermineResult
+    - script: echo $(DetermineResult.doThing)
+      name: echovar
   - job: JA_2
-    condition: eq(dependencies.JA.outputs['JA.DetermineResult.doThing'], 'Yes')
+    dependsOn: JA
+    condition: eq(dependencies.JA.outputs['DetermineResult.doThing'], 'Yes')
     steps:
     - script: |
         echo "This is job Bar."
 
-# stage B runs if A fails
-#- stage: B
-#  condition: eq(stageDependencies.A.JA.outputs['DetermineResult.doThing'], 'Yes') #map doThing and check if true
-#  jobs:
-#  - job: JB
-#    steps:
-#    - bash: echo "Hello world stage B first job"
+#stage B runs if DetermineResult task set doThing variable n stage A
+- stage: B
+  dependsOn: A
+  condition: eq(stageDependencies.A.JA.outputs['DetermineResult.doThing'], 'Yes') #map doThing and check if true
+  jobs:
+  - job: JB
+    steps:
+    - bash: echo "Hello world stage B first job"
