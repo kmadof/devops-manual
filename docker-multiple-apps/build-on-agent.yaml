@@ -17,7 +17,7 @@ pr: none
 pool:
   vmImage: 'ubuntu-latest'
   gitRepoName: $(Build.Repository.Name)
-  imgRepoName: $[basename variables['gitRepoName']]
+  imgRepoName: ${{basename variables['gitRepoName']}}
 
 steps:
 - task: Docker@2
