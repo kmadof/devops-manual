@@ -19,10 +19,14 @@ pool:
 
 variables:
   gitRepoName: $(Build.Repository.Name)
-  imgRepoName: $(basename $(gitRepoName))
 
 steps:
-- bash: echo $(imgRepoName)
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+        $name = $(basename $(gitRepoName))
+        Write-Host "##vso[task.setvariable variable=imgRepoName]$name"
 - task: Docker@2
   displayName: Login to ACR
   inputs:
