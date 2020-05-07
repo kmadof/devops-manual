@@ -16,6 +16,8 @@ pr: none
 
 pool:
   vmImage: 'ubuntu-latest'
+
+variables:
   gitRepoName: $(Build.Repository.Name)
   imgRepoName: ${{basename variables['gitRepoName']}}
 
