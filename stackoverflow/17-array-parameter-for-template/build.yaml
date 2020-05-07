@@ -1,0 +1,23 @@
+trigger:
+  branches:
+    include:
+      - master
+  paths:
+    include:
+      - stackoverflow/17-array-parameter-for-template/*
+
+# stackoverflow.com/questions/61651777/how-can-we-pass-variable-as-a-parametersas-a-list
+# no PR triggers
+pr: none
+
+variables:
+  templateParam: ["dir1/dir2", "dir3/dir4"]
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- template: template.yaml
+  parameters:
+    instances: $(templateParam)
+    server: someServer
