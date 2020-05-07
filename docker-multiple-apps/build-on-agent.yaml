@@ -36,7 +36,7 @@ steps:
 - task: Docker@2
   displayName: Build and Push
   inputs:
-    repository: $($(imgRepoName))
+    repository: $(imgRepoName)
     command: build
     Dockerfile: docker-multiple-apps/Dockerfile
     tags: |
