@@ -27,6 +27,6 @@ steps:
 - template: template.yaml
   parameters:
     instances: 
-    ${{ each s in $(templateParamArray) }}:
+    ${{ each s in templateParamArray }}:
       - ${{ s }}:
     server: someServer
