@@ -26,5 +26,7 @@ steps:
         Write-Host "##vso[task.setvariable variable=templateParamArray]$array"
 - template: template.yaml
   parameters:
-    instances: $(templateParamArray)
+    instances: 
+    ${{ each s in $(templateParamArray) }}:
+      - ${{ s }}:
     server: someServer
