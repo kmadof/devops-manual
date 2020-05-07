@@ -19,7 +19,7 @@ pool:
 
 variables:
   gitRepoName: $(Build.Repository.Name)
-  imgRepoName: $[basename variables['gitRepoName']]
+  imgRepoName: $(basename $(gitRepoName))
 
 steps:
 - task: Docker@2
