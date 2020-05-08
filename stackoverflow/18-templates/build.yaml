@@ -7,3 +7,5 @@ resources:
 
 steps:
 - template: templates/template.yaml@templates
+  parameters:
+    repo: templates
