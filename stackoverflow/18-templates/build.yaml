@@ -3,6 +3,7 @@ resources:
     - repository: templates
       type: github
       name: devops-templates
+      endpoint: kmadof
 
 jobs:
 - template: scripts/myscript.ps1@templates
