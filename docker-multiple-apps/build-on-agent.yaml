@@ -17,7 +17,16 @@ pr: none
 pool:
   vmImage: 'ubuntu-latest'
 
+variables:
+  gitRepoName: $(Build.Repository.Name)
+
 steps:
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+        $name = $(basename $(gitRepoName))
+        Write-Host "##vso[task.setvariable variable=imgRepoName]$name"
 - task: Docker@2
   displayName: Login to ACR
   inputs:
@@ -27,7 +36,7 @@ steps:
 - task: Docker@2
   displayName: Build and Push
   inputs:
-    repository: $(imageName)
+    repository: $(imgRepoName)
     command: build
     Dockerfile: docker-multiple-apps/Dockerfile
     tags: |

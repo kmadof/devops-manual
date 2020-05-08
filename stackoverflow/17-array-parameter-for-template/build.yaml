@@ -11,13 +11,22 @@ trigger:
 pr: none
 
 variables:
-  templateParam: ["dir1/dir2", "dir3/dir4"]
+- name: templateParam
+  value: "dir1/dir2,dir3/dir4"
 
 pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+        $array = $variable.Split(',)
+        Write-Host "##vso[task.setvariable variable=templateParamArray]$array"
 - template: template.yaml
   parameters:
-    instances: $(templateParam)
+    instances: 
+    ${{ each s in templateParamArray }}:
+      - ${{ s }}:
     server: someServer
