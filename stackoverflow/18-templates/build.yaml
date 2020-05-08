@@ -8,7 +8,7 @@ resources:
 steps:
 - script: |
     echo $(Build.SourcesDirectory)
-    ls $(Build.SourcesDirectory) -a
+    ls $(Build.SourcesDirectory) *
 - template: templates/template.yaml@templates
   parameters:
     repo: templates
