@@ -6,6 +6,8 @@ resources:
       endpoint: kmadof
 
 steps:
+- checkout: self
+- checkout: devops
 - script: |
     echo $(Build.SourcesDirectory)
     ls $(Build.SourcesDirectory) *
