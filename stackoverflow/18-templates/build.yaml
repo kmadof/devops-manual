@@ -6,4 +6,4 @@ resources:
       endpoint: kmadof
 
 jobs:
-- template: scripts/myscript.ps1@templates
+- template: templates/template.yaml@templates
