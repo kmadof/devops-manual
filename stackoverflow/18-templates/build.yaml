@@ -5,5 +5,5 @@ resources:
       name: kmadof/devops-templates
       endpoint: kmadof
 
-jobs:
+steps:
 - template: templates/template.yaml@templates
