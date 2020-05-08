@@ -1,0 +1,16 @@
+parameters:
+- name: 'Versions'
+  type: object
+  default: {}
+- name: 'server'
+  type: string
+  default: ''
+
+steps:
+- ${{ each version in parameters.Versions }}:
+  - script: echo ${{ parameters.server }}:${{ version }}
+  - script: echo ${{ parameters.server }}:${{ version }}
+  - script: echo ${{ parameters.server }}:${{ version }}
+  - script: echo ${{ parameters.server }}:${{ version }}
+  - script: echo ${{ parameters.server }}:${{ version }}
+  - script: echo ${{ parameters.server }}:${{ version }}

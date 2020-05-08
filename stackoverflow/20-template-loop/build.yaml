@@ -1,0 +1,21 @@
+trigger: none
+pr: none
+schedules:
+- cron: 0,5,10 12 * * mon,tue,wed,fri
+  displayName: Scheduled most mornings
+  branches:
+    include:
+    - master
+  always: true
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- template: template.yaml
+  parameters:
+    Versions: 
+    - "1"
+    - "2"
+    - "3"
+    server: someServer
