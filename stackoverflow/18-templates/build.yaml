@@ -1,12 +1,8 @@
-variables:
-  fullRepoName: 'kmadof/devops-templates'
-  repoName: $(basename $(fullRepoName))
-
 resources:
   repositories:
     - repository: devops
       type: github
-      name: $(fullRepoName)
+      name: kmadof/devops-templates
       endpoint: kmadof
 
 steps:
@@ -17,4 +13,4 @@ steps:
     ls $(Build.SourcesDirectory) *
 - template: templates/template.yaml@devops
   parameters:
-    repo: $(repoName)
+    repo: devops-templates
