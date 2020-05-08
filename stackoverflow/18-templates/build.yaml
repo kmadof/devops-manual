@@ -1,6 +1,6 @@
 resources:
   repositories:
-    - repository: templates
+    - repository: devops
       type: github
       name: kmadof/devops-templates
       endpoint: kmadof
@@ -9,6 +9,6 @@ steps:
 - script: |
     echo $(Build.SourcesDirectory)
     ls $(Build.SourcesDirectory) *
-- template: templates/template.yaml@templates
+- template: templates/template.yaml@devops
   parameters:
-    repo: templates
+    repo: devops
