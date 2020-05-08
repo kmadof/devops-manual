@@ -1,3 +1,15 @@
+trigger:
+  branches:
+    include:
+      - master
+  paths:
+    include:
+      - stackoverflow/18-templates/*
+
+# https://stackoverflow.com/questions/61676408/is-it-possible-to-import-a-script-in-a-yaml-template/61677662#61677662
+# no PR triggers
+pr: none
+
 resources:
   repositories:
     - repository: devops
