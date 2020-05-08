@@ -13,4 +13,4 @@ steps:
     ls $(Build.SourcesDirectory) *
 - template: templates/template.yaml@devops
   parameters:
-    repo: devops
+    repo: devops-templates
