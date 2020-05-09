@@ -1,0 +1,28 @@
+trigger:
+  branches:
+    include:
+      - master
+  paths:
+    include:
+      - stackoverflow/21-upload-summary/*
+
+# stackoverflow.com/questions/61651777/how-can-we-pass-variable-as-a-parametersas-a-list
+# no PR triggers
+pr: none
+
+variables:
+- name: templateParam
+  value: "dir1/dir2,dir3/dir4"
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: PowerShell@2
+  inputs:
+    filePath: stackoverflow/21-upload-summary/create-file.ps1
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+        Write-Host "##vso[task.uploadsummary]testsummary.md"
