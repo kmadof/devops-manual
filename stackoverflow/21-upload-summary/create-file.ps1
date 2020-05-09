@@ -10,7 +10,9 @@ Summary
 Details
 ======
 - Skipped detail
+  
   - MSGraph/DeviceAppManagement/MobileApps:
+    
     - AnyDesk
 "@
 
