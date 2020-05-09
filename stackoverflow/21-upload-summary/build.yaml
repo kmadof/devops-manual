@@ -25,4 +25,4 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-        Write-Host "##vso[task.uploadsummary]testsummary.md"
+        Write-Host "##vso[task.uploadsummary]$(Build.SourcesDirectory)/testsummary.md"
