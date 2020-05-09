@@ -8,14 +8,15 @@ Summary
 - Skipped resources: 1
 
 Details
-======
-# Ordered list
-1. Step 1
-2. Step 2
-3. Step 3
-    1. Step 3.1
-    2. Step 3.2
-    3. Step 3.3
+----
+1. First item.
+   - Item 1
+   - Item 2
+   - Item 3
+1. Second item.
+   - Nested item 1
+   - Nested item 2
+   - Nested item 3
 
 Details
 ======
