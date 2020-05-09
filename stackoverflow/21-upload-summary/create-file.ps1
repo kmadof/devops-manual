@@ -9,9 +9,14 @@ Summary
 
 Details
 ======
+
 * Skipped detail
     * MSGraph/DeviceAppManagement/MobileApps:
         * AnyDesk
+
+1. Skipped detail
+    2. MSGraph/DeviceAppManagement/MobileApps:
+        3. AnyDesk
 
 # Unordered list
 
