@@ -9,9 +9,9 @@ Summary
 
 Details
 ======
-- Skipped detail
-    - MSGraph/DeviceAppManagement/MobileApps:
-        - AnyDesk
+* Skipped detail
+    * MSGraph/DeviceAppManagement/MobileApps:
+        * AnyDesk
 "@
 
 New-Item -Path . -Name "testsummary.md" -ItemType "file" -Value $content
