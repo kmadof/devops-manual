@@ -1,0 +1,30 @@
+stages:
+- stage: Test
+  jobs:
+  - job: UnitTest
+    steps:
+    - script: echo UnitTest
+    - script: exit 1
+
+- stage: Build
+  jobs:
+  - job: Build
+    steps:
+    - script: echo Build
+
+- stage: Notify
+  dependsOn:
+  - Test
+  - Build
+
+  condition: succeededOrFailed()
+  jobs:
+  - job: Succeed
+    condition: eq(dependencies.Test.result, 'Succeeded')
+    steps:
+    - script: echo Succeed #(slack)
+
+  - job: Fail
+    condition: eq(dependencies.Test.result, 'Failed')
+    steps:
+    - script: echo Fail #(slack)
