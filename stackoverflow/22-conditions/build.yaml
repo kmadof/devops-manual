@@ -25,6 +25,6 @@ stages:
     - script: echo Succeed #(slack)
 
   - job: Fail
-    condition: eq(dependencies.Test.result, 'Failed')
+    condition: failed('Test')
     steps:
     - script: echo Fail #(slack)
