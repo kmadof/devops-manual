@@ -14,13 +14,12 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps: 
-- task: qetza.replacetokens.replacetokens-task.replacetokens@3
+- task: replacetokens@3
   displayName: 'Replace tokens in *.config *.json'
-  workingDirectory: stackoverflow/23-token-replace
   inputs:
     targetFiles: |
-     *.config
-     *.json
+     stackoverflow/23-token-replace/*.config
+     stackoverflow/23-token-replace/*.json
     verbosity: detailed
     tokenPrefix: '{'
     tokenSuffix: '}'
