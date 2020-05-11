@@ -38,7 +38,7 @@ stages:
         Write-Host $test
         Write-Host $test.result.result
 
-        $testResult = $test.result | ConvertFrom-Json
+        $testResult = $test | ConvertFrom-Json
         Write-Host 'siema'
         Write-Host $testResult
         Write-Host $testResult.result
