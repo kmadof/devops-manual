@@ -1,3 +1,6 @@
+variables:
+  orgName: 'thecodemanual'
+
 stages:
 - stage: Test
   jobs:
@@ -23,7 +26,7 @@ stages:
     condition: always()
     steps:
     - pwsh: |
-        $url = "https://dev.azure.com/thecodemanual/$(System.TeamProject)/_apis/build/builds/$(Build.BuildId)?api-version=5.1"
+        $url = "https://dev.azure.com/$(orgName)/$(System.TeamProject)/_apis/build/builds/$(Build.BuildId)?api-version=5.1"
         Write-Host $url
         $build = Invoke-RestMethod -Uri $url -Headers @{Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"}
         Write-Host "Pipeline = $($build | ConvertTo-Json -Depth 100)"
@@ -33,12 +36,15 @@ stages:
 
         $test = $timeline.records | where { $_.identifier -eq "Test.UnitTest" }
         Write-Host $test
+
+        echo "##vso[task.setvariable variable=testResult;isOutput=true]$test.result"
+      name: initial
   - job: Succeed
-    condition: eq(dependencies.Test.result, 'Succeeded')
+    condition: condition: eq(dependencies.InitialJob.outputs['initial.testResult'], 'succeeded')
     steps:
     - script: echo Succeed #(slack)
 
   - job: Fail
-    condition: failed('Test')
+    condition: eq(dependencies.InitialJob.outputs['initial.testResult'], 'failed')
     steps:
     - script: echo Fail #(slack)
