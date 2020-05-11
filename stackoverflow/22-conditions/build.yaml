@@ -25,6 +25,7 @@ stages:
   - job: InitialJob
     condition: always()
     steps:
+    - pwsh: 
     - pwsh: |
         $url = "https://dev.azure.com/$(orgName)/$(System.TeamProject)/_apis/build/builds/$(Build.BuildId)?api-version=5.1"
         Write-Host $url
@@ -39,8 +40,9 @@ stages:
 
         echo "##vso[task.setvariable variable=testResult;isOutput=true]$test.result"
       name: initial
+
   - job: Succeed
-    condition: condition: eq(dependencies.InitialJob.outputs['initial.testResult'], 'succeeded')
+    condition: eq(dependencies.InitialJob.outputs['initial.testResult'], 'succeeded')
     steps:
     - script: echo Succeed #(slack)
 
