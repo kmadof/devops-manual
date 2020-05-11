@@ -1,0 +1,10 @@
+trigger:
+ branches:
+   include:
+    - chore/*
+    - feature/*
+    - fix/*
+    - refactor/*
+
+steps:
+- pwsh: echo 'siema'
