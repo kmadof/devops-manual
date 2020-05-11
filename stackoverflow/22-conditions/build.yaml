@@ -42,11 +42,13 @@ stages:
       name: initial
 
   - job: Succeed
+    dependsOn: InitialJob
     condition: eq(dependencies.InitialJob.outputs['initial.testResult'], 'succeeded')
     steps:
     - script: echo Succeed #(slack)
 
   - job: Fail
+    dependsOn: InitialJob
     condition: eq(dependencies.InitialJob.outputs['initial.testResult'], 'failed')
     steps:
     - script: echo Fail #(slack)
