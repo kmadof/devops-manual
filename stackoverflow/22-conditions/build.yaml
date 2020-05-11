@@ -36,6 +36,7 @@ stages:
 
         $test = $timeline.records | where { $_.identifier -eq "Test.UnitTest" }
         Write-Host $test
+        Write-Host $test.result.result
 
         Write-Host "##vso[task.setvariable variable=testResult;isOutput=true]$test.result.result"
       name: initial
