@@ -35,11 +35,13 @@ stages:
         Write-Host "Pipeline = $($timeline | ConvertTo-Json -Depth 100)"
 
         $test = $timeline.records | where { $_.identifier -eq "Test.UnitTest" }
-        Write-Host $test
-        Write-Host $test.result.result
-
-        $testResult = $test | ConvertFrom-Json
+        
         Write-Host 'siema'
+        Write-Host $test
+        Write-Host $test.result
+
+        $testResult = $test | ConvertTo-Json
+        
         Write-Host $testResult
         Write-Host $testResult.result
 
