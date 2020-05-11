@@ -20,6 +20,7 @@ resources:
 stages:
 - template: templates/start.yaml@devops
   parameters:
+    repo: devops-templates
     buildSteps:
       - checkout: self
       - checkout: devops
