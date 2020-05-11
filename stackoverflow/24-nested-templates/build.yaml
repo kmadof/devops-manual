@@ -1,0 +1,35 @@
+trigger:
+  branches:
+    include:
+      - master
+  paths:
+    include:
+      - stackoverflow/24-nested-templates/*
+
+# https://stackoverflow.com/questions/61676408/is-it-possible-to-import-a-script-in-a-yaml-template/61677662#61677662
+# no PR triggers
+pr: none
+
+resources:
+  repositories:
+    - repository: devops
+      type: github
+      name: kmadof/devops-templates
+      endpoint: kmadof
+
+steps:
+- checkout: self
+- checkout: devops
+- script: |
+    echo $(Build.SourcesDirectory)
+    ls $(Build.SourcesDirectory) *
+- template: templates/template.yaml@devops
+  parameters:
+    repo: devops-templates
+- template: templates/start.yml@devops
+  parameters:
+    buildSteps:  
+      - bash: echo Test #Passes
+        displayName: succeed
+      - bash: echo "Test"
+        displayName: succeed
