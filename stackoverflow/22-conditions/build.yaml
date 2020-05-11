@@ -38,6 +38,11 @@ stages:
         Write-Host $test
         Write-Host $test.result.result
 
+        $testResult = $test.result | ConvertFrom-Json
+        Write-Host 'siema'
+        Write-Host $testResult
+        Write-Host $testResult.result
+
         Write-Host "##vso[task.setvariable variable=testResult;isOutput=true]$test.result.result"
       name: initial
 
