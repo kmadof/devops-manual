@@ -17,18 +17,12 @@ resources:
       name: kmadof/devops-templates
       endpoint: kmadof
 
-steps:
-- checkout: self
-- checkout: devops
-- script: |
-    echo $(Build.SourcesDirectory)
-    ls $(Build.SourcesDirectory) *
-- template: templates/template.yaml@devops
-  parameters:
-    repo: devops-templates
+stages:
 - template: templates/start.yaml@devops
   parameters:
-    buildSteps:  
+    buildSteps:
+      - checkout: self
+      - checkout: devops
       - bash: echo Test #Passes
         displayName: succeed
       - bash: echo "Test"
