@@ -7,7 +7,7 @@ stages:
   - job: UnitTest
     steps:
     - script: echo UnitTest
-#    - script: exit 1
+    - script: exit 1
 
 - stage: Build
   jobs:
