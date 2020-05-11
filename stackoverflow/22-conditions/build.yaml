@@ -36,16 +36,19 @@ stages:
 
         $test = $timeline.records | where { $_.identifier -eq "Test.UnitTest" }
         
-        Write-Host 'siema'
+        Write-Host 'test'
         Write-Host $test
+        Write-Host 'test.result'
         Write-Host $test.result
 
         $testResult = $test | ConvertTo-Json
         
+        Write-Host 'testResult'
         Write-Host $testResult
+        Write-Host 'testResult.result'
         Write-Host $testResult.result
 
-        Write-Host "##vso[task.setvariable variable=testResult;isOutput=true]$test.result.result"
+        Write-Host "##vso[task.setvariable variable=testResult;isOutput=true]$test.result"
       name: initial
 
   - job: Succeed
