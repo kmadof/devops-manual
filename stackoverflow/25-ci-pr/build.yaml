@@ -8,5 +8,5 @@ trigger:
 
 steps:
 - checkout: self
-  clean: true
+  clean: false
 - pwsh: echo 'siema'
