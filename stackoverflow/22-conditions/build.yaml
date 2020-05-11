@@ -26,12 +26,9 @@ stages:
     condition: always()
     steps:
     - pwsh: |
-        $url = "https://dev.azure.com/$(orgName)/$(System.TeamProject)/_apis/build/builds/$(Build.BuildId)?api-version=5.1"
-        Write-Host $url
-        $build = Invoke-RestMethod -Uri $url -Headers @{Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"}
-        Write-Host "Pipeline = $($build | ConvertTo-Json -Depth 100)"
-
-        $timeline = Invoke-RestMethod -Uri $build._links.timeline.href -Headers @{Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"}
+       
+        $url = "https://dev.azure.com/$(orgName)/$(System.TeamProject)/_apis/build/builds/$(Build.BuildId)/timeline?api-version=5.1"
+        $timeline = Invoke-RestMethod -Uri $url -Headers @{Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"}
         Write-Host "Pipeline = $($timeline | ConvertTo-Json -Depth 100)"
 
         $test = $timeline.records | where { $_.identifier -eq "Test.UnitTest" }
