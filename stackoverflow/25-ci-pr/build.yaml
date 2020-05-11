@@ -7,4 +7,6 @@ trigger:
     - refactor/*
 
 steps:
+- checkout: self
+  clean: true
 - pwsh: echo 'siema'
