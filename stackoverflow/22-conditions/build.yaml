@@ -30,6 +30,9 @@ stages:
 
         $timeline = Invoke-RestMethod -Uri $build._links.timeline.href -Headers @{Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"}
         Write-Host "Pipeline = $($timeline | ConvertTo-Json -Depth 100)"
+
+        $test = $timeline.records | where { $_.identifier -eq "Test.UnitTest" }
+        Write-Host $test
   - job: Succeed
     condition: eq(dependencies.Test.result, 'Succeeded')
     steps:
