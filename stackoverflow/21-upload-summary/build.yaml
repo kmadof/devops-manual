@@ -26,3 +26,7 @@ steps:
     targetType: 'inline'
     script: |
         Write-Host "##vso[task.uploadsummary]$(Build.SourcesDirectory)/testsummary.md"
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Build.SourcesDirectory)/testsummary.md' 
+    artifactName: 'markdown'
