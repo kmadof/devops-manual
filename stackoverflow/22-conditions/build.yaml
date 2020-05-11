@@ -48,7 +48,9 @@ stages:
         Write-Host 'testResult.result'
         Write-Host $testResult.result
 
-        Write-Host "##vso[task.setvariable variable=testResult;isOutput=true]$test.result"
+        $result = $test.result
+
+        Write-Host "##vso[task.setvariable variable=testResult;isOutput=true]$result"
       name: initial
 
   - job: Succeed
