@@ -26,7 +26,7 @@ steps:
 - template: templates/template.yaml@devops
   parameters:
     repo: devops-templates
-- template: templates/start.yml@devops
+- template: templates/start.yaml@devops
   parameters:
     buildSteps:  
       - bash: echo Test #Passes
