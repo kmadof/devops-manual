@@ -7,7 +7,7 @@ stages:
   - job: UnitTest
     steps:
     - script: echo UnitTest
-    - script: exit 1
+#    - script: exit 1
 
 - stage: Build
   jobs:
@@ -35,18 +35,6 @@ stages:
         Write-Host "Pipeline = $($timeline | ConvertTo-Json -Depth 100)"
 
         $test = $timeline.records | where { $_.identifier -eq "Test.UnitTest" }
-        
-        Write-Host 'test'
-        Write-Host $test
-        Write-Host 'test.result'
-        Write-Host $test.result
-
-        $testResult = $test | ConvertTo-Json
-        
-        Write-Host 'testResult'
-        Write-Host $testResult
-        Write-Host 'testResult.result'
-        Write-Host $testResult.result
 
         $result = $test.result
 
