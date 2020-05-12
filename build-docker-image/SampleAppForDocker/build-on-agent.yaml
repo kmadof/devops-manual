@@ -29,6 +29,7 @@ steps:
   inputs:
     repository: $(imageName)
     command: buildAndPush
+    buildContext: $(Build.SourcesDirectory)/build-docker-image/SampleAppForDocker
     Dockerfile: build-docker-image/SampleAppForDocker/DOCKERFILE
     tags: |
       build-on-agent
