@@ -6,6 +6,9 @@ trigger:
     - fix/*
     - refactor/*
 
+pool:
+  image: 'windows-latest'
+
 pr: none
 
 variables:
