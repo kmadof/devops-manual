@@ -8,7 +8,33 @@ trigger:
 
 pr: none
 
+variables:
+  buildlabel: '11.0.46999'
+  buildlabel2: '11.0.46998'
+  mycomponentInstallerRootDir: '$(Build.SourcesDirectory)/stackoverflow'
+  mycomponent: 'test'
+  mycomponent2: 'test2'
+
 steps:
 - checkout: self
   clean: false
 - pwsh: echo 'siema from pr 2'
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: $(mycomponentInstallerRootDir)
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(mycomponent)/$(buildlabel).zip'
+    includeRootFolder: false
+  enabled: true
+
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(mycomponentInstallerRootDir)/'
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(mycomponent)/$(buildlabel2).zip'
+    includeRootFolder: false
+  enabled: true
+
+- publish: $(Build.ArtifactStagingDirectory)
+  artifact: buildartifacts_installer
+  enabled: true
