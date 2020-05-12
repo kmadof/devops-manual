@@ -1,3 +1,13 @@
+trigger:
+  branches:
+    include:
+      - master
+  paths:
+    include:
+      - stackoverflow/22-conditions/*
+
+pr: none
+
 variables:
   orgName: 'thecodemanual'
 
