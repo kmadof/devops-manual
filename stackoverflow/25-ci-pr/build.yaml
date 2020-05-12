@@ -11,4 +11,4 @@ pr: none
 steps:
 - checkout: self
   clean: false
-- pwsh: echo 'siema from pr'
+- pwsh: echo 'siema from pr 2'
