@@ -23,5 +23,5 @@ steps:
     path: $(npm_config_cache)
   displayName: Cache npm
 
-- script: npm ci
+- script: npm install
   workingDirectory: '$(Build.SourcesDirectory)/cache-npm'
