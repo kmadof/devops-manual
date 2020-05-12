@@ -6,6 +6,8 @@ trigger:
     - fix/*
     - refactor/*
 
+pr: none
+
 steps:
 - checkout: self
   clean: false
