@@ -14,7 +14,7 @@ pr: none
 variables:
   buildlabel: '11.0.46999'
   buildlabel2: '11.0.46998'
-  mycomponentInstallerRootDir: '$(Build.SourcesDirectory)/stackoverflow'
+  mycomponentInstallerRootDir: '$(Build.SourcesDirectory)\stackoverflow'
   mycomponent: 'test'
   mycomponent2: 'test2'
 
