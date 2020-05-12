@@ -9,4 +9,4 @@ trigger:
 steps:
 - checkout: self
   clean: false
-- pwsh: echo 'siema'
+- pwsh: echo 'siema from pr'
