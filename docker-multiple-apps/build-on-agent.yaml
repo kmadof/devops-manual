@@ -42,7 +42,7 @@ steps:
     Dockerfile: docker-multiple-apps/Dockerfile
     tags: |
       build-on-agent
-       $(Build.BuildId) 
+      $(Build.BuildId) 
 
 - bash: docker image ls
 
