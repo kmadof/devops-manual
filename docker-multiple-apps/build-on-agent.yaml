@@ -55,6 +55,8 @@ steps:
 
 - bash: docker image ls
 
+- bash: docker search devops-manual
+
 
 - pwsh: |
     docker search $(imgRepoName)
