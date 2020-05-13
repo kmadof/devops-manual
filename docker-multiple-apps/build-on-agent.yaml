@@ -56,7 +56,11 @@ steps:
 - bash: docker image ls
 
 - pwsh: |
-    docker search $(imgRepoName):$(Build.BuildId)
+    docker search $(imgRepoName)
+
+    $imgName = '$(imgRepoName):$(Build.BuildId)'
+    docker search $imgName
+    
     $imageId = docker search --format "{{.ImageId}}" '$(imgRepoName):$(Build.BuildId)'
     docker run $imageId
 
