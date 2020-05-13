@@ -62,7 +62,7 @@ steps:
     $imgName = '$(imgRepoName):$(Build.BuildId)'
     docker search $imgName
 
-    docker search devopsmanual-acr/$(imgRepoName):$(Build.BuildId)'
+    docker search devopsmanual-acr/$(imgRepoName):$(Build.BuildId)
     
     $imageId = docker search --format "{{.ImageId}}" '$(imgRepoName):$(Build.BuildId)'
     docker run $imageId
