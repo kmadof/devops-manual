@@ -1,0 +1,33 @@
+trigger:
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - stackoverflow/27-different-pr-conditions/*
+
+# no PR triggers
+pr:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+- stage: A
+  jobs:
+  - job: JA
+    steps:
+    - script: |
+        echo "This is job Foo."
+        echo $(System.PullRequest.TargetBranch)
+      
+
+#stage B runs if DetermineResult task set doThing variable n stage A
+- stage: B
+  dependsOn: A
+  condition: and(succeeded(), eq(variables['Build.Reason'], 'PullRequest'), eq(variables['System.PullRequest.TargetBranch'], 'refs/heads/master'))
+  jobs:
+  - job: JB
+    steps:
+    - bash: echo "Deployment to production"
