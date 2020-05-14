@@ -18,14 +18,14 @@ variables:
 
 steps: 
 - pwsh: |
-       
-        $url = "https://dev.azure.com/$(orgName)/$(System.TeamProject)/_apis/distributedtask/variablegroups/$(variableGroupId)?api-version=5.1-preview.1"
-        $variableGroup = Invoke-RestMethod -Uri $url -Headers @{Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"}
-        Write-Host "Pipeline = $($variableGroup | ConvertTo-Json -Depth 100)"
+    
+    $url = "https://dev.azure.com/$(orgName)/$(System.TeamProject)/_apis/distributedtask/variablegroups/$(variableGroupId)?api-version=5.1-preview.1"
+    $variableGroup = Invoke-RestMethod -Uri $url -Headers @{Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"}
+    Write-Host "Pipeline = $($variableGroup | ConvertTo-Json -Depth 100)"
 
-        $variableGroup.variables.name.value = "fromPipeline"
+    $variableGroup.variables.name.value = "fromPipeline"
 
-        $json = $variableGroup | ConvertTo-Json -Depth 100
+    $json = $variableGroup | ConvertTo-Json -Depth 100
 
-        Invoke-RestMethod -Method PUT -Uri $url -ContentType "application/json" -Headers @{Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"} -Body $json
-      name: initial
+    Invoke-RestMethod -Method PUT -Uri $url -ContentType "application/json" -Headers @{Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"} -Body $json
+  name: initial
