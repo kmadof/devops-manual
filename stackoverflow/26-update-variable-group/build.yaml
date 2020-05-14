@@ -30,3 +30,5 @@ steps:
 
     Invoke-RestMethod -Method PUT -Uri $url -ContentType "application/json" -Headers @{Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"} -Body $json
   name: initial
+  env:
+    SYSTEM_ACCESSTOKEN: $(system.accesstoken)
