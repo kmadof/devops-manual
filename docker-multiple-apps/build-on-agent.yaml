@@ -36,11 +36,40 @@ steps:
 - task: Docker@2
   displayName: Build and Push
   inputs:
+    containerRegistry: devopsmanual-acr
     repository: $(imgRepoName)
     command: build
     Dockerfile: docker-multiple-apps/Dockerfile
     tags: |
       build-on-agent
+      $(Build.BuildId) 
+
+- task: Docker@2
+  displayName: Build and Push
+  inputs:
+    repository: $(imgRepoName)
+    command: build
+    Dockerfile: docker-multiple-apps/Dockerfile
+    tags: |
+      build-on-agent-2
+
+- bash: docker image ls
+
+- bash: docker search devops-manual
+
+
+- pwsh: |
+    docker search $(imgRepoName)
+
+    $imgName = '$(imgRepoName):$(Build.BuildId)'
+    docker search $imgName
+
+    docker search devopsmanual-acr/$(imgRepoName):$(Build.BuildId)
+    
+    $imageId = docker search --format "{{.ImageId}}" '$(imgRepoName):$(Build.BuildId)'
+    docker run $imageId
+
+- bash: docker run 'devopsmanual-acr/$(imgRepoName):$(Build.BuildId)'
 
 - task: Docker@2
   displayName: Logout of ACR
