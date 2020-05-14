@@ -26,7 +26,7 @@ stages:
 #stage B runs if DetermineResult task set doThing variable n stage A
 - stage: B
   dependsOn: A
-  condition: and(succeeded(), eq(variables['Build.Reason'], 'PullRequest'), eq(variables['System.PullRequest.TargetBranch'], 'refs/heads/master'))
+  condition: and(succeeded(), eq(variables['Build.Reason'], 'PullRequest'), eq(variables['System.PullRequest.TargetBranch'], 'master'))
   jobs:
   - job: JB
     steps:
