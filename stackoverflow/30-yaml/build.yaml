@@ -1,0 +1,39 @@
+trigger:
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - stackoverflow/30-yaml/*
+
+# https://stackoverflow.com/questions/61815310/how-to-insert-a-string-to-new-line-to-a-file-in-azure-pipeline
+# no PR triggers
+pr:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+- stage: A
+  jobs:
+  - job: JA
+    steps:
+    - pwsh: Install-Module powershell-yaml
+    - pwsh: |
+        $content = Get-Content -Path stackoverflow\30-yaml\test.yaml -Raw
+
+        $obj = ConvertFrom-Yaml $content
+
+        $obj.Item('test').Add('Version', '7368684846gdvjdgjv')
+
+        $newContent = ConvertTo-Yaml $obj
+
+        $newContent
+
+        Set-Content -Path stackoverflow\30-yaml\test.yaml -Value $newContent
+        Set-Content -Path $(Build.ArtifactStagingDirectory)\test.yaml -Value $newContent
+        
+    - publish: $(Build.ArtifactStagingDirectory)
+      artifact: someArtifact
+      
