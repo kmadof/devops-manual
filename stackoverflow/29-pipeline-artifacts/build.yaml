@@ -35,4 +35,4 @@ stages:
     steps:
     - download: current
       artifact: someArtifact
-    - bash: echo "Deployment to production"
+    - bash: ls '$(Pipeline.Workspace)/someArtifact'
