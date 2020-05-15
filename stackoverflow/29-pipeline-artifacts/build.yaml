@@ -7,6 +7,7 @@ trigger:
     include:
     - stackoverflow/29-pipeline-artifacts/*
 
+# https://stackoverflow.com/questions/61812225/how-to-download-the-pipeline-artifacts-from-different-job-within-the-same-pipeli/61814969#61814969
 # no PR triggers
 pr:
 - master
