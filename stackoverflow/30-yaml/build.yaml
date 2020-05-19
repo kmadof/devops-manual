@@ -19,6 +19,7 @@ stages:
   jobs:
   - job: JA
     steps:
+    - pwsh: python --version
     - pwsh: Install-Module powershell-yaml -Force
     - pwsh: |
         $content = Get-Content -Path stackoverflow\30-yaml\test.yaml -Raw
