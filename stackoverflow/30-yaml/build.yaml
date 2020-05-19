@@ -20,6 +20,12 @@ stages:
   - job: JA
     steps:
     - pwsh: python --version
+    - task: UsePythonVersion@0
+      inputs:
+        versionSpec: '3.7' 
+        addToPath: true 
+        #architecture: 'x64' # Options: x86, x64 (this argument applies only on Windows agents)
+    - pwsh: python --version
     - pwsh: Install-Module powershell-yaml -Force
     - pwsh: |
         $content = Get-Content -Path stackoverflow\30-yaml\test.yaml -Raw
