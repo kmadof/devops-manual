@@ -35,8 +35,8 @@ stages:
 #stage B runs if DetermineResult task set doThing variable n stage A
 - stage: B
   dependsOn: A
-  condition: eq(stageDependencies.A.JA.outputs['DetermineResult.doThing'], 'Yes') #map doThing and check if true
   jobs:
   - job: JB
+    condition: eq(stageDependencies.A.JA.outputs['DetermineResult.doThing'], 'Yes') #map doThing and check if true
     steps:
     - bash: echo "Hello world stage B first job"
