@@ -1,0 +1,36 @@
+trigger:
+- test
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.7'
+    addToPath: true
+  displayName: Install Python
+
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install serverless -g
+  displayName: 'npm install'
+
+- task: AWSShellScript@1
+  inputs:
+    awsCredentials: aws
+    regionName: 'ap-northeast-2'
+    scriptType: 'inline'
+    inlineScript: |
+      serverless package --stage dev --region ap-northeast-2 --package $(Build.ArtifactStagingDirectory)
+  displayName: Package for Dev Environment
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathToPublish: $(Build.ArtifactStagingDirectory)
+    artifactName: dev_artifacts
+  displayName: Export Dev Artifacts
