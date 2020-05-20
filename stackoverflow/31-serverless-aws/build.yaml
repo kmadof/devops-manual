@@ -23,6 +23,7 @@ steps:
 - task: AWSShellScript@1
   inputs:
     awsCredentials: aws
+    workingDirectory: $(Build.SourcesDirectory)/stackoverflow/31-serverless-aws
     regionName: 'ap-northeast-2'
     scriptType: 'inline'
     inlineScript: |
