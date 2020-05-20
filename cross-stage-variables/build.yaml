@@ -38,5 +38,8 @@ stages:
   jobs:
   - job: JB
     condition: eq(stageDependencies.A.JA.outputs['DetermineResult.doThing'], 'Yes') #map doThing and check if true
+    variables:
+      varFromStageA: $[ stageDependencies.A.JA.outputs['DetermineResult.doThing'] ]
     steps:
     - bash: echo "Hello world stage B first job"
+    - script: echo $(varFromStageA)
