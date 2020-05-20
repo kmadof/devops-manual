@@ -32,7 +32,7 @@ stages:
     - script: |
         echo "This is job Bar."
 
-#stage B runs if DetermineResult task set doThing variable n stage A
+#job JB from stage B runs if DetermineResult task set doThing variable n stage A
 - stage: B
   dependsOn: A
   jobs:
