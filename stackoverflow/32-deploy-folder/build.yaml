@@ -5,7 +5,7 @@ variables:
   BuildConfiguration: 'Release'
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'windows-latest'
 
 #https://stackoverflow.com/questions/61910176/how-to-deploy-a-webapp-from-a-folder-not-a-zip-in-azure-devops
 
