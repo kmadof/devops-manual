@@ -6,7 +6,9 @@ trigger:
   paths:
     include:
     - stackoverflow/28-tags/*
-
+# https://stackoverflow.com/questions/61783014/using-lerna-js-and-azure-devops-pipeline/61786014?noredirect=1#comment109330301_61786014
+# git tag release-05
+# git push origin --tags
 # no PR triggers
 pr:
 - master
@@ -16,6 +18,7 @@ pool:
 
 stages:
 - stage: A
+  condition: eq(variables['Build.SourceBranch'], 'master')
   jobs:
   - job: JA
     steps:
