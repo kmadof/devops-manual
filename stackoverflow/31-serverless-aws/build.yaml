@@ -27,6 +27,8 @@ steps:
     regionName: 'ap-northeast-2'
     scriptType: 'inline'
     inlineScript: |
+      cd $(Build.SourcesDirectory)/stackoverflow/31-serverless-aws
+      ls
       serverless package --stage dev --region ap-northeast-2 --package $(Build.ArtifactStagingDirectory)
   displayName: Package for Dev Environment
 
