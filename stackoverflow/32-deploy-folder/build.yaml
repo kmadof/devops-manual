@@ -13,7 +13,7 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: publish
-    publishWebProjects: false
+    publishWebProjects: true
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: false
     modifyOutputPath: true
@@ -27,4 +27,4 @@ steps:
     ConnectionType: 'PublishProfile'
     PublishProfilePath: '$(System.DefaultWorkingDirectory)/stackoverflow/32-deploy-folder/SampleApp/Properties/PublishProfiles/SampleApp20200520132633 - Web Deploy.pubxml'
     PublishProfilePassword:  $(password)
-    Package: '$(Build.ArtifactStagingDirectory)/SampleApp'
+    Package: '$(Build.ArtifactStagingDirectory)/SampleApp/*'
