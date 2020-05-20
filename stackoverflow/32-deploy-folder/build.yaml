@@ -27,4 +27,4 @@ steps:
     ConnectionType: 'PublishProfile'
     PublishProfilePath: '$(System.DefaultWorkingDirectory)/stackoverflow/32-deploy-folder/SampleApp/Properties/PublishProfiles/SampleApp20200520132633 - Web Deploy.pubxml'
     PublishProfilePassword:  $(password)
-    Package: '$(Build.ArtifactStagingDirectory)/SampleApp'
+    Package: '$(Build.ArtifactStagingDirectory)/SampleApp/*'
