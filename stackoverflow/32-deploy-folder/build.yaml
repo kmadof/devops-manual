@@ -21,3 +21,9 @@ steps:
       $(Build.SourcesDirectory)/stackoverflow/32-deploy-folder/SampleApp/SampleApp.csproj
 
 - pwsh: ls $(Build.ArtifactStagingDirectory)
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'PublishProfile'
+    PublishProfilePath: '$(System.DefaultWorkingDirectory)/stackoverflow/32-deploy-folder/SampleApp/Properties/PublishProfiles/WebDeploy.pubxml'
+    Package: '$(Build.ArtifactStagingDirectory)/SampleApp'
