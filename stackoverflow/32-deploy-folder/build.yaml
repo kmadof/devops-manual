@@ -20,7 +20,7 @@ steps:
     projects: |
       $(Build.SourcesDirectory)/stackoverflow/32-deploy-folder/SampleApp/SampleApp.csproj
 
-- pwsh: ls $(Build.ArtifactStagingDirectory)
+- pwsh: ls $(Build.ArtifactStagingDirectory)/SampleApp
 
 - task: AzureRmWebAppDeployment@4
   inputs:
