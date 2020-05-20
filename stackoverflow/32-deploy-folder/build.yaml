@@ -7,6 +7,8 @@ variables:
 pool:
   vmImage: 'ubuntu-latest'
 
+#https://stackoverflow.com/questions/61910176/how-to-deploy-a-webapp-from-a-folder-not-a-zip-in-azure-devops
+
 steps:
 - task: DotNetCoreCLI@2
   inputs:
