@@ -33,6 +33,13 @@ stages:
       inputs:
         targetType: 'inline'
         script: 'env | sort'
+    - task: PowerShell@2
+      inputs:
+        targetType: 'inline'
+        script: |
+          git branch
+        pwsh: true
+        workingDirectory: $(System.DefaultWorkingDirectory)
 
 - stage: A
   condition: eq(variables['Build.SourceBranch'], 'master')
