@@ -26,8 +26,9 @@ stages:
     - script: |
         echo "This is job Foo."
         echo $(System.PullRequest.TargetBranch)
-        echo $(System.SourceBranch)
-        echo $(System.SourceBranchName)
+        echo $(Build.SourceBranch)
+        echo $(Build.SourceBranchName)
+        echo $(Build.Reason)
 
 - stage: A
   condition: eq(variables['Build.SourceBranch'], 'master')
