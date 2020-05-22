@@ -7,6 +7,7 @@ trigger:
     include:
     - stackoverflow/28-tags/*
 # https://stackoverflow.com/questions/61783014/using-lerna-js-and-azure-devops-pipeline/61786014?noredirect=1#comment109330301_61786014
+# https://stackoverflow.com/questions/61953776/how-to-combine-git-branch-and-tag-triggers-in-azure-pipelines
 # git tag release-05
 # git push origin --tags
 # no PR triggers
@@ -17,6 +18,17 @@ pool:
   vmImage: 'ubuntu-latest'
 
 stages:
+
+- stage: AA
+  jobs:
+  - job: JAA
+    steps:
+    - script: |
+        echo "This is job Foo."
+        echo $(System.PullRequest.TargetBranch)
+        echo $(System.SourceBranch)
+        echo $(System.SourceBranchName)
+
 - stage: A
   condition: eq(variables['Build.SourceBranch'], 'master')
   jobs:
