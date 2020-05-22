@@ -29,6 +29,10 @@ stages:
         echo $(Build.SourceBranch)
         echo $(Build.SourceBranchName)
         echo $(Build.Reason)
+    - task: Bash@3
+      inputs:
+        targetType: 'inline'
+        script: 'env | sort'
 
 - stage: A
   condition: eq(variables['Build.SourceBranch'], 'master')
