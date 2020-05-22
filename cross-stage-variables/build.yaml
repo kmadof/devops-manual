@@ -35,7 +35,7 @@ stages:
 #job JB from stage B runs if DetermineResult task set doThing variable n stage A
 - stage: B
   dependsOn: A
-  condition: and(succeeded(), eq(dependencies.A.JA.outputs['DetermineResult.doThing'], 'Yes'))
+  condition: eq(dependencies.A.JA.outputs['DetermineResult.doThing'], 'Yes')
   jobs:
   - job: JB
     condition: eq(stageDependencies.A.JA.outputs['DetermineResult.doThing'], 'Yes') #map doThing and check if true
