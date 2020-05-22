@@ -6,7 +6,7 @@ stages:
      - script: echo "##vso[task.setvariable variable=skipsubsequent;isOutput=true]false"
        name: printvar
 - stage: B
-  condition: and(succeeded(), ne(stageDependencies.A.A1.outputs['printvar.skipsubsequent'], 'true'))
+  condition: and(succeeded(), ne(dependencies.A.A1.outputs['printvar.skipsubsequent'], 'true'))
   dependsOn: A
   jobs:
   - job: B1
