@@ -6,6 +6,7 @@ jobs:
   steps:
   - bash: git log -1 --name-only | grep -c Folder1
     failOnStderr: false
+    continueOnError: true
 
 - job: Folder1DoesntExist
   pool:
