@@ -82,7 +82,7 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "ecosystem.config.js"
+              "src/ecosystem.config.js"
             ],
             "styles": [
               "src/styles.css"
