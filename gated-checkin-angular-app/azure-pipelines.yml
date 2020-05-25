@@ -22,6 +22,8 @@ steps:
 
 - template: build-and-test.yaml
 
+- bash: ls '$(Build.SourcesDirectory)/gated-checkin-angular-app/src'
+
 - task: CopyFiles@2
   inputs:
     sourceFolder: '$(Build.SourcesDirectory)/gated-checkin-angular-app/src/ecosystem.config.js'
