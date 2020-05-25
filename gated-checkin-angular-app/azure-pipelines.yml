@@ -23,8 +23,9 @@ steps:
 - template: build-and-test.yaml
 
 - task: CopyFiles@2
-  sourceFolder: '$(Build.SourcesDirectory)/gated-checkin-angular-app/src/ecosystem.config.js'
-  targetFolder: '$(Build.SourcesDirectory)/gated-checkin-angular-app/dist/help/'
+  inputs:
+    sourceFolder: '$(Build.SourcesDirectory)/gated-checkin-angular-app/src/ecosystem.config.js'
+    targetFolder: '$(Build.SourcesDirectory)/gated-checkin-angular-app/dist/help/'
 
 - task: ArchiveFiles@2
   inputs:
