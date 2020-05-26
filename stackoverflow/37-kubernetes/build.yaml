@@ -1,0 +1,43 @@
+variable:
+  vmImageName: ubuntu-latest
+  kvClientId: 'DevOps'
+  kvClientSecret: 'DevOps Secret'
+  kvUrl: 'DevOps url'
+  keyVaultSecretName: 'SecretName'
+  k8sFullNamespace: Dev
+
+jobs:
+
+- job: Derive_Variable_Values
+  steps:
+    - script: |
+        echo "This is job Foo."
+        echo "##vso[task.setvariable variable=kubernetesServiceConnection;isOutput=true]Dev" #The variable doThing is set to true
+    name: deriveVariableValues
+- deployment: Deploy_Dev
+  pool:
+    vmImage: $(vmImageName)
+  variables: 
+    kubernetesServiceConnection: $[ dependencies.Derive_Variable_Values.outputs['deriveVariableValues.kubernetesServiceConnection'] ]
+  environment: $(devOpsEnvironment)
+  strategy:
+    runOnce:
+      deploy:
+        steps:
+        - checkout: self 
+          displayName: Checkout $(Build.Repository.Name)
+        - task: Bash@3
+          displayName: Echo kubernetesServiceConnection
+          inputs:
+            targetType: 'inline'
+            script: |
+              echo kubernetesServiceConnection is $(kubernetesServiceConnection)
+        - task: KubernetesManifest@0
+          displayName: Create k8s secret with Key Vault values
+          inputs: 
+            action: createSecret
+            secretType: generic
+            secretName: $(keyVaultSecretName)
+            secretArguments: --from-literal=kvclientid=$(kvClientId) --from-literal=kvclientsecret=$(kvClientSecret) --from-literal=kvurl=$(kvUrl)
+            kubernetesServiceConnection: $(kubernetesServiceConnection)
+            namespace: $(k8sFullNamespace)    
