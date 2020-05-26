@@ -2,7 +2,7 @@ variables:
   vmImageName: ubuntu-latest
   kvClientId: 'DevOps'
   kvClientSecret: 'DevOpsSecret'
-  kvUrl: 'DevOps url'
+  kvUrl: 'DevOpsUrl'
   keyVaultSecretName: 'SecretName'
   k8sFullNamespace: Dev
   devOpsEnvironment: tcm-k8s
