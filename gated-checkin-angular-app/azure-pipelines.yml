@@ -26,7 +26,7 @@ steps:
 
 - task: CopyFiles@2
   inputs:
-    sourceFolder: '$(Build.SourcesDirectory)/gated-checkin-angular-app/src/ecosystem.config.js'
+    contents: '$(Build.SourcesDirectory)/gated-checkin-angular-app/src/ecosystem.config.js'
     targetFolder: '$(Build.SourcesDirectory)/gated-checkin-angular-app/dist/help/'
 
 - task: ArchiveFiles@2
