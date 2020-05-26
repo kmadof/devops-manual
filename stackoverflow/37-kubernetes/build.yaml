@@ -1,4 +1,4 @@
-variable:
+variables:
   vmImageName: ubuntu-latest
   kvClientId: 'DevOps'
   kvClientSecret: 'DevOps Secret'
@@ -13,7 +13,7 @@ jobs:
     - script: |
         echo "This is job Foo."
         echo "##vso[task.setvariable variable=kubernetesServiceConnection;isOutput=true]Dev" #The variable doThing is set to true
-    name: deriveVariableValues
+      name: deriveVariableValues
 - deployment: Deploy_Dev
   pool:
     vmImage: $(vmImageName)
