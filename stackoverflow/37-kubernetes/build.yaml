@@ -16,6 +16,7 @@ jobs:
         echo "##vso[task.setvariable variable=kubernetesServiceConnection;isOutput=true]tcm-k8s-tcm-k8s-dev-1590533416323" #The variable doThing is set to true
       name: deriveVariableValues
 - deployment: Deploy_Dev
+  dependsOn: Derive_Variable_Values
   pool:
     vmImage: $(vmImageName)
   variables: 
