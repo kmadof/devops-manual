@@ -33,6 +33,9 @@ jobs:
             targetType: 'inline'
             script: |
               echo kubernetesServiceConnection is $(kubernetesServiceConnection)
+        - template: stackoverflow/37-kubernetes/create-secret.yaml
+          parameters:
+            kubernetesServiceConnection: $(kubernetesServiceConnection)
         - task: KubernetesManifest@0
           displayName: Create k8s secret with Key Vault values
           enabled: false
