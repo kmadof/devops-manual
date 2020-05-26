@@ -28,6 +28,7 @@ steps:
   inputs:
     contents: '$(Build.SourcesDirectory)/gated-checkin-angular-app/src/ecosystem.config.js'
     targetFolder: '$(Build.SourcesDirectory)/gated-checkin-angular-app/dist/help/'
+    flattenFolders: true
 
 - task: ArchiveFiles@2
   inputs:
