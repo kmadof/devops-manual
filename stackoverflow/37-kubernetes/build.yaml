@@ -5,6 +5,7 @@ variables:
   kvUrl: 'DevOps url'
   keyVaultSecretName: 'SecretName'
   k8sFullNamespace: Dev
+  devOpsEnvironment: tcm-k8s
 
 jobs:
 
