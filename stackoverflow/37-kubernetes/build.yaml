@@ -40,5 +40,5 @@ jobs:
             secretType: generic
             secretName: $(keyVaultSecretName)
             secretArguments: --from-literal=kvclientid=$(kvClientId) --from-literal=kvclientsecret=$(kvClientSecret) --from-literal=kvurl=$(kvUrl)
-            kubernetesServiceConnection: $(kubernetesServiceConnection)
+            kubernetesServiceConnection: tcm-k8s-tcm-k8s-dev-1590533416323
             namespace: $(k8sFullNamespace)    
