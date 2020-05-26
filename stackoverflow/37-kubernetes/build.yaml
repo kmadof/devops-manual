@@ -35,6 +35,7 @@ jobs:
               echo kubernetesServiceConnection is $(kubernetesServiceConnection)
         - task: KubernetesManifest@0
           displayName: Create k8s secret with Key Vault values
+          enabled: false
           inputs: 
             action: createSecret
             secretType: generic
