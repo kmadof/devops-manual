@@ -25,7 +25,11 @@ steps:
       Write-Host "I'm here"
       Write-Host ('$(SomeVariable)' -eq 'Stop')
       if ('$(SomeVariable)' -eq 'Stop') {
-        exit 0
+        $uri = "https://dev.azure.com/thecodemanual/DevOps Manual/_apis/build/builds/$(Build.BuildId)/timeline?api-version=5.1"
+
+        $json @{status="Cancelling"} | ConvertTo-Json -Compress
+
+        $build = Invoke-RestMethod -Uri $uri -Method Patch -Headers @{Authorization = "Bearer $(System.AccessToken)"} -ContentType "application/json" -Body $json
       }
       Write-Host "And now here!"
     pwsh: true
