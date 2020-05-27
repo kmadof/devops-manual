@@ -22,6 +22,7 @@ steps:
     targetType: 'inline'
     script: |
       Write-Host "I'm here"
+      Write-Host ('$(SomeVariable' -eq 'Stop')
       if ('$(SomeVariable' -eq 'Stop') {
         exit 0
       }
