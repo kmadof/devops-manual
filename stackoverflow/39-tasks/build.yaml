@@ -28,10 +28,10 @@ steps:
       Write-Host "And now here"
     name: ConditionalStep
     pwsh: true
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
-    condition: in(task.ConditionalStep.result, 'Succeeded', 'SucceededWithIssues', 'Skipped')
-    script: |
-      Write-Host "Am I here?""
-    pwsh: true
+# - task: PowerShell@2
+#   inputs:
+#     targetType: 'inline'
+#     condition: in(task.ConditionalStep.result, 'Succeeded', 'SucceededWithIssues', 'Skipped')
+#     script: |
+#       Write-Host "Am I here?""
+#     pwsh: true
