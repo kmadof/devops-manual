@@ -1,0 +1,50 @@
+trigger:
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - stackoverflow/40-conditionals/*
+    exclude:
+    - '*'
+
+# no PR triggers
+pr: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+#https://stackoverflow.com/questions/62044055/is-it-possible-to-cancel-a-azure-devops-pipeline-job-programmatically
+
+steps:
+- task: PowerShell@2
+  name: ConditionalStep
+  inputs:
+    targetType: 'inline'
+    script: |
+      Write-Host "I'm here"
+      Write-Host ('$(SomeVariable)' -eq 'Stop')
+      if ('$(SomeVariable)' -eq 'Stop') {
+        Write-Host '##vso[task.setvariable variable=shouldStop;isOutput=true]Yes'
+      }
+      Write-Host "And now here!"
+    pwsh: true
+- pwsh: Start-Sleep -Seconds 60
+  condition: eq(ConditionalStep.shouldStop, 'Yes')
+- task: PowerShell@2
+  condition: eq(ConditionalStep.shouldStop, 'Yes')
+  inputs:
+    targetType: 'inline'
+    script: |
+      $uri = "https://dev.azure.com/thecodemanual/DevOps Manual/_apis/build/builds/$(Build.BuildId)/timeline?api-version=5.1"
+
+      Write-Host $uri
+
+      # Invoke the REST call
+      $build = Invoke-RestMethod -Uri $uri -Method Get -Headers @{Authorization = "Bearer $(System.AccessToken)"} -ContentType "application/json"
+
+      $taskResult = $build.records | Where-Object {$_.name -eq "ConditionalStep" } | Select-Object result
+
+      Write-Host $taskResult.result
+
+    pwsh: true
