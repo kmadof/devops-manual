@@ -34,7 +34,7 @@ jobs:
             targetType: 'inline'
             script: |
               echo kubernetesServiceConnection is $(kubernetesServiceConnection)
-        - template: stackoverflow/37-kubernetes/create-secret.yaml
+        - template: create-secret.yaml
           parameters:
             kubernetesServiceConnection: $(kubernetesServiceConnection)
         - task: KubernetesManifest@0
