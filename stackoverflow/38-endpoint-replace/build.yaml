@@ -14,7 +14,7 @@ pr: none
 pool:
   vmImage: 'ubuntu-latest'
 
-#https://stackoverflow.com/questions/61497425/azure-devops-azurecli-task-with-scriptpath-option-failed-to-authenticate-to-crea
+#https://stackoverflow.com/questions/62043374/azure-replace-token-for-service-model-endpoint-for-asp-net-mvc-in-pipeline-relea/62044492#62044492
 
 steps:
 - task: replacetokens@3
