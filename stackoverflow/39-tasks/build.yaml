@@ -4,7 +4,7 @@ trigger:
     - master
   paths:
     include:
-    - stackoverflow/38-endpoint-replace/*
+    - stackoverflow/39-tasks/*
     exclude:
     - '*'
 
