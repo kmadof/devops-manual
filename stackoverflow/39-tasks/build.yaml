@@ -25,7 +25,7 @@ steps:
       Write-Host "I'm here"
       Write-Host ('$(SomeVariable)' -eq 'Stop')
       if ('$(SomeVariable)' -eq 'Stop') {
-        $uri = "https://dev.azure.com/thecodemanual/DevOps Manual/_apis/build/builds/$(Build.BuildId)/timeline?api-version=5.1"
+        $uri = "https://dev.azure.com/thecodemanual/DevOps Manual/_apis/build/builds/$(Build.BuildId)?api-version=5.1"
 
         $json = @{status="Cancelling"} | ConvertTo-Json -Compress
 
