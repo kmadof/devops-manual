@@ -27,7 +27,7 @@ steps:
       if ('$(SomeVariable)' -eq 'Stop') {
         exit 0
       }
-      Write-Host "And now here"
+      Write-Host "And now here!"
     pwsh: true
 - task: PowerShell@2
   inputs:
