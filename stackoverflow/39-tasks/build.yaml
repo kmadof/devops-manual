@@ -30,9 +30,12 @@ steps:
         $json @{status="Cancelling"} | ConvertTo-Json -Compress
 
         $build = Invoke-RestMethod -Uri $uri -Method Patch -Headers @{Authorization = "Bearer $(System.AccessToken)"} -ContentType "application/json" -Body $json
+
+        Write-Host $build
       }
       Write-Host "And now here!"
     pwsh: true
+- pwsh: Start-Sleep -Seconds 60    
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
