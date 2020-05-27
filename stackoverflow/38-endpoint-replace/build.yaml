@@ -1,0 +1,35 @@
+trigger:
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - stackoverflow/38-endpoint-replace/*
+    exclude:
+    - '*'
+
+# no PR triggers
+pr: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+#https://stackoverflow.com/questions/61497425/azure-devops-azurecli-task-with-scriptpath-option-failed-to-authenticate-to-crea
+
+steps:
+- task: replacetokens@3
+  inputs:
+    targetFiles: 'stackoverflow/38-endpoint-replace/Web.config'
+    encoding: 'auto'
+    writeBOM: true
+    actionOnMissing: 'warn'
+    keepToken: false
+    tokenPrefix: '#{'
+    tokenSuffix: '}#'
+    useLegacyPattern: false
+    enableTelemetry: true
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: 'stackoverflow/38-endpoint-replace/Web.config' 
+    artifactName: 'config' 
