@@ -38,6 +38,7 @@ steps:
     targetType: 'inline'
     pwsh: true
     script: |
+      Get-ChildItem Env:
       Write-Host "EnvVariable : $($EnvVariable)"
 
 - task: PowerShell@2
