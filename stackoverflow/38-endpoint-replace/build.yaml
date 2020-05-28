@@ -18,6 +18,33 @@ pool:
 
 steps:
 - bash:  echo $(Build.DefinitionName)
+
+- task: PowerShell@2
+  displayName: Get IP address
+  inputs:
+    targetType: 'inline'
+    pwsh: true
+    script: |
+      $EnvVariable= "Value"
+
+      Write-Host "##vso[task.setvariable variable=EnvVariable;]$EnvVariable"
+
+      Write-Output "##vso[task.setvariable variable=EnvVariable;]$EnvVariable"
+
+- task: PowerShell@2
+  displayName: Get IP address
+  inputs:
+    targetType: 'inline'
+    pwsh: true
+    script: |
+      Write-Host "env:EnvVariable : $($env:EnvVariable)"
+
+      Write-Host "ENV:EnvVariable : $($ENV:EnvVariable)"
+
+      Write-Output "env:EnvVariable : $($env:EnvVariable)"
+
+      Write-Output "ENV:EnvVariable : $($ENV:EnvVariable)"
+      
 - task: replacetokens@3
   inputs:
     targetFiles: 'stackoverflow/38-endpoint-replace/Web.config'
