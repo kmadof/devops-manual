@@ -12,7 +12,7 @@ trigger:
 pr: none
 
 pool:
-  vmImage: 'windows-latest'
+  vmImage: 'ubuntu-latest'
 
 #https://stackoverflow.com/questions/62043374/azure-replace-token-for-service-model-endpoint-for-asp-net-mvc-in-pipeline-relea/62044492#62044492
 
@@ -20,7 +20,8 @@ steps:
 - bash:  echo $(Build.DefinitionName)
 
 - task: PowerShell@2
-  displayName: Get IP address
+  displayName: Set Variables
+  name: setVariables
   inputs:
     targetType: 'inline'
     pwsh: true
@@ -32,7 +33,9 @@ steps:
       Write-Output "##vso[task.setvariable variable=EnvVariable;]$EnvVariable"
 
 - task: PowerShell@2
-  displayName: Get IP address
+  displayName: Read variables
+  env:
+    EnvVariable: $(setVariables.EnvVariable)
   inputs:
     targetType: 'inline'
     pwsh: true
