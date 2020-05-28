@@ -43,6 +43,12 @@ steps:
       Write-Host "EnvVariable : $EnvVariable"
       Write-Host "EnvVariable : $Env.EnvVariable"
       Write-Host "EnvVariable : $($Env.EnvVariable)"
+      
+      Write-Host "ENVVARIABLE : $($ENVVARIABLE)"
+      Write-Host "ENVVARIABLE : $ENVVARIABLE"
+      Write-Host "ENVVARIABLE : $Env.ENVVARIABLE"
+      Write-Host "ENVVARIABLE : $($Env.ENVVARIABLE)"
+                          
 
 - task: PowerShell@2
   displayName: Read variables 2
