@@ -33,6 +33,20 @@ steps:
       Write-Output "##vso[task.setvariable variable=EnvVariable;]$EnvVariable"
 
 - task: PowerShell@2
+  displayName: Read variables 0
+  inputs:
+    targetType: 'inline'
+    pwsh: true
+    script: |
+      Write-Host "env:EnvVariable : $($env:ENVVARIABLE)"
+
+      Write-Host "ENV:EnvVariable : $($ENV:ENVVARIABLE)"
+
+      Write-Output "env:EnvVariable : $($env:ENVVARIABLE)"
+
+      Write-Output "ENV:EnvVariable : $($ENV:ENVVARIABLE)"
+
+- task: PowerShell@2
   displayName: Read variables 1
   inputs:
     targetType: 'inline'
