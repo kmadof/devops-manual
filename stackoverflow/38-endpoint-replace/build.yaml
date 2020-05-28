@@ -35,7 +35,7 @@ steps:
 - task: PowerShell@2
   displayName: Read variables
   env:
-    EnvVariable: $(setVariables.EnvVariable)
+    EnvVariable: $(EnvVariable)
   inputs:
     targetType: 'inline'
     pwsh: true
