@@ -12,7 +12,7 @@ trigger:
 pr: none
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'windows-latest'
 
 #https://stackoverflow.com/questions/62043374/azure-replace-token-for-service-model-endpoint-for-asp-net-mvc-in-pipeline-relea/62044492#62044492
 
