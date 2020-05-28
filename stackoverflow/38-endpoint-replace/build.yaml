@@ -17,6 +17,7 @@ pool:
 #https://stackoverflow.com/questions/62043374/azure-replace-token-for-service-model-endpoint-for-asp-net-mvc-in-pipeline-relea/62044492#62044492
 
 steps:
+- bash:  echo $(Build.DefinitionName)
 - task: replacetokens@3
   inputs:
     targetFiles: 'stackoverflow/38-endpoint-replace/Web.config'
