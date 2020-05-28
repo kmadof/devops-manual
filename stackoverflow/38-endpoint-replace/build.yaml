@@ -40,6 +40,9 @@ steps:
     script: |
       Get-ChildItem Env:
       Write-Host "EnvVariable : $($EnvVariable)"
+      Write-Host "EnvVariable : $EnvVariable"
+      Write-Host "EnvVariable : $Env.EnvVariable"
+      Write-Host "EnvVariable : $($Env.EnvVariable)"
 
 - task: PowerShell@2
   displayName: Read variables 2
