@@ -48,6 +48,14 @@ steps:
       Write-Host "ENVVARIABLE : $ENVVARIABLE"
       Write-Host "ENVVARIABLE : $Env.ENVVARIABLE"
       Write-Host "ENVVARIABLE : $($Env.ENVVARIABLE)"
+
+      Write-Host "env:EnvVariable : $($env:ENVVARIABLE)"
+
+      Write-Host "ENV:EnvVariable : $($ENV:ENVVARIABLE)"
+
+      Write-Output "env:EnvVariable : $($env:ENVVARIABLE)"
+
+      Write-Output "ENV:EnvVariable : $($ENV:ENVVARIABLE)"
                           
 
 - task: PowerShell@2
