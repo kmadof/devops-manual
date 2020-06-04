@@ -1,0 +1,16 @@
+- task: PowerShell@2
+  condition: succeeded()
+  displayName: "Create a list"
+  inputs:
+    targetType: 'inline'
+    script: |
+
+      $myList = New-Object System.Collections.ArrayList
+
+      $myList.Add("wow")
+
+      Write-Output ("##vso[task.setvariable variable=MyList;]$myList")
+
+- template: myRandomListTaskTemplate.yml
+  parameters:
+      MyList: $(MyList)
