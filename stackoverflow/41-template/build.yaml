@@ -15,4 +15,4 @@ steps:
 
 - template: myRandomListTaskTemplate.yml
   parameters:
-      MyList: $(MyList)
+    MyList: $(MyList)
