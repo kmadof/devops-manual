@@ -1,3 +1,5 @@
+
+steps:
 - task: PowerShell@2
   condition: succeeded()
   displayName: "Create a list"
