@@ -1,0 +1,13 @@
+parameters:
+  MyList: []
+
+steps:
+
+- ${{ each myList in parameters.MyList }}:
+    - task: PowerShell@2
+      condition: succeeded()
+      displayName: "WOW a list"
+      inputs:
+          targetType: 'inline'
+          script: |
+            Write-Host("A list string: ${{ myList }}")
