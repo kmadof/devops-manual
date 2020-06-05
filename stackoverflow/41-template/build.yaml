@@ -13,7 +13,7 @@ steps:
 
       Write-Output ("##vso[task.setvariable variable=MyList;]$myList")
 
-- template: myRandomListTaskTemplate.yml
+- template: myRandomListTaskTemplate2.yml
   parameters:
     MyList: 
     - item1
