@@ -6,7 +6,7 @@ steps:
   inputs:
     pwsh: true
     targetType: inline
-    script: ls $(Agent.ToolsDirectory)
+    script: ls $(Agent.HomeDirectory)
 - task: PowerShell@2
   condition: succeeded()
   displayName: "Create a list"
