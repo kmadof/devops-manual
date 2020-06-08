@@ -6,7 +6,7 @@ steps:
   inputs:
     pwsh: true
     targetType: inline
-    script: ls 'C:\Program Files (x86)'
+    script: ls 'C:\Program Files (x86)\Microsoft Visual Studio\'
 - task: PowerShell@2
   condition: succeeded()
   displayName: "Create a list"
