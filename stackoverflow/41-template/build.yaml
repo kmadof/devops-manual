@@ -1,5 +1,5 @@
 pool:
-  vimage: 'windows-latest'
+  vmImage: 'windows-latest'
 
 steps:
 - task: PowerShell@2
