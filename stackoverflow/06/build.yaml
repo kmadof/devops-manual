@@ -19,7 +19,11 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
+    publishWebProjects: false
     projects: 'stackoverflow/06/SimpleApp.csproj'
+    arguments: '-c Release -o $(Build.ArtifactStagingDirectory)'
+    zipAfterPublish: false
+    modifyOutputPath: false
 
 - pwsh: ls $(Build.ArtifactStagingDirectory)
 
