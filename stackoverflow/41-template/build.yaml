@@ -2,6 +2,9 @@ pool:
   vmImage: 'windows-latest'
 
 steps:
+- bash: echo This script could use $SYSTEM_ACCESSTOKEN
+  env:
+    SYSTEM_ACCESSTOKEN: $(System.AccessToken)
 - task: PowerShell@2
   inputs:
     pwsh: true
