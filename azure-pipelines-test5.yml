@@ -33,11 +33,9 @@ jobs:
   - powershell: |
       If('${{ parameters.environment }}' -Match '$(QA)') {
         Write-Host '##vso[task.setvariable variable=folderName;isOutput=true]$(QA)'
-      }
-      ElseIf('${{ parameters.environment }}' -Match '$(DEV)'') {
+      } ElseIf('${{ parameters.environment }}' -Match '$(DEV)'') {
         Write-Host '##vso[task.setvariable variable=folderName;isOutput=true]$(DEV)'
-      }
-      ElseIf('${{ parameters.environment }}' -Match '$(PROD)') {
+      } ElseIf('${{ parameters.environment }}' -Match '$(PROD)') {
         Write-Host '##vso[task.setvariable variable=folderName;isOutput=true]$(PROD)'
       }
   - powershell: |
