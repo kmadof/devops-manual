@@ -37,6 +37,8 @@ jobs:
         Write-Host '##vso[task.setvariable variable=folderName;isOutput=true]$(DEV)'
       } ElseIf('${{ parameters.environment }}' -eq '$(PROD)') {
         Write-Host '##vso[task.setvariable variable=folderName;isOutput=true]$(PROD)'
+      } Else {
+        Write-Host 'I am here'
       }
   - powershell: |
       Write-Host '$(folderName)'
