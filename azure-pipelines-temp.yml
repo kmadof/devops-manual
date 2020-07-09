@@ -9,9 +9,9 @@ parameters:
   type: string
   default: Ubuntu
   values:
-  - windows-latest
+  - Windows
   - Ubuntu
-  - macOS-latest
+  - MacOS
   
 trigger: none
 
@@ -20,6 +20,10 @@ jobs:
   displayName: build
   pool: 
     ${{ if eq(variables['Build.SourceBranchName'], 'Ubuntu') }}:
-    vmImage: 'ubuntu-latest'
+      vmImage: 'ubuntu-latest'
+    ${{ if eq(variables['Build.SourceBranchName'], 'Windows') }}:
+      vmImage: 'windows-latest'
+    ${{ if eq(variables['Build.SourceBranchName'], 'MacOS') }}:
+      vmImage: 'macOS-latest'
   steps:
   - script: echo building $(Build.BuildNumber) with ${{ parameters.image }}
