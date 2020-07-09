@@ -41,11 +41,11 @@ jobs:
         write-host("This is else statement")
       }
   - powershell: |
-      If('${{ parameters.environment }}' -Match '$(QA)') {
+      If('${{ parameters.environment }}' -eq '$(QA)') {
         Write-Host '##vso[task.setvariable variable=folderName;isOutput=true]$(QA)'
-      } ElseIf('${{ parameters.environment }}' -Match '$(DEV)'') {
+      } ElseIf('${{ parameters.environment }}' -eq '$(DEV)') {
         Write-Host '##vso[task.setvariable variable=folderName;isOutput=true]$(DEV)'
-      } ElseIf('${{ parameters.environment }}' -Match '$(PROD)') {
+      } ElseIf('${{ parameters.environment }}' -eq '$(PROD)') {
         Write-Host '##vso[task.setvariable variable=folderName;isOutput=true]$(PROD)'
       }
   - powershell: |
