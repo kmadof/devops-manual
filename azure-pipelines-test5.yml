@@ -1,0 +1,45 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+parameters:
+- name: environment
+  displayName: 'Environment'
+  default: 'SERVER_0562'
+  type: string
+  values: 
+  - 'QA Server'
+  - 'DEV Server'
+  - 'PROD Server'
+  
+trigger: none
+
+variables:
+- name: QA
+  value: 'SERVER_0562'
+- name: DEV
+  value: 'SERVER_5149'
+- name: PROD
+  value: 'SERVER_1892'
+
+jobs:
+- job: build
+  displayName: build
+  pool: 
+    vmImage: 'windows-latest'
+  steps:
+  - script: echo building $(Build.BuildNumber) with ${{ parameters.environment }}
+  - powershell: |
+      If(${{ parameters.environment }} -Match $(QA)) {
+        Write-Host '##vso[task.setvariable variable=folderName;isOutput=true]$(QA)'
+      }
+      ElseIf(${{ parameters.environment }} -Match $(DEV)) {
+        Write-Host '##vso[task.setvariable variable=folderName;isOutput=true]$(DEV)'
+      }
+      ElseIf(${{ parameters.environment }} -Match $(PROD)) {
+        Write-Host '##vso[task.setvariable variable=folderName;isOutput=true]$(PROD)'
+      }
+  - powershell: |
+      Write-Host $(folderName)
+      
