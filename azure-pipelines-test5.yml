@@ -31,11 +31,11 @@ jobs:
   steps:
   - script: echo building $(Build.BuildNumber) with ${{ parameters.environment }}
   - powershell: |
-      If('${{ parameters.environment }}' -eq '$(QA)') {
+      If('${{ parameters.environment }}' -eq 'QA Server') {
         Write-Host '##vso[task.setvariable variable=folderName;isOutput=true]$(QA)'
-      } ElseIf('${{ parameters.environment }}' -eq '$(DEV)') {
+      } ElseIf('${{ parameters.environment }}' -eq 'DEV Server') {
         Write-Host '##vso[task.setvariable variable=folderName;isOutput=true]$(DEV)'
-      } ElseIf('${{ parameters.environment }}' -eq '$(PROD)') {
+      } ElseIf('${{ parameters.environment }}' -eq 'PROD Server') {
         Write-Host '##vso[task.setvariable variable=folderName;isOutput=true]$(PROD)'
       } Else {
         Write-Host 'I am here'
