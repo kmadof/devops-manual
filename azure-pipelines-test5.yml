@@ -30,10 +30,6 @@ jobs:
     vmImage: 'windows-latest'
   steps:
   - script: echo building $(Build.BuildNumber) with ${{ parameters.environment }}
-  - powershell: echo "##vso[task.setvariable variable=myOutputVar;isOutput=true]this is the value"
-    name: setvarStep
-  - script: echo $(setvarStep.myOutputVar)
-    name: echovar
   - powershell: |
       
       If('${{ parameters.environment }}' -eq 'QA Server') {
@@ -45,7 +41,6 @@ jobs:
       } Else {
         Write-Host 'I am here'
       }
-      Write-Host '##vso[task.setvariable variable=folderName;isOutput=true]test'
     name: setFolderName
   - powershell: |
       Write-Host '$(setFolderName.folderName)'
