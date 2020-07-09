@@ -6,7 +6,7 @@
 parameters:
 - name: environment
   displayName: 'Environment'
-  default: 'SERVER_0562'
+  default: 'QA Server'
   type: string
   values: 
   - 'QA Server'
