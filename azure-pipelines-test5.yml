@@ -31,6 +31,7 @@ jobs:
   steps:
   - script: echo building $(Build.BuildNumber) with ${{ parameters.environment }}
   - powershell: |
+      
       If('${{ parameters.environment }}' -eq 'QA Server') {
         Write-Host '##vso[task.setvariable variable=folderName;isOutput=true]$(QA)'
       } ElseIf('${{ parameters.environment }}' -eq 'DEV Server') {
@@ -40,6 +41,7 @@ jobs:
       } Else {
         Write-Host 'I am here'
       }
+      Write-Host '##vso[task.setvariable variable=folderName;isOutput=true]test'
   - powershell: |
       Write-Host '$(folderName)'
       
