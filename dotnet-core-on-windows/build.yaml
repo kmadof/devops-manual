@@ -21,6 +21,8 @@ pool:
 variables:
   buildConfiguration: 'Release'
   rootDirectory: '$(Build.SourcesDirectory)/dotnet-core-on-windows'
+  devopsAccount : 'thecodemanual'
+  projectName : 'DevOps Manual'
 
 steps:
 
@@ -53,6 +55,49 @@ steps:
     custom: tool
     arguments: install --tool-path . dotnet-reportgenerator-globaltool
   displayName: Install ReportGenerator tool
+
+- task: PowerShell@2
+  name: testDetails
+  inputs:
+    targetType: 'inline'
+    script: |
+        # Encode the Personal Access Token (PAT)
+        $AzureDevOpsAuthenicationHeader = @{Authorization = 'Basic ' + [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(":$(System.AccessToken)")) }
+
+        # Get a list of releases
+        $uri = "https://dev.azure.com/$(devopsAccount)/$(projectName)/_apis/build/builds/$(Build.BuildId)/logs/6?api-version=5.1"
+
+        Write-Host $uri
+
+        # Invoke the REST call
+        $result = Invoke-RestMethod -Uri $uri -Method Get -Headers $AzureDevOpsAuthenicationHeader
+
+        Write-Host $result
+
+        $lines = $result.Split([Environment]::NewLine)
+
+        $passed = 0;
+        $failed = 0;
+
+        foreach($line in $lines) {
+            if ($line -match "Passed:.(\d+)") { 
+              $passed = $matches[1]
+            }
+
+            if ($line -match "Failed:.(\d+)") { 
+              $failed = $matches[1]
+            }
+        }
+
+        echo $passed
+        echo $failed
+
+        Write-Host "##vso[task.setvariable variable=passed]$passed"
+        Write-Host "##vso[task.setvariable variable=failed]$failed"
+
+- script: |
+    echo $(passed)
+    echo $(failed)
 
 - script: ./reportgenerator -reports:$(Agent.TempDirectory)/**/coverage.cobertura.xml -targetdir:$(Build.SourcesDirectory)/coverlet/reports -reporttypes:"Cobertura"
   displayName: Create reports
