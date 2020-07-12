@@ -10,16 +10,14 @@ pool:
   vmImage: 'ubuntu-latest'
 
 jobs:
-- job: A
-  displayName: Job A
-  # continueOnError: true # next job starts even if this one fails
+- job: InitialJob
   steps:
-  - script: echo Job A ran
-  - script: exit 1
-
-- job: B
-  dependsOn: A
-  # condition: eq(dependencies.A.result,'SucceededWithIssues') # targets the result of the previous job 
-  displayName: Job B
+  - script: echo hello from initial job
+- job: SubsequentA
+  dependsOn: InitialJob
   steps:
-  - script: echo Job B ran
+  - script: echo hello from subsequent A
+- job: SubsequentB
+  dependsOn: InitialJob
+  steps:
+  - script: echo hello from subsequent B
