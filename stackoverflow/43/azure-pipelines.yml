@@ -17,6 +17,7 @@ jobs:
   dependsOn: InitialJob
   steps:
   - script: echo hello from subsequent A
+  - script: exit 1
 - job: SubsequentB
   dependsOn: InitialJob
   steps:
