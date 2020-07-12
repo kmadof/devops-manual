@@ -23,5 +23,6 @@ jobs:
   steps:
   - script: echo hello from subsequent B
 - job: SubsequentC
+  condition: succeeded('SubsequentB')
   steps:
   - script: echo hello from subsequent C
