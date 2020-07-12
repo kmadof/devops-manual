@@ -1,0 +1,25 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+jobs:
+- job: A
+  displayName: Job A
+  continueOnError: true # next job starts even if this one fails
+  steps:
+  - script: echo Job A ran
+  - script: exit 1
+
+- job: B
+  dependsOn: A
+  condition: eq(dependencies.A.result,'SucceededWithIssues') # targets the result of the previous job 
+  displayName: Job B
+  steps:
+  - script: echo Job B ran
