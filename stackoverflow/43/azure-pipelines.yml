@@ -22,3 +22,6 @@ jobs:
   dependsOn: InitialJob
   steps:
   - script: echo hello from subsequent B
+- job: SubsequentC
+  steps:
+  - script: echo hello from subsequent C
