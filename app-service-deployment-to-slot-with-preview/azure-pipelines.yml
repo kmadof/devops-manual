@@ -27,5 +27,11 @@ steps:
     arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: true
 
+- task: CopyFiles@2
+  displayName: 'Copy configuration settings checks'
+  inputs:
+    contents: app-service-deployment-to-slot-with-preview\scripts\**
+    targetFolder: $(Build.ArtifactStagingDirectory)
+
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifacts'
