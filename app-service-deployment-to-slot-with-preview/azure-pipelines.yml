@@ -31,7 +31,8 @@ steps:
   displayName: 'Copy configuration settings checks'
   inputs:
     contents: app-service-deployment-to-slot-with-preview\scripts\**
-    targetFolder: $(Build.ArtifactStagingDirectory)
+    targetFolder: '$(Build.ArtifactStagingDirectory)\scripts'
+    flattenFolders: true
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifacts'
