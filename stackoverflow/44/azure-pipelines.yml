@@ -6,13 +6,12 @@
 trigger:
 - master
 
-variables:
-  varOS: $(Agent.OS)
-
 jobs:
 - job: Test
   pool:
     vmImage: 'ubuntu-latest'
+  variables:
+    varOS: $(Agent.OS)
   steps:
     - pwsh: |
         echo $env:TestVar
