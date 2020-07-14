@@ -21,7 +21,7 @@ jobs:
           echo $env:TestVar
           echo $env:OS
         env:
-          OS: $[variables['Agent.OS']]
+          OS: $(varOS)
           ${{ if eq(variables['varOS'], 'Windows_NT') }}:
             TestVar: "I am Windows"
           ${{ if eq(variables['varOS'], 'Linux') }}:
