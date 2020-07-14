@@ -25,6 +25,8 @@ jobs:
         Write-Host '##vso[task.setvariable variable=HelloOS;isOutput=true]$testVar'
       name: Initialize
     - pwsh: |
+        Write-Host $(Initialize.HelloOS)
+    - pwsh: |
         echo $env:TestVar
         echo $env:OS
         echo $env:IsMaster
