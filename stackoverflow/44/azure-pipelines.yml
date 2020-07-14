@@ -29,15 +29,10 @@ jobs:
         echo $env:OS
         echo $env:AGENT_OS
         echo $env:IsMaster
-        echo $env:TestVar2
         printenv
       env:
         OS: $(varOS)
         TestVar: $(Initialize.HelloOS)
         ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/master')}}:
           IsMaster: "true"
-        ${{ if eq(variables['AGENT_OS'], 'Windows_NT') }}:
-          TestVar2: "I am Windows"
-        ${{ if eq(variables['AGENT_OS'], 'Linux') }}:
-          TestVar2: "I am Linux"
 
