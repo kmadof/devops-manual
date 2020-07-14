@@ -15,7 +15,7 @@ jobs:
   steps:
     - pwsh: |
         $testVar = ''
-        $os = $(Agent.OS)
+        $os = '$(Agent.OS)'
         if ($os -eq 'Windows_NT') {
           $testVar = "I am Windows";
         } elseif ($os -eq 'Linux') {
