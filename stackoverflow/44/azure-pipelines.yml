@@ -12,9 +12,9 @@ jobs:
     vmImage: 'ubuntu-latest'
   variables:
     varOS: $(Agent.OS)
-    ${{ if eq(variables['varOS'], 'Windows_NT') }}:
+    ${{ if eq(variables['Agent.OS'], 'Windows_NT') }}:
       TestVar: "I am Windows"
-    ${{ if eq(variables['varOS'], 'Linux') }}:
+    ${{ if eq(variables['Agent.OS'], 'Linux') }}:
       TestVar: "I am Linux"
   steps:
     - pwsh: |
