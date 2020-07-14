@@ -12,6 +12,10 @@ jobs:
     vmImage: 'ubuntu-latest'
   variables:
     varOS: $(Agent.OS)
+    ${{ if eq(variables['varOS'], 'Windows_NT') }}:
+      TestVar: "I am Windows"
+    ${{ if eq(variables['varOS'], 'Linux') }}:
+      TestVar: "I am Linux"
   steps:
     - pwsh: |
         echo $env:TestVar
@@ -20,9 +24,6 @@ jobs:
         printenv
       env:
         OS: $(varOS)
-        ${{ if eq(variables['varOS'], 'Windows_NT') }}:
-          TestVar: "I am Windows"
-        ${{ if eq(variables['varOS'], 'Linux') }}:
-          TestVar: "I am Linux"
+        TestVar: $(TestVar)
         ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/master')}}:
           IsMaster: "true"
