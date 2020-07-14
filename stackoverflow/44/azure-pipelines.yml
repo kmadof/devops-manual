@@ -6,27 +6,24 @@
 trigger:
 - master
 
-pool:
-  vmImage: 'ubuntu-latest'
-
 variables:
   varOS: $(Agent.OS)
 
 jobs:
-  - job: Test
-    pool:
-      vmImage: 'ubuntu-latest'
-    steps:
-      - pwsh: |
-          echo $env:HelloOS
-          echo $env:OS
-          echo $env:IsMaster
-          printenv
-        env:
-          OS: $(varOS)
-          ${{ if eq(variables['varOS'], 'Windows_NT') }}:
-            HelloOS: "I am Windows"
-          ${{ if eq(variables['varOS'], 'Linux') }}:
-            HelloOS: "I am Linux"
-          ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/master')}}:
-            IsMaster: "true"
+- job: Test
+  pool:
+    vmImage: 'ubuntu-latest'
+  steps:
+    - pwsh: |
+        echo $env:TestVar
+        echo $env:OS
+        echo $env:IsMaster
+        printenv
+      env:
+        OS: $(varOS)
+        ${{ if eq(variables['varOS'], 'Windows_NT') }}:
+          TestVar: "I am Windows"
+        ${{ if eq(variables['varOS'], 'Linux') }}:
+          TestVar: "I am Linux"
+        ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/master')}}:
+          IsMaster: "true"
