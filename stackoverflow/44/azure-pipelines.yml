@@ -21,6 +21,7 @@ jobs:
         } elseif ($os -eq 'Linux') {
           $testVar = "I am Linux";
         }
+        Write-Host $testVar
         Write-Host '##vso[task.setvariable variable=HelloOS;isOutput=true]$testVar'
       name: Initialize
     - pwsh: |
