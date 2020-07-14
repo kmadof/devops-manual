@@ -14,13 +14,25 @@ jobs:
     varOS: $(Agent.OS)
   steps:
     - pwsh: |
+        $testVar = ''
+        $os = $(Agent.OS)
+        if ($os -eq 'Windows_NT') {
+          $testVar = "I am Windows";
+        } elseif ($os -eq 'Linux') {
+          $testVar = "I am Linux";
+        }
+        Write-Host '##vso[task.setvariable variable=HelloOS;isOutput=true]$testVar'
+      name: Initialize
+    - pwsh: |
         echo $env:TestVar
         echo $env:OS
         echo $env:IsMaster
         echo $env:AGENT_OS
+        echo $env:TestVar2
         printenv
       env:
         OS: $(varOS)
+        TestVar2: $(Initialize.HelloOS)
         ${{ if eq(variables['AGENT_OS'], 'Windows_NT') }}:
           TestVar: "I am Windows"
         ${{ if eq(variables['AGENT_OS'], 'Linux') }}:
