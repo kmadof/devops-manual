@@ -16,3 +16,4 @@ steps:
     #pythonInterpreter: # Optional
     #workingDirectory: # Optional
     #failOnStderr: false # Optional
+- bash: python $(Build.SourcesDirectory)/stackoverflow/45/script.py
