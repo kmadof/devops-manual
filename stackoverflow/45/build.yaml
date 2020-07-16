@@ -1,0 +1,18 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+steps:
+- task: PythonScript@0
+  inputs:
+    scriptSource: 'filePath' # Options: filePath, inline
+    scriptPath: $(Build.SourcesDirectory)/stakcoverflow/45/script.py # Required when scriptSource == filePath
+    #script: # Required when scriptSource == inline
+    #arguments: # Optional
+    #pythonInterpreter: # Optional
+    #workingDirectory: # Optional
+    #failOnStderr: false # Optional
