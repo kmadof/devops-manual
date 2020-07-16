@@ -18,3 +18,8 @@ steps:
     #failOnStderr: false # Optional
 - bash: python $(Build.SourcesDirectory)/stackoverflow/45/script.py
 - script: python $(Build.SourcesDirectory)/stackoverflow/45/script.py
+- bash: |
+    touch directory/file
+    ls .
+    ls directory 
+
