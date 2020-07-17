@@ -12,6 +12,8 @@ pool:
   vmImage: 'macOS-latest'
 
 steps:
+- bash: bundle install --gemfile cache-ruby-gems/Gemfile
+  displayName: 'Install Bundle'
 - bash: bundle update --bundler --gemfile cache-ruby-gems/Gemfile
   displayName: 'Update Bundle'
 - bash: bundle update fastlane --gemfile cache-ruby-gems/Gemfile
