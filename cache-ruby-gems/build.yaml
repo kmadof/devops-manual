@@ -12,9 +12,9 @@ pool:
   vmImage: 'macOS-latest'
 
 steps:
-- bash: bundle update --bundler
+- bash: bundle update --bundler --gemfile cache-ruby-gems/Gemfile
   displayName: 'Update Bundle'
-- bash: bundle update fastlane
+- bash: bundle update fastlane --gemfile cache-ruby-gems/Gemfile
   displayName: 'Update fastlane'
 - bash: brew update && brew install imagemagick
   displayName: 'Install ImageMagick'
