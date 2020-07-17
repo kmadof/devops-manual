@@ -1,0 +1,22 @@
+trigger:
+  branches:
+    include:
+      - master
+  paths:
+    include:
+      - cache-ruby-gems/*
+
+pr: none
+
+pool:
+  vmImage: 'macOS-latest'
+
+steps:
+- bash: bundle update --bundler
+  displayName: 'Update Bundle'
+- bash: bundle update fastlane
+  displayName: 'Update fastlane'
+- bash: brew update && brew install imagemagick
+  displayName: 'Install ImageMagick'
+- bash: brew install sonar-scanner
+  displayName: "Install sonar-scanner"
