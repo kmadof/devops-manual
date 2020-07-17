@@ -11,13 +11,25 @@ pr: none
 pool:
   vmImage: 'macOS-latest'
 
+variables:
+  BUNDLE_PATH: $(Pipeline.Workspace)/.bundle
+
 steps:
+- task: Cache@2
+  inputs:
+    key: 'gems | "$(Agent.OS)" | Gemfile.lock'
+    restoreKeys: | 
+      gems | "$(Agent.OS)"
+      gems
+    path: $(BUNDLE_PATH)
+  displayName: Cache gems
+  cacheHitVar: CACHE_RESTORED
+
+
 - bash: bundle install --gemfile cache-ruby-gems/Gemfile
   displayName: 'Install Bundle'
-- bash: bundle update --bundler --gemfile cache-ruby-gems/Gemfile
-  displayName: 'Update Bundle'
-- bash: bundle update fastlane --gemfile cache-ruby-gems/Gemfile
-  displayName: 'Update fastlane'
+  condition: ne(variables.CACHE_RESTORED, 'true')
+
 - bash: brew update && brew install imagemagick
   displayName: 'Install ImageMagick'
 - bash: brew install sonar-scanner
