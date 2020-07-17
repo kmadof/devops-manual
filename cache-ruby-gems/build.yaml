@@ -22,9 +22,8 @@ steps:
       gems | "$(Agent.OS)"
       gems
     path: $(BUNDLE_PATH)
+    cacheHitVar: CACHE_RESTORED
   displayName: Cache gems
-  cacheHitVar: CACHE_RESTORED
-
 
 - bash: bundle install --gemfile cache-ruby-gems/Gemfile
   displayName: 'Install Bundle'
