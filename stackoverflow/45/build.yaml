@@ -6,31 +6,33 @@
 trigger:
 - master
 
-steps:
-- task: PythonScript@0
-  inputs:
-    scriptSource: 'filePath' # Options: filePath, inline
-    scriptPath: $(Build.SourcesDirectory)/stackoverflow/45/script.py # Required when scriptSource == filePath
-    #script: # Required when scriptSource == inline
-    #arguments: # Optional
-    #pythonInterpreter: # Optional
-    #workingDirectory: # Optional
-    #failOnStderr: false # Optional
-- bash: python $(Build.SourcesDirectory)/stackoverflow/45/script.py
-- script: python $(Build.SourcesDirectory)/stackoverflow/45/script.py
-- bash: |
-    mkdir directory
-    touch directory/file
-    ls .
-    ls directory 
-- script: pip list
-- pwsh: exit 1
+jobs:
+- job: Build
   continueOnError: true
-- task: CopyFiles@2
-  inputs:
-    contents: 'directory/**'
-    targetFolder: $(Build.ArtifactStagingDirectory)
-- task: PublishBuildArtifacts@1
-  inputs:
-    pathToPublish: $(Build.ArtifactStagingDirectory)
-    artifactName: MyBuildOutputs
+  steps:
+  - task: PythonScript@0
+    inputs:
+      scriptSource: 'filePath' # Options: filePath, inline
+      scriptPath: $(Build.SourcesDirectory)/stackoverflow/45/script.py # Required when scriptSource == filePath
+      #script: # Required when scriptSource == inline
+      #arguments: # Optional
+      #pythonInterpreter: # Optional
+      #workingDirectory: # Optional
+      #failOnStderr: false # Optional
+  - bash: python $(Build.SourcesDirectory)/stackoverflow/45/script.py
+  - script: python $(Build.SourcesDirectory)/stackoverflow/45/script.py
+  - bash: |
+      mkdir directory
+      touch directory/file
+      ls .
+      ls directory 
+  - script: pip list
+  - pwsh: exit 1
+  - task: CopyFiles@2
+    inputs:
+      contents: 'directory/**'
+      targetFolder: $(Build.ArtifactStagingDirectory)
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathToPublish: $(Build.ArtifactStagingDirectory)
+      artifactName: MyBuildOutputs
