@@ -24,3 +24,11 @@ steps:
     ls .
     ls directory 
 - script: pip list
+- task: CopyFiles@2
+  inputs:
+    contents: 'directory/**'
+    targetFolder: $(Build.ArtifactStagingDirectory)
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathToPublish: $(Build.ArtifactStagingDirectory)
+    artifactName: MyBuildOutputs
