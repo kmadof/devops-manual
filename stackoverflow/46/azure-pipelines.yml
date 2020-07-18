@@ -17,8 +17,10 @@ variables:
     value: 'Test'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- pwsh: |
+    echo '$(Test)'
+    echo '$(Test)'.Length
+  displayName: 'Run a multi-line script'
 
 - script: |
     echo $(Release)
