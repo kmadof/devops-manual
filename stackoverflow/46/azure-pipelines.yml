@@ -9,19 +9,23 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-variables:
-- name: 'Release'
-  ${{  if eq(variables['Test'], 'undefined') }}:
-    value: 'Stage'
-  ${{  if ne(variables['Test'], 'undefined') }}:
-    value: 'Test'
-
-steps:
-- pwsh: |
-    echo '$(Test)'
-    echo '$(Test)'.Length
-  displayName: 'Run a multi-line script'
-
-- script: |
-    echo $(Release)
-  displayName: 'Run a multi-line script'
+jobs:
+- job: Test
+  pool:
+    vmImage: 'ubuntu-latest'
+  variables:
+    varOS: $(Agent.OS)
+  steps:
+    - pwsh: |
+        $testVar = ''
+        $test = '$(Test)'
+        if ($test -eq 'undefined' -or $test -eq '') {
+          $testVar = "Stage";
+        } elseif ($test -ne 'undefined' -and $test -ne '') {
+          $testVar = "Test";
+        }
+        Write-Host $testVar
+        Write-Host "##vso[task.setvariable variable=Release;isOutput=true]$testVar"
+      name: Initialize
+    - pwsh: |
+        echo $(Release)
