@@ -11,9 +11,9 @@ pool:
 
 variables:
 - name: 'Release'
-  ${{  if eq(variables['Test'], 'undefined') }}:
+  ${{  if e(variables['Test'], 'undefined') }}:
     value: 'Stage'
-  ${{  if ne(variables['Test'], 'undefined')) }}:
+  ${{  if ne(variables['Test'], 'undefined') }}:
     value: 'Test'
 
 steps:
