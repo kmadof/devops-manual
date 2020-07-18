@@ -28,4 +28,4 @@ jobs:
         Write-Host "##vso[task.setvariable variable=Release;isOutput=true]$testVar"
       name: Initialize
     - pwsh: |
-        echo '$(Release)'
+        echo '$(Initialize.Release)'
