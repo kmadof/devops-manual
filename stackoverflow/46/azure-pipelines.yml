@@ -29,4 +29,3 @@ jobs:
       name: Initialize
     - pwsh: |
         echo '$(Initialize.Release)'
-    - pwsh: gradlew -v
