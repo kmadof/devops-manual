@@ -52,8 +52,7 @@ stages:
 - stage: Deploy
   displayName: Deploy stage
   dependsOn: Build
-  condition: succeeded()
-  enabled: ${{ parameters.deploy }}
+  condition: and(succeeded(), eq(parameters.test, true))
 
   jobs:
   - deployment: Deploy
