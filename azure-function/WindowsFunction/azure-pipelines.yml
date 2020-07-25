@@ -46,6 +46,9 @@ stages:
 
     - publish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
       artifact: drop
+    
+    - task: PublishBuildArtifacts@1
+
 
 - stage: Deploy
   displayName: Deploy stage
