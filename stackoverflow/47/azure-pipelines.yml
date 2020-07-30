@@ -47,6 +47,7 @@ stages:
       runOnce:
         deploy:
           steps:
+            - checkout: self
             - task: Bash@3
               inputs:
                 targetType: 'inline'
