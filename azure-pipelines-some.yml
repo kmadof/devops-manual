@@ -29,7 +29,7 @@ stages:
     displayName: Deploy
     pool:
       vmImage: $(vmImageName)
-    environment: 'myenv.default'
+    environment: 'development'
     strategy:
       runOnce:
         deploy:
