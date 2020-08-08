@@ -1,0 +1,39 @@
+trigger:
+- master
+
+resources:
+- repo: self
+
+variables:
+  vmImageName: 'ubuntu-latest'
+
+stages:
+- stage: Build
+  displayName: Build stage
+  jobs:
+    - job: Build
+      displayName: Build
+      pool:
+        vmImage: $(vmImageName)
+      steps:
+      - task: CmdLine@2
+        inputs:
+          script: |
+            ls -la
+          
+- stage: Deploy
+  displayName: Deploy Notebook Instance Stage
+  dependsOn: Build
+  jobs:
+  - deployment: Deploy
+    displayName: Deploy
+    pool:
+      vmImage: $(vmImageName)
+    environment: 'myenv.default'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+            - task: CmdLine@2
+              inputs:
+                script: echo Some debug text!
