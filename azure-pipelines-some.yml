@@ -6,6 +6,7 @@ resources:
 
 variables:
   vmImageName: 'ubuntu-latest'
+  AppName: 'MyApplication'
 
 stages:
 - stage: Build
@@ -20,6 +21,22 @@ stages:
         inputs:
           script: |
             ls -la
+      - task: SqlAzureDacpacDeployment@1
+        inputs:
+          azureSubscription: 'rg-the-code-manual'
+          AuthenticationType: 'server'
+          ServerName: 'kmad'
+          DatabaseName: 'tcm'
+          SqlUsername: 'kmad'
+          SqlPassword: '2fDo0xD36An0'
+          deployType: 'InlineSqlTask'
+          SqlInline: |
+            CREATE USER [$(AppName)] FROM EXTERNAL PROVIDER;
+            ALTER ROLE db_datareader ADD MEMBER [$(AppName)];
+            ALTER ROLE db_datawriter ADD MEMBER [$(AppName)];
+            GO
+          InlineAdditionalArguments: '-v $(ApiAppName)'
+          IpDetectionMethod: 'AutoDetect'
           
 - stage: Deploy
   displayName: Deploy Notebook Instance Stage
