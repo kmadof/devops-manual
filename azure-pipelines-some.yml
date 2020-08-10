@@ -7,6 +7,7 @@ resources:
 variables:
   vmImageName: 'windows-latest'
   AppName: 'MyApplication'
+  ApiAppName: 'AppName=MyApplication'
 
 stages:
 - stage: Build
@@ -25,10 +26,10 @@ stages:
         inputs:
           azureSubscription: 'rg-the-code-manual'
           AuthenticationType: 'server'
-          ServerName: 'kmad'
+          ServerName: '$(server-name)'
           DatabaseName: 'tcm'
           SqlUsername: 'kmad'
-          SqlPassword: '2fDo0xD36An0'
+          SqlPassword: '$(password)'
           deployType: 'InlineSqlTask'
           SqlInline: |
             CREATE USER [$(AppName)] FROM EXTERNAL PROVIDER;
