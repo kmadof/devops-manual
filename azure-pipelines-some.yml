@@ -31,6 +31,8 @@ stages:
           inlineScript: |
             $secretValue =  az keyvault secret show --vault-name tcm-kv --name $(keyName) --query value
             echo $secretValue
+            $secretValue =  az keyvault secret show --vault-name tcm-kv --name $(keyName) --query value -o tsv
+            echo $secretValue
       
           
 - stage: Deploy
