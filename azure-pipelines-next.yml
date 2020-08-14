@@ -7,8 +7,7 @@ parameters:
   - Pool A
   - Pool B
 
-pool:
-  name: ${{ parameters.PoolName }}
+pool: ${{ parameters.PoolName }}
 
 variables:
   ${{ if eq(parameters.PoolName, 'Pool A') }}:
