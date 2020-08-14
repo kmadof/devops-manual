@@ -7,19 +7,16 @@ parameters:
   - Pool A
   - Pool B
 
-pool: ${{ parameters.PoolName }}
-
 variables:
   ${{ if eq(parameters.PoolName, 'Pool A') }}:
       BuildArchiveLocation:  'foo'
   ${{ if eq(parameters.PoolName, 'Pool B') }}:
       BuildArchiveLocation:  'bar'
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+jobs:
+- job: build
+  displayName: Build and Test
+  pool: 
+    name: ${{ parameters.PoolName }}
+  steps:
+  - script: echo building $(Build.BuildNumber)
