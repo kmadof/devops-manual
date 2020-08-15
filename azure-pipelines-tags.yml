@@ -11,4 +11,4 @@ stages:
   - job: CheckoutInit
     steps:
     - checkout: self
-    - script: echo '*do something*''
+    - script: echo '*do something*'
