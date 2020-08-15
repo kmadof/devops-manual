@@ -1,0 +1,14 @@
+trigger:
+  branches:
+    include:
+      - refs/tags/ops-v*
+    exclude:
+      - refs/tags/qa*
+      - refs/tags/dev*
+stages:
+- stage: Init
+  jobs:
+  - job: CheckoutInit
+    steps:
+    - checkout: self
+    - script: echo '*do something*''
