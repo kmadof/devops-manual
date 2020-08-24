@@ -13,6 +13,13 @@ trigger:
     exclude:
     - v2.0
 
+pr:
+  branches:
+    include:
+      - refs/tags/v2.*
+    exclude:
+      - 'refs/tags/v2.0'
+      - '*'
 
 pool:
   vmImage: 'ubuntu-latest'
