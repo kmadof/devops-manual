@@ -23,4 +23,4 @@ steps:
     instances: 
     - test1
     - test2
-    server: $[variables.myhello]
+    server: $(myhello)
