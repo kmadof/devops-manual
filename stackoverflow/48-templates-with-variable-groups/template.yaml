@@ -1,0 +1,11 @@
+parameters:
+- name: 'instances'
+  type: object
+  default: {}
+- name: 'server'
+  type: string
+  default: ''
+
+steps:
+- ${{ each instance in parameters.instances }}:
+  - script: echo ${{ parameters.server }}:${{ instance }}

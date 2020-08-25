@@ -1,0 +1,21 @@
+trigger:
+  branches:
+    include:
+      - master
+  paths:
+    include:
+      - stackoverflow/09-array-parameter-for-template/*
+
+# no PR triggers
+pr: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- template: template.yaml
+  parameters:
+    instances: 
+    - test1
+    - test2
+    server: someServer
