@@ -24,3 +24,4 @@ steps:
     - test1
     - test2
     server: $(myhello)
+    armConnection: $(armConnection)
