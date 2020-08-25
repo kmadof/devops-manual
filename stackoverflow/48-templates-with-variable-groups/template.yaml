@@ -5,7 +5,19 @@ parameters:
 - name: 'server'
   type: string
   default: ''
+- name: 'armConnection'
+  type: string
+  default: ''
 
 steps:
+- task: TerraformTaskV1@0
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    backendServiceArm: '${{ parameters.armConnection }}'
+    backendAzureRmResourceGroupName: 'TheCodeManual'
+    backendAzureRmStorageAccountName: 'thecodemanual'
+    backendAzureRmContainerName: 'infra'
+    backendAzureRmKey: 'some-terrform'
 - ${{ each instance in parameters.instances }}:
   - script: echo ${{ parameters.server }}:${{ instance }}
