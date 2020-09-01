@@ -1,0 +1,27 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  orgName: 'thecodemanual'
+  packageId: '8e0deb67-89bd-499f-ae8c-1d3814be540a'
+
+steps:
+    - pwsh: |
+       
+        $url = "https://dev.azure.com/$(orgName)/$(System.TeamProject)/_apis/packaging/Feeds/devops-manual/Packages/$(packageId)?api-version=6.0-preview.1"
+        $packageInfo = Invoke-RestMethod -Uri $url -Headers @{Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"}
+        Write-Host "Pipeline = $($packageInfo | ConvertTo-Json -Depth 100)"
+
+        $version = $packageInfo.versions[0].version
+
+        Write-Host $version
+
+        Write-Host "##vso[task.setvariable variable=packageVersion]$version"
+      name: initial
