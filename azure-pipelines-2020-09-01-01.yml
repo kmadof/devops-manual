@@ -17,7 +17,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo $(Build.TriggeredBy.BuildNumber)!
+- script: echo '$(Build.TriggeredBy.BuildNumber)'!
   displayName: 'Run a one-line script'
 
 - script: |
