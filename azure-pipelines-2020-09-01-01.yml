@@ -44,8 +44,9 @@ steps:
     # Invoke the REST call
     $result = Invoke-RestMethod -Uri $uri -Method Get -Headers @{Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"}
 
-    Write-Host $result.triggerInfo.version
+    $buildNumber = $result.triggerInfo.version
+    Write-Host $buildNumber
 
-    echo "##vso[task.setvariable variable=triggeredByBuildNumber]$result.triggerInfo.version" #The variable doThing is set to true
+    echo "##vso[task.setvariable variable=triggeredByBuildNumber]$buildNumber" #The variable doThing is set to true
 - script: |
     echo '$(triggeredByBuildNumber)'!
