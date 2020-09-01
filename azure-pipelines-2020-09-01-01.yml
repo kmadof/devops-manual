@@ -22,5 +22,9 @@ steps:
 
 - script: |
     echo '$(Build.TriggeredBy.BuildNumber)'!
+    echo '$(Build.TriggeredBy.BuildId)'!
+    echo '$(Build.TriggeredBy.DefinitionId)'!
+    echo '$(Build.TriggeredBy.DefinitionName)'!
+    echo '$(Build.TriggeredBy.ProjectID)'!
     echo '$(Build.BuildNumber)'!
   displayName: 'Run a multi-line script'
