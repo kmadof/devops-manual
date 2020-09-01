@@ -27,4 +27,7 @@ steps:
     echo '$(Build.TriggeredBy.DefinitionName)'!
     echo '$(Build.TriggeredBy.ProjectID)'!
     echo '$(Build.BuildNumber)'!
+    echo '$(Build.RequestedFor)'!
+    echo '$(Build.RequestedForEmail)'!
+    echo '$(Build.RequestedForId)'!
   displayName: 'Run a multi-line script'
