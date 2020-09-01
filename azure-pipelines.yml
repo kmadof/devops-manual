@@ -23,7 +23,7 @@ steps:
 
         Write-Host $version
 
-        $sp = $version.Split("{.}")
+        $sp = $version.Split(".")
 
         echo $sp
 
