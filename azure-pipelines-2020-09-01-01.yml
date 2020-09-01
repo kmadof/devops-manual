@@ -35,17 +35,14 @@ steps:
     echo '$(Build.RequestedForEmail)'!
     echo '$(Build.RequestedForId)'!
   displayName: 'Run a multi-line script'
-- script: |
-    # Encode the Personal Access Token (PAT)
-    $AzureDevOpsAuthenicationHeader = @{Authorization = 'Basic ' + [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(":$(System.AccessToken)")) }
-
-    # Get a list of releases
+- pwsh: |
+    # Get a build info
     $uri = "https://dev.azure.com/$(devopsAccount)/$(projectName)/_apis/build/builds/$(Build.BuildId)?api-version=6.0-preview.6&expand=all"
 
     Write-Host $uri
 
     # Invoke the REST call
-    $result = Invoke-RestMethod -Uri $uri -Method Get -Headers $AzureDevOpsAuthenicationHeader
+    $result = Invoke-RestMethod -Uri $uri -Method Get -Headers @{Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"}
 
     Write-Host $result.triggerInfo.version
 
