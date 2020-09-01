@@ -27,6 +27,9 @@ steps:
 
         echo $sp
 
+        echo 'test'
+        echo $sp[0]
+
         $majorVersion = $sp[0]
         $minorVersion = $sp[1]
         $patchVersion = [int]$sp[2] + 1
