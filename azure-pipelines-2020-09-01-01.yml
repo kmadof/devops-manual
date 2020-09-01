@@ -7,8 +7,11 @@ trigger:
 
 resources:
   pipelines:
-    - pipeline: test
-      source: kmadof.dm-so-46
+  - pipeline: test
+    source: kmadof.dm-so-46
+    trigger:
+      branches:
+      - master
 
 pool:
   vmImage: 'ubuntu-latest'
