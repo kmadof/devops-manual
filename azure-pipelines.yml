@@ -39,8 +39,8 @@ steps:
         Write-Host "##vso[task.setvariable variable=productVersionBeta]$productVersionBeta"
       name: initial
     - pwsh: |
-        Write-Host '$(packageVersion)'
-        Write-Host '$(majorVersion)'
-        Write-Host '$(minorVersion)'
-        Write-Host '$(patchVersion)'
-        Write-Host '$(productVersionBeta)'
+        Write-Host 'packageVersion: $(packageVersion)'
+        Write-Host 'majorVersion: $(majorVersion)'
+        Write-Host 'minorVersion: $(minorVersion)'
+        Write-Host 'patchVersion: $(patchVersion)'
+        Write-Host 'productVersionBeta: $(productVersionBeta)'
