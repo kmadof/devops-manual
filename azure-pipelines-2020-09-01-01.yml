@@ -1,7 +1,4 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+# https://stackoverflow.com/questions/63678236/link-azure-devops-ci-and-cd-yaml-pipelines
 
 trigger: none
 
@@ -14,7 +11,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo Hello, world!
+- script: echo $(Build.TriggeredBy.BuildNumber)!
   displayName: 'Run a one-line script'
 
 - script: |
