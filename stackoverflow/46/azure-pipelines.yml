@@ -16,6 +16,7 @@ jobs:
   variables:
     varOS: $(Agent.OS)
   steps:
+    - bash: echo '$(Build.BuildNumber)'!
     - pwsh: |
         $testVar = ''
         $test = '$(Test)'
