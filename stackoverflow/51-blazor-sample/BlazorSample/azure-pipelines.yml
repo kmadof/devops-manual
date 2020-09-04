@@ -1,0 +1,24 @@
+# https://stackoverflow.com/questions/63733965/blazor-webassembly-azure-devops-build-pipeline-publish-artifacts
+
+trigger:
+- master
+
+steps:
+- script: dotnet build --configuration $(buildConfiguration)
+  displayName: 'dotnet build $(buildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    publishWebProjects: true
+    projects: '**/*.csproj'
+    arguments: '--configuration $(buildConfiguration) --output $(build.artifactstagingdirectory)"'
+    zipAfterPublish: false
+
+- pwsh: ls '$(build.artifactstagingdirectory)'
+  
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact'
+  inputs:
+    PathtoPublish: '$(build.artifactstagingdirectory)'
+  condition: succeededOrFailed()
