@@ -4,6 +4,8 @@ trigger:
 - master
 
 steps:
+- pwsh: ls .
+
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
 
