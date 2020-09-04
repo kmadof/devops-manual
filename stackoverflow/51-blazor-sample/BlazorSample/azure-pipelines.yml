@@ -14,7 +14,7 @@ steps:
   inputs:
     command: 'publish'
     publishWebProjects: true
-    projects: '**/*.csproj'
+    projects: 'BlazorSample.csproj'
     arguments: '--configuration $(buildConfiguration) --output $(build.artifactstagingdirectory)"'
     zipAfterPublish: false
     workingDirectory: $(Build.SourcesDirectory)/stackoverflow/51-blazor-sample/BlazorSample
