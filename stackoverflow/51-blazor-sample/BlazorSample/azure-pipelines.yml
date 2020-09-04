@@ -3,6 +3,9 @@
 trigger:
 - master
 
+variables:
+  release: 'buildConfiguration'
+
 steps:
 - pwsh: ls .
 
