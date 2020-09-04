@@ -22,7 +22,7 @@ steps:
     zipAfterPublish: false
     workingDirectory: $(Build.SourcesDirectory)/stackoverflow/51-blazor-sample/BlazorSample
 
-- pwsh: ls '$(build.artifactstagingdirectory)'
+- pwsh: ls '$(build.artifactstagingdirectory)/BlazorSample'
   
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
