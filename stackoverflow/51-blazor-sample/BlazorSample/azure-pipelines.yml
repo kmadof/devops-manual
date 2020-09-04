@@ -8,6 +8,7 @@ steps:
 
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+  workingDirectory: $(Build.SourcesDirectory)/stackoverflow/51-blazor-sample/BlazorSample
 
 - task: DotNetCoreCLI@2
   inputs:
@@ -16,6 +17,7 @@ steps:
     projects: '**/*.csproj'
     arguments: '--configuration $(buildConfiguration) --output $(build.artifactstagingdirectory)"'
     zipAfterPublish: false
+    workingDirectory: $(Build.SourcesDirectory)/stackoverflow/51-blazor-sample/BlazorSample
 
 - pwsh: ls '$(build.artifactstagingdirectory)'
   
