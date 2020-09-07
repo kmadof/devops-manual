@@ -1,0 +1,23 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+schedules:
+- cron: "0 /5 * * *"
+  displayName: Each 5 mins
+  branches:
+    include:
+    - master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: echo $(Build.Reason)!
+  displayName: 'Run a one-line script'
+
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: 'env | sort'
