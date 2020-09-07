@@ -4,8 +4,8 @@
 # https://aka.ms/yaml
 
 schedules:
-- cron: "* */5 * * * "
-  displayName: Each 5 mins
+- cron: "* */1 * * * "
+  displayName: Each 1 mins
   branches:
     include:
     - master
