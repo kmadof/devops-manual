@@ -4,7 +4,7 @@
 # https://aka.ms/yaml
 
 schedules:
-- cron: "0 /5 * * *"
+- cron: "* */5 * * * "
   displayName: Each 5 mins
   branches:
     include:
