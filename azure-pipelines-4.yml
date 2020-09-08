@@ -1,0 +1,24 @@
+# https://stackoverflow.com/questions/63788704/azure-pipelines-file-trigger-for-files-on-root-level
+
+trigger:
+ branches:
+   include:
+     - master
+ paths:
+   include:
+     - '*'
+   exclude:
+     - 'stackoverflow/*'
+
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
