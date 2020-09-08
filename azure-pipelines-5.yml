@@ -1,0 +1,15 @@
+# https://stackoverflow.com/questions/63801984/azure-pipeline-error-using-azurecli-task-wrong-number-of-segments
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'rg-the-code-manual'
+    scriptType: 'pscore'
+    scriptLocation: 'inlineScript'
+    inlineScript: 'az --version'
