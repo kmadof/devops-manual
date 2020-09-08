@@ -6,6 +6,7 @@ schedules:
   branches:
     include:
     - refs/tags/release-20200907-4
+    - refs/tags/release-20200907-5
 
 pool:
   vmImage: 'ubuntu-latest'
