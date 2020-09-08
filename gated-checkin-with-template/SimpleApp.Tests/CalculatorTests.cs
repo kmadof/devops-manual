@@ -12,6 +12,7 @@ namespace SimpleApp.Tests
         [InlineData(4, 6)]
         public void ShouldAddTwoReturnCorrectResult(int value, int result)
         {
+            System.Console.WriteLine("SOME TEST");
             Calculator.AddTwo(value).Should().Be(result);
         }
     }
