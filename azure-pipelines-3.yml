@@ -1,0 +1,20 @@
+# https://stackoverflow.com/questions/63777837/build-schedule-for-git-tag
+
+schedules:
+- cron: "* */5 * * * "
+  displayName: Each 1 mins
+  branches:
+    include:
+    - refs/tags/release-20200907-4
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: echo $(Build.Reason)!
+  displayName: 'Run a one-line script'
+
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: 'env | sort'
