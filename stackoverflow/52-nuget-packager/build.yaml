@@ -1,4 +1,4 @@
-﻿# https://stackoverflow.com/questions/63896371/naming-a-nuget-package-through-yaml/63897774#63897774
+# https://stackoverflow.com/questions/63896371/naming-a-nuget-package-through-yaml/63897774#63897774
 
 trigger:
   branches:
