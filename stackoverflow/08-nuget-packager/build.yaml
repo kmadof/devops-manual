@@ -1,4 +1,4 @@
-﻿# ASP.NET Core
+# ASP.NET Core
 # Build and test ASP.NET Core projects targeting .NET Core.
 # Add steps that run tests, create a NuGet package, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
@@ -25,7 +25,7 @@ steps:
   displayName: "dotnet pack"
   inputs:
     command: 'pack'
-    arguments: '--configuration $(buildConfiguration)'
+    arguments: '--configuration $(buildConfiguration) -p:PackageID=my_id'
     packagesToPack: '$(System.DefaultWorkingDirectory)/stackoverflow/08-nuget-packager/SampleApp.csproj'
     versioningScheme: 'off'
     outputDir: '$(Build.ArtifactStagingDirectory)'
