@@ -35,7 +35,13 @@ steps:
   inputs:
     command: custom
     custom: pack
-    arguments: --configuration $(buildConfiguration) -p:PackageID=my_id -p:PackageVersion=2.1.0
+    arguments: >
+      $(System.DefaultWorkingDirectory)/stackoverflow/08-nuget-packager/SampleApp.csproj
+      --no-build
+      -p:PackageId=my_id
+      --output $(Build.ArtifactStagingDirectory)
+      -p:PackageVersion=2.1.0
+      -p:Configuration=$(buildConfiguration)
     packagesToPack: '$(System.DefaultWorkingDirectory)/stackoverflow/08-nuget-packager/SampleApp.csproj'
     versioningScheme: 'off'
     outputDir: '$(Build.ArtifactStagingDirectory)'
