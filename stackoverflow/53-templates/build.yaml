@@ -1,0 +1,5 @@
+# https://stackoverflow.com/questions/63917736/use-variables-in-azure-devops-pipeline-templates
+
+steps:
+- template: template-1  # Template reference
+- script: echo My favorite vegetable is ${{ variables.favoriteVeggie }}.
