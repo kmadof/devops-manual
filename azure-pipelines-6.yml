@@ -1,6 +1,8 @@
 # https://stackoverflow.com/questions/63933535/azure-devops-yaml-pipeline-trigger
 trigger: none
 
+pr: none
+
 resources:        
   pipelines:
   - pipeline: build_pipeline  
