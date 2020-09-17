@@ -2,6 +2,7 @@
 
 variables:
   test: $(System.PullRequest.TargetBranch)
+  toMaster: $[contains(variables['System.PullRequest.TargetBranch'], 'master')]
 
 jobs:
 - job: myJob
@@ -12,6 +13,8 @@ jobs:
   - ${{ if contains(variables['System.PullRequest.SourceBranch'], 'test') }}:
     - group: PROD
   - ${{ if contains(variables['test'], 'master') }}:
+    - group: PROD
+  - ${{ if eq(variables['toMaster'], true) }}:
     - group: PROD
   # - ${{ if contains(variables['build.sourceBranch'], 'refs/pull/24/merge')}}: # it works with this
   #   - group: PROD
