@@ -6,8 +6,11 @@ jobs:
   variables:
   - ${{ if contains(variables['System.PullRequest.TargetBranch'], 'master') }}:
     - group: PROD
+  - ${{ if contains(variables['build.sourceBranch'], 'refs/heads/test')}}:
+    - group: PROD
   pool:
     vmImage: 'ubuntu-16.04'
   steps:
   - script: echo '$(System.PullRequest.TargetBranch)'
+  - script: echo '$(build.sourceBranch)'
   - script: echo My favorite vegetable is ${{ variables.name }}.
