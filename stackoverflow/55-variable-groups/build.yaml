@@ -8,13 +8,13 @@ jobs:
 - job: myJob
   timeoutInMinutes: 10
   variables:
-  - ${{ if contains(variables['System.PullRequest.TargetBranch'], 'master') }}:
+  - ${{ if contains(variables['System.PullRequest.TargetBranch'], 'master') }}: # it doesn't work because System.PullRequest.TargetBranch is runtime parameters
     - group: PROD
-  - ${{ if contains(variables['System.PullRequest.SourceBranch'], 'test') }}:
+  - ${{ if contains(variables['System.PullRequest.SourceBranch'], 'test') }}: # it doesn't work
     - group: PROD
-  - ${{ if contains(variables['test'], 'master') }}:
+  - ${{ if contains(variables['test'], 'master') }}: # it doesn't work
     - group: PROD
-  - ${{ if eq(variables['toMaster'], true) }}:
+  - ${{ if eq(variables['toMaster'], true) }}: # it doesn't work
     - group: PROD
   # - ${{ if contains(variables['build.sourceBranch'], 'refs/pull/24/merge')}}: # it works with this
   #   - group: PROD
