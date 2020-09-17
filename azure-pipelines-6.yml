@@ -1,0 +1,18 @@
+# https://stackoverflow.com/questions/63933535/azure-devops-yaml-pipeline-trigger
+trigger: none
+
+resources:        
+  pipelines:
+  - pipeline: build_pipeline  
+    source: kmadof.devops-manual (14)
+    branch: master
+    trigger:
+     branches:
+     - master
+
+steps:
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      echo 'Hello world'
