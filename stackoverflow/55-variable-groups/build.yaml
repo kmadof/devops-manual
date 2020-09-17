@@ -1,5 +1,8 @@
 # https://stackoverflow.com/questions/63941345/set-variable-group-dynamically-using-system-pullrequest-targetbranch
 
+variables:
+  test: $(System.PullRequest.TargetBranch)
+
 jobs:
 - job: myJob
   timeoutInMinutes: 10
@@ -14,6 +17,7 @@ jobs:
     vmImage: 'ubuntu-16.04'
   steps:
   - script: |
+      echo '$(test)'
       echo 'System.PullRequest.TargetBranch - $(System.PullRequest.TargetBranch)'
       echo 'System.PullRequest.SourceBranch - $(System.PullRequest.SourceBranch)'
       echo 'build.sourceBranch- $(build.sourceBranch)'
