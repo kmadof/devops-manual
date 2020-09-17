@@ -1,13 +1,30 @@
-# https://stackoverflow.com/questions/63917736/use-variables-in-azure-devops-pipeline-templates
+# https://stackoverflow.com/questions/63941345/set-variable-group-dynamically-using-system-pullrequest-targetbranch
+
+variables:
+  test: $(System.PullRequest.TargetBranch)
+  toMaster: $[contains(variables['System.PullRequest.TargetBranch'], 'master')]
 
 jobs:
 - job: myJob
   timeoutInMinutes: 10
   variables:
-  - ${{ if eq(variables['System.PullRequest.TargetBranch'], 'refs/heads/master') }}:
+  - ${{ if contains(variables['System.PullRequest.TargetBranch'], 'master') }}: # it doesn't work because System.PullRequest.TargetBranch is runtime parameters
     - group: PROD
+  - ${{ if contains(variables['System.PullRequest.SourceBranch'], 'test') }}: # it doesn't work
+    - group: PROD
+  - ${{ if contains(variables['test'], 'master') }}: # it doesn't work
+    - group: PROD
+  - ${{ if eq(variables['toMaster'], true) }}: # it doesn't work
+    - group: PROD
+  # - ${{ if contains(variables['build.sourceBranch'], 'refs/pull/24/merge')}}: # it works with this
+  #   - group: PROD
   pool:
     vmImage: 'ubuntu-16.04'
   steps:
-  - script: echo '$(System.PullRequest.TargetBranch)'
-  - script: echo My favorite vegetable is ${{ variables.name }}.
+  - script: |
+      echo 'System.JobDisplayName - $(System.JobDisplayName)'
+      echo '$(test)'
+      echo 'System.PullRequest.TargetBranch - $(System.PullRequest.TargetBranch)'
+      echo 'System.PullRequest.SourceBranch - $(System.PullRequest.SourceBranch)'
+      echo 'build.sourceBranch- $(build.sourceBranch)'
+  - script: echo My favorite vegetable is $(name).
