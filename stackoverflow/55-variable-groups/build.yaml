@@ -14,4 +14,4 @@ jobs:
   steps:
   - script: echo '$(System.PullRequest.TargetBranch)'
   - script: echo '$(build.sourceBranch)'
-  - script: echo My favorite vegetable is ${{ variables.name }}.
+  - script: echo My favorite vegetable is $(name).
