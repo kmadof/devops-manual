@@ -22,6 +22,7 @@ jobs:
     vmImage: 'ubuntu-16.04'
   steps:
   - script: |
+      echo 'System.JobDisplayName - $(System.JobDisplayName)'
       echo '$(test)'
       echo 'System.PullRequest.TargetBranch - $(System.PullRequest.TargetBranch)'
       echo 'System.PullRequest.SourceBranch - $(System.PullRequest.SourceBranch)'
