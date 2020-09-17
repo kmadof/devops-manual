@@ -1,0 +1,4 @@
+# File: template-1.yml
+
+variables:
+- template: vars.yaml  # Template reference

@@ -1,0 +1,11 @@
+# https://stackoverflow.com/questions/63917736/use-variables-in-azure-devops-pipeline-templates
+
+jobs:
+- job: myJob
+  timeoutInMinutes: 10
+  variables:
+  - template: template-1.yml  # Template reference
+  pool:
+    vmImage: 'ubuntu-16.04'
+  steps:
+  - script: echo My favorite vegetable is ${{ variables.favoriteVeggie }}.
