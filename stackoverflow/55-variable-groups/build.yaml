@@ -6,7 +6,7 @@ jobs:
   variables:
   - ${{ if contains(variables['System.PullRequest.TargetBranch'], 'master') }}:
     - group: PROD
-  - ${{ if contains(variables['build.sourceBranch'], 'refs/heads/test')}}:
+  - ${{ if contains(variables['build.sourceBranch'], 'refs/pull/24/merge')}}:
     - group: PROD
   pool:
     vmImage: 'ubuntu-16.04'
