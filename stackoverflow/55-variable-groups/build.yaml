@@ -4,7 +4,7 @@ jobs:
 - job: myJob
   timeoutInMinutes: 10
   variables:
-  - ${{ if eq(variables['System.PullRequest.TargetBranch'], 'refs/heads/master') }}:
+  - ${{ if eq(variables['System.PullRequest.TargetBranch'], 'master') }}:
     - group: PROD
   pool:
     vmImage: 'ubuntu-16.04'
