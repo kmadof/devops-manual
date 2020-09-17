@@ -6,11 +6,15 @@ jobs:
   variables:
   - ${{ if contains(variables['System.PullRequest.TargetBranch'], 'master') }}:
     - group: PROD
-  - ${{ if contains(variables['build.sourceBranch'], 'refs/pull/24/merge')}}:
+  - ${{ if contains(variables['System.PullRequest.SourceBranch'], 'test') }}:
     - group: PROD
+  # - ${{ if contains(variables['build.sourceBranch'], 'refs/pull/24/merge')}}: # it works with this
+  #   - group: PROD
   pool:
     vmImage: 'ubuntu-16.04'
   steps:
-  - script: echo '$(System.PullRequest.TargetBranch)'
-  - script: echo '$(build.sourceBranch)'
+  - script: |
+      echo 'System.PullRequest.TargetBranch - $(System.PullRequest.TargetBranch)'
+      echo 'System.PullRequest.SourceBranch - $(System.PullRequest.SourceBranch)'
+      echo 'build.sourceBranch- $(build.sourceBranch)'
   - script: echo My favorite vegetable is $(name).
