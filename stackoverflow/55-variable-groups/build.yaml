@@ -1,0 +1,13 @@
+# https://stackoverflow.com/questions/63917736/use-variables-in-azure-devops-pipeline-templates
+
+jobs:
+- job: myJob
+  timeoutInMinutes: 10
+  variables:
+  - ${{ if eq(variables['System.PullRequest.TargetBranch'], 'refs/heads/master') }}:
+    - group: PROD
+  pool:
+    vmImage: 'ubuntu-16.04'
+  steps:
+  - script: echo '$(System.PullRequest.TargetBranch)'
+  - script: echo My favorite vegetable is ${{ variables.name }}.
