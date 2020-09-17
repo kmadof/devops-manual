@@ -11,6 +11,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+  - bash: env | sort
   - task: PowerShell@2
     inputs:
       targetType: 'inline'
