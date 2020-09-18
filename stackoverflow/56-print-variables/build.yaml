@@ -15,4 +15,6 @@ steps:
     scriptType: pscore
     scriptLocation: inlineScript
     inlineScript: |
-      az pipelines variable list --org https://dev.azure.com/thecodemanual/ --project $(System.TeamProjectId) --pipeline-id $(System.DefinitionId)
+      $org = "https://dev.azure.com/thecodemanual/"
+      $(System.AccessToken) | az devops login --organization $org
+      az pipelines variable list --org $org --project $(System.TeamProjectId) --pipeline-id $(System.DefinitionId)
