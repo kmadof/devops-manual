@@ -1,0 +1,47 @@
+# https://stackoverflow.com/questions/63950815/azurerm-commands-in-azure-powershell-task-azure-devops
+
+trigger: none
+pr: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- powershell: Get-InstalledModule
+  continueOnError: true
+
+- task: AzurePowerShell@5
+  continueOnError: true
+  inputs:
+    azureSubscription: 'rg-the-code-manual'
+    ScriptType: 'InlineScript'
+    Inline: 'Get-InstalledModule'
+    azurePowerShellVersion: LatestVersion
+
+- task: AzurePowerShell@5
+  continueOnError: true
+  inputs:
+    azureSubscription: 'rg-the-code-manual'
+    ScriptType: 'InlineScript'
+    Inline: 'Get-AzResourceGroup -Name "TheCodeManual"'
+    azurePowerShellVersion: LatestVersion
+    
+
+
+- task: AzurePowerShell@5
+  continueOnError: true
+  inputs:
+    azureSubscription: 'rg-the-code-manual'
+    ScriptType: 'InlineScript'
+    Inline: |
+      Uninstall-Module -Name Az -AllVersions
+      Install-Module -Name AzureRM -AllowClobber
+    azurePowerShellVersion: LatestVersion
+
+- task: AzurePowerShell@5
+  continueOnError: true
+  inputs:
+    azureSubscription: 'rg-the-code-manual'
+    ScriptType: 'InlineScript'
+    Inline: 'Get-AzureRmResourceGroup -Name "TheCodeManual"'
+    azurePowerShellVersion: LatestVersion
