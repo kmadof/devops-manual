@@ -13,16 +13,18 @@ jobs:
       name: 'lambdaNumbertOneFunctionName'
       arn: 'lambdaNumberOneFunctionArn'
       value: 'value-1'
-#  - template: template.yaml
-#    parameters:
-#      name: 'lambdaNumberTwoFunctionName'
-#      arn: 'lambdaNumberTwoFunctionArn'
-#      value: 'value-2'
-  - bash: |
-      echo 'lambdaNumbertOneFunctionName - $(lambdaNumbertOneFunctionName)'
-      echo 'lambdaNumberOneFunctionArn - $(lambdaNumberOneFunctionArn)'
-      echo 'lambdaNumberTwoFunctionName - $(lambdaNumberTwoFunctionName)'
-      echo 'lambdaNumberTwoFunctionArn - $(lambdaNumberTwoFunctionArn)'
+      stepName: 'StepOne'
+  - template: template.yaml
+    parameters:
+      name: 'lambdaNumberTwoFunctionName'
+      arn: 'lambdaNumberTwoFunctionArn'
+      value: 'value-2'
+      stepName: 'StepTwo'
+  - script: |
+      echo 'lambdaNumbertOneFunctionName - $(StepOne.lambdaNumbertOneFunctionName)'
+      echo 'lambdaNumberOneFunctionArn - $(StepOne.lambdaNumberOneFunctionArn)'
+      echo 'lambdaNumberTwoFunctionName - $(StepTwo.lambdaNumberTwoFunctionName)'
+      echo 'lambdaNumberTwoFunctionArn - $(StepTwo.lambdaNumberTwoFunctionArn)'
   - bash: |
       echo "##vso[task.setvariable variable=sauce;]crushed tomatoes"
       echo "##vso[task.setvariable variable=secretSauce;issecret=true]crushed tomatoes with garlic"
