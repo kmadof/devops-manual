@@ -5,6 +5,9 @@ parameters:
 - name: arn
   type: string
   default: 'lambdaNumberOneFunctionArn'
+- name: stepName
+  type: string
+  default: 'StepOne'
 - name: value
   type: string
   default: 'testValue'
@@ -15,10 +18,10 @@ steps:
     echo "##vso[task.setvariable variable=${{ parameters.arn }};isOutput=true]${{ parameters.value }}"
     echo "##vso[task.setvariable variable=Test;isOutput=true]${{ parameters.value }}"
     echo "##vso[task.setvariable variable=Test2;isOutput=true]Yesy2"
-  name: setVar
+  name: ${{ parameters.stepName }}
 
 - script: |
-    echo $(setVar.${{ parameters.name }})
-    echo $(setVar.${{ parameters.arn }})
-    echo $(setVar.Test)
-    echo $(setVar.Test2)
+    echo $(${{ parameters.stepName }}.${{ parameters.name }})
+    echo $(${{ parameters.stepName }}.${{ parameters.arn }})
+    echo $(${{ parameters.stepName }}.Test)
+    echo $(${{ parameters.stepName }}.Test2)
