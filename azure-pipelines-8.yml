@@ -8,7 +8,22 @@ pool:
 
 steps:
 - task: AzurePowerShell@5
+  continueOnError: true
+  inputs:
+    azureSubscription: 'rg-the-code-manual'
+    ScriptType: 'InlineScript'
+    Inline: 'Get-InstalledModule'
+
+- task: AzurePowerShell@5
+  continueOnError: true
   inputs:
     azureSubscription: 'rg-the-code-manual'
     ScriptType: 'InlineScript'
     Inline: 'Get-AzResourceGroup -Name "TheCodeManual"'
+    
+- task: AzurePowerShell@5
+  continueOnError: true
+  inputs:
+    azureSubscription: 'rg-the-code-manual'
+    ScriptType: 'InlineScript'
+    Inline: 'Get-AzureRmResourceGroup -Name "TheCodeManual"'
