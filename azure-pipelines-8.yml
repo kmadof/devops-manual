@@ -7,6 +7,9 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+- powershell: Get-InstalledModule
+  continueOnError: true
+
 - task: AzurePowerShell@5
   continueOnError: true
   inputs:
