@@ -34,7 +34,7 @@ steps:
     azureSubscription: 'rg-the-code-manual'
     ScriptType: 'InlineScript'
     Inline: |
-      
+      Uninstall-Module -Name Az -AllVersions
       Install-Module -Name AzureRM -AllowClobber
     azurePowerShellVersion: LatestVersion
 
