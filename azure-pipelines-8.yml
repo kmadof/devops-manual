@@ -1,0 +1,14 @@
+# https://stackoverflow.com/questions/63950815/azurerm-commands-in-azure-powershell-task-azure-devops
+
+trigger: none
+pr: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: AzurePowerShell@5
+  inputs:
+    azureSubscription: 'rg-the-code-manual'
+    ScriptType: 'InlineScript'
+    Inline: 'Get-AzureRmResourceGroup -Name "TheCodeManual"'
