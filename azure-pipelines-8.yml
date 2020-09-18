@@ -26,6 +26,18 @@ steps:
     Inline: 'Get-AzResourceGroup -Name "TheCodeManual"'
     azurePowerShellVersion: LatestVersion
     
+
+
+- task: AzurePowerShell@5
+  continueOnError: true
+  inputs:
+    azureSubscription: 'rg-the-code-manual'
+    ScriptType: 'InlineScript'
+    Inline: |
+      
+      Install-Module -Name AzureRM -AllowClobber
+    azurePowerShellVersion: LatestVersion
+
 - task: AzurePowerShell@5
   continueOnError: true
   inputs:
