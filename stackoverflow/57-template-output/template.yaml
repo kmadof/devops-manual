@@ -1,0 +1,15 @@
+parameters:
+- name: name
+  type: string
+  default: 'lambdaNumbertOneFunctionName'
+- name: arn
+  type: string
+  default: 'lambdaNumberOneFunctionArn'
+- name: value
+  type: string
+  default: 'testValue'
+
+steps:
+- bash:
+    echo "##vso[task.setvariable variable=${{ parameters.name }};isOutput=true]${{ parameters.value }}"
+    echo "##vso[task.setvariable variable=${{ parameters.arn }};isOutput=true]${{ parameters.value }}"

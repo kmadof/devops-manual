@@ -1,3 +1,4 @@
+# https://stackoverflow.com/questions/63950046/printing-parameter-variables-in-azure-devops-template/63951973#63951973
 trigger: none
 
 # no PR triggers

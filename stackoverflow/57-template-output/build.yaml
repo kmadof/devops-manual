@@ -1,0 +1,25 @@
+# https://stackoverflow.com/questions/63959555/assigning-aws-cloudformation-output-variables-in-azure-devops-pipelines
+trigger: none
+pr: none
+
+jobs:
+- job: myJob
+  timeoutInMinutes: 10
+  pool:
+    vmImage: 'ubuntu-16.04'
+  steps:
+  - template: template.yaml
+    parameters:
+      name: 'lambdaNumbertOneFunctionName'
+      arn: 'lambdaNumberOneFunctionArn'
+      value: 'value-1'
+  - template: template.yaml
+    parameters:
+      name: 'lambdaNumberTwoFunctionName'
+      arn: 'lambdaNumberTwoFunctionArn'
+      value: 'value-2'
+  - bash: |
+      echo 'lambdaNumbertOneFunctionName - $(lambdaNumbertOneFunctionName)'
+      echo 'lambdaNumberOneFunctionArn - $(lambdaNumberOneFunctionArn)'
+      echo 'lambdaNumberTwoFunctionName - $(lambdaNumberTwoFunctionName)'
+      echo 'lambdaNumberTwoFunctionArn - $(lambdaNumberTwoFunctionArn)'

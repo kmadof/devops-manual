@@ -1,5 +1,8 @@
 # https://stackoverflow.com/questions/63917736/use-variables-in-azure-devops-pipeline-templates
 
+trigger: none
+pr: none
+
 jobs:
 - job: myJob
   timeoutInMinutes: 10
