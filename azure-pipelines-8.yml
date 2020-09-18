@@ -16,6 +16,7 @@ steps:
     azureSubscription: 'rg-the-code-manual'
     ScriptType: 'InlineScript'
     Inline: 'Get-InstalledModule'
+    azurePowerShellVersion: LatestVersion
 
 - task: AzurePowerShell@5
   continueOnError: true
@@ -23,6 +24,7 @@ steps:
     azureSubscription: 'rg-the-code-manual'
     ScriptType: 'InlineScript'
     Inline: 'Get-AzResourceGroup -Name "TheCodeManual"'
+    azurePowerShellVersion: LatestVersion
     
 - task: AzurePowerShell@5
   continueOnError: true
@@ -30,3 +32,4 @@ steps:
     azureSubscription: 'rg-the-code-manual'
     ScriptType: 'InlineScript'
     Inline: 'Get-AzureRmResourceGroup -Name "TheCodeManual"'
+    azurePowerShellVersion: LatestVersion
