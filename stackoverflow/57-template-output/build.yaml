@@ -13,11 +13,11 @@ jobs:
       name: 'lambdaNumbertOneFunctionName'
       arn: 'lambdaNumberOneFunctionArn'
       value: 'value-1'
-  - template: template.yaml
-    parameters:
-      name: 'lambdaNumberTwoFunctionName'
-      arn: 'lambdaNumberTwoFunctionArn'
-      value: 'value-2'
+#  - template: template.yaml
+#    parameters:
+#      name: 'lambdaNumberTwoFunctionName'
+#      arn: 'lambdaNumberTwoFunctionArn'
+#      value: 'value-2'
   - bash: |
       echo 'lambdaNumbertOneFunctionName - $(lambdaNumbertOneFunctionName)'
       echo 'lambdaNumberOneFunctionArn - $(lambdaNumberOneFunctionArn)'

@@ -15,9 +15,10 @@ steps:
     echo "##vso[task.setvariable variable=${{ parameters.arn }};isOutput=true]${{ parameters.value }}"
     echo "##vso[task.setvariable variable=Test;isOutput=true]${{ parameters.value }}"
     echo "##vso[task.setvariable variable=Test2;isOutput=true]Yesy2"
+  name: setVar
 
 - script: |
-    echo $(${{ parameters.name }})
-    echo $(${{ parameters.arn }})
-    echo $(Test)
-    echo $(Test2)
+    echo $(setVar.${{ parameters.name }})
+    echo $(setVar.${{ parameters.arn }})
+    echo $(setVar.Test)
+    echo $(setVar.Test2)
