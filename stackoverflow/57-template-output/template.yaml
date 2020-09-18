@@ -10,14 +10,25 @@ parameters:
   default: 'testValue'
 
 steps:
-- bash:
+- bash: |
     echo "##vso[task.setvariable variable=${{ parameters.name }};isOutput=true]${{ parameters.value }}"
     echo "##vso[task.setvariable variable=${{ parameters.arn }};isOutput=true]${{ parameters.value }}"
     echo "##vso[task.setvariable variable=Test;isOutput=true]${{ parameters.value }}"
     echo "##vso[task.setvariable variable=Test2;isOutput=true]Yesy2"
 
-- bash:
+- bash: |
     echo "$(${{ parameters.name }})
     echo "$(${{ parameters.arn }})
     echo "$(Test)
     echo "$(Test2)
+
+- bash: |
+    echo "##vso[task.setvariable variable=sauce;]crushed tomatoes"
+    echo "##vso[task.setvariable variable=secretSauce;issecret=true]crushed tomatoes with garlic"
+    echo "##vso[task.setvariable variable=outputSauce;isoutput=true]canned goods"
+
+- bash: |
+    echo "Non-secrets automatically mapped in, sauce is $SAUCE"
+    echo "Secrets are not automatically mapped in, secretSauce is $SECRETSAUCE"
+    echo "You can use macro replacement to get secrets, and they'll be masked in the log: $(secretSauce)"
+    echo "Future jobs can also see $OUTPUTSAUCE"
