@@ -7,7 +7,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: AzurePowerShell@5
+- task: AzurePowerShell@4
   inputs:
     azureSubscription: 'rg-the-code-manual'
     ScriptType: 'InlineScript'
