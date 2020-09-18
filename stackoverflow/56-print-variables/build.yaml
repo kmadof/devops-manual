@@ -16,7 +16,7 @@ steps:
     scriptLocation: inlineScript
     inlineScript: |
       $org = "https://dev.azure.com/thecodemanual/"
-      $(System.AccessToken) | az devops login --organization $org
+      az devops login --organization $org
       az pipelines variable list --org $org --project $(System.TeamProjectId) --pipeline-id $(System.DefinitionId)
   env:
     AZURE_DEVOPS_EXT_PAT: $(System.AccessToken)
