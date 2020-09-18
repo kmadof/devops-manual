@@ -16,7 +16,7 @@ steps:
     echo "##vso[task.setvariable variable=Test;isOutput=true]${{ parameters.value }}"
     echo "##vso[task.setvariable variable=Test2;isOutput=true]Yesy2"
 
-- bash: |
+- script: |
     echo "$(${{ parameters.name }})"
     echo "$(${{ parameters.arn }})"
     echo "$(Test)"
