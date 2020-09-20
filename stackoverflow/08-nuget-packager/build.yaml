@@ -11,6 +11,8 @@ trigger:
     include:
       - stackoverflow/08-nuget-packager/*
 
+pr: none
+
 pool:
   vmImage: 'ubuntu-latest'
 
