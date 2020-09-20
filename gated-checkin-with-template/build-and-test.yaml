@@ -10,14 +10,14 @@ steps:
   displayName: Restore nuget packages
   inputs:
     command: restore
-    projects: '$(rootFolder)/**/*.csproj'
+    projects: '${{ parameters.rootFolder }}/**/*.csproj'
     workingDirectory: $(Build.SourcesDirectory)
 
 - task: DotNetCoreCLI@2
   displayName: Build
   inputs:
     command: build
-    projects: '$(Build.SourcesDirectory)/$(rootFolder)/*.sln'
+    projects: '$(Build.SourcesDirectory)/${{ parameters.rootFolder }}/*.sln'
     arguments: '--configuration ${{ parameters.buildConfiguration }}'
 
 # You just added coverlet.collector to use 'XPlat Code Coverage'
@@ -25,7 +25,7 @@ steps:
   displayName: Test
   inputs:
     command: test
-    projects: '$(rootFolder)/*Tests/*.csproj'
+    projects: '${{ parameters.rootFolder }}/*Tests/*.csproj'
     arguments: '--configuration ${{ parameters.buildConfiguration }} --collect:"XPlat Code Coverage" -- RunConfiguration.DisableAppDomain=true'
     workingDirectory: $(Build.SourcesDirectory)
 
