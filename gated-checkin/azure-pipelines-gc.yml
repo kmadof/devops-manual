@@ -1,14 +1,14 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
   branches:
     include:
     - '*'
     exclude:
     - master
+  paths:
+    include:
+    - gated-checkin/*
+    exclude:
+    - gated-checkin/azure-pipelines.yml
 
 pr:
   branches:
@@ -32,7 +32,7 @@ steps:
   displayName: Restore nuget packages
   inputs:
     command: restore
-    projects: '**/*.csproj'
+    projects: 'gated-checkin/**/*.csproj' #'**/*.csproj'
     workingDirectory: $(Build.SourcesDirectory)
 
 - task: DotNetCoreCLI@2
@@ -47,7 +47,7 @@ steps:
   displayName: Test
   inputs:
     command: test
-    projects: '**/*Tests/*.csproj'
+    projects: 'gated-checkin/*Tests/*.csproj' #'**/*Tests/*.csproj'
     arguments: '--configuration $(buildConfiguration) --collect:"XPlat Code Coverage" -- RunConfiguration.DisableAppDomain=true'
     workingDirectory: $(Build.SourcesDirectory)
 
