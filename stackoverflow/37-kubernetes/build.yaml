@@ -1,3 +1,6 @@
+trigger: none
+pr: none
+
 variables:
   vmImageName: ubuntu-latest
   kvClientId: 'DevOps'
@@ -13,7 +16,7 @@ jobs:
   steps:
     - script: |
         echo "This is job Foo."
-        echo "##vso[task.setvariable variable=kubernetesServiceConnection;isOutput=true]tcm-k8s-tcm-k8s-dev-1590533416323" #The variable doThing is set to true
+        echo "##vso[task.setvariable variable=kubernetesServiceConnection;isOutput=true]tcm-k8s-tcm-k8s-dev-1590533416323"
       name: deriveVariableValues
 - deployment: Deploy_Dev
   dependsOn: Derive_Variable_Values
