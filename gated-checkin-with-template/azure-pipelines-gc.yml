@@ -9,6 +9,11 @@ trigger:
     - '*'
     exclude:
     - master
+  paths:
+    include:
+    - gated-checkin-with-template/*
+    exclude:
+    - gated-checkin-with-template/azure-pipelines.yml
 
 pr:
   branches:
@@ -31,3 +36,4 @@ extends:
   template: build-and-test.yaml
   parameters:
       buildConfiguration: $(buildConfiguration)
+      rootFolder: 'gated-checkin-with-template'

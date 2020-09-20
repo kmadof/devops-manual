@@ -26,6 +26,7 @@ steps:
 - template: build-and-test.yaml
   parameters:
       buildConfiguration: $(buildConfiguration)
+      rootFolder: 'gated-checkin-with-template'
 
 - script: echo Some steps to create artifacts!
   displayName: 'Run a one-line script'
