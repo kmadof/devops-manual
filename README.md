@@ -9,3 +9,4 @@ Playground for various Azure DevOps options
  ## Stackoverflow questions:
 
  - [pipeline 55](https://stackoverflow.com/questions/63941345/set-variable-group-dynamically-using-system-pullrequest-targetbranch/63946930#63946930) - explains that System.PullRequest.* (apart for IsFork) can't be used in template expressions
+ - pipeline 59 - breaking pipeline through `exit 1`
