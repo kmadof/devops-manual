@@ -1,7 +1,7 @@
 #https://stackoverflow.com/questions/63731883/how-to-set-default-branch-in-azure-devop-yaml
 
-trigger:
-- master
+trigger: none
+pr: none
 
 pool:
   vmImage: 'ubuntu-latest'
