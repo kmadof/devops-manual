@@ -49,3 +49,5 @@ Playground for various Azure DevOps options
  [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/kmadof.devops-manual%20(3)?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=96&branchName=master)
  - pipeline 65 - getting secret from key vault using Azure CLI</br>
  [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/kmadof.devops-manual%20(1)?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=94&branchName=master)
+ - [pipeline 66](https://stackoverflow.com/questions/63996987/tagging-docker-containers-with-azure-pipelines) - keep build id for tag purpose re-running whole job/stage/piepline</br>
+ [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/kmadof.devops-manual?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=120&branchName=master)
