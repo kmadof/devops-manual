@@ -32,4 +32,5 @@ Playground for various Azure DevOps options
   [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/kmadof.devops-manual%20(13)?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=107&branchName=master)
  - [pipeline 61](https://stackoverflow.com/questions/63678236/link-azure-devops-ci-and-cd-yaml-pipelines) - pipeline triggered by another pipeline with fetching original build number over REST API</br>
  [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/kmadof.devops-manual%20(7)?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=100&branchName=master)
- 
+ - pipeline 62 - multistage pipeline siumulating failure of one stage over beeceptor</br>
+ [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/kmadof.devops-manual%20(5)?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=98&branchName=master)
