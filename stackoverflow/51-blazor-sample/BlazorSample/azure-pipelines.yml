@@ -1,7 +1,7 @@
 # https://stackoverflow.com/questions/63733965/blazor-webassembly-azure-devops-build-pipeline-publish-artifacts
 
-trigger:
-- master
+trigger: none
+pr: none
 
 variables:
   buildConfiguration: 'Release'
