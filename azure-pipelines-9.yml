@@ -13,20 +13,20 @@ pool:
 
 
 stages:
-  - stage: A
-    jobs:
-    - job: A
-      steps:
-      - pwsh: |
-          $tagName = '$(Build.BuildId)'
-          if('{{parameters.tganName}}' -ne ' ') {
-            $tagName = '{{parameters.tganName}}'
-          }
-          echo $tagName
+- stage: A
+  jobs:
+  - job: A
+    steps:
+    - pwsh: |
+        $tagName = '$(Build.BuildId)'
+        if('{{parameters.tagName}}' -ne ' ') {
+          $tagName = '{{parameters.tagName}}'
+        }
+        echo $tagName
 
-    - job: B
-      steps:
-      - bash: echo "B"
+  - job: B
+    steps:
+    - bash: echo "B"
 
 - stage: B
   jobs:
