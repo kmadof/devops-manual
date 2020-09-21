@@ -1,14 +1,4 @@
-trigger:
-  branches:
-    include:
-    - master
-  paths:
-    include:
-    - stackoverflow/40-conditionals/*
-    exclude:
-    - '*'
-
-# no PR triggers
+trigger: none
 pr: none
 
 pool:
