@@ -1,9 +1,7 @@
 # https://stackoverflow.com/questions/63678236/link-azure-devops-ci-and-cd-yaml-pipelines
 
-trigger:
-  branches:
-    include:
-      - master
+trigger: none
+pr: none
 
 resources:
   pipelines:

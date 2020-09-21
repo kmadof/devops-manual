@@ -28,5 +28,8 @@ Playground for various Azure DevOps options
  [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/stackoverflow/kmadof.dm-so-55?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=115&branchName=master)
  - pipeline 59 - breaking pipeline through `exit 1`</br>
  [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/stackoverflow/kmadof.dm-so-59?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=105&branchName=master)
-  - [pipeline 60](https://stackoverflow.com/questions/63788704/azure-pipelines-file-trigger-for-files-on-root-level) - how to configure trigger to run pipeline in case of change in root level files</br>
+ - [pipeline 60](https://stackoverflow.com/questions/63788704/azure-pipelines-file-trigger-for-files-on-root-level) - how to configure trigger to run pipeline in case of change in root level files</br>
   [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/kmadof.devops-manual%20(13)?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=107&branchName=master)
+ - [pipeline 61](https://stackoverflow.com/questions/63678236/link-azure-devops-ci-and-cd-yaml-pipelines) - pipeline triggered by another pipeline with fetching original build number over REST API</br>
+ [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/kmadof.devops-manual%20(7)?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=100&branchName=master)
+ 
