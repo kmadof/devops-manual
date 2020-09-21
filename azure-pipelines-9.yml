@@ -32,7 +32,13 @@ stages:
   jobs:
   - job: A
     steps:
-    - bash: echo "A"
+    - pwsh: |
+        $tagName = '$(Build.BuildId)'
+        if('${{ parameters.tagName }}' -ne ' ') {
+          $tagName = '${{ parameters.tagName }}'
+        }
+        echo $tagName
+    - bash: exit 1
 
   - job: B
     steps:
