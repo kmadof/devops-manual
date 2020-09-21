@@ -5,6 +5,9 @@ trigger:
     exclude:
       - refs/tags/qa*
       - refs/tags/dev*
+
+pr: none
+
 stages:
 - stage: Init
   jobs:
