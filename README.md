@@ -4,6 +4,7 @@ Playground for various Azure DevOps options
 
  - [Cross stage variables](http://thecodemanual.pl/2020/05/05/cross-stage-variables.html) - describes how to use variables across the stages. This is useful to evaluate go/no go decision for next stages/jobs in your YAML builds.
  - [Caching npm modules](http://thecodemanual.pl/2020/03/11/caching-not-only-nuget-packages-on-azure-devops.html#caching-npm-modules) - describes hot to cache npm modules and show difference between `npm install` and `npm ci`
+ - Caching ruby gems - simple ruby gems cache base son built in task
  - [Gated checkin for .net core](http://thecodemanual.pl/2020/03/26/gated-check-in-build-on-azure-devops-for-dotnet-core-app.html) - shows how to create pipeline which serves as gated checkin policy</br>
  [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/kmadof.devops-manual-gated-checkin-gc?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=5&branchName=master)
  [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/kmadof.devops-manual-gated-checkin-gc?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=6&branchName=master)
@@ -20,6 +21,12 @@ Playground for various Azure DevOps options
 [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/stackoverflow/kmadof.dm-so-13?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=34&branchName=master)
  - pipeline 37 - issue with passing connection to kubernetes via variable - shows limitation of Azure DevOps</br>
  [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/stackoverflow/kmadof.dm-so-37?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=64&branchName=master)
+ - pipeline 45 - few examples how to run python scripts</br>
+ [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/stackoverflow/kmadof.dm-so-45?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=90&branchName=master)
+ - pipeline 46 - getting access to Agent.OS variable in condition</br>
+ [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/stackoverflow/kmadof.dm-so-46?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=92&branchName=master)
+ - pipeline 47 - multi stage pipeline with deployment availabe only for Pull Requests</br>
+ [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/kmadof.devops-manual?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=93&branchName=master)
  - pipeline 50 - example of `Default branch for manual and scheduled builds`</br>
  [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/stackoverflow/kmadof.dm-so-50?branchName=pipeline-in-branch)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=102&branchName=pipeline-in-branch)
  - [pipeline 51](https://stackoverflow.com/questions/63733965/blazor-webassembly-azure-devops-build-pipeline-publish-artifacts) - sample Blazor pipeline</br>

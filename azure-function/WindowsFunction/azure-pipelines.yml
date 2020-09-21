@@ -4,8 +4,8 @@ parameters:
   type: boolean
   default: false
 
-trigger:
-- master
+trigger: none
+pr: none
 
 variables:
   # Function app name
