@@ -19,8 +19,8 @@ stages:
     steps:
     - pwsh: |
         $tagName = '$(Build.BuildId)'
-        if('{{parameters.tagName}}' -ne ' ') {
-          $tagName = '{{parameters.tagName}}'
+        if('${{ parameters.tagName }}' -ne ' ') {
+          $tagName = '${{ parameters.tagName }}'
         }
         echo $tagName
 
