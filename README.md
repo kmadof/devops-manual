@@ -3,7 +3,8 @@ Playground for various Azure DevOps options
 
 
  - [Cross stage variables](http://thecodemanual.pl/2020/05/05/cross-stage-variables.html) - describes how to use variables across the stages. This is useful to evaluate go/no go decision for next stages/jobs in your YAML builds.
- - [Caching npm modules](http://thecodemanual.pl/2020/03/11/caching-not-only-nuget-packages-on-azure-devops.html#caching-npm-modules) - describes hot to cache npm modules and show difference between `npm install` and `npm ci`
+ - [Caching npm modules](http://thecodemanual.pl/2020/03/11/caching-not-only-nuget-packages-on-azure-devops.html#caching-npm-modules) - describes hot to cache npm modules and show difference between `npm install` and `npm ci`</br>
+ [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/kmadof.dm-cache-npm?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=52&branchName=master)
  - Caching ruby gems - simple ruby gems cache base son built in task
  - [Gated checkin for .net core](http://thecodemanual.pl/2020/03/26/gated-check-in-build-on-azure-devops-for-dotnet-core-app.html) - shows how to create pipeline which serves as gated checkin policy</br>
  [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/kmadof.devops-manual-gated-checkin-gc?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=5&branchName=master)
@@ -19,6 +20,14 @@ Playground for various Azure DevOps options
  [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/kmadof.devops-manual%20(8)?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=101&branchName=master)
  - pipeline 13 - simple multistage pipeline with condition and failing one stage </br>
 [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/stackoverflow/kmadof.dm-so-13?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=34&branchName=master)
+ - [pipeline 23](https://stackoverflow.com/questions/61734755/variable-substitution-in-config-json-files-in-azure-devops-pipeline/61736613#61736613) - token replace in config and json files</br>
+ [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/stackoverflow/kmadof.dm-so-23-token-replace?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=49&branchName=master)
+ - [pipeline 24](https://stackoverflow.com/questions/61676408/is-it-possible-to-import-a-script-in-a-yaml-template/61677662#61677662) extending pipeline using template from different repository </br>
+ [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/stackoverflow/kmadof.dm-so-24?repoName=kmadof%2Fdevops-manual&branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=50&repoName=kmadof%2Fdevops-manual&branchName=master)
+ - pipeline 25 - archive multiple artifacts </br>
+ [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/stackoverflow/kmadof.dm-so-25?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=51&branchName=master)
+ - [pipeline 26](https://stackoverflow.com/questions/61799711/impossible-to-update-variable-from-variable-group-library/61800119#61800119) - update variables in variable group over REST API</br>
+ [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/stackoverflow/kmadof.dm-so-26?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=53&branchName=master)
  - [pipeline 28](https://stackoverflow.com/questions/61783014/using-lerna-js-and-azure-devops-pipeline/61786014?noredirect=1#comment109330301_61786014) - and [here](https://stackoverflow.com/questions/61953776/how-to-combine-git-branch-and-tag-triggers-in-azure-pipelines) using tag filters </br>
  [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/stackoverflow/kmadof.dm-so-28-tag-filters?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=55&branchName=master)
  - pipeline 37 - issue with passing connection to kubernetes via variable - shows limitation of Azure DevOps</br>
