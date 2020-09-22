@@ -19,8 +19,14 @@ Playground for various Azure DevOps options
  [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/kmadof.devops-manual%20(8)?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=101&branchName=master)
  - pipeline 13 - simple multistage pipeline with condition and failing one stage </br>
 [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/stackoverflow/kmadof.dm-so-13?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=34&branchName=master)
+ - [pipeline 28](https://stackoverflow.com/questions/61783014/using-lerna-js-and-azure-devops-pipeline/61786014?noredirect=1#comment109330301_61786014) - and [here](https://stackoverflow.com/questions/61953776/how-to-combine-git-branch-and-tag-triggers-in-azure-pipelines) using tag filters </br>
+ [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/stackoverflow/kmadof.dm-so-28-tag-filters?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=55&branchName=master)
  - pipeline 37 - issue with passing connection to kubernetes via variable - shows limitation of Azure DevOps</br>
  [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/stackoverflow/kmadof.dm-so-37?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=64&branchName=master)
+ - [pipeline 38](https://stackoverflow.com/questions/62043374/azure-replace-token-for-service-model-endpoint-for-asp-net-mvc-in-pipeline-relea/62044492#62044492)- WCF endpoint replace using token replace task</br>
+ [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/stackoverflow/kmadof.dm-so-38-token-replace?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=65&branchName=master)
+ - [pipeline 39](https://stackoverflow.com/questions/62044055/is-it-possible-to-cancel-a-azure-devops-pipeline-job-programmatically) - cancelling pipeline programatically over REST API</br>
+ [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/stackoverflow/kmadof.dm-so-39?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=66&branchName=master)
  - [pipeline 40](https://stackoverflow.com/questions/62044055/is-it-possible-to-cancel-a-azure-devops-pipeline-job-programmatically) - example of using condition to control pipeline flow</br>
  [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/stackoverflow/kmadof.dm-so-40-conditional?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=67&branchName=master)
  - pipeline 45 - few examples how to run python scripts</br>
@@ -51,3 +57,5 @@ Playground for various Azure DevOps options
  [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/kmadof.devops-manual%20(1)?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=94&branchName=master)
  - [pipeline 66](https://stackoverflow.com/questions/63996987/tagging-docker-containers-with-azure-pipelines) - keep build id for tag purpose re-running whole job/stage/piepline</br>
  [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/kmadof.devops-manual?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=120&branchName=master)
+ - pipeline 67 - composing package version by getting last package version from REST API</br>
+ [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/kmadof.devops-manual%20(8)?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=101&branchName=master)

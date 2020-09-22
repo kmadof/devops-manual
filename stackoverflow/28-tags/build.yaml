@@ -54,7 +54,7 @@ stages:
 #stage B runs if DetermineResult task set doThing variable n stage A
 - stage: B
   dependsOn: A
-  condition: and(succeeded(), eq(variables['Build.Reason'], 'PullRequest'), eq(variables['System.PullRequest.TargetBranch'], 'master'))
+  condition: and(succeeded(), eq(variables['Build.Reason'], 'PullRequest'), eq(variables['System.PullRequest.TargetBranch'], 'master')) # this will not work because System.PullRequest.TargetBranch is not avialable in template expressions
   jobs:
   - job: JB
     steps:

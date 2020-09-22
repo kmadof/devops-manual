@@ -1,14 +1,4 @@
-trigger:
-  branches:
-    include:
-    - master
-  paths:
-    include:
-    - stackoverflow/38-endpoint-replace/*
-    exclude:
-    - '*'
-
-# no PR triggers
+trigger: none
 pr: none
 
 pool:

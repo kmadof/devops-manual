@@ -1,15 +1,5 @@
-trigger:
-  branches:
-    include:
-    - master
-  paths:
-    include:
-    - stackoverflow/39-tasks/*
-    exclude:
-    - '*'
-
-# no PR triggers
-pr: none
+trigger: none
+spr: none
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -27,7 +17,7 @@ steps:
       if ('$(SomeVariable)' -eq 'Stop') {
         $uri = "https://dev.azure.com/thecodemanual/DevOps Manual/_apis/build/builds/$(Build.BuildId)?api-version=5.1"
 
-        $json = @{status="Completed"} | ConvertTo-Json -Compress
+        $json = @{status="Cancelling"} | ConvertTo-Json -Compress
 
         $build = Invoke-RestMethod -Uri $uri -Method Patch -Headers @{Authorization = "Bearer $(System.AccessToken)"} -ContentType "application/json" -Body $json
 
