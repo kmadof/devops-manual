@@ -1,0 +1,17 @@
+# https://stackoverflow.com/questions/58823004/how-can-i-use-if-else-in-variables-of-azure-devops-yaml-pipeline-with-variable-g
+
+trigger: none
+pr: none
+
+variables:
+- group: PROD
+- name: env
+  ${{ if eq(variables['Build.SourceBranchName'], 'master') }}:
+    value: a
+  ${{ if eq(variables['Build.SourceBranchName'], 'dev') }}:
+    value: b
+
+steps:
+- script: | 
+    echo '$(name)'
+    echo '$(env)'
