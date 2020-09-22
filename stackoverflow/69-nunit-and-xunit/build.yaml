@@ -1,0 +1,34 @@
+#https://stackoverflow.com/questions/64017201/how-to-have-both-xunit-and-nunit-in-a-solution-built-in-azure-devops-pipelines
+
+trigger: none
+pr: none
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  buildConfiguration: 'Release'
+  rootDirectory: '$(Build.SourcesDirectory)/stackoverflow/69-nunit-and-xunit'
+
+steps:
+
+- task: DotNetCoreCLI@2
+  displayName: Restore nuget packages
+  inputs:
+    command: restore
+    projects: '**/*.csproj'
+    workingDirectory: $(rootDirectory)
+
+- task: DotNetCoreCLI@2
+  displayName: Test xUnit
+  inputs:
+    command: build
+    projects: '$(rootDirectory)/**/*XUnit.csproj'
+    arguments: '--configuration $(buildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  displayName: Test NUnit
+  inputs:
+    command: build
+    projects: '$(rootDirectory)/**/*NUnit.csproj'
+    arguments: '--configuration $(buildConfiguration)'
