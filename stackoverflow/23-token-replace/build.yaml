@@ -1,14 +1,7 @@
-trigger:
-  branches:
-    include:
-      - master
-  paths:
-    include:
-      - stackoverflow/23-token-replace/*
+trigger: none
+pr: none
 
 # https://stackoverflow.com/questions/61734755/variable-substitution-in-config-json-files-in-azure-devops-pipeline/61736613#61736613
-# no PR triggers
-pr: none
 
 pool:
   vmImage: 'ubuntu-latest'

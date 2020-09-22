@@ -1,14 +1,7 @@
-trigger:
-  branches:
-    include:
-      - master
-  paths:
-    include:
-      - stackoverflow/26-update-variable-group/*
+trigger: none
+pr: none
 
 # https://stackoverflow.com/questions/61799711/impossible-to-update-variable-from-variable-group-library/61800119#61800119
-# no PR triggers
-pr: none
 
 pool:
   vmImage: 'ubuntu-latest'

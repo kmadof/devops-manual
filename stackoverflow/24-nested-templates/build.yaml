@@ -1,13 +1,6 @@
-trigger:
-  branches:
-    include:
-      - master
-  paths:
-    include:
-      - stackoverflow/24-nested-templates/*
-
 # https://stackoverflow.com/questions/61676408/is-it-possible-to-import-a-script-in-a-yaml-template/61677662#61677662
-# no PR triggers
+
+trigger: none
 pr: none
 
 resources:
