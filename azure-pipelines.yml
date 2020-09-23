@@ -22,4 +22,5 @@ steps:
   enabled: false
 - script: | 
    echo value is ${{variables.SonarVerbo}}
+  enabled: false
 
