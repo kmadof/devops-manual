@@ -1,0 +1,20 @@
+# https://stackoverflow.com/questions/64020523/how-to-add-env-vars-into-azure-devops-pipeline
+
+trigger: none
+pr: none
+
+variables:
+  - group: PROD
+  - name: variableFromDeclaration
+    value: 'valueFromDeclaration'
+  - template: vars.yaml  
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: env | sort
+- script: | 
+    echo $VARIABLEFROMDECLARATION
+    echo $VARIABLEFROMGROUP
+    echo $VARIABLEFROMTEMPLATE
