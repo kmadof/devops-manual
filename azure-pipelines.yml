@@ -8,8 +8,11 @@ pool:
 
 variables:
   coalesceLiteral: $[coalesce(variables.emptyString, '', 'literal value')]
-  sonarVerboseNew: $[coalesce(variables.sonarVerbose,'false')]
+  sonarVerboseNew: $[coalesce(variables.sonarVerbose,false)]
 
 steps:
 - script: echo $(coalesceLiteral) # outputs literal value
-- script: echo $(sonarVerboseNew) # outputs literal value
+- script: echo $(sonarVerboseNew)
+- bash: echo "##vso[task.setvariable sonarVerbose=testvar;]$(sonarVerboseNew)"
+- script: echo $(sonarVerbose)
+
