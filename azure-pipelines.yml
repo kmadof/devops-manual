@@ -8,8 +8,8 @@ pool:
 
 variables:
   coalesceLiteral: $[coalesce(variables.emptyString, '', 'literal value')]
-  sonarVerbose: $[coalesce(variables.sonarVerbose,'','false')]
+  sonarVerboseNew: $[coalesce(variables.sonarVerbose,'false')]
 
 steps:
 - script: echo $(coalesceLiteral) # outputs literal value
-- script: echo $(sonarVerbose) # outputs literal value
+- script: echo $(sonarVerboseNew) # outputs literal value
