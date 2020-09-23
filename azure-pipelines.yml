@@ -19,6 +19,7 @@ steps:
 - script: echo $(sonarVerbose)
 - script: | 
    echo value is ${{variables.sonarVerbos}}
+  enabled: false
 - script: | 
    echo value is ${{variables.SonarVerbo}}
 
