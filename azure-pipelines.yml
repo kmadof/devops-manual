@@ -13,6 +13,6 @@ variables:
 steps:
 - script: echo $(coalesceLiteral) # outputs literal value
 - script: echo $(sonarVerboseNew)
-- bash: echo "##vso[task.setvariable sonarVerbose=testvar;]$(sonarVerboseNew)"
+- bash: echo "##vso[task.setvariable sonarVerbose;]$(sonarVerboseNew)"
 - script: echo $(sonarVerbose)
 
