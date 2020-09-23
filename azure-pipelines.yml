@@ -1,0 +1,15 @@
+# https://stackoverflow.com/questions/64026801/echo-value-of-coalesced-variable-in-yaml-with-azure-devops
+
+trigger: none
+pr: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  coalesceLiteral: $[coalesce(variables.emptyString, '', 'literal value')]
+  sonarVerbose: $[coalesce(variables['sonarVerbose'],false)]
+
+steps:
+- script: echo $(coalesceLiteral) # outputs literal value
+- script: echo $(sonarVerbose) # outputs literal value
