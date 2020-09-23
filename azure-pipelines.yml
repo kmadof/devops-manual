@@ -10,6 +10,7 @@ variables:
   coalesceLiteral: $[coalesce(variables.emptyString, '', 'literal value')]
   sonarVerboseNew: $[coalesce(variables.sonarVerbose,false)]
   sonarVerbos: $[coalesce(variables.sonarVerbos,false)]
+  sonarVerbo: $[coalesce(variables['SonarVerbo'],false)]
 
 steps:
 - script: echo $(coalesceLiteral) # outputs literal value
@@ -17,5 +18,7 @@ steps:
 - bash: echo "##vso[task.setvariable variable=sonarVerbose;]$(sonarVerboseNew)"
 - script: echo $(sonarVerbose)
 - script: | 
-   echo value is ${{variables.SonarVerbose}}
+   echo value is ${{variables.sonarVerbos}}
+- script: | 
+   echo value is ${{variables.SonarVerbo}}
 
