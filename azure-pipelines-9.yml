@@ -8,8 +8,16 @@ pool:
 
 steps:
 - task: AzureCLI@2
+  enabled: false
   inputs:
     azureSubscription: 'rg-the-code-manual'
     scriptType: 'ps'
     scriptLocation: 'inlineScript'
     inlineScript: 'az functionapp create --name myapp-nightly-webhook-1 --resource-group TheCodeManual --consumption-plan-location australiaeast --functions-version 3 --os-type Windows --runtime dotnet --storage-account storageaccountthecobfaf'
+
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'rg-the-code-manual'
+    scriptType: 'ps'
+    scriptLocation: 'inlineScript'
+    inlineScript: 'az functionapp create --name myapp-nightly-webhook-2 --resource-group TheCodeManual --consumption-plan-location australiaeast --functions-version 3 --os-type Windows --storage-account storageaccountthecobfaf'
