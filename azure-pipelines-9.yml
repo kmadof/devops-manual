@@ -1,0 +1,15 @@
+# https://stackoverflow.com/questions/64040794/error-creating-azure-function-via-azure-cli-in-azure-devops-yml-pipeline-task
+
+trigger: none
+pr: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'rg-the-code-manual'
+    scriptType: 'ps'
+    scriptLocation: 'inlineScript'
+    inlineScript: 'az functionapp create --name myapp-nightly-webhook-1 --resource-group TheCodeManual --consumption-plan-location australiaeast --functions-version 3 --os-type Windows --runtime dotnet --storage-account storageaccountthecobfaf'
