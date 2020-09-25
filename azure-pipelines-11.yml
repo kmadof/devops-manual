@@ -4,7 +4,7 @@ trigger: none
 pr: none
 
 variables:
-  ArtifactVersion: '20200921.1'
+  ArtifactVersion: '6179'
 
 steps:
 - task: DownloadPipelineArtifact@2
