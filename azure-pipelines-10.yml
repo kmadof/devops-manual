@@ -1,7 +1,4 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+# https://stackoverflow.com/questions/64043553/how-to-start-previous-successful-release-automatically-in-devops-vsts/64044773?noredirect=1#comment113255370_64044773
 
 trigger: none
 pr: none
