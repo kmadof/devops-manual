@@ -38,6 +38,8 @@ Playground for various Azure DevOps options
  [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/stackoverflow/kmadof.dm-so-39?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=66&branchName=master)
  - [pipeline 40](https://stackoverflow.com/questions/62044055/is-it-possible-to-cancel-a-azure-devops-pipeline-job-programmatically) - example of using condition to control pipeline flow</br>
  [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/stackoverflow/kmadof.dm-so-40-conditional?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=67&branchName=master)
+ - pipeline 41 - using secret mappings, and playing with lists which are not supported by YAML here</br>
+ [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/stackoverflow/kmadof.dm-so-41?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=73&branchName=master)
  - pipeline 45 - few examples how to run python scripts</br>
  [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/stackoverflow/kmadof.dm-so-45?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=90&branchName=master)
  - pipeline 46 - getting access to Agent.OS variable in condition</br>
@@ -70,3 +72,5 @@ Playground for various Azure DevOps options
  [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/kmadof.devops-manual%20(8)?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=101&branchName=master)
  - [pipeline 68](https://stackoverflow.com/questions/58823004/how-can-i-use-if-else-in-variables-of-azure-devops-yaml-pipeline-with-variable-g) - conditional variables</br>
  [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/stackoverflow/kmadof.dm-so-68-a-conditional-variables?branchName=dev)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=121&branchName=dev) [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/stackoverflow/kmadof.dm-so-68-b-conditional-variables?branchName=dev)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=122&branchName=dev)
+ - [pipeline 70](https://stackoverflow.com/questions/64020523/how-to-add-env-vars-into-azure-devops-pipeline) - showing mapping variables to envs</br>
+ [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/stackoverflow/kmadof.dm-so-70-env-vars?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=124&branchName=master)
