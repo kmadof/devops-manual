@@ -1,16 +1,16 @@
 # https://stackoverflow.com/questions/64065335/use-template-in-azure-pipeline-for-repository-refs/64098855?noredirect=1#comment113354815_64098855
 
 trigger: none
-pr:
-- master
+pr: none
 
+#this is not possible
 resources:
   repositories:
     - repository: devops
       type: github
       name: kmadof/devops-templates
       endpoint: kmadof
-      ref: ${{ replace($(System.PullRequest.TargetBranch), "refs/heads/", "")}}
+      ref: ${{ variables['System.PullRequest.TargetBranch'] }}
 
 steps:
 - checkout: self
