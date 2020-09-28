@@ -5,17 +5,7 @@ parameters:
   default: true
 
 
-trigger:
-  branches:
-    include:
-    - master
-  paths:
-    include:
-    - stackoverflow/16-multistage/*
-    exclude:
-    - '*'
-
-# no PR triggers
+trigger: none
 pr: none
 
 pool:
