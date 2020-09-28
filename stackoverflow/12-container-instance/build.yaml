@@ -1,14 +1,4 @@
-trigger:
-  branches:
-    include:
-    - master
-  paths:
-    include:
-    - stackoverflow/12-container-instance/*
-    exclude:
-    - '*'
-
-# no PR triggers
+trigger: none
 pr: none
 
 pool:
