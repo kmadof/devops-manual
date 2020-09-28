@@ -2,7 +2,8 @@
 Playground for various Azure DevOps options
 
 
- - [Cross stage variables](http://thecodemanual.pl/2020/05/05/cross-stage-variables.html) - describes how to use variables across the stages. This is useful to evaluate go/no go decision for next stages/jobs in your YAML builds.
+ - [Cross stage variables](http://thecodemanual.pl/2020/05/05/cross-stage-variables.html) - describes how to use variables across the stages. This is useful to evaluate go/no go decision for next stages/jobs in your YAML builds.</br>
+ [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/kmadof.dm-cross-stage-variables?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=40&branchName=master)
  - [Caching npm modules](http://thecodemanual.pl/2020/03/11/caching-not-only-nuget-packages-on-azure-devops.html#caching-npm-modules) - describes hot to cache npm modules and show difference between `npm install` and `npm ci`</br>
  [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/kmadof.dm-cache-npm?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=52&branchName=master)
  - Caching ruby gems - simple ruby gems cache base son built in task
@@ -15,11 +16,33 @@ Playground for various Azure DevOps options
 
 
  ## Stackoverflow questions:
-
+ - docker multiple apps with container registry</br>
+ [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/kmadof.dm-docker-multiple-apps?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=28&branchName=master)
+ - dotnet core on widnows with getting number of passed and failed test over REST API </br>
+ [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/kmadof.dm-dotnet-core-on-windows?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=41&branchName=master)
  - pipeline 08 - creating nuget package with nuspec file</br>
  [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/kmadof.devops-manual%20(8)?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=101&branchName=master)
+ - pipeline 10 - multistage pipeline </br>
+ [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/stackoverflow/kmadof.dm-so-10?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=30&branchName=master)
+ - pipeline 11 - multistage pipeline </br>
+ [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/stackoverflow/kmadof.dm-so-11-b?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=32&branchName=master)
+ [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/stackoverflow/kmadof.dm-so-11-b?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=32&branchName=master)
+ - [pipeline 12](https://stackoverflow.com/questions/61497425/azure-devops-azurecli-task-with-scriptpath-option-failed-to-authenticate-to-crea) - running container instance, using replace token, running C# code written in build file</br>
+ [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/stackoverflow/kmadof.dm-so-12?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=33&branchName=master)
  - pipeline 13 - simple multistage pipeline with condition and failing one stage </br>
 [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/stackoverflow/kmadof.dm-so-13?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=34&branchName=master)
+ - pipeline 14 - adding tag and using output variables</br>
+ [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/stackoverflow/kmadof.dm-so-14?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=35&branchName=master)
+ - pipeline 16 - conditional run of steps based on the runtime parameters</br>
+ [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/stackoverflow/kmadof.dm-so-16?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=38&branchName=master)
+ - [pipeline 17](stackoverflow.com/questions/61651777/how-can-we-pass-variable-as-a-parametersas-a-list) - shows not possible - dunamic list in yaml</br>
+ [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/stackoverflow/kmadof.dm-so-17?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=42&branchName=master)
+ - [pipeline 18](https://stackoverflow.com/questions/61676408/is-it-possible-to-import-a-script-in-a-yaml-template/61677662#61677662) - importing script in template fro other repo</br>
+ [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/stackoverflow/kmadof.dm-so-18?repoName=kmadof%2Fdevops-manual&branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=43&repoName=kmadof%2Fdevops-manual&branchName=master)
+ - pipeline 20 - scheduled pipeline</br>
+ [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/stackoverflow/kmadof.dm-so-20-scheduled?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=46&branchName=master)
+ - pipeline 21 - upload summary</br>
+ [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/stackoverflow/kmadof.dm-so-21-upload-summary?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=47&branchName=master)
  - [pipeline 23](https://stackoverflow.com/questions/61734755/variable-substitution-in-config-json-files-in-azure-devops-pipeline/61736613#61736613) - token replace in config and json files</br>
  [![Build Status](https://dev.azure.com/thecodemanual/DevOps%20Manual/_apis/build/status/stackoverflow/kmadof.dm-so-23-token-replace?branchName=master)](https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/latest?definitionId=49&branchName=master)
  - [pipeline 24](https://stackoverflow.com/questions/61676408/is-it-possible-to-import-a-script-in-a-yaml-template/61677662#61677662) extending pipeline using template from different repository </br>
