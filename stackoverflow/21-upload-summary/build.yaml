@@ -1,13 +1,6 @@
-trigger:
-  branches:
-    include:
-      - master
-  paths:
-    include:
-      - stackoverflow/21-upload-summary/*
+trigger: none
 
 # stackoverflow.com/questions/61651777/how-can-we-pass-variable-as-a-parametersas-a-list
-# no PR triggers
 pr: none
 
 variables:
