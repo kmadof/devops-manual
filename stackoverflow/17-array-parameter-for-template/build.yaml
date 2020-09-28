@@ -1,10 +1,4 @@
-trigger:
-  branches:
-    include:
-      - master
-  paths:
-    include:
-      - stackoverflow/17-array-parameter-for-template/*
+trigger: none
 
 # stackoverflow.com/questions/61651777/how-can-we-pass-variable-as-a-parametersas-a-list
 # no PR triggers
