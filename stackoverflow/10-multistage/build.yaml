@@ -1,12 +1,4 @@
-trigger:
-  branches:
-    include:
-      - master
-  paths:
-    include:
-      - stackoverflow/10-multistage/*
-
-# no PR triggers
+trigger: none
 pr: none
 
 pool:
