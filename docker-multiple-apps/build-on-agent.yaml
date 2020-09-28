@@ -1,17 +1,5 @@
 
-trigger:
-  branches:
-    include:
-    - '*'
-    exclude:
-    - master
-  paths:
-    include:
-    - docker-multiple-apps/*
-    exclude:
-    - docker-multiple-apps/*.ymal
-
-# no PR triggers
+trigger: none
 pr: none
 
 pool:
