@@ -1,12 +1,4 @@
-trigger:
-  branches:
-    include:
-      - master
-  paths:
-    include:
-      - stackoverflow/06/*
-
-# no PR triggers
+trigger: none
 pr: none
 
 #https://stackoverflow.com/questions/61306564/azure-devops-build-pipeline-doesnt-build-executables
