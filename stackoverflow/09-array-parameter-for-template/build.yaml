@@ -1,12 +1,4 @@
-trigger:
-  branches:
-    include:
-      - master
-  paths:
-    include:
-      - stackoverflow/09-array-parameter-for-template/*
-
-# no PR triggers
+trigger: none
 pr: none
 
 pool:
