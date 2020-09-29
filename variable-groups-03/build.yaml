@@ -1,12 +1,4 @@
-trigger:
-  branches:
-    include:
-      - master
-  paths:
-    include:
-      - variable-groups-03/*
-
-# no PR triggers
+trigger: none
 pr: none
 
 variables:
