@@ -7,15 +7,7 @@ parameters:
   - QA
   - PROD
 
-trigger:
-  branches:
-    include:
-      - master
-  paths:
-    include:
-      - variable-groups-01/*
-
-# no PR triggers
+trigger: none
 pr: none
 
 stages:
