@@ -12,15 +12,7 @@ parameters:
   type: string
   default: ' '
 
-trigger:
-  branches:
-    include:
-      - master
-  paths:
-    include:
-      - stackoverflow/04/*
-
-# no PR triggers
+trigger: none
 pr: none
 
 pool:
