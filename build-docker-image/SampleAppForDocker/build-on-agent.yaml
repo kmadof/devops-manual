@@ -42,6 +42,7 @@ steps:
     containerRegistry: devopsmanual-acr
 
 - task: AzureRmWebAppDeployment@4
+  enabled: false
   displayName: 'Deploy Azure App Service'
   inputs:
     azureSubscription: rg-the-code-manual
