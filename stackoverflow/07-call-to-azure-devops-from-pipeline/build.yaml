@@ -1,12 +1,4 @@
-trigger:
-  branches:
-    include:
-      - master
-  paths:
-    include:
-      - stackoverflow/07-call-to-azure-devops-from-pipeline/*
-
-# no PR triggers
+trigger: none
 pr: none
 
 variables: 
