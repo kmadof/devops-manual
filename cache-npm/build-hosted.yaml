@@ -1,11 +1,5 @@
-trigger:
-  branches:
-    include:
-      - master
-  paths:
-    include:
-      - cache-npm/*
-
+# https://stackoverflow.com/questions/64132920/avoid-git-clean-with-azure-devops-self-hosted-build-agent/64133770#64133770
+trigger: none
 pr: none
 
 pool:
