@@ -4,15 +4,28 @@ pr: none
 pool:
   vmImage: 'ubuntu-latest'
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+jobs:
+  # track deployments on the environment
+- deployment: DeployWeb
+  displayName: deploy Web App
+  pool:
+    vmImage: 'Ubuntu-16.04'
+  # creates an environment if it doesn't exist
+  environment: 'smarthotel-dev'
+  strategy:
+    # default deployment strategy, more coming...
+    runOnce:
+      deploy:
+        steps:
+        - script: echo Hello, world!
+          displayName: 'Run a one-line script'
 
-- task: ManualIntervention@8
-  inputs:
-    instructions: 'Do something'
+        - task: ManualValidation@0
+          inputs:
+            notifyUsers: '$(user)'
+            instructions: 'Do something'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+        - script: |
+            echo We are done here
+            echo Time to call it a deployment
+          displayName: 'Run a multi-line script'
