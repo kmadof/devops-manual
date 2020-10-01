@@ -1,0 +1,48 @@
+trigger:
+  branches:
+    include:
+      - master
+  paths:
+    include:
+      - cache-npm/*
+
+pr: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  npm_config_cache: $(Pipeline.Workspace)/.npm
+
+steps:
+- task: PowerShell@2
+  displayName: 'Calculate and save packages.config hash'
+  inputs:
+    targetType: 'inline'
+    pwsh: true
+    script: |
+      # generates a hash of
+      $newHash = Get-FileHash -Algorithm MD5 -Path (Get-ChildItem package-lock.json)
+      $hashPath = "$(System.DefaultWorkingDirectory)/cache-npm/hash.txt"
+      if(Test-Path -path $hashPath) {
+        if(Compare-Object -ReferenceObject $(Get-Content $hashPath) -DifferenceObject $newHash) {
+          
+          Write-Host "##vso[task.setvariable variable=NodeModulesAreUpToDate;]true"
+          $newHash > $hashPath
+          Write-Host ("Hash File saved to " + $hashPath)
+        } else {
+          # files are the same
+          Write-Host "no need to install node_modules"
+        }
+      } else {
+        $newHash > $hashPath
+        Write-Host ("Hash File saved to " + $hashPath)
+      }
+      
+      $storedHash = Get-Content $hashPath
+      Write-Host $storedHash
+    workingDirectory: '$(System.DefaultWorkingDirectory)/cache-npm'
+
+- script: npm install
+  workingDirectory: '$(Build.SourcesDirectory)/cache-npm'
+  condition: ne(variables['NodeModulesAreUpToDate'], true)
