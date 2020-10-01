@@ -5,6 +5,13 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome in version 9</h1>
+    <h1 class="display-4">Welcome in version 10</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    <p>ValueFromConfig: @Model.Settings.ValueFromConfig</p>
+    <p>ValueFromConfigProduction: @Model.Settings.ValueFromConfigProduction</p>
+    <p>ValueFromConfigSlot: @Model.Settings.ValueFromConfigSlot</p>
+    <p>ValueOnlyOnProd: @Model.Settings.ValueOnlyOnProd</p>
+    <p>ValueOnlyOnSlot: @Model.Settings.ValueOnlyOnSlot</p>
 </div>
+
