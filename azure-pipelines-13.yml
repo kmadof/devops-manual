@@ -5,9 +5,46 @@ pr: none
 pool:
   vmImage: 'ubuntu-latest'
 
+variables:
+  devopsAccount : 'thecodemanual'
+  projectName : 'DevOps Manual'
+  logId: "6"
+
+
 steps:
 - task: ExtractFiles@1
   displayName: 'Extract files '
   inputs:
     archiveFilePatterns: '$(System.ArtifactsDirectory)\*.zip'
     destinationFolder: '$(System.ArtifactsDirectory)\bin'
+
+- task: PowerShell@2
+  name: testDetails
+  condition: always()
+  inputs:
+    targetType: 'inline'
+    script: |
+        # Encode the Personal Access Token (PAT)
+        $AzureDevOpsAuthenicationHeader = @{Authorization = 'Basic ' + [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(":$(System.AccessToken)")) }
+
+        # Get a list of releases
+        $uri = "https://dev.azure.com/$(devopsAccount)/$(projectName)/_apis/build/builds/$(Build.BuildId)/logs/$(logId)?api-version=5.1"
+
+        Write-Host $uri
+
+        # Invoke the REST call
+        $result = Invoke-RestMethod -Uri $uri -Method Get -Headers $AzureDevOpsAuthenicationHeader
+
+        Write-Host $result
+
+        $lines = $result.Split([Environment]::NewLine)
+
+        $passed = 0;
+        $failed = 0;
+
+        foreach($line in $lines) {
+            if ($line -match "Found: 0 files to extract") { 
+              exit 1
+            }
+
+        }
