@@ -18,10 +18,15 @@ stages:
       pool: server
       timeoutInMinutes: 60
       steps:
-        - task: ManualIntervention@8
+        - task: ManualIntervention@8 #"Task execution section of task definition for ID: bcb64569-d51a-4af0-9c01-ea5d05b3b622 is either missing or not valid."
+          enabled: false
           timeoutInMinutes: 60
           displayName: "Manual approval"
           inputs:
             instructions: 'review deploy'
             emailRecipients: '$(toNotify)'
             onTimeout: reject
+        - task: ManualValidation@0
+          inputs:
+            notifyUsers: '$(toNotify)'
+            instructions: 'What am I doing here?'
