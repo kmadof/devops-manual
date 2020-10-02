@@ -1,0 +1,18 @@
+# https://stackoverflow.com/questions/64172291/azure-devops-how-to-use-a-powershell-command-to-run-sql-scripts
+
+trigger: none
+pr: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: 'Install-Module -Name SqlServer -Scope CurrentUser'
+
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: 'Install-Module -Name SqlServer -AllowClobber -Scope CurrentUser -Force'
