@@ -44,6 +44,7 @@ steps:
 
         foreach($line in $lines) {
             if ($line -match "Found: 0 files to extract") { 
+              throw 'There is no files to extract'
               exit 1
             }
 
