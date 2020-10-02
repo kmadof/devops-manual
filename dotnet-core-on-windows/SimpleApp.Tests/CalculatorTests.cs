@@ -10,7 +10,7 @@ namespace SimpleApp.Tests
         [InlineData(3, 5)]
         [InlineData(1, 3)]
         [InlineData(4, 6)]
-        [InlineData(4, 8)]
+        [InlineData(6, 8)]
         public void ShouldAddTwoReturnCorrectResult(int value, int result)
         {
             Calculator.AddTwo(value).Should().Be(result);
