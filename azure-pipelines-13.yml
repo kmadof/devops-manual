@@ -1,0 +1,13 @@
+# https://stackoverflow.com/questions/64168812/extract-files-to-process-no-files-were-found-warning
+trigger: none
+pr: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: ExtractFiles@1
+  displayName: 'Extract files '
+  inputs:
+    archiveFilePatterns: '$(System.ArtifactsDirectory)\*.zip'
+    destinationFolder: '$(System.ArtifactsDirectory)\bin'
