@@ -11,7 +11,8 @@ steps:
   inputs:
     awsCredentials: 'aws'
     regionName: 'eu-west-1'
-    awsCommand: '--version'
+    awsCommand: 's3'
+    awsSubCommand: 'ls'
 - task: Bash@3
   inputs:
     targetType: 'inline'
