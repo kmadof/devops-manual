@@ -7,12 +7,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: AWSCLI@1
-  inputs:
-    awsCredentials: 'aws'
-    regionName: 'eu-west-1'
-    awsCommand: 's3'
-    awsSubCommand: 'ls'
+
 - pwsh: aws --version
 - task: Bash@3
   inputs:
