@@ -11,3 +11,9 @@ steps:
 
 - pwsh: Get-ChildItem Env:* | Select-Object -Property Name,Value
 
+- pwsh: |
+    $name = "os"
+    $envVar = ("env:" + $name.ToUpper())
+    $envValue = Get-ChildItem $envVar | select value
+
+    Write-Host $envValue.Value
