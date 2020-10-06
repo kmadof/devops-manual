@@ -17,6 +17,7 @@ stages:
         
 - stage: Test
   displayName: 'Building for Test'
+  condition: ne(variables['Build.Reason'], 'PullRequest')
   jobs:
   - job: T1
     steps:
@@ -24,6 +25,7 @@ stages:
 
 - stage: Stage
   displayName: 'Building for Stage'
+  condition: ne(variables['Build.Reason'], 'PullRequest')
   jobs:
   - job: S1
     steps:
