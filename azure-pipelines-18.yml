@@ -1,0 +1,30 @@
+# https://stackoverflow.com/questions/64231281/azure-devops-pipelines-stages
+pr:
+  branches:
+    include:
+    - '*'
+
+pool:
+  vmImage: 'macos-latest'
+
+stages:
+- stage: CI
+  displayName: 'Continues build'
+  jobs:
+  - job: C1
+    steps:
+      - script: echo "Hello $(System.StageName)"
+        
+- stage: Test
+  displayName: 'Building for Test'
+  jobs:
+  - job: T1
+    steps:
+      - script: echo "Hello $(System.StageName)"
+
+- stage: Stage
+  displayName: 'Building for Stage'
+  jobs:
+  - job: S1
+    steps:
+      - script: echo "Hello $(System.StageName)"
