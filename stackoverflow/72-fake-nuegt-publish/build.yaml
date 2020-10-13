@@ -4,14 +4,11 @@ trigger: none
 pr: none
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'windows-latest'
 
 steps:
-- bash: |
-    export PATH=$PATH:$HOME/.dotnet/tools:/Library/Frameworks/Mono.framework/Versions/Current/Commands
-    dotnet tool install fake-cli -g
 - pwsh: |
-
+    dotnet tool install fake-cli --tool-path .
     fake run build.fsx -e token=$env:MYSECRET
   workingDirectory: $(Build.SourcesDirectory)/stackoverflow/72-fake-nuegt-publish
   env:
