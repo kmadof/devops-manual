@@ -9,7 +9,8 @@ pool:
 steps:
 - pwsh: |
     dotnet tool install fake-cli --tool-path .
-    fake.exe run build.fsx -e token=$env:MYSECRET
+    ls .
+    .\fake.exe run build.fsx -e token=$env:MYSECRET
   workingDirectory: $(Build.SourcesDirectory)/stackoverflow/72-fake-nuegt-publish
   env:
     MySecret: $(System.AccessToken)
