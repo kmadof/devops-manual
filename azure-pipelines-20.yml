@@ -1,0 +1,87 @@
+trigger:
+- task: CodeDeployDeployApplication@1
+  inputs:
+    awsCredentials: 'AWS Service Con'
+    regionName: 'us-east-1'
+    applicationName: 'Dev-erp-Frontend'
+    deploymentGroupName: 'Dev-erp-Frontend'
+    deploymentRevisionSource: 'workspace'
+    revisionBundle: 'Dev-erp-Frontend-Rev'
+    bucketName: 'Dev-erp-Frontend'
+    fileExistsBehavior: 'OVERWRITE'
+    batch: "true"
+  branches:
+    include:
+      - master
+      - dev
+  paths:
+    include:
+      - ./*
+
+pr:
+  branches:
+    include:
+      - master
+      - dev
+  paths:
+    include:
+      - ./*
+
+jobs:
+  - job: Build_Job
+    displayName: Build
+    pool:
+      vmImage: 'ubuntu-18.04'
+      demands:
+      - npm
+    steps:
+    - checkout: self
+      clean: false
+#    - powershell: 'npm cache clean  --force'
+#      displayName: 'PowerShell Script'
+#      env:
+#        APPDATA: npm-cache
+    - task: Npm@1
+      displayName: 'Npm Install'
+      inputs:
+        workingDir: "./"
+        command: "ci"
+    - task: Npm@1
+      displayName: 'Lint Client App'
+      inputs:
+        workingDir: "./"
+        command: "custom"
+        customCommand: "run lint"
+      continueOnError: true
+    - task: Npm@1
+      displayName: 'Copy Assets'
+      inputs:
+        workingDir: "./"
+        command: "custom"
+        customCommand: "run copy-files"
+      continueOnError: false
+    - task: Npm@1
+      displayName: 'Build Client App'
+      inputs:
+        workingDir: "./"
+        command: "custom"
+        customCommand: "run build:prod"
+
+# Archive files
+    - task: ArchiveFiles@2
+      inputs:
+        rootFolderOrFile: '$(Build.BinariesDirectory)' 
+        includeRootFolder: true 
+        archiveType: 'zip' # Options: zip, 7z, tar, wim
+        archiveFile: '$(Build.ArtifactStagingDirectory)/www.zip' 
+        replaceExistingArchive: true
+
+    - task: CopyFiles@2
+      inputs:
+        Contents: 'www/**'
+        TargetFolder: '$(build.artifactstagingdirectory)'
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Artifact'
+      inputs:
+        PathtoPublish: '$(build.artifactstagingdirectory)'
+        ArtifactName: 'titas-ecom-erp'

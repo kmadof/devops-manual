@@ -1,0 +1,16 @@
+# https://stackoverflow.com/questions/64286891/ignore-supress-warning-during-azure-devops-pipeline
+
+trigger: none
+pr: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- powershell: Write-Host "##[warning]Warning message"
+  displayName: 'Set warning'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'

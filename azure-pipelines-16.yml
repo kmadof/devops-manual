@@ -1,0 +1,19 @@
+# https://stackoverflow.com/questions/64193125/azure-devops-powershell-variable-char-substitution-to-address-existing-env-var/64199041#64199041
+
+trigger: none
+pr: none
+
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+- pwsh: gci env:* | select Name,Value
+
+- pwsh: Get-ChildItem Env:* | Select-Object -Property Name,Value
+
+- pwsh: |
+    $name = "os"
+    $envVar = ("env:" + $name.ToUpper())
+    $envValue = Get-ChildItem $envVar | select value
+
+    Write-Host $envValue.Value
