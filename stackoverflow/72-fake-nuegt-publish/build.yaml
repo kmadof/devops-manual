@@ -13,4 +13,4 @@ steps:
     .\fake.exe run build.fsx -e token=$env:MYSECRET
   workingDirectory: $(Build.SourcesDirectory)/stackoverflow/72-fake-nuegt-publish
   env:
-    MySecret: $(System.AccessToken)
+    MySecret: $(token)
