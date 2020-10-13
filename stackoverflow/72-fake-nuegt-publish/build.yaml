@@ -1,0 +1,15 @@
+# https://stackoverflow.com/questions/64340688/nuget-push-to-artifacts-from-build-script-fails-to-authenticate
+
+trigger: none
+pr: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- pwsh: dotnet tool install fake-cli -g
+- pwsh: |
+    fake run build.fsx -e $env:MYSECRET
+  workingDirectory: $(Build.SourcesDirectory)/stackoverflow/72-fake-nuegt-publish
+  env:
+    MySecret: $(System.AccessToken)
