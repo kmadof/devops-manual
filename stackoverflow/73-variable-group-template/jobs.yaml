@@ -15,6 +15,7 @@ jobs:
   - group: ${{ parameters.variableGroupName }}
   steps:
   - script: |
-      ${{ variables.armConnection }}
-      ${{ variables.myhello }}
-      ${{ variables.secretVar }}
+      '${{ variables.armConnection }}'
+      '${{ variables.myhello }}'
+      '${{ variables.secretVar }}'
+  - script: env | sort
