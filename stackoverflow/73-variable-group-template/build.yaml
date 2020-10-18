@@ -1,4 +1,7 @@
+# https://stackoverflow.com/questions/64416681/how-can-a-i-scope-the-variable-group-to-be-only-in-a-pipeline-template
 # File: azure-pipelines.yml
 
 jobs:
 - template: templates/jobs.yaml  # Template reference
+  parameters:
+    variableGroupName: 'my-variable-group'
