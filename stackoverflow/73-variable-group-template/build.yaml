@@ -2,6 +2,6 @@
 # File: azure-pipelines.yml
 
 jobs:
-- template: templates/jobs.yaml  # Template reference
+- template: jobs.yaml  # Template reference
   parameters:
     variableGroupName: 'my-variable-group'
