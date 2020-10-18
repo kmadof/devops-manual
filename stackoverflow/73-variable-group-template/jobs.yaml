@@ -14,4 +14,7 @@ jobs:
   variables:
   - group: ${{ parameters.variableGroupName }}
   steps:
-  - bash: echo "Hello Ubuntu"
+- script: |
+    ${{ variables.armConnection }}
+    ${{ variables.myhello }}
+    ${{ variables.secretVar }}
