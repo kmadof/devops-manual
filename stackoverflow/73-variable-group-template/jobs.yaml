@@ -18,4 +18,5 @@ jobs:
       '${{ variables.armConnection }}'
       '${{ variables.myhello }}'
       '${{ variables.secretVar }}'
+    continueOnError: true
   - script: env | sort
