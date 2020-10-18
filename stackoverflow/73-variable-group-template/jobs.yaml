@@ -14,7 +14,7 @@ jobs:
   variables:
   - group: ${{ parameters.variableGroupName }}
   steps:
-- script: |
-    ${{ variables.armConnection }}
-    ${{ variables.myhello }}
-    ${{ variables.secretVar }}
+  - script: |
+      ${{ variables.armConnection }}
+      ${{ variables.myhello }}
+      ${{ variables.secretVar }}
