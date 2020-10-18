@@ -1,0 +1,17 @@
+# File: simple-param.yml
+parameters:
+- name: variableGroupName # name of the parameter; required
+  type: string # data type of the parameter; required
+  default: 'PROD'  
+  
+  # File: templates/jobs.yml
+
+
+jobs:
+- job: Ubuntu
+  pool:
+    vmImage: 'ubuntu-latest'
+  variables:
+  - group: ${{ parameters.variableGroupName }}
+  steps:
+  - bash: echo "Hello Ubuntu"
