@@ -20,3 +20,17 @@ steps:
 
 - pwsh: |
     Write-Host $(testvar)
+
+- pwsh: |
+    $text = Get-Content $(FilePath) -Raw 
+
+    # encode string as UTF8 byte array, encode byte array as base64 string
+    $b64 = [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($text))
+
+    # set variable value to base64
+    Write-Host "##vso[task.setvariable variable=testvar;]$b64"
+
+- pwsh: |
+    $text = [Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($testVar))
+
+    Write-Host $text
