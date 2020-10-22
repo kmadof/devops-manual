@@ -19,7 +19,7 @@ steps:
     Write-Host $(testvar)
 
 - pwsh: |
-    $text = Get-Content $(FilePath) -Raw 
+    $text = Get-Content test.txt -Raw 
 
     # encode string as UTF8 byte array, encode byte array as base64 string
     $b64 = [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($text))
