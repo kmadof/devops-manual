@@ -1,0 +1,22 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- pwsh: |
+    $text = Get-Content test.txt -Raw 
+    #everything gets printed
+    Write-Host $text
+    #I save it in the variable
+    Write-Host "##vso[task.setvariable variable=testvar;]$text"
+
+
+- pwsh: |
+    Write-Host $(testvar)
