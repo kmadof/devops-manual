@@ -8,12 +8,12 @@ steps:
   inputs:
     terraformVersion: '0.13.5'
 - script: ls
-  workingDirectory: '$(System.DefaultWorkingDirectory)\stackoverflow\74-terraform'
+  workingDirectory: '$(System.DefaultWorkingDirectory)/stackoverflow/74-terraform'
 - task: TerraformTaskV1@0
   inputs:
     provider: 'azurerm'
     command: 'init'
-    workingDirectory: '$(System.DefaultWorkingDirectory)\stackoverflow\74-terraform'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/stackoverflow/74-terraform'
     backendServiceArm: 'rg-the-code-manual'
     backendAzureRmResourceGroupName: 'TheCodeManual'
     backendAzureRmStorageAccountName: 'thecodemanual'
