@@ -14,8 +14,8 @@ steps:
     Inline: |
       $value1 = "Value1"
       $value2 = "Value2"
-      Write-Host "##vso[task.setvariable variable=VersionName]$value1"
-      Write-Host "##vso[task.setvariable variable=SourceId]$value2"
+      Write-Host "##vso[task.setvariable variable=VersionName;isOutput=true]$value1"
+      Write-Host "##vso[task.setvariable variable=SourceId;isOutput=true]$value2"
       echo "##vso[task.setvariable variable=myOutputVar;isOutput=true]this is the value"
     azurePowerShellVersion: 'LatestVersion'
     azureSubscription: 'rg-the-code-manual'
@@ -23,8 +23,10 @@ steps:
   inputs:
     ScriptType: 'InlineScript'
     Inline: |
-      Write-Host "Version name is $($env:VersionName)"
-      Write-Host "VM source is $($env:SourceId)"
+      Write-Host "Version name is $(VersionName)"
+      Write-Host "VM source is $(SourceId)"
+      Write-Host "Version name is $(setvarStep.VersionName)"
+      Write-Host "VM source is $(setvarStep.SourceId)"
       Write-Host $(setvarStep.myOutputVar)
     azurePowerShellVersion: 'LatestVersion'
     azureSubscription: 'rg-the-code-manual'
