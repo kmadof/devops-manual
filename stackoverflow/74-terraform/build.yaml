@@ -1,0 +1,19 @@
+#https://stackoverflow.com/questions/64501255/terraform-running-in-azure-pipeline-attempting-to-install-azcli-provider
+
+trigger: none
+pr: none
+
+steps:
+- task: TerraformInstaller@0
+  inputs:
+    terraformVersion: '0.13.5'
+- task: TerraformTaskV1@0
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)\stackoverflow\74-terraform'
+    backendServiceArm: 'rg-the-code-manual'
+    backendAzureRmResourceGroupName: 'TheCodeManual'
+    backendAzureRmStorageAccountName: 'thecodemanual'
+    backendAzureRmContainerName: 'infra'
+    backendAzureRmKey: 'tfstate-so-74'
