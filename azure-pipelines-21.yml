@@ -1,0 +1,33 @@
+# https://stackoverflow.com/questions/64485048/output-variable-in-azure-devops-looses-everything-after-first-line-break
+
+trigger: none
+pr: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- pwsh: |
+    $text = Get-Content test.txt -Raw 
+    #everything gets printed
+    Write-Host $text
+    #I save it in the variable
+    Write-Host "##vso[task.setvariable variable=testvar;]$text"
+
+
+- pwsh: |
+    Write-Host $(testvar)
+
+- pwsh: |
+    $text = Get-Content test.txt -Raw 
+
+    # encode string as UTF8 byte array, encode byte array as base64 string
+    $b64 = [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($text))
+
+    # set variable value to base64
+    Write-Host "##vso[task.setvariable variable=testvar;]$b64"
+
+- pwsh: |
+    $text = [Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($testVar))
+
+    Write-Host $text
