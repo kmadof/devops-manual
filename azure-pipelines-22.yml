@@ -1,0 +1,27 @@
+# https://stackoverflow.com/questions/64502851/is-it-possible-to-set-variables-in-the-azure-powershell-task-in-azure-devops-and
+
+trigger: none
+pr: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: AzurePowerShell@5
+  inputs:
+    ScriptType: 'InlineScript'
+    Inline: |
+      $value1 = "Value1"
+      $value2 = "Value2"
+      Write-Host "##vso[task.setvariable variable=VersionName;isOutput=true]$value1"
+      Write-Host "##vso[task.setvariable variable=SourceId;isOutput=true]$value2"
+    azurePowerShellVersion: 'LatestVersion'
+    azureSubscription: 'rg-the-code-manual'
+- task: AzurePowerShell@5
+  inputs:
+    ScriptType: 'InlineScript'
+    Inline: |
+      Write-Host "Version name is $($env:VersionName)"
+      Write-Host "VM source is $($env:SourceId)"
+    azurePowerShellVersion: 'LatestVersion'
+    azureSubscription: 'rg-the-code-manual'
