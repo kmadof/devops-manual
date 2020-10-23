@@ -8,6 +8,7 @@ pool:
 
 steps:
 - task: AzurePowerShell@5
+  name: setvarStep
   inputs:
     ScriptType: 'InlineScript'
     Inline: |
@@ -15,6 +16,7 @@ steps:
       $value2 = "Value2"
       Write-Host "##vso[task.setvariable variable=VersionName]$value1"
       Write-Host "##vso[task.setvariable variable=SourceId]$value2"
+      echo "##vso[task.setvariable variable=myOutputVar;isOutput=true]this is the value"
     azurePowerShellVersion: 'LatestVersion'
     azureSubscription: 'rg-the-code-manual'
 - task: AzurePowerShell@5
@@ -23,5 +25,6 @@ steps:
     Inline: |
       Write-Host "Version name is $($env:VersionName)"
       Write-Host "VM source is $($env:SourceId)"
+      Write-Host $(setvarStep.myOutputVar)
     azurePowerShellVersion: 'LatestVersion'
     azureSubscription: 'rg-the-code-manual'
