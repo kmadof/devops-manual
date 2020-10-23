@@ -23,8 +23,6 @@ steps:
   inputs:
     ScriptType: 'InlineScript'
     Inline: |
-      Write-Host "Version name is $(VersionName)"
-      Write-Host "VM source is $(SourceId)"
       Write-Host "Version name is $(setvarStep.VersionName)"
       Write-Host "VM source is $(setvarStep.SourceId)"
       Write-Host $(setvarStep.myOutputVar)
