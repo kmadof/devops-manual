@@ -13,8 +13,8 @@ steps:
     Inline: |
       $value1 = "Value1"
       $value2 = "Value2"
-      Write-Host "##vso[task.setvariable variable=VersionName;isOutput=true]$value1"
-      Write-Host "##vso[task.setvariable variable=SourceId;isOutput=true]$value2"
+      Write-Host "##vso[task.setvariable variable=VersionName]$value1"
+      Write-Host "##vso[task.setvariable variable=SourceId]$value2"
     azurePowerShellVersion: 'LatestVersion'
     azureSubscription: 'rg-the-code-manual'
 - task: AzurePowerShell@5
