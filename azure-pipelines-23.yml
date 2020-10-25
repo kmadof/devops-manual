@@ -10,5 +10,8 @@ steps:
 - script: |
     pip install -U pytest
     pip install pytest-cov
+  displayName: 'Install pytest'
+
+- script: |
     pytest tests --doctest-modules --junitxml=junit/test-results.xml --cov=. --cov-report=xml --cov-report=html
   displayName: 'Run pytest'
