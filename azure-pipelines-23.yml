@@ -1,0 +1,14 @@
+# https://stackoverflow.com/questions/64527843/pytest-not-found-in-azure-devops-pipeline
+
+trigger: none
+pr: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: |
+    pip install -U pytest
+    pip install pytest-cov
+    pytest tests --doctest-modules --junitxml=junit/test-results.xml --cov=. --cov-report=xml --cov-report=html
+  displayName: 'Run pytest'
