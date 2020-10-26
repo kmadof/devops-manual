@@ -7,7 +7,7 @@ stages:
   - ${{ each env in parameters.envs }}:
     - stage: A
       jobs:
-      - job A1:
+      - job: A1
         steps:
         - bash: echo "${{ env.env_name }} "
         - bash: echo "${{ env.variable_group }} "
