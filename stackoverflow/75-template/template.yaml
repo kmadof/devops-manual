@@ -2,6 +2,19 @@ parameters:
 - name: 'envs'
   type: object
   default: {}
+- name: myObject
+  type: object
+  default:
+    foo: FOO
+    bar: BAR
+    things:
+    - one
+    - two
+    - three
+    nested:
+      one: apple
+      two: pear
+      count: 3
 
 stages:
   - ${{ each env in parameters.envs }}:
@@ -12,5 +25,6 @@ stages:
         - bash: echo "${{ env.env_name }} "
         - bash: echo "${{ env.variable_group }} "
         - bash: echo "${{ env.pipeline_environment_name }} "
+        - bash: echo "${{ myObject.nested.one }} "
 
       
