@@ -1,0 +1,19 @@
+parameters:
+- name: env_name
+  type: string
+  default: 'dev'
+- name: variable_group
+  type: string
+  default: 'MY_VG'
+- name: pipeline_environment_name
+  type: string
+  default: 'DEV_ENV'
+
+stages:
+- stage: ${{ parameters.env_name }}
+  jobs:
+  - job: angularinstall
+    steps:
+    - script: echo "${{ parameters.env_name }}"
+    - script: echo "${{ parameters.variable_group }}"
+    - script: echo "${{ parameters.pipeline_environment_name }}"

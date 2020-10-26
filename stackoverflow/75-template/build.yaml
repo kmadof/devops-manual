@@ -1,12 +1,14 @@
-stages:
-- template: template.yaml
+extends:
+  template: template.yaml
   parameters:
-    envs:
-      - env:
-          env_name: 'dev'
-          variable_group: MY_VG
-          pipeline_environment_name: DEV_ENV
-      - env:
-          env_name: 'stage'
-          variable_group: MY_STAGE
-          pipeline_environment_name: STAGE_ENV
+    stages:  
+    - template: stageTemplate.yaml
+      parameters:
+        env_name: 'dev'
+        variable_group: 'MY_VG'
+        pipeline_environment_name: 'DEV_ENV'
+    - template: stageTemplate.yaml
+      parameters:
+        env_name: 'stage'
+        variable_group: 'MY_STAGE'
+        pipeline_environment_name: 'STAGE_ENV'
