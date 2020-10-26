@@ -1,0 +1,7 @@
+steps:
+- task: FileTransform@1
+  inputs:
+    enableXmlTransform: true
+    xmlTransformationRules: '-transform ApplicationInsights.Dev.config -xml ApplicationInsights.config'
+- bash: cat ApplicationInsights.config
+  workingDirectory: $(Build.SourcesDirectory)/stackoverflow/76-config-transform/

@@ -1,6 +1,6 @@
 parameters:
-- name: stages # the name of the parameter is buildSteps
-  type: stageList # data type is StepList
-  default: [] # default value of buildSteps
+- name: stages # the name of the parameter is stageList
+  type: stageList # data type is stageList
+  default: [] # default value of stageList
 
 stages: ${{ parameters.stages }}
