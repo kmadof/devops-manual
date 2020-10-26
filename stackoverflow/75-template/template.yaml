@@ -5,7 +5,7 @@ parameters:
 
 stages:
   - ${{ each env in parameters.envs }}:
-    - stage: A
+    - stage: ${{ env.env_name }}
       jobs:
       - job: A1
         steps:
