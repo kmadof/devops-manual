@@ -1,3 +1,8 @@
+# https://stackoverflow.com/questions/64537053/how-can-i-transform-an-xml-config-file-with-a-build-task-in-devops
+
+trigger: none
+pr: none
+
 steps:
 - task: FileTransform@1
   inputs:
