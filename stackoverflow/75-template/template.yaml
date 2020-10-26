@@ -1,14 +1,15 @@
 parameters:
-- name: 'additionalVariables'
+- name: 'envs'
   type: object
   default: {}
 
-jobs:
-- job: build
-  variables:
-    configuration: debug
-    arch: x86
-    ${{ insert }}: ${{ parameters.additionalVariables }}
-  steps:
-  - task: msbuild@1
-  - task: vstest@2
+stages:
+  - ${{ each env in parameters.envs }}:
+    - stage: A
+      jobs:
+        steps:
+        - bash: echo "${{ env.env_name }} "
+        - bash: echo "${{ env.variable_group }} "
+        - bash: echo "${{ env.pipeline_environment_name }} "
+
+      
