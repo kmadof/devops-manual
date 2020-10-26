@@ -1,0 +1,5 @@
+jobs:
+- template: template.yaml
+  parameters:
+    additionalVariables:
+      TEST_SUITE: L0,L1

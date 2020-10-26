@@ -1,0 +1,14 @@
+parameters:
+- name: 'additionalVariables'
+  type: object
+  default: {}
+
+jobs:
+- job: build
+  variables:
+    configuration: debug
+    arch: x86
+    ${{ insert }}: ${{ parameters.additionalVariables }}
+  steps:
+  - task: msbuild@1
+  - task: vstest@2
