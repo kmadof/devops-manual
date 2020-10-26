@@ -3,6 +3,9 @@
 trigger: none
 pr: none
 
+pool:
+  vmImage: 'windows-latest'
+
 steps:
 - task: FileTransform@1
   inputs:
