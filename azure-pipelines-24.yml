@@ -1,0 +1,33 @@
+# https://stackoverflow.com/questions/64559356/azure-devops-stage-to-stage-dependency-using-output-variable-in-condition-not-wo
+
+trigger: none
+pr: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+- stage: A
+  condition: false
+  jobs:
+  - job: A1
+    steps:
+    - script: echo Job A1
+- stage: B
+  jobs:
+  - job: B1
+    steps:
+     - bash: echo "##vso[task.setvariable variable=shouldrun;isOutput=true]true"
+     # or on Windows:
+     # - script: echo ##vso[task.setvariable variable=shouldrun;isOutput=true]true
+       name: printvar
+
+- stage: C
+  condition: and(in(dependencies.A.result, 'Failed', 'Skipped'), eq(dependencies.B.outputs['B1.printvar.shouldrun'], 'true'))
+  dependsOn:
+  - A
+  - B
+  jobs:
+  - job: C1
+    steps:
+    - script: echo hello from Stage C
