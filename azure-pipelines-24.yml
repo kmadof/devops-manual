@@ -24,7 +24,7 @@ stages:
        name: printvar
 
 - stage: C
-  condition: and(succeededOrFailed(), in(dependencies.A.result, 'Failed', 'Skipped'))
+  condition: in(dependencies.A.result, 'Failed', 'Skipped')
   dependsOn:
   - A
   - B
