@@ -24,7 +24,7 @@ stages:
        name: printvar
 
 - stage: C
-  condition: in(dependencies.A.result, 'Failed', 'Skipped')
+  condition: eq(dependencies.B.outputs['B1.printvar.shouldrun'], 'true')
   dependsOn:
   - A
   - B
