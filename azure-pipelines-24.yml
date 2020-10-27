@@ -14,6 +14,7 @@ stages:
     steps:
     - script: echo Job A1
 - stage: B
+  condition: always()
   jobs:
   - job: B1
     steps:
