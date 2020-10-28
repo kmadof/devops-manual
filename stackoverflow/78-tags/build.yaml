@@ -1,7 +1,7 @@
 trigger:
   tags:
     include:
-      - stage@*
+      - prod@*
 
 steps:
-- powershell: Write-Host "stage"
+- powershell: Write-Host "prod"
