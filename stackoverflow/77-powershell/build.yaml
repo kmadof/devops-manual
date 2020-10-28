@@ -7,7 +7,15 @@ pool:
 
 steps:
 - task: PowerShell@2
+  continueOnError: true
   inputs:
     targetType: 'filePath' # Optional. Options: filePath, inline
     filePath: 'test.ps1'
-    workingDirectory:  $(Build.SourcesDirectory)/stackoverflow/77-powershell
+    workingDirectory:  '$(Build.SourcesDirectory)/stackoverflow/77-powershell/'
+
+- task: PowerShell@2
+  continueOnError: true
+  inputs:
+    targetType: 'filePath' # Optional. Options: filePath, inline
+    filePath: 'test.ps1'
+    workingDirectory:  '$(Build.SourcesDirectory)\stackoverflow/\77-powershell'
