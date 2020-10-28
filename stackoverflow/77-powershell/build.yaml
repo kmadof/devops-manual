@@ -16,6 +16,7 @@ steps:
 - task: PowerShell@2
   continueOnError: true
   inputs:
-    targetType: 'filePath' # Optional. Options: filePath, inline
-    filePath: 'test.ps1'
-    workingDirectory:  '$(Build.SourcesDirectory)\stackoverflow/\77-powershell'
+    targetType: 'inline' # Optional. Options: filePath, inline
+    script: |
+        cd '$(Build.SourcesDirectory)/stackoverflow/77-powershell/'
+        ./test.ps1
