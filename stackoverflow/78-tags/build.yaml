@@ -1,0 +1,7 @@
+trigger:
+  tags:
+    include:
+      - stage@*
+
+steps:
+- powershell: Write-Host "stage"
