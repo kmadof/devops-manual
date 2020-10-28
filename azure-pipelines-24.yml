@@ -24,8 +24,7 @@ stages:
        name: printvar
 
 - stage: C
-#  condition: and(eq(dependencies.B.outputs['B1.printvar.shouldrun'], 'true'), in(dependencies.A.result, 'Failed', 'Skipped')) # it works
-  condition: and(in(dependencies.A.result, 'Failed', 'Skipped'), eq(dependencies.B.outputs['B1.printvar.shouldrun'], 'true'))
+  condition: and(eq(dependencies.B.outputs['B1.printvar.shouldrun'], 'true'), in(dependencies.A.result, 'Failed', 'Skipped')) # it works
   dependsOn:
   - A
   - B
@@ -33,3 +32,13 @@ stages:
   - job: C1
     steps:
     - script: echo hello from Stage C
+
+- stage: D
+  condition: and(in(dependencies.A.result, 'Failed', 'Skipped'), eq(dependencies.B.outputs['B1.printvar.shouldrun'], 'true')) # it doesn't work
+  dependsOn:
+  - A
+  - B
+  jobs:
+  - job: D1
+    steps:
+    - script: echo hello from Stage D
