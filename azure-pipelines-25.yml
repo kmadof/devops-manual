@@ -10,6 +10,7 @@ steps:
 # Publish projects to specified folder.
 - task: DotNetCoreCLI@2
   displayName: 'dotnet publish'
+  continueOnError: true
   inputs:
     command: publish
     publishWebProjects: false
