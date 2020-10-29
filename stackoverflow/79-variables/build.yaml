@@ -7,7 +7,7 @@ schedules:
   displayName: Nightly integration tests
   branches:
     include:
-    - develop
+    - master
   always: true
 
 variables:
