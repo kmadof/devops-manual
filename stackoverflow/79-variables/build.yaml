@@ -1,0 +1,26 @@
+# https://stackoverflow.com/questions/64590538/azure-devops-template-syntax-evaluating-variable-as-null
+
+pr: none
+trigger: none
+schedules:
+- cron: 0 4 * * 1-5
+  displayName: Nightly integration tests
+  branches:
+    include:
+    - develop
+  always: true
+
+variables:
+- template: ../Templates/Variables/variables--pipeline--global.yml
+
+stages:
+- stage: Publish_Artefacts
+  displayName: Publish Artefacts
+  jobs:
+  - job: Publish_Deployment_Scripts
+    displayName: Publish Deployment Scripts
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+    - publish: ${{ variables.deploymentScriptsArtefactSourceFolder }}
+      artifact: Deployment Scripts
