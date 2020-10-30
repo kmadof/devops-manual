@@ -19,9 +19,9 @@ resources:
       - master
 
 steps:
-- pwsh: |
-    Write-Host '$(Build.Reason)'
-    Write-Host '$(Build.TriggeredBy.BuildId)'
-    Write-Host '$(Build.TriggeredBy.DefinitionId)'
-    Write-Host '$(Build.TriggeredBy.DefinitionName)'
-    Write-Host '$(Build.TriggeredBy.BuildNumber)'
+- script: |
+    echo $(Build.Reason)
+    echo $(Build.TriggeredBy.BuildId)
+    echo $(Build.TriggeredBy.DefinitionId)
+    echo $(Build.TriggeredBy.DefinitionName)
+    echo $(Build.TriggeredBy.BuildNumber)
