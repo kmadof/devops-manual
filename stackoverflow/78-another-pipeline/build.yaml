@@ -1,0 +1,27 @@
+# https://stackoverflow.com/questions/64607815/yaml-pipeline-execute-task-if-resources-triggeringalias-ui
+
+parameters:
+- name: compileui
+  displayName: compile ui
+  type: boolean
+  default: false
+
+trigger: none
+pr: none
+
+resources:
+  pipelines:
+  - pipeline: hadar   # Name of the pipeline resource
+    source: kmdof.hadar # Name of the pipeline referenced by the pipeline resource
+    trigger: 
+      branches:
+      - releases/*
+      - master
+
+steps:
+- pwsh: |
+    Write-Host $(Build.Reason)
+    Write-Host $(Build.TriggeredBy.BuildId)
+    Write-Host $(Build.TriggeredBy.DefinitionId)
+    Write-Host $(Build.TriggeredBy.DefinitionName)
+    Write-Host $(Build.TriggeredBy.BuildNumber)
