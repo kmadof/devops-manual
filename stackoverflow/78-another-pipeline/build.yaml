@@ -20,8 +20,8 @@ resources:
 
 steps:
 - pwsh: |
-    Write-Host $(Build.Reason)
-    Write-Host $(Build.TriggeredBy.BuildId)
-    Write-Host $(Build.TriggeredBy.DefinitionId)
-    Write-Host $(Build.TriggeredBy.DefinitionName)
-    Write-Host $(Build.TriggeredBy.BuildNumber)
+    Write-Host '$(Build.Reason)'
+    Write-Host '$(Build.TriggeredBy.BuildId)'
+    Write-Host '$(Build.TriggeredBy.DefinitionId)'
+    Write-Host '$(Build.TriggeredBy.DefinitionName)'
+    Write-Host '$(Build.TriggeredBy.BuildNumber)'
