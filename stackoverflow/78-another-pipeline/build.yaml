@@ -30,11 +30,10 @@ stages:
         echo "$(Build.TriggeredBy.DefinitionName)"
         echo "$(Build.TriggeredBy.BuildNumber)"
         echo "Build run name was: $(resources.pipeline.hadar.pipelineName)"
-
-- stage: ci
-  condition: and(in(variables['build.reason'], 'Manual', 'ResourceTrigger'), succeeded())
-  jobs:
-  - ${{ if or(and(eq(parameters.compileui, true), eq(variables['build.reason'], 'Manual')), eq(variables['build.reason'], 'ResourceTrigger')) }}:
+- ${{ if or(and(eq(parameters.compileui, true), eq(variables['build.reason'], 'Manual')), eq(variables['build.reason'], 'ResourceTrigger')) }}:
+  - stage: ci
+    condition: and(in(variables['build.reason'], 'Manual', 'ResourceTrigger'), succeeded())
+    jobs:
     - job: ui
       steps:
       - script: echo "Hello from ci"
