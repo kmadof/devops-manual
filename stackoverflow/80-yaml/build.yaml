@@ -13,7 +13,7 @@ stages:
     steps:
     - pwsh: Install-Module powershell-yaml -Force
     - pwsh: |
-        $content = Get-Content -Path stackoverflow\30-yaml\test.yaml -Raw
+        $content = Get-Content -Path stackoverflow\80-yaml\test.yaml -Raw
         $correct = true
         try {
           $obj = ConvertFrom-Yaml $content
