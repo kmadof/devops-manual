@@ -17,6 +17,7 @@ stages:
         $correct = true
         try {
           $obj = ConvertFrom-Yaml $content
+          Write-Host $obj
         }
         catch {
             Write-Host "An error occurred:"
@@ -25,7 +26,7 @@ stages:
         }
         
 
-        Write-Host $obj
+        
         Write-Host $correct
         
       
