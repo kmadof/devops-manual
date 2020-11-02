@@ -21,7 +21,7 @@ stages:
         }
         catch {
             Write-Host "An error occurred:"
-            Write-Host $_
+            
             $correct = false
         }
         
