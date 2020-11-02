@@ -8,7 +8,6 @@ variables:
   isRelease: $[startsWith(variables['Build.SourceBranch'], 'refs/heads/release/')]
   isHotfix: $[startsWith(variables['Build.SourceBranch'], 'refs/heads/hotfix/')]
   checkCondition: $[or(variables.isMaster, variables.isRelease)]
-  checkCondition2: $[or(variables['isMaster'], variables.['isRelease'])]
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -31,7 +30,7 @@ steps:
       echo %ISRELEASE%
       echo %ISHOTFIX%
       echo %CHECKCONDITION%
-  condition: eq(variables.checkCondition2, true)
+  condition: or( ${{variables.isMaster}}, ${{variables.isRelease}})
 - task: CmdLine@2
   inputs:
     script: |
