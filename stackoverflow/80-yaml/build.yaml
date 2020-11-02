@@ -1,0 +1,31 @@
+#https://stackoverflow.com/questions/64648214/validate-yaml-file-using-powershell-cmd-in-azure-pipeline
+
+trigger: none
+pr: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+- stage: A
+  jobs:
+  - job: JA
+    steps:
+    - pwsh: Install-Module powershell-yaml -Force
+    - pwsh: |
+        $content = Get-Content -Path stackoverflow\30-yaml\test.yaml -Raw
+        $correct = true
+        try {
+          $obj = ConvertFrom-Yaml $content
+        }
+        catch {
+            Write-Host "An error occurred:"
+            Write-Host $_
+            $correct = false
+        }
+        
+
+        Write-Host $obj
+        Write-Host $correct
+        
+      
