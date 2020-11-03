@@ -20,7 +20,7 @@ stages:
       - script: echo Hello Stage A!
 
 - stage: B
-  condition: and(succeeded(), eq(variables.isMain, true))
+  condition:  or(variables.isMaster ,variables.isRelease)
   jobs:
   - job: B1
     steps:
