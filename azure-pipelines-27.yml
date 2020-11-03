@@ -41,12 +41,3 @@ stages:
           echo %ISRELEASE%
           echo %ISHOTFIX%
           echo %CHECKCONDITION%
-      condition: or( ${{variables.isMaster}}, ${{variables.isRelease}})
-    - task: CmdLine@2
-      inputs:
-        script: |
-          echo %BUILD_SOURCEBRANCH%
-          echo %ISMASTER%
-          echo %ISRELEASE%
-          echo %ISHOTFIX%
-          echo %CHECKCONDITION%
