@@ -1,0 +1,15 @@
+# https://stackoverflow.com/questions/64681927/azure-pipeline-get-application-client-id-in-script
+
+trigger: none
+pr: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'rg-the-code-manual'
+    scriptType: 'pscore'
+    scriptLocation: 'inlineScript'
+    inlineScript: 'az ad app list --display-name "SecuraBot" --query [0].appId'
