@@ -1,0 +1,20 @@
+# https://stackoverflow.com/questions/64712778/azure-devops-release-pipeline-powershell-task-extracting-tar-gz-shown-as-fai/64713036#64713036
+
+trigger: none
+pr: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: |
+    cat > sample.txt
+    tar -czvf archive.tgz sample.txt
+    cp -b /home/levan/kdenlive/untitelds.mpg '$(Build.ArtifactStagingDirectory)'
+  displayName: 'Run a multi-line script'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
