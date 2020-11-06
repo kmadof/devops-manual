@@ -13,7 +13,7 @@ resources:
       branches:
         - master
 steps:
-
+  - script: env | sort
   - task: DownloadBuildArtifacts@0
     inputs:
       buildType: 'specific'
