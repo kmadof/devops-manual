@@ -10,7 +10,7 @@ steps:
 - script: |
     cat > sample.txt
     tar -czvf archive.tgz sample.txt
-    cp -b /home/levan/kdenlive/untitelds.mpg '$(Build.ArtifactStagingDirectory)'
+    cp sample.txt '$(Build.ArtifactStagingDirectory)'
   displayName: 'Run a multi-line script'
 
 - task: PublishBuildArtifacts@1
