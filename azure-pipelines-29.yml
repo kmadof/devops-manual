@@ -24,3 +24,4 @@ steps:
       downloadType: 'single'
       downloadPath: '$(Pipeline.Workspace)'
       artifactName: 'drop'
+      buildId: '$(resources.pipeline.hadar.runID)'
