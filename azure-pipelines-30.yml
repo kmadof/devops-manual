@@ -8,9 +8,10 @@ pool:
 
 steps:
 - script: |
+    ls
     tar -czvf archive.tgz *.yaml
     echo "here"
-    cp sample.txt '$(Build.ArtifactStagingDirectory)'
+    cp archive.tgz '$(Build.ArtifactStagingDirectory)'
   displayName: 'Run a multi-line script'
 
 - task: PublishBuildArtifacts@1
