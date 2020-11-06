@@ -1,0 +1,27 @@
+# https://stackoverflow.com/questions/64711236/running-a-yaml-build-pipeline-manually-with-artifacts-selected-from-resources-in
+trigger: none
+pr: none
+
+name: pipelineB
+
+resources:
+  pipelines:
+  - pipeline: hadar
+    source: kmadof.hadar
+    branch: master
+    trigger:
+      branches:
+        - master
+steps:
+
+  - task: DownloadBuildArtifacts@0
+    name: 
+    displayName: 'Download pipelineA artifact'
+    inputs:
+      buildtype: specific
+      project: ourProjectName
+      pipeline: pipelineA
+      branchName: refs/heads/master
+      buildVersionToDownload: latestFromBranch
+      downloadType: specific
+      downloadPath: $(Pipeline.Workspace)
