@@ -20,7 +20,7 @@ steps:
       project: '4fa6b279-3db9-4cb0-aab8-e06c2ad550b2'
       pipeline: '72'
       branchName: 'refs/heads/master'
-      buildVersionToDownload: 'latestFromBranch'
+      buildVersionToDownload: 'specific'
       downloadType: 'single'
       downloadPath: '$(Pipeline.Workspace)'
       artifactName: 'drop'
