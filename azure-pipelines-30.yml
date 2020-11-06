@@ -9,7 +9,9 @@ pool:
 steps:
 - script: |
     cat > sample.txt
+    echo "here"
     tar -czvf archive.tgz sample.txt
+    echo "here"
     cp sample.txt '$(Build.ArtifactStagingDirectory)'
   displayName: 'Run a multi-line script'
 
