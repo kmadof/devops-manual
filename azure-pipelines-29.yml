@@ -15,13 +15,11 @@ resources:
 steps:
 
   - task: DownloadBuildArtifacts@0
-    name: 
-    displayName: 'Download pipelineA artifact'
     inputs:
-      buildtype: specific
-      project: ourProjectName
-      pipeline: pipelineA
-      branchName: refs/heads/master
-      buildVersionToDownload: latestFromBranch
-      downloadType: specific
-      downloadPath: $(Pipeline.Workspace)
+      buildType: 'specific'
+      project: '4fa6b279-3db9-4cb0-aab8-e06c2ad550b2'
+      pipeline: '72'
+      branchName: 'refs/heads/master'
+      buildVersionToDownload: 'latestFromBranch'
+      downloadType: 'single'
+      downloadPath: '$(Pipeline.Workspace)'
