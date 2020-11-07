@@ -21,3 +21,4 @@ stages:
         displayName: succeed
       - bash: echo "Test"
         displayName: succeed
+      - script: env | sort
