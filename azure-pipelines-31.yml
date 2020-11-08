@@ -1,0 +1,17 @@
+# https://stackoverflow.com/questions/64741726/pass-variables-between-azure-pipelines
+trigger: none
+pr: none
+
+name: pipelineB
+
+resources:
+  pipelines:
+  - pipeline: hadar
+    source: kmadof.hadar
+    branch: master
+    trigger:
+      branches:
+        - master
+steps:
+  - script: env | sort
+  - script: echo '$(resources.pipeline.hadar.pipelineName)'
