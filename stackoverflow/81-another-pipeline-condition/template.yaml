@@ -13,7 +13,7 @@ parameters:
   default: 'DEV_ENV'
 
 stages:
-- ${{ if eq(parameters.pipeline_name, 'kmadof.hadar') }}:
+- ${{ if startsWith(format('{0} Tests', parameters.pipeline_name), 'kmadof.hadar') }}:
   - stage: ${{ parameters.env_name }}
     jobs:
     - job: angularinstall
