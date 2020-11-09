@@ -2,7 +2,7 @@ parameters:
 - name: pipeline_name
   type: string
   default: 'dev'
-- name: pipeline_name
+- name: env_name
   type: string
   default: 'dev'
 - name: variable_group
