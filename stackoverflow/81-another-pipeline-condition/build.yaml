@@ -14,7 +14,7 @@ resources:
         - master
 
 stages:  
-- template: stageTemplate.yaml
+- template: template.yaml
   parameters:
     pipeline_name: '$(resources.pipeline.hadar.pipelineName)'
     env_name: 'dev'
