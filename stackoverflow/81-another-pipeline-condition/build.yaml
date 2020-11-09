@@ -1,0 +1,22 @@
+# https://stackoverflow.com/questions/64741726/pass-variables-between-azure-pipelines
+trigger: none
+pr: none
+
+name: pipelineB
+
+resources:
+  pipelines:
+  - pipeline: hadar
+    source: kmadof.hadar
+    branch: master
+    trigger:
+      branches:
+        - master
+
+stages:  
+- template: stageTemplate.yaml
+  parameters:
+    pipeline_name: '$(resources.pipeline.hadar.pipelineName)'
+    env_name: 'dev'
+    variable_group: 'MY_VG'
+    pipeline_environment_name: 'DEV_ENV'

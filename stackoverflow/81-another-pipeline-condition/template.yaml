@@ -1,0 +1,30 @@
+parameters:
+- name: pipeline_name
+  type: string
+  default: 'dev'
+- name: pipeline_name
+  type: string
+  default: 'dev'
+- name: variable_group
+  type: string
+  default: 'MY_VG'
+- name: pipeline_environment_name
+  type: string
+  default: 'DEV_ENV'
+
+stages:
+- ${{ if eq(parameters.pipeline_name, 'kmadof.hadar') }}:
+  - stage: ${{ parameters.env_name }}
+    jobs:
+    - job: angularinstall
+      steps:
+      - script: echo "${{ parameters.env_name }}"
+      - script: echo "${{ parameters.variable_group }}"
+      - script: echo "${{ parameters.pipeline_environment_name }}"
+- stage: Full
+  jobs:
+  - job: angularinstall
+    steps:
+    - script: echo "${{ parameters.env_name }}"
+    - script: echo "${{ parameters.variable_group }}"
+    - script: echo "${{ parameters.pipeline_environment_name }}"
