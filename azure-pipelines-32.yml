@@ -13,8 +13,8 @@ resources:
       name: 'DevOps Manual/azure-functions'
 
 variables:
-  AZURE.ref: $[ resources.repositories['azure'].ref ]
-#  tools.ref: $[ resources.repositories['devops'].ref ]
+  azure.ref: $[ resources.repositories['azure'].ref ]
+  tools.ref: $[ resources.repositories['devops'].ref ]
 #  isMain: $[eq(resources.repositories['devops'].ref, 'refs/heads/master')]
 
 steps:
