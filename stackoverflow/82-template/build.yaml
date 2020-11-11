@@ -1,0 +1,19 @@
+# https://stackoverflow.com/questions/64779465/azure-pipeline-why-parameter-value-is-required
+
+parameters:
+- name: Proceed
+  displayName: Should we proceed
+  type: boolean
+  default: Yes
+- name: Description
+  displayName: Short description
+  type: string
+
+trigger: none
+pr: none
+
+stages:
+- template: sometemplate.yaml
+  parameters:
+    Proceed: ${{ parameters.Proceed }}
+    CopySomething: ${{ parameters.Description }}
