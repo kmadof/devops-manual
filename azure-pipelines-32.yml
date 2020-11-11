@@ -8,21 +8,18 @@ resources:
       type: github
       name: kmadof/devops-templates
       endpoint: kmadof
+    - repository: azure
+      type: git
+      name: 'DevOps Manual/azure-functions'
 
-# variables:
+variables:
+  AZURE.ref: $[ resources.repositories['azure'].ref ]
 #  tools.ref: $[ resources.repositories['devops'].ref ]
 #  isMain: $[eq(resources.repositories['devops'].ref, 'refs/heads/master')]
 
 steps:
 - checkout: self
 - checkout: devops
-- script: |
-    env | sort
-- template: templates/template.yaml@devops
-  parameters:
-    repo: devops-templates
 - bash: |
-    echo 'Tools version: $TOOLS_REF'
-- script: |
-    echo 'test with condition'
-  condition: and(succeeded(), eq(variables.isMain, true))
+    echo "Tools version: $TOOLS_REF"
+    echo "Tools version: $AZURE_REF"
