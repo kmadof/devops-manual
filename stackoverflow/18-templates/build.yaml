@@ -9,6 +9,10 @@ resources:
       name: kmadof/devops-templates
       endpoint: kmadof
 
+variables:
+  tools.ref: $[ resources.repositories['devops'].ref ]
+  isMain: $[eq(resources.repositories['devops'].ref, 'refs/heads/master')]
+
 steps:
 - checkout: self
 - checkout: devops
@@ -18,3 +22,7 @@ steps:
 - template: templates/template.yaml@devops
   parameters:
     repo: devops-templates
+- bash: echo 'Tools version: $TOOLS_REF'
+- script: |
+    echo 'test with condition'
+  condition: and(succeeded(), eq(variables.isMain, true))
