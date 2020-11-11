@@ -22,7 +22,8 @@ steps:
 - template: templates/template.yaml@devops
   parameters:
     repo: devops-templates
-- bash: echo 'Tools version: $TOOLS_REF'
+- bash: |
+    echo 'Tools version: $TOOLS_REF'
 - script: |
     echo 'test with condition'
   condition: and(succeeded(), eq(variables.isMain, true))
