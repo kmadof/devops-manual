@@ -1,0 +1,17 @@
+# https://stackoverflow.com/questions/64790091/azure-devops-pipeline-trigger-issue-message-not-going-away
+
+trigger:
+- none
+pr: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
