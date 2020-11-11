@@ -9,7 +9,7 @@ resources:
       name: kmadof/devops-templates
       endpoint: kmadof
 
-variables:
+# variables:
 #  tools.ref: $[ resources.repositories['devops'].ref ]
 #  isMain: $[eq(resources.repositories['devops'].ref, 'refs/heads/master')]
 
