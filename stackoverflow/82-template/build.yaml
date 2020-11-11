@@ -8,7 +8,7 @@ parameters:
 - name: Description
   displayName: Short description
   type: string
-  default: ''
+  default: ' '
 
 trigger: none
 pr: none
