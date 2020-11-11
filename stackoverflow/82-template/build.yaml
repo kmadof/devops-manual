@@ -4,7 +4,7 @@ parameters:
 - name: Proceed
   displayName: Should we proceed
   type: boolean
-  default: Yes
+  default: true
 - name: Description
   displayName: Short description
   type: string
