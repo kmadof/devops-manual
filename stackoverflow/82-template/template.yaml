@@ -1,7 +1,7 @@
 parameters:
 - name: Proceed
-  type: string
-  default: 'dev'
+  type: boolean
+  default: Yes
 - name: CopySomething
   type: string
   default: 'dev'
