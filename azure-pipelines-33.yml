@@ -1,8 +1,6 @@
 # https://stackoverflow.com/questions/64790091/azure-devops-pipeline-trigger-issue-message-not-going-away
 
-trigger:
-- none
-pr: none
+
 
 pool:
   vmImage: 'ubuntu-latest'
