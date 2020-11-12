@@ -6,27 +6,32 @@ pr: none
 pool:
   vmImage: 'ubuntu-latest'
 
-steps:
-- bash: |
-    echo "##vso[task.setvariable variable=sauce;]crushed tomatoes"
-    echo "##vso[task.setvariable variable=secretSauce;issecret=true]crushed tomatoes with garlic"
-    echo "##vso[task.setvariable variable=outputSauce;isoutput=true]canned goods"
-  name: SetVars
+jobs:
+- job: A
+  steps:
+  - bash: |
+      echo "##vso[task.setvariable variable=sauce;]crushed tomatoes"
+      echo "##vso[task.setvariable variable=secretSauce;issecret=true]crushed tomatoes with garlic"
+      echo "##vso[task.setvariable variable=outputSauce;isoutput=true]canned goods"
+    name: SetVars
 
-- bash: |
-    echo "Non-secrets automatically mapped in, sauce is $SAUCE"
-    echo "Secrets are not automatically mapped in, secretSauce is $SECRETSAUCE"
-    echo "You can use macro replacement to get secrets, and they'll be masked in the log: $(secretSauce)"
-    echo "Future jobs can also see $OUTPUTSAUCE"
-    echo "Future jobs can also see $(SetVars.outputSauce)"
+  - bash: |
+      echo "Non-secrets automatically mapped in, sauce is $SAUCE"
+      echo "Secrets are not automatically mapped in, secretSauce is $SECRETSAUCE"
+      echo "You can use macro replacement to get secrets, and they'll be masked in the log: $(secretSauce)"
+      echo "Future jobs can also see $SETVARS_OUTPUTSAUCE"
+      echo "Future jobs can also see $(SetVars.outputSauce)"
+- job : B
+  steps:
+  - pwsh: |
+      Write-Host "##vso[task.setvariable variable=sauce;]crushed tomatoes"
+      Write-Host "##vso[task.setvariable variable=secretSauce;issecret=true]crushed tomatoes with garlic"
+      Write-Host "##vso[task.setvariable variable=outputSauce;isoutput=true]canned goods"
+    name: setVars
 
-- pwsh: |
-    Write-Host "##vso[task.setvariable variable=sauce;]crushed tomatoes"
-    Write-Host "##vso[task.setvariable variable=secretSauce;issecret=true]crushed tomatoes with garlic"
-    Write-Host "##vso[task.setvariable variable=outputSauce;isoutput=true]canned goods"
-
-- pwsh: |
-    Write-Host "Non-secrets automatically mapped in, sauce is $env:SAUCE"
-    Write-Host "Secrets are not automatically mapped in, secretSauce is $env:SECRETSAUCE"
-    Write-Host "You can use macro replacement to get secrets, and they'll be masked in the log: $(secretSauce)"
-    Write-Host "Future jobs can also see $env:OUTPUTSAUCE"
+  - pwsh: |
+      Write-Host "Non-secrets automatically mapped in, sauce is $env:SAUCE"
+      Write-Host "Secrets are not automatically mapped in, secretSauce is $env:SECRETSAUCE"
+      Write-Host "You can use macro replacement to get secrets, and they'll be masked in the log: $(secretSauce)"
+      Write-Host "Future jobs can also see $env:SETVARS_OUTPUTSAUCE"
+      write-Host "Future jobs can also see $(SetVars.outputSauce)"
