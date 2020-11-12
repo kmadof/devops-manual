@@ -27,7 +27,7 @@ jobs:
       Write-Host "##vso[task.setvariable variable=sauce;]crushed tomatoes"
       Write-Host "##vso[task.setvariable variable=secretSauce;issecret=true]crushed tomatoes with garlic"
       Write-Host "##vso[task.setvariable variable=outputSauce;isoutput=true]canned goods"
-    name: setVars
+    name: SetVars
 
   - pwsh: |
       Write-Host "Non-secrets automatically mapped in, sauce is $env:SAUCE"
