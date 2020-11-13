@@ -1,0 +1,22 @@
+# https://stackoverflow.com/questions/64801981/azure-devops-pipelines-nodejs-command-not-found-when-running-bash-script
+trigger: none
+pr: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: NodeTool@0 
+  inputs:
+    versionSpec: '12.x'
+  displayName: 'Install Node.js'
+
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: 'node --version'
+- task: Bash@3
+  continueOnError: true
+  inputs:
+    targetType: 'inline'
+    script: 'nodejs --version'
