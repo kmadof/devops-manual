@@ -19,7 +19,7 @@ parameters:
     checkout: self
 
 jobs:
-- deployment: ${{ format(parameters.command, ' ', '-') }}
+- deployment: ${{ format(parameters.command, ' ', '_') }}
   environment: ${{ parameters.environment }}
   strategy:
     runOnce:
