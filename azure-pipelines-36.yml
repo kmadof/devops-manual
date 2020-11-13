@@ -21,6 +21,10 @@ steps:
     chmod u=rwx boot2.sh
     ./scripts/boot2.sh
   continueOnError: true
+
+- bash: |
+    tar -czvf "$(Build.StagingDirectory)/update2.tar.gz" '$(Build.SourcesDirectory)/scripts'
+
   
 - task: ArchiveFiles@2
   inputs:
@@ -40,7 +44,23 @@ steps:
 - bash: |
     ./test/boot.sh
   continueOnError: true
+  displayName: 'Run extracted file using ArchiveFiles@2 and ExtractFiles@1'
 
 - bash: |
     ./test/boot2.sh
   continueOnError: true
+  displayName: 'Run extracted file with permission set before pack using ArchiveFiles@2 and ExtractFiles@1'
+
+- bash: |
+    mkdir test2
+    tar -czvf "$(Build.StagingDirectory)/update2.tar.gz" test2
+
+- bash: |
+    ./test2/boot.sh
+  continueOnError: true
+  displayName: 'Run extracted file using tar'
+
+- bash: |
+    ./test2/boot2.sh
+  continueOnError: true
+  displayName: 'Run extracted file with permission set before pack using tar'
