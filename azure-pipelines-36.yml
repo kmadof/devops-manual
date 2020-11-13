@@ -23,7 +23,7 @@ steps:
   continueOnError: true
 
 - bash: |
-    tar -czvf "$(Build.StagingDirectory)/update2.tar.gz" '$(Build.SourcesDirectory)/scripts'
+    tar -czf "$(Build.StagingDirectory)/update2.tar.gz" '$(Build.SourcesDirectory)/scripts'
 
   
 - task: ArchiveFiles@2
