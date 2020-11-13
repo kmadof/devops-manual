@@ -12,4 +12,5 @@ pool:
 steps:
 - bash: |
     echo "echo 'from file'" > boot.sh
-    boot.sh
+    ls
+    ./boot.sh
