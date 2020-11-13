@@ -54,7 +54,7 @@ steps:
 - bash: |
     ls '$(Build.StagingDirectory)'
     mkdir test2
-    tar -xzvf "$(Build.StagingDirectory)/update2.tar.gz -C /test2
+    tar -xzvf "$(Build.StagingDirectory)/update2.tar.gz -C '$(Build.SourcesDirectory)/test2'
     tar -czvf " test2
     ls test2/scripts
   continueOnError: true
