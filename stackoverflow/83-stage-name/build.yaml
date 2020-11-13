@@ -1,10 +1,11 @@
 trigger: none
 pr: none
 
+variables: 
+  getCommitDate: $[format('{0:yyyyMMdd}', pipeline.startTime)]
+
 stages:
 - stage: dev
-  variables: 
-    getCommitDate: $[format('{0:yyyyMMdd}', pipeline.startTime)]
   jobs:        
     - template: template.yaml
       parameters:
