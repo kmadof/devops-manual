@@ -54,6 +54,7 @@ steps:
 - bash: |
     mkdir test2
     tar -czvf "$(Build.StagingDirectory)/update2.tar.gz" test2
+    ls test2
 
 - bash: |
     ./test2/boot.sh
