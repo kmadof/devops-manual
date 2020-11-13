@@ -60,6 +60,7 @@ steps:
     ls test2/scripts
   continueOnError: true
 
+- bash : ls
 - bash: |
     ./test2/boot.sh
   continueOnError: true
