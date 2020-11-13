@@ -70,3 +70,9 @@ steps:
     ./test2/boot2.sh
   continueOnError: true
   displayName: 'Run extracted file with permission set before pack using tar'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
