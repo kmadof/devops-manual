@@ -16,7 +16,7 @@ stages:
         databaseIP: 123456789
         context: dev
         checkoutStep:
-          bash: git checkout ${{parameters.commitHash}} -- ./src/main/resources/objects
+          bash: git checkout sdfg345245234523dsdfg -- ./src/main/resources/objects
 
     - template: template.yaml
       parameters:
