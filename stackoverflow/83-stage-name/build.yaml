@@ -1,0 +1,29 @@
+trigger: none
+pr: none
+
+stages:
+- stage: dev
+  variables: 
+    getCommitDate: $[format('{0:yyyyMMdd}', pipeline.startTime)]
+  jobs:        
+    - template: template.yaml
+      parameters:
+        command: update
+        username: $(username_dev)
+        password: $(password_dev)
+        environment: development
+        databaseName: exampleDB
+        databaseIP: 123456789
+        context: dev
+        checkoutStep:
+          bash: git checkout ${{parameters.commitHash}} -- ./src/main/resources/objects
+
+    - template: template.yaml
+      parameters:
+        command: rollbackToDate $(getCommitDate)
+        username: $(username_dev)
+        password: $(password_dev)
+        environment: development
+        databaseName: exampleDB
+        databaseIP: 123456789
+        context: dev

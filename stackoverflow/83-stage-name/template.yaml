@@ -1,0 +1,28 @@
+parameters:
+- name: command
+  type: string
+- name: environment
+  type: string
+- name: username
+  type: string
+- name: password
+  type: string
+- name: databaseName
+  type: string
+- name: databaseIP
+  type: string
+- name: context
+  type: string
+- name: checkoutStep
+  type: step
+  default: 
+    checkout: self
+
+jobs:
+- deployment: ${{ parameters.command }}
+  environment: ${{ parameters.environment }}
+  strategy:
+    runOnce:
+      deploy:
+        steps:
+        - script: echo '${{ parameters.command }}'
