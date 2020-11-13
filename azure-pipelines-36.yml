@@ -52,6 +52,7 @@ steps:
   displayName: 'Run extracted file with permission set before pack using ArchiveFiles@2 and ExtractFiles@1'
 
 - bash: |
+    ls '$(Build.StagingDirectory)'
     mkdir test2
     tar -czvf "$(Build.StagingDirectory)/update2.tar.gz" test2
     ls test2
