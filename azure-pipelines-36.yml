@@ -11,6 +11,36 @@ pool:
 
 steps:
 - bash: |
-    echo "echo 'from file'" > boot.sh
-    ls
-    ./boot.sh
+    mkdir scripts
+    echo "echo 'from file'" > scripts/boot.sh
+    
+    ./scripts/boot.sh
+  continueOnError: true
+- bash: |
+    echo "echo 'from file 2'" > scripts/boot2.sh
+    chmod u=rwx boot2.sh
+    ./scripts/boot2.sh
+  continueOnError: true
+  
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(Build.SourcesDirectory)/scripts'
+    includeRootFolder: false
+    archiveType: "tar"
+    tarCompression: "gz"
+    archiveFile: "$(Build.StagingDirectory)/update.tar.gz"
+
+
+- task: ExtractFiles@1
+  inputs:
+    archiveFilePatterns: '$(Build.StagingDirectory)/update.tar.gz' 
+    destinationFolder: test
+    cleanDestinationFolder: true 
+
+- bash: |
+    ./test/boot.sh
+  continueOnError: true
+
+- bash: |
+    ./test/boot2.sh
+  continueOnError: true
