@@ -21,7 +21,7 @@ stages:
 
     - template: template.yaml
       parameters:
-        command: 'rollbackToDate $(getCommitDate)'
+        command: 'rollbackToDate date' # command: 'rollbackToDate $(getCommitDate)'
         username: $(username_dev)
         password: $(password_dev)
         environment: development
