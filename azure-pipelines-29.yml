@@ -15,7 +15,6 @@ resources:
 steps:
   - script: env | sort
   - task: DownloadBuildArtifacts@0
-    enabled: false
     inputs:
       buildType: 'specific'
       project: '4fa6b279-3db9-4cb0-aab8-e06c2ad550b2'
@@ -23,7 +22,7 @@ steps:
       branchName: 'refs/heads/master'
       buildVersionToDownload: 'specific'
       downloadType: 'single'
-      downloadPath: '$(Pipeline.Workspace)'
+      downloadPath: '$(Pipeline.Workspace)/build'
       artifactName: 'drop'
       buildId: '$(resources.pipeline.hadar.runID)'
 
@@ -36,4 +35,5 @@ steps:
       buildVersionToDownload: 'specific'
       pipelineId: '$(resources.pipeline.hadar.runID)'
       artifactName: 'drop'
-      targetPath: '$(Pipeline.Workspace)'
+      targetPath: '$(Pipeline.Workspace)/pipeline'
+  - download: hadar
