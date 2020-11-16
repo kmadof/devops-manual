@@ -1,0 +1,24 @@
+# https://stackoverflow.com/questions/64863159/azure-devops-run-task-only-if-previous-task-ran
+
+trigger: none
+pr: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: |
+    cho Hello, world!
+    exit 1
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
+  condition: succeededOrFailed()
