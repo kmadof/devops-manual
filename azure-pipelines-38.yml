@@ -1,0 +1,33 @@
+# https://stackoverflow.com/questions/64895188/azure-pipeline-expression-does-not-work-in-template/64896723?noredirect=1#comment114758377_64896723
+
+trigger: none
+pr: none
+
+variables:
+- group: HmiSulis
+- name: solution
+  value:  AllProjects.sln
+- name: buildPlatform
+  value: x86
+- name: buildConfiguration
+  value:  Debug
+- name: assemblyVersion
+  value: 1.2.3.4
+- name: fileVersion
+  value: 5.6.7.8
+- name: informationalVersion
+  value: 9.10.11.12
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+jobs:
+- job: Build
+  steps:
+  - ${{if not(variables['assemblyVersion'])}}:
+    - task: PowerShell@2
+      inputs:
+        targetType: 'inline'
+        script: |
+          Write-Host $(assemblyVersion)
+          throw "assemblyVersion was not set"
