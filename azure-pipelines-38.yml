@@ -4,7 +4,6 @@ trigger: none
 pr: none
 
 variables:
-- group: HmiSulis
 - name: solution
   value:  AllProjects.sln
 - name: buildPlatform
@@ -31,3 +30,9 @@ jobs:
         script: |
           Write-Host $(assemblyVersion)
           throw "assemblyVersion was not set"
+  - task: PowerShell@2
+    inputs:
+      targetType: 'inline'
+      script: |
+        Write-Host $(assemblyVersion)
+        throw "assemblyVersion was not set"
