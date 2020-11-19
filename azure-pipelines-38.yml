@@ -10,8 +10,8 @@ variables:
   value: x86
 - name: buildConfiguration
   value:  Debug
-- name: assemblyVersion
-  value: 1.2.3.4
+#- name: assemblyVersion
+#  value: 1.2.3.4
 - name: fileVersion
   value: 5.6.7.8
 - name: informationalVersion
