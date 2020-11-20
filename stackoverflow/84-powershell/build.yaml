@@ -1,6 +1,8 @@
 trigger: none
 pr: none
 
+pool: windows-latest
+
 steps:
 - pwsh: |
     cd stackoverflow/84-powershell
