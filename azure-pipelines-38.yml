@@ -1,5 +1,7 @@
 # https://stackoverflow.com/questions/64895188/azure-pipeline-expression-does-not-work-in-template/64896723?noredirect=1#comment114758377_64896723
 
+name: SO-Manual-38
+
 trigger: none
 pr: none
 
