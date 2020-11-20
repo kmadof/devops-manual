@@ -1,0 +1,37 @@
+# https://stackoverflow.com/questions/64863159/azure-devops-run-task-only-if-previous-task-ran
+
+trigger: none
+pr: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- bash: |
+      echo "This is job Foo."
+      echo "##vso[task.setvariable variable=doThing;isOutput=true]Yes" #set variable doThing to Yes
+  name: DetermineResult
+- script: echo "Job Foo ran and doThing is Yes."
+  condition: eq(variables['DetermineResult.doThing'], 'Yes')
+- script: |
+    cho Hello, world!
+    exit 1
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
+  condition: failed()
+
+- script: |
+    echo '$(Agent.JobStatus)'
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
+  condition: and(succeededOrFailed(), not(canceled()))
