@@ -23,25 +23,27 @@ variables:
 pool:
   vmImage: 'ubuntu-latest'
 
-jobs:
-- job: Build
-  variables: 
-  - name: test
-    value: $[not(variables['assemblyVersion'])]
-  steps:
-  - ${{if not(variables['assemblyVersion'])}}:
+stages:
+- stage: A
+  jobs:
+  - job: Build
+    variables: 
+    - name: test
+      value: $[not(variables['assemblyVersion'])]
+    steps:
+    - ${{if not(variables['assemblyVersion'])}}:
+      - task: PowerShell@2
+        continueOnError: true
+        inputs:
+          targetType: 'inline'
+          script: |
+            Write-Host $(assemblyVersion)
+            throw "assemblyVersion was not set"
     - task: PowerShell@2
       continueOnError: true
       inputs:
         targetType: 'inline'
         script: |
           Write-Host $(assemblyVersion)
-          throw "assemblyVersion was not set"
-  - task: PowerShell@2
-    continueOnError: true
-    inputs:
-      targetType: 'inline'
-      script: |
-        Write-Host $(assemblyVersion)
-        Write-Host $(test)
-- template: template-38.yaml
+          Write-Host $(test)
+  - template: template-38.yaml
