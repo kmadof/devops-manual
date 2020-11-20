@@ -1,0 +1,7 @@
+trigger: none
+pr: none
+
+steps:
+- pwsh: |
+    cd stackoverflow/84-powershell
+    s1.ps1 "$(Build.SourcesDirectory)/stackoverflow/84-powershell/s2.ps1"
