@@ -11,8 +11,8 @@ variables:
 - name: buildConfiguration
   value:  Debug
 - name: assemblyVersion
-  value: ''
-#  value: 1.2.3.4
+#  value: ''
+  value: 1.2.3.4
 - name: fileVersion
   value: 5.6.7.8
 - name: informationalVersion
@@ -42,3 +42,4 @@ jobs:
       script: |
         Write-Host $(assemblyVersion)
         Write-Host $(test)
+- template: template-38.yaml

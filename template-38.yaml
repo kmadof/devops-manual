@@ -1,0 +1,22 @@
+jobs:
+- job: BuildFromTemplate
+  dependsOn: []
+  variables: 
+  - name: test
+    value: $[not(variables['assemblyVersion'])]
+  steps:
+  - ${{if not(variables['assemblyVersion'])}}:
+    - task: PowerShell@2
+      continueOnError: true
+      inputs:
+        targetType: 'inline'
+        script: |
+          Write-Host $(assemblyVersion)
+          throw "assemblyVersion was not set"
+  - task: PowerShell@2
+    continueOnError: true
+    inputs:
+      targetType: 'inline'
+      script: |
+        Write-Host $(assemblyVersion)
+        Write-Host $(test)
