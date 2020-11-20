@@ -1,7 +1,8 @@
 trigger: none
 pr: none
 
-pool: windows-latest
+pool:
+  vmImage: windows-latest
 
 steps:
 - pwsh: |
