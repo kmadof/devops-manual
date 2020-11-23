@@ -1,4 +1,5 @@
 #https://stackoverflow.com/questions/64961751/environment-variable-not-injected-into-multi-stage-docker-build-on-azure-devops
+name: docker-args
 
 trigger: none
 pr: none
