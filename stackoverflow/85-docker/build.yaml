@@ -14,4 +14,4 @@ steps:
     containerRegistry: 'devopsmanual-acr'
     command: 'build'
     Dockerfile: 'stackoverflow/85-docker/DOCKERFILE'
-    arguments: '--build-arg a_version=$(MY_SECRET)'
+    arguments: '--build-arg a_version=$(System.AccessToken)'
