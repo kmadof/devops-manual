@@ -1,0 +1,4 @@
+FROM alpine
+
+ARG a_version
+RUN echo $a_version
