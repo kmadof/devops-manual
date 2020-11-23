@@ -8,6 +8,7 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+- pwsh: ls 'stackoverflow/85-docker/'
 - task: Docker@2
   inputs:
     containerRegistry: 'devopsmanual-acr'
