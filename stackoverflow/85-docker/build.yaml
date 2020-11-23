@@ -14,5 +14,4 @@ steps:
     containerRegistry: 'devopsmanual-acr'
     command: 'build'
     Dockerfile: 'stackoverflow/85-docker/DOCKERFILE'
-    buildContext: '**'
-    arguments: 'a_version=$(MY_SECRET)'
+
