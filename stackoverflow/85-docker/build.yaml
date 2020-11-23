@@ -1,0 +1,13 @@
+#https://stackoverflow.com/questions/64961751/environment-variable-not-injected-into-multi-stage-docker-build-on-azure-devops
+
+trigger: none
+pr: none
+
+pool:
+  vmImage: windows-latest
+
+steps:
+- pwsh: |
+    cd stackoverflow/84-powershell
+    ls
+    .\s1.ps1 "$(Build.SourcesDirectory)\stackoverflow\84-powershell\s2.ps1"
