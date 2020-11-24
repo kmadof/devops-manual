@@ -10,7 +10,7 @@ jobs:
 - job: BuildFromTemplate
   dependsOn: []
   variables:
-  - template: ${{paramaters.variabaleTemplate}}
+  - template: ${{parameters.variabaleTemplate}}
   - name: assemblyVersion
     value: 1.2.3.4
   - name: test
