@@ -18,7 +18,7 @@ stages:
     - name: test
       value: $[not(variables['assemblyVersion'])]
     steps:
-    - ${{if not(variables['assemblyVersion'])}}:
+    - ${{if not(variables.assemblyVersion)}}:
       - task: PowerShell@2
         continueOnError: true
         inputs:
