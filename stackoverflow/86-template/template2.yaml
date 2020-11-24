@@ -8,7 +8,7 @@ jobs:
 - job: BuildFromTemplate
   dependsOn: []
   variables:
-# - template: ${{ paramaters.variabaleTemplate }}  # Template reference
+  - template: ${{ paramaters.variabaleTemplate }}  # Template reference
   - name: test
     value: $[not(variables['assemblyVersion'])]
   steps:
