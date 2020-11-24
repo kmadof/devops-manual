@@ -5,10 +5,13 @@ trigger: none
 pr: none
 
 pool:
-  vmImage: windows-latest
+  vmImage: ubuntu-latest
 
 steps:
-- pwsh: |
-    cd stackoverflow/84-powershell
-    ls
-    .\s1.ps1 "$(Build.SourcesDirectory)\stackoverflow\84-powershell\s2.ps1"
+- pwsh: ls 'stackoverflow/85-docker/'
+- task: Docker@2
+  inputs:
+    containerRegistry: 'devopsmanual-acr'
+    command: 'build'
+    Dockerfile: 'stackoverflow/85-docker/DOCKERFILE'
+    arguments: '--build-arg a_version=$(SomeVar)'
