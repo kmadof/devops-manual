@@ -34,3 +34,5 @@ stages:
           Write-Host $(assemblyVersion)
           Write-Host $(test)
   - template: template.yaml
+    paramaters:
+      someVariable: $(assemblyVersion)

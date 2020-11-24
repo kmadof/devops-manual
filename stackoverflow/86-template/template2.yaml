@@ -2,6 +2,8 @@ parameters:
 - name: 'variabaleTemplate'
   default: 'variabales.yaml'
   type: string
+- name: 'someVariable'
+  type: string
 
 
 jobs:
@@ -13,7 +15,7 @@ jobs:
   - name: test
     value: $[not(variables['assemblyVersion'])]
   steps:
-  - ${{if not(variables['assemblyVersion'])}}:
+  - ${{if not(parameters.someVariable)}}:
     - task: PowerShell@2
       continueOnError: true
       inputs:
