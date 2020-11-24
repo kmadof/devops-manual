@@ -17,3 +17,5 @@ steps:
   continueOnError: true
 - pwsh: |
     git show $(Build.SourceVersion) --no-patch
+- pwsh: |
+    git log --format=%B -n 1 $(Build.SourceVersion)
