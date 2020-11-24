@@ -12,3 +12,8 @@ steps:
     echo '$(Build.SourceVersionMessage)'
     echo '$(Build.SourceVersion)'
   displayName: 'Source version details'
+- pwsh: |
+    git log -1 --pretty=oneline --abbrev-commit
+  continueOnError: true
+- pwsh: |
+    git show $(Build.SourceVersion) --no-patch
