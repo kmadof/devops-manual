@@ -17,12 +17,23 @@ jobs:
   steps:
   - ${{if not(parameters.someVariable)}}:
     - task: PowerShell@2
+      enabled: false
       continueOnError: true
       inputs:
         targetType: 'inline'
         script: |
           Write-Host $(assemblyVersion)
           throw "assemblyVersion was not set"
+  - task: PowerShell@2
+    continueOnError: true
+    inputs:
+      targetType: 'inline'
+      script: |
+        Write-Host $(assemblyVersion)
+        if (!'$(assemblyVersion)')
+        {
+          throw "assemblyVersion was not set"
+        }
   - task: PowerShell@2
     continueOnError: true
     inputs:
