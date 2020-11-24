@@ -10,12 +10,14 @@ jobs:
 - job: BuildFromTemplate
   dependsOn: []
   variables:
+  - template: ${{paramaters.variabaleTemplate}}
   - name: assemblyVersion
     value: 1.2.3.4
   - name: test
     value: $[not(variables['assemblyVersion'])]
   steps:
-  - ${{if not(parameters.someVariable)}}:
+#  - ${{if not(parameters.someVariable)}}:
+  - ${{if not(variables['assemblyVersion'])}}:
     - task: PowerShell@2
       continueOnError: true
       inputs:
