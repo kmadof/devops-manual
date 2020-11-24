@@ -33,6 +33,6 @@ stages:
         script: |
           Write-Host $(assemblyVersion)
           Write-Host $(test)
-  - template: template.yaml
+  - template: template2.yaml
     parameters:
       someVariable: $(assemblyVersion)
