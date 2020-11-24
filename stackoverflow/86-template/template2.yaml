@@ -1,6 +1,6 @@
 parameters:
 - name: 'variabaleTemplate'
-  default: 'variabales.yaml'
+  default: 'variables.yaml'
   type: string
 - name: 'someVariable'
   type: string
