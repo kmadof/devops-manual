@@ -1,0 +1,14 @@
+# https://stackoverflow.com/questions/64978458/validate-gitcommit-message-when-pr/64980023#64980023
+
+trigger: none
+pr:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: |
+    echo '$(Build.SourceVersionMessage)'
+    echo '$(Build.SourceVersion)'
+  displayName: 'Source version details'
