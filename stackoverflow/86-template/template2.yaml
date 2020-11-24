@@ -23,14 +23,15 @@ jobs:
         targetType: 'inline'
         script: |
           Write-Host $(assemblyVersion)
-          throw "assemblyVersion was not set"
+#          throw "assemblyVersion was not set"
   - task: PowerShell@2
     continueOnError: true
     inputs:
       targetType: 'inline'
       script: |
-        Write-Host $(assemblyVersion)
-        if (!'$(assemblyVersion)')
+        $ver = '$(assemblyVersion)'
+        Write-Host "Ver: $($ver)"
+        if (!$ver)
         {
           throw "assemblyVersion was not set"
         }
