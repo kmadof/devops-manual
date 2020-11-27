@@ -1,0 +1,11 @@
+# https://stackoverflow.com/questions/65035156/pr-not-triggered-when-opening-github-pr-azure-pipeline-yaml
+
+name: PR tests
+
+trigger: none # turned off for push
+
+pr:
+  - feature/automated-testing
+
+steps:
+- script: echo "PIPELINE IS TRIGGERED FROM PR"
