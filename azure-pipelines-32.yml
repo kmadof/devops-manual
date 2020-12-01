@@ -22,6 +22,7 @@ steps:
 - checkout: devops
 - checkout: 
 - script: env | sort
+  displayName: Print env variables
 - bash: |
     echo "Tools version: $TOOLS_REF"
     echo "Tools version: $AZURE_REF"
