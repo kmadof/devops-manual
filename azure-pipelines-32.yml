@@ -14,13 +14,14 @@ resources:
 
 variables:
   azure.ref: $[ resources.repositories['azure'].ref ]
-#  tools.ref: $[ resources.repositories['devops'].ref ]
+  tools.ref: $[ resources.repositories['devops'].ref ]
 #  isMain: $[eq(resources.repositories['devops'].ref, 'refs/heads/master')]
 
 steps:
 - checkout: self
 - checkout: devops
-- checkout: azure
+- checkout: 
+- script: env | sort
 - bash: |
     echo "Tools version: $TOOLS_REF"
     echo "Tools version: $AZURE_REF"
