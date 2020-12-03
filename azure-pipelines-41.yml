@@ -1,16 +1,13 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+# https://stackoverflow.com/questions/65121138/how-to-increment-tags-in-azure-devops-pipeline-salesforce
 
-trigger:
-- main
+trigger: none
+pr: none
 
 pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- bash: |
+- script: |
     CurrentVersion = `git tag -l testtag_v* --sort=creatordate | tail -n1 | awk -F'v' '{print $2}'`
     echo CURRENT VERSION: $CurrentVersion
     major=`echo $current_version | cut -d'.' -f 1`
