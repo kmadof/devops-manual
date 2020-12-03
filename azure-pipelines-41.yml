@@ -1,0 +1,23 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- bash: |
+    CurrentVersion = `git tag -l testtag_v* --sort=creatordate | tail -n1 | awk -F'v' '{print $2}'`
+    echo CURRENT VERSION: $CurrentVersion
+    major=`echo $current_version | cut -d'.' -f 1`
+    minor=`echo $current_version | cut -d'.' -f 2`
+    minor=`expr $minor + 1`
+    patch=`echo $current_version | cut -d'.' -f 3`
+    NextVersion=`echo $major.$minor.$patch`
+    echo NEXT VERSION: $NextVersion
+    echo "##vso[task.setvariable variable=next_version;]$NextVersion"
+  displayName: Get next version
