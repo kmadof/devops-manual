@@ -8,6 +8,10 @@ pool:
 
 steps:
 - bash: |
+    #!/bin/bash          
+    STR="Hello World!"
+    echo $STR   
+- bash: |
     CurrentVersion2 = git tag -l testtag_v* --sort=creatordate | tail -n1 | awk -F'v' '{print $2}'
     echo $CurrentVersion2
 
