@@ -17,7 +17,7 @@ steps:
     command: 'pack'
     arguments: --configuration $(buildConfiguration) -p:PackageID=my_id -p:PackageVersion=2.1.0
     packagesToPack: '$(System.DefaultWorkingDirectory)/stackoverflow/08-nuget-packager/SampleApp.csproj'
-    versioningScheme: 'off'
+    versioningScheme: byPrereleaseNumber
     outputDir: '$(Build.ArtifactStagingDirectory)'
 
 - task: DotNetCoreCLI@2
