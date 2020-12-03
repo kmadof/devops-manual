@@ -27,7 +27,7 @@ steps:
       publishWebProjects: false
       arguments: ' --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
       packagesToPack: '$(System.DefaultWorkingDirectory)/stackoverflow/08-nuget-packager/SampleApp.csproj'
-      versioningScheme: byPrereleaseNumber
+      versioningScheme: off
       majorVersion: '1'
       minorVersion: '2'
       patchVersion: '3'
