@@ -21,3 +21,14 @@ stages:
   - job: Test
     steps:
     - bash: echo "Test"
+- stage: test2
+  displayName: Test2
+  condition: |
+    or(
+      in(dependencies.build.result, 'Succeeded', 'SucceededWithIssues', 'Skipped'),
+      in(dependencies.test.result, 'Succeeded', 'SucceededWithIssues', 'Skipped')
+    )
+  jobs:
+  - job: Test2
+    steps:
+    - bash: echo "Test2"
