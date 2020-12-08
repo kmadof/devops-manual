@@ -14,6 +14,9 @@ pool:
 
 steps:
 - bash: |
+    echo "You can use macro replacement to get secrets, and they'll be masked in the log: ${{parameters.myPAT}}"
+
+- bash: |
     echo "##vso[task.setvariable variable=MY_PAT;issecret=true]${{parameters.myPAT}}"
   name: SetSecret
 
