@@ -17,4 +17,5 @@ steps:
     echo "##vso[task.setvariable variable=MY_PAT;issecret=true]${{parameters.myPAT}}"
   name: SetSecret
 
-- bash: echo "You can use macro replacement to get secrets, and they'll be masked in the log: $(MY_PAT)"
+- bash: |
+    echo "You can use macro replacement to get secrets, and they'll be masked in the log: $(MY_PAT)"
