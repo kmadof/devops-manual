@@ -1,0 +1,20 @@
+# https://stackoverflow.com/questions/65193197/azure-pipeline-parameter-as-secret-variable/65196295#65196295
+
+parameters:
+- name: myPAT
+  displayName: 'My PAT'
+  type: string
+
+trigger: none
+pr: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+
+steps:
+- bash: |
+    echo "##vso[task.setvariable variable=MY_PAT;issecret=true]${{parameters.myPAT}}"
+  name: SetSecret
+
+- bash: echo "You can use macro replacement to get secrets, and they'll be masked in the log: $(MY_PAT)"
