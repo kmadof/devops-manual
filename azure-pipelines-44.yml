@@ -17,7 +17,7 @@ stages:
     dependsOn: plan_dev
     variables:
       varFromA: $[ stageDependencies.plan_dev.terraform_plan_dev.outputs['terraform_plan.terraform_plan_exitcode'] ]
-    condition: eq(dependencies.plan_dev.outputs['terraform_plan.terraform_plan_exitcode'], 2)
+    condition: eq(dependencies.plan_dev.outputs['terraform_plan_dev.terraform_plan.terraform_plan_exitcode'], 2)
     jobs:
     - job: apply_dev
       steps:
