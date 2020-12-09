@@ -23,3 +23,5 @@ stages:
     displayName: 'Run only deploy template'
     jobs:
     - template: TemplateDeploy.yaml
+      parameters:
+        makeExplicitDependency: false
