@@ -1,0 +1,25 @@
+# https://stackoverflow.com/questions/65222929/how-to-dynamically-reference-previous-jobs-in-azure-pipelines-if-there-are-any-i
+
+trigger: none
+pr: none
+
+stages:
+  - stage: BothTemplates
+    displayName: 'Run both templates'
+    jobs:
+    - template: TemplateTest.yaml
+    - template: TemplateDeploy.yaml #depends on the job in TemplateTest.yml
+
+# The pipeline is invalid because of OnlyDeploy, as the TemplateDeploy.yml depends in the job "Test", which does not exist in the OnlyDeploy-context
+
+  - stage: OnlyTest
+    dependsOn: BothTemplates
+    displayName: 'Run only test template'
+    jobs:
+    - template: TemplateTest.yaml
+
+  - stage: OnlyDeploy
+    dependsOn: OnlyTest
+    displayName: 'Run only deploy template'
+    jobs:
+    - template: TemplateDeploy.yaml

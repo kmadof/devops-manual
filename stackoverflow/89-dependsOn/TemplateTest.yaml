@@ -1,0 +1,10 @@
+jobs:
+- deployment: Test
+  dependsOn: 
+  displayName: Test
+  continueOnError: false
+  strategy:
+    runOnce:
+      deploy:
+        steps:
+        - script: echo 'Test'
