@@ -2,6 +2,7 @@ jobs:
 - deployment: Test
   dependsOn: 
   displayName: Test
+  environment: development
   continueOnError: false
   strategy:
     runOnce:
