@@ -15,9 +15,11 @@ stages:
 
   - stage: apply_dev
     dependsOn: plan_dev
-    condition: eq(stageDependencies.plan_dev.terraform_plan_dev.outputs['terraform_plan.terraform_plan_exitcode'], '2')
+    variables:
+      varFromA: $[ stageDependencies.plan_dev.terraform_plan_dev.outputs['terraform_plan.terraform_plan_exitcode'] ]
+    #condition: eq(stageDependencies.plan_dev.terraform_plan_dev.outputs['terraform_plan.terraform_plan_exitcode'], '2')
     jobs:
     - job: apply_dev
       steps:
-      - bash: echo 'apply'
+      - bash: echo 'apply $(varFromA)'
         name: terraform_apply
