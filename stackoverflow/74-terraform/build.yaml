@@ -19,3 +19,4 @@ steps:
     backendAzureRmStorageAccountName: 'thecodemanual'
     backendAzureRmContainerName: 'infra'
     backendAzureRmKey: 'tfstate-so-74'
+    commandOptions: '-input=false'

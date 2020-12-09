@@ -1,0 +1,34 @@
+# https://stackoverflow.com/questions/65182620/skipped-pipeline-stage-in-azure-devops/65184162#65184162
+
+trigger: none
+pr: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+- stage: build
+  displayName: Build
+  condition: eq( variables['Build.Reason'], 'PullRequest')
+  jobs:
+  - job: Build
+    steps:
+    - bash: echo "Build"
+- stage: test
+  displayName: Test
+  condition: succeeded()
+  jobs:
+  - job: Test
+    steps:
+    - bash: echo "Test"
+- stage: test2
+  displayName: Test2
+  condition: |
+    or(
+      in(dependencies.build.result, 'Succeeded', 'SucceededWithIssues', 'Skipped'),
+      in(dependencies.test.result, 'Succeeded', 'SucceededWithIssues', 'Skipped')
+    )
+  jobs:
+  - job: Test2
+    steps:
+    - bash: echo "Test2"
