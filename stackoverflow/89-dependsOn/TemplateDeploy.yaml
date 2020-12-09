@@ -1,4 +1,4 @@
-paramataers:
+parameters:
 - name: makeExplicitDependency
   displayName: 'Make excplicit job dependency'
   type: boolean
