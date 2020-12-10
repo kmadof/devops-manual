@@ -10,8 +10,6 @@ stages:
     - template: TemplateTest.yaml
     - template: TemplateDeploy.yaml #depends on the job in TemplateTest.yml
 
-# The pipeline is invalid because of OnlyDeploy, as the TemplateDeploy.yml depends in the job "Test", which does not exist in the OnlyDeploy-context
-
   - stage: OnlyTest
     dependsOn: BothTemplates
     displayName: 'Run only test template'

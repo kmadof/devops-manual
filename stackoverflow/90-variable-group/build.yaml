@@ -1,0 +1,17 @@
+#https://stackoverflow.com/questions/65234871/can-you-pass-variable-group-values-to-sub-template-in-yaml/65235075?noredirect=1#comment115333365_65235075
+
+trigger: none
+pr: none
+
+stages:
+- stage: QA
+  jobs:
+  - template: sub-template.yml
+    parameters:
+      variableGroupName: 'QA'
+
+- stage: PROD
+  jobs:
+  - template: sub-template.yml
+    parameters:
+      variableGroupName: 'PROD'

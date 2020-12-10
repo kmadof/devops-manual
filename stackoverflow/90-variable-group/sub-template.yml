@@ -1,0 +1,9 @@
+parameters:
+  variableGroupName: 'QA'
+
+jobs:
+- job: ResourceDeployment
+  variables:
+  - group: ${{ parameters.variableGroupName }}
+  steps:
+  - script: echo '$(isProd)'
