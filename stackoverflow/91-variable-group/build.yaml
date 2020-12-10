@@ -8,10 +8,10 @@ stages:
   jobs:
   - template: sub-template.yml
     parameters:
-      variableGroupName: 'QA'
+      variableGroupName: 'qa-variables.yml'
 
 - stage: PROD
   jobs:
   - template: sub-template.yml
     parameters:
-      variableGroupName: 'PROD'
+      variableGroupName: 'prod-variables.yml'
