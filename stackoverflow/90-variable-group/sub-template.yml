@@ -1,9 +1,9 @@
 parameters:
-  variableGroupName: 'QA'
+  variableGroupName: 'qa-variables.yml'
 
 jobs:
 - job: ResourceDeployment
   variables:
-  - group: ${{ parameters.variableGroupName }}
+  - template: ${{ parameters.variableGroupName }}
   steps:
   - script: echo '$(isProd)'
