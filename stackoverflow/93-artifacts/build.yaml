@@ -1,0 +1,18 @@
+trigger: none
+pr: none
+
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: '$(Build.SourcesDirectory)\stackoverflow\93-artifacts\file1.txt' 
+    artifactName: 'art-1' 
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: '$(Build.SourcesDirectory)\stackoverflow\93-artifacts\file2.txt' 
+    artifactName: 'art-2' 
