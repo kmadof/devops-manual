@@ -7,3 +7,4 @@ jobs:
   - group: ${{ parameters.variableGroupName }}
   steps:
   - script: echo '$(isProd)'
+  - script: echo 'Extra Step'
