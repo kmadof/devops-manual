@@ -1,6 +1,7 @@
 #https://stackoverflow.com/questions/65249158/azure-devops-template-pipelines-how-to-disable-ci-trigger-on-a-template/65249422?noredirect=1#comment115356077_65249422
 
-trigger: none
+trigger: 
+- '*'
 pr: none
 
 stages:
