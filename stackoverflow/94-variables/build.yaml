@@ -15,6 +15,7 @@ steps:
     azureSubscription: 'rg-the-code-manual'
     ScriptType: FilePath
     ScriptPath: 'stackoverflow\94-variables\script-1.ps1'
+    azurePowerShellVersion: LatestVersion
 
 - task: PowerShell@2
   displayName: 'Download package' 
