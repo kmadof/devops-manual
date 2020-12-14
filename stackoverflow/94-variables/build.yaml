@@ -12,7 +12,7 @@ steps:
   displayName: 'Query Latest Package'
 
   inputs:
-    azureSubscription: 'test1'
+    azureSubscription: 'rg-the-code-manual'
     ScriptType: FilePath
     ScriptPath: 'stackoverflow\94-variables\script-1.ps1'
 
