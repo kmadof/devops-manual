@@ -1,0 +1,23 @@
+#https://stackoverflow.com/questions/65283012/how-to-use-output-variable-value-from-one-powershell-script-to-another-powershel
+
+trigger: none
+pr: none
+
+pool:
+  vmImage: 'windows-latest'
+
+
+steps:
+- task: AzurePowerShell@3
+  displayName: 'Query Latest Package'
+
+  inputs:
+    azureSubscription: 'test1'
+    ScriptType: FilePath
+    ScriptPath: 'stackoverflow\94-variables\script-1.ps1'
+
+- task: PowerShell@2
+  displayName: 'Download package' 
+  inputs:
+    targetType: filePath 
+    filePath: 'stackoverflow\94-variables\script-2.ps1'
