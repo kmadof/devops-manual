@@ -34,5 +34,8 @@ jobs:
     runOnce:
       deploy:
         steps:
+        - download: none
+        - download: MultipleArtifact
+          artifact: art-1
         - checkout: self 
         - script: echo my first deployment
