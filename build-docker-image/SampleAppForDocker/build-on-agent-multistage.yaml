@@ -48,6 +48,7 @@ jobs:
 
 - deployment: DeployWebApp
   displayName: 'Deployment to Azure Web App'
+  dependsOn: BuildImage
   pool:
     vmImage: 'Ubuntu-20.04'
   environment: development
@@ -55,6 +56,7 @@ jobs:
     runOnce:
       deploy:
         steps:
+        - pwsh: Write-Host "Hello"
         - task: AzureRmWebAppDeployment@4
           enabled: false
           displayName: 'Deploy Azure App Service'
