@@ -58,7 +58,6 @@ jobs:
         steps:
         - pwsh: Write-Host "Hello"
         - task: AzureRmWebAppDeployment@4
-          enabled: false
           displayName: 'Deploy Azure App Service'
           inputs:
             azureSubscription: rg-the-code-manual
