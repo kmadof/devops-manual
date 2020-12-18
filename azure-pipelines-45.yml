@@ -1,0 +1,41 @@
+# https://stackoverflow.com/questions/65308235/azure-devops-yaml-pipeline-how-to-download-only-specific-artifacts-of-a-refere/65314805#65314805
+
+trigger: none
+pr: none
+
+resources:
+  pipelines:
+  - pipeline: MultipleArtifact
+    project: 'DevOps Manual'
+    source: 'kmadof.devops-manual (64)'
+
+jobs:
+- job: Build
+  pool:
+    vmImage: 'ubuntu-latest'
+  steps:
+  - script: echo Hello, world!
+    displayName: 'Run a one-line script'
+
+  - script: |
+      echo Add other tasks to build, test, and deploy your project.
+      echo See https://aka.ms/yaml
+    displayName: 'Run a multi-line script'
+
+  # Track deployments on the environment.
+- deployment: DeployWeb
+  displayName: deploy Web App
+  pool:
+    vmImage: 'Ubuntu-16.04'
+  # Creates an environment if it doesn't exist.
+  environment: 'smarthotel-dev'
+  strategy:
+    # Default deployment strategy, more coming...
+    runOnce:
+      deploy:
+        steps:
+        - download: none
+        - download: MultipleArtifact
+          artifact: art-1
+        - checkout: self 
+        - script: echo my first deployment
