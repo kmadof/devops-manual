@@ -17,6 +17,9 @@ pr: none
 pool:
   vmImage: 'ubuntu-latest'
 
+variables:
+  imageName: 'SomeImage'
+
 jobs:
 - job: BuildImage
   steps:
@@ -42,7 +45,7 @@ jobs:
     inputs:
       command: logout
       containerRegistry: devopsmanual-acr
-      
+
 - deployment: DeployWebApp
   displayName: 'Deployment to Azure Web App'
   pool:
