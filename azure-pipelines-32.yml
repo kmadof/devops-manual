@@ -2,7 +2,8 @@
 
 name: ref-name
 
-trigger: master
+trigger:
+- master
 pr: none
 
 resources:
