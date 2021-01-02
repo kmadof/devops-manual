@@ -1,5 +1,8 @@
 # https://stackoverflow.com/questions/64642449/conditions-based-on-resources-on-yaml-pipeline/64643767?noredirect=1#comment114556002_64643767
-trigger: none
+
+name: ref-name
+
+trigger: master
 pr: none
 
 resources:
