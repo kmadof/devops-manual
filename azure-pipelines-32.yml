@@ -28,9 +28,6 @@ steps:
 - checkout: azure
 - script: env | sort
   displayName: Print env variables
-- script: |
-    echo "$(resources.repositories['azure'].ref)"
-    echo "$(resources.repositories['devops'].ref)"
 - bash: |
     echo "Tools version: $TOOLS_REF"
     echo "Tools version: $AZURE_REF"
