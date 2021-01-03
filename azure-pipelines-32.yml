@@ -34,3 +34,4 @@ steps:
 - bash: |
     echo "Tools version: $TOOLS_REF"
     echo "Tools version: $AZURE_REF"
+    echo "Tools version: $ISMAIN"
