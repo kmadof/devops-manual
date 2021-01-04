@@ -2,8 +2,7 @@
 
 name: ref-name
 
-trigger:
-- master
+trigger: none
 pr: none
 
 resources:
@@ -18,8 +17,8 @@ resources:
 
 variables:
   test: "true"
-  azure.ref: $[ resources.repositories['azure'].ref ] # An error occurred while loading the YAML build pipeline. Object reference not set to an instance of an object.
-  tools.ref: $[ resources.repositories['devops'].ref ] # An error occurred while loading the YAML build pipeline. Object reference not set to an instance of an object.
+  azure.ref: $[ resources.repositories['azure'].ref ] 
+  tools.ref: $[ resources.repositories['devops'].ref ] 
   isMain: $[eq(resources.repositories['devops'].ref, 'refs/heads/master')]
 
 steps:

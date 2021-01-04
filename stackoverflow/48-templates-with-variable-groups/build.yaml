@@ -1,10 +1,9 @@
+name: terrafrom-template
+
 trigger:
   branches:
     include:
       - master
-  paths:
-    include:
-      - stackoverflow/09-array-parameter-for-template/*
 
 # no PR triggers
 pr: none
