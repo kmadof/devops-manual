@@ -1,0 +1,12 @@
+# https://stackoverflow.com/questions/65569847/starting-a-build-number-from-a-specific-number
+
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+name: $(TeamProject)_$(Build.DefinitionName)_$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
+
+steps:
+  - script: echo $(Build.BuildNumber) # outputs customized build number like project_def_master_20200828.1
