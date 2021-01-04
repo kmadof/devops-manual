@@ -1,9 +1,7 @@
 name: terrafrom-template
 
 trigger:
-  branches:
-    include:
-      - master
+- master
 
 # no PR triggers
 pr: none
