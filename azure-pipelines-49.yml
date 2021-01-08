@@ -1,0 +1,18 @@
+schedules:
+- cron: "0 0 1 */3 *" 
+  displayName: At 00:00 on day-of-month 1 in every 3rd month.
+  branches:
+    include:
+      - master
+  always: true
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: TriggerPipeline@1
+  inputs:
+    serviceConnection: 'DevOps TheCodeManual'
+    project: '4fa6b279-3db9-4cb0-aab8-e06c2ad550b2'
+    Pipeline: 'Release'
+    releaseDefinition: 'DevOps CI Release'
