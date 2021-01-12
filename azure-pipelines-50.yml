@@ -1,0 +1,17 @@
+# https://stackoverflow.com/questions/65680823/error-initiliazing-container-job-in-a-hosted-azure-pipelines
+
+trigger:
+- main
+
+jobs:
+- job: publish_branch_image
+  pool:
+    vmImage: ubuntu-latest
+  container: docker.io/ananace/skopeo:latest
+  steps:
+  - script: |
+      # clean branchname for imagename
+      export COMMIT_IMAGE="$(Image.TagName)"
+      export TARGET_IMAGE="$(Image.Name)":$(echo $(Build.SourceBranch) | sed 's./.-.g')
+      echo "Pushing to ${TARGET_IMAGE}"
+    displayName: publish-branch-release-image
