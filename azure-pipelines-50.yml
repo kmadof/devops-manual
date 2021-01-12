@@ -1,7 +1,7 @@
 # https://stackoverflow.com/questions/65680823/error-initiliazing-container-job-in-a-hosted-azure-pipelines
+# it doesn't work
 
-trigger:
-- main
+trigger: none
 
 jobs:
 - job: publish_branch_image
