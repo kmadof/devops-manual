@@ -1,0 +1,17 @@
+# https://stackoverflow.com/questions/65569847/starting-a-build-number-from-a-specific-number
+
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+#name: $(TeamProject)_$(Build.DefinitionName)_$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
+name: $(Rev:r)
+
+steps:
+- script: echo '$(Build.BuildNumber)'
+- pwsh: |
+    $buildId = 50 + $(Build.BuildNumber)
+    Write-Host "##vso[build.updatebuildnumber]$buildId"
+- script: echo '$(Build.BuildNumber)'
