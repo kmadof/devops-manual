@@ -10,7 +10,7 @@ resources:
     branch: master
     trigger:
      branches:
-     - master
+     - '*'
 
 steps:
 - bash: env | sort
