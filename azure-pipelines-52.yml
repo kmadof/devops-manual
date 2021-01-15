@@ -9,4 +9,4 @@ pool:
 container: ubuntu:18.04
 
 steps:
-- script: lsb_release -a
+- bash: lsb_release -a
