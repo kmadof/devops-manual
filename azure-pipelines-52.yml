@@ -10,5 +10,4 @@ container: ubuntu:18.04
 
 steps:
 - bash: |
-    apt-get update && apt-get install -y lsb-release && apt-get clean all
-    lsb_release -a
+    cat /etc/issue
