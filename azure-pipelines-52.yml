@@ -9,4 +9,6 @@ pool:
 container: ubuntu:18.04
 
 steps:
-- bash: lsb_release -a
+- bash: |
+    apt-get update && apt-get install -y lsb-release && apt-get clean all
+    lsb_release -a
