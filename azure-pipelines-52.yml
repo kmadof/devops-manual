@@ -1,0 +1,12 @@
+# https://stackoverflow.com/questions/65739111/running-azure-pipeline-tasks-inside-a-docker
+
+trigger: none
+pr: none
+
+pool:
+  vmImage: 'ubuntu-18.04'
+
+container: ubuntu:18.04
+
+steps:
+- script: lsb_release -a
