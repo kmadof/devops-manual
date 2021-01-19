@@ -1,0 +1,20 @@
+# https://stackoverflow.com/questions/65739111/running-azure-pipeline-tasks-inside-a-docker
+
+trigger: none
+pr: none
+
+pool:
+  vmImage: 'ubuntu-18.04'
+
+jobs:
+- job: u18
+  steps:
+  - bash: |
+      cat /etc/issue
+
+- job: u20
+  container: ubuntu:20.04
+
+  steps:
+  - bash: |
+      cat /etc/issue
