@@ -10,11 +10,12 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-  - task: PowerShell@2
-    displayName: 'Detect Subfolder Changes'
-    name: setvarStep
-    inputs:
-      targetType: 'filePath'
-      filePath: $(System.DefaultWorkingDirectory)\detectchanges.ps1
-      failOnStderr: true
-  - script: echo "$(setvarStep.changedPackage)"
+- script: ls '$(System.DefaultWorkingDirectory)'
+- task: PowerShell@2
+  displayName: 'Detect Subfolder Changes'
+  name: setvarStep
+  inputs:
+    targetType: 'filePath'
+    filePath: $(System.DefaultWorkingDirectory)/detectchanges.ps1
+    failOnStderr: true
+- script: echo "$(setvarStep.changedPackage)"
