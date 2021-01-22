@@ -1,0 +1,10 @@
+parameters:
+- name: prisma_continue_on_error
+  type: boolean
+  default: false
+
+jobs:
+  - job: Build
+    steps:  
+    - script: ls .
+      continueOnError: ${{parameters.prisma_continue_on_error}}

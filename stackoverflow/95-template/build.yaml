@@ -1,0 +1,15 @@
+#https://stackoverflow.com/questions/65837888/azure-devops-yml-pipeline-pass-boolean-value-to-task-prisma-cloud-compute-scan
+
+trigger: none
+pr: none
+
+pool:
+  vmImage: 'windows-latest'
+
+stages:
+  - stage: "Build"
+    displayName: Build
+    jobs:
+    - template: template.yaml
+      parameters:
+        prisma_continue_on_error: $(prismaContinueOnError)
