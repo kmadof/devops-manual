@@ -6,6 +6,12 @@ pr: none
 pool:
   vmImage: 'windows-latest'
 
+variables:
+  name: prismaContinueOnError
+  value: false
+  isMainBranch: $[eq(variables['Build.SourceBranch'], 'refs/heads/master')]
+
+
 stages:
   - stage: "Build"
     displayName: Build
