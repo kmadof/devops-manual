@@ -4,3 +4,5 @@ pr: none
 
 extends:
   template: start.yaml
+  parameters:
+      myStringName: 'some string'
