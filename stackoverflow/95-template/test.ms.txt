@@ -1,0 +1,17 @@
+# Azure Manual
+
+## Datbases
+
+1.  Cosmos DB
+
+  1.1 SQL API
+
+  1.1.1 [Getting started with SQL queries](https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-getting-started)
+
+      In Azure Cosmos DB SQL API accounts, there are two ways to read data:
+
+      **Point reads** - You can do a key/value lookup on a single item ID and partition key. The item ID and partition key combination is the key and the item itself is the  value. For a 1 KB document, point reads typically cost 1 request unit with a latency under 10 ms. Point reads return a single item.
+
+      **SQL queries** - You can query data by writing queries using the Structured Query Language (SQL) as a JSON query language. Queries always cost at least 2.3 request units and, in general, will have a higher and more variable latency than point reads. Queries can return many items.
+
+      [Understanding the difference between point reads and queries in Azure Cosmos DB](https://devblogs.microsoft.com/cosmosdb/point-reads-versus-queries/)

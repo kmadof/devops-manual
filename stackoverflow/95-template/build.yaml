@@ -18,4 +18,4 @@ stages:
     jobs:
     - template: template.yaml
       parameters:
-        prisma_continue_on_error: $(prismaContinueOnError)
+        prisma_continue_on_error: `${{ variables.prismaContinueOnError }}` 
