@@ -7,8 +7,7 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
-  name: prismaContinueOnError
-  value: false
+  prismaContinueOnError: false
   isMainBranch: $[eq(variables['Build.SourceBranch'], 'refs/heads/master')]
 
 
@@ -18,4 +17,4 @@ stages:
     jobs:
     - template: template.yaml
       parameters:
-        prisma_continue_on_error: `${{ variables.prismaContinueOnError }}` 
+        prisma_continue_on_error: '${{ variables.prismaContinueOnError }}'
