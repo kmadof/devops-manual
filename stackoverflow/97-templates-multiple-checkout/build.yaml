@@ -1,0 +1,19 @@
+trigger: none
+pr: none
+
+resources:
+  repositories:
+    - repository: devops
+      type: github
+      name: kmadof/devops-templates
+      endpoint: kmadof
+
+jobs:
+- template: template.yaml
+  parameters:
+    jobName: 'Self'
+- template: template.yaml
+  parameters:
+    jobName: 'DevOps'
+    checkoutRepository: 
+      checkout: devops
