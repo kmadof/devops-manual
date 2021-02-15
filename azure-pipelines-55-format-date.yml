@@ -1,0 +1,14 @@
+trigger: none
+pr: none
+
+pool:
+  vmImage: ubuntu-default
+
+jobs:
+- job:
+  variables:
+    a: $[format('{0:dd}.{0:MM}.{0:yyyy}', pipeline.startTime)]
+    b: $[format('{0:ddd}', pipeline.startTime)]
+  steps:
+  - bash: echo $(a)
+  - bash: echo $(b)
