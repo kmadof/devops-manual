@@ -12,8 +12,10 @@ jobs:
 - template: template.yaml
   parameters:
     jobName: 'Self'
+    repositoryName: 'self'
 - template: template.yaml
   parameters:
     jobName: 'DevOps'
     checkoutRepository: 
       checkout: devops
+    repositoryName: 'devops'
