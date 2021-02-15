@@ -26,6 +26,9 @@ steps:
     echo "hello Manual"
   condition: eq(variables.manual, true)
 - bash: |
+    echo "hello Manual Monday"
+  condition: and(eq(variables.manual, true), eq(variables.isMonday, true))
+- bash: |
     echo $(isMonday)
     echo $ISMONDAY
     echo $(scheduled)
