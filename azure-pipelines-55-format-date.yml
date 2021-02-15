@@ -15,7 +15,7 @@ steps:
     is_monday=false
     [ "$dow" == "1" ] && is_monday=true
     echo $is_monday
-    echo '##vso[task.setvariable variable=isMonday]$is_monday'
+    echo "##vso[task.setvariable variable=isMonday]${is_monday}"
 
 - bash: |
     echo $(isMonday)
