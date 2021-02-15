@@ -19,3 +19,4 @@ jobs:
 - job: 'Repository${{ parameters.repositoryName }}'
   steps:
   - checkout: ${{ parameters.repositoryName }}
+  - bash: ls .
