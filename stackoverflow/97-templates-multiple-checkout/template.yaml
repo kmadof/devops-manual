@@ -12,4 +12,4 @@ jobs:
   displayName: ${{ parameters.jobName }}
   steps:
   - ${{ parameters.checkoutRepository }}
-  - ls .
+  - bash: ls .
