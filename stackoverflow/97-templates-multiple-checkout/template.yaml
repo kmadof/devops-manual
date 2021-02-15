@@ -6,6 +6,9 @@ parameters:
   type: step
   default:
     checkout: self
+- name: repositoryName
+  type: string
+  default: 'self'   
 
 jobs: 
 - job: ${{ parameters.jobName }}
@@ -13,3 +16,6 @@ jobs:
   steps:
   - ${{ parameters.checkoutRepository }}
   - bash: ls .
+- job: 'Repository${{ parameters.repositoryName }}'
+  steps:
+  - checkout: ${{ parameters.repositoryName }}
