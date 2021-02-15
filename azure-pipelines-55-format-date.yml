@@ -19,4 +19,5 @@ steps:
 
 - bash: |
     echo $(isMonday)
+    echo $ISMONDAY
     echo $(scheduled)
