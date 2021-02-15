@@ -2,7 +2,7 @@ trigger: none
 pr: none
 
 pool:
-  vmImage: ubuntu-default
+  vmImage: ubuntu-latest
 
 variables:
   - name: scheduled
