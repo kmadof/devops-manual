@@ -12,7 +12,6 @@ variables:
 
 stages:
 - stage: A
-  condition: false
   jobs:
   - job: A1
     steps:
