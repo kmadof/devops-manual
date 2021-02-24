@@ -20,6 +20,7 @@ stages:
     
 - stage: B
   condition: and(succeeded(), eq(variables['Build.Reason'], 'PullRequest'), startsWith(variables['System.PullRequest.SourceBranch'], 'refs/heads/infra'))
+  dependsOn: A
   jobs:
   - job: B1
     steps:
@@ -27,6 +28,7 @@ stages:
 
 - stage: C
   condition: and(succeeded(), eq(variables.isPullRequest, true), eq(variables.isInfra, true))
+  dependsOn: A
   jobs:
   - job: C1
     steps:
@@ -34,6 +36,7 @@ stages:
 
 - stage: D
   condition: and(succeeded(), eq(variables.isPullRequestFromInfra, true))
+  dependsOn: A
   jobs:
   - job: D1
     steps:
