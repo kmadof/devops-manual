@@ -27,7 +27,6 @@ stages:
 
 - stage: C
   condition: and(succeeded(), eq(variables.isPullRequest, true), eq(variables.isInfra, true))
-  dependsOn:
   jobs:
   - job: C1
     steps:
@@ -35,7 +34,6 @@ stages:
 
 - stage: D
   condition: and(succeeded(), eq(variables.isPullRequestFromInfra, true))
-  dependsOn:
   jobs:
   - job: D1
     steps:
