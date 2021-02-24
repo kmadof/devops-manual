@@ -17,6 +17,8 @@ stages:
     steps:
     - script: echo $(isPullRequest)
     - script: echo $(isInfra)
+    - script: echo $(Build.Reason)
+    - script: echo $(System.PullRequest.SourceBranch)
     
 - stage: B
   condition: and(succeeded(), eq(variables['Build.Reason'], 'PullRequest'), startsWith(variables['System.PullRequest.SourceBranch'], 'refs/heads/infra'))
