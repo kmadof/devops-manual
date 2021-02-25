@@ -8,6 +8,7 @@ pool:
 variables:
   isPullRequest: $[eq(variables['Build.Reason'], 'PullRequest')]
   isInfra: $[startsWith(variables['System.PullRequest.SourceBranch'], 'refs/heads/infra')]
+  isInfra2: $[contains(variables['System.PullRequest.SourceBranch'], 'infra')]
   isPullRequestFromInfra: $[and(eq(variables['Build.Reason'], 'PullRequest'), startsWith(variables['System.PullRequest.SourceBranch'], 'refs/heads/infra'))]
 
 stages:
@@ -17,6 +18,7 @@ stages:
     steps:
     - script: echo $(isPullRequest)
     - script: echo $(isInfra)
+    - script: echo $(isInfra2)
     - script: echo $(Build.Reason)
     - script: echo $(System.PullRequest.SourceBranch)
     
