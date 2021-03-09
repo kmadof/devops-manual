@@ -7,7 +7,7 @@ pool:
 steps:
 
 - script: |
-    echo "##vso[task.setvariable variable=packages]@('a','b')"
+    echo "##vso[task.setvariable variable=packages]{"name":"John","age":30,"cars":[ "Ford", "BMW", "Fiat" ]}"
   displayName: 'Set variable'
 
 - script: |
