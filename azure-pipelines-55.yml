@@ -1,0 +1,15 @@
+trigger: none
+pr: none
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+
+- script: |
+    echo "##vso[task.setvariable variable=packages]@('a','b')"
+  displayName: 'Set variable'
+
+- script: |
+    echo "$(packages)"
+  displayName: 'Display variable'
