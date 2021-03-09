@@ -13,3 +13,12 @@ steps:
 - script: |
     echo "$(packages)"
   displayName: 'Display variable'
+
+- powershell: |
+    $package = convertfrom-json '$(packages)'
+    Write-Host "$($package.name)"
+    Write-Host "$($package.age)"
+    $package.cars | foreach-object {
+      $car = $_
+      Write-Host "$($car)"
+    }
