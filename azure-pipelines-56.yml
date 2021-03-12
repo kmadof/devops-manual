@@ -33,7 +33,7 @@ steps:
     script: |
       [int] $PSI = (([int] $(latest_date))-([int] $(old_date)))/56+1
       [int] $totalsprints = ( ([int] $(latest_date))-([int] $(old_date)))/14
-      [int] sprint = $totalsprints%4+1
+      [int] $sprint = $totalsprints%4+1
       $year = Get-Date -Format "yy"
       $monthDay = Get-Date -Format "MMdd"
       [string] $buildName = "$(majorversion)$year$PSI.$sprint.$monthDay"
