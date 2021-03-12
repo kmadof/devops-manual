@@ -9,8 +9,6 @@ variables:
   buildConfiguration: 'Release'
   old_date: '20210601'
   latest_date: '20210603'
-  #PSI: ${{ variables.latest_date - variables.old_date}}
-  PSI: ${{ -1.2 }}
   # PSI: ${{ (variables.latest_date-variables.old_date)/56+1}}
   # totalsprints: ${{ (variables.latest_date-variables.old_date)/14 }}
   # sprint: ${{ variables.totalsprints%4+1 }}
@@ -18,7 +16,6 @@ variables:
   dot: '.'
 
 #name: '$(majorversion)$(Year:yy)$(PSI)$(dot)$(sprint)$(dot)$(Date:MMdd)'
-name: '$(majorversion)$(Year:yy)$(PSI)$(dot)$(Date:MMdd)'
 
 trigger: none
 pr: none
@@ -26,11 +23,19 @@ pr: none
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+name: 'Set dynamically below in a task'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+steps:
+- task: PowerShell@2
+  displayName: Set the name of the build (i.e. the Build.BuildNumber)
+  inputs:
+    targetType: 'inline'
+    script: |
+      [int] $PSI = (([int] $(latest_date))-([int] $(old_date)))/56+1
+      [int] $totalsprints = ( ([int] $(latest_date))-([int] $(old_date)))/14
+      [int] sprint = $totalsprints%4+1
+      $year = Get-Date -Format "yy"
+      $monthDay = Get-Date -Format "MMdd"
+      [string] $buildName = "$(majorversion)$year$PSI.$sprint.$monthDay"
+      Write-Host "Setting the name of the build to '$buildName'."
+      Write-Host "##vso[build.updatebuildnumber]$buildName"
