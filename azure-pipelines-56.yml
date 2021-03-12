@@ -9,13 +9,15 @@ variables:
   buildConfiguration: 'Release'
   old_date: '20210601'
   latest_date: '20210603'
-  PSI: ${{ (variables.latest_date-variables.old_date)/56+1}}
-  totalsprints: ${{ (variables.latest_date-variables.old_date)/14 }}
-  sprint: ${{ variables.totalsprints%4+1 }}
+  PSI: ${{ variables.latest_date-variables.old_date}}
+  # PSI: ${{ (variables.latest_date-variables.old_date)/56+1}}
+  # totalsprints: ${{ (variables.latest_date-variables.old_date)/14 }}
+  # sprint: ${{ variables.totalsprints%4+1 }}
   majorversion: '2.'
   dot: '.'
 
-name: '$(majorversion)$(Year:yy)$(PSI)$(dot)$(sprint)$(dot)$(Date:MMdd)'
+#name: '$(majorversion)$(Year:yy)$(PSI)$(dot)$(sprint)$(dot)$(Date:MMdd)'
+name: '$(majorversion)$(Year:yy)$(PSI)$(dot)$(Date:MMdd)'
 
 trigger: none
 pr: none
