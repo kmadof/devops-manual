@@ -9,7 +9,7 @@ variables:
 
 steps:
 - script: echo $(myOuter)  # prints "someValue"
-  displayName: Variable is $(myOuter)  # display name is "Variable is $(myInner)"
+  displayName: Variable is $(myOuter)  # display name is "Variable is someValue"
   
 - script: echo $(myOuter)  # prints "someValue"
-  displayName: Variable is ${{ variables.myOuter }}  # display name is "Variable is $(myInner)"
+  displayName: Variable is ${{ variables.myOuter }}  # display name is "Variable is someValue"
