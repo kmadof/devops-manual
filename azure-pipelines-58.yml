@@ -1,0 +1,29 @@
+parameters:
+- name: image
+  displayName: Pool Image
+  type: string
+  default: ubuntu-latest
+  values:
+  - windows-latest
+  - vs2017-win2016
+  - ubuntu-latest
+  - ubuntu-16.04
+  - macOS-latest
+  - macOS-10.14
+
+#https://stackoverflow.com/questions/67522173/azure-devops-pipeline-is-throwing-error-installing-node-js
+
+trigger: none
+
+jobs:
+- job: build
+  displayName: build
+  pool: 
+    vmImage: ${{ parameters.image }}
+  steps:
+  - script: echo building $(Build.BuildNumber) with ${{ parameters.image }}
+  - task: NodeTool@0  
+    inputs:
+      versionSpec: ‘14.x’
+    displayName: ‘TASK | Install Node.js 14.x ’
+
