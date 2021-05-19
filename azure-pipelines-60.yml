@@ -10,6 +10,9 @@ variables:
   value: ''
 
 steps:
-- script: echo $(versionName)
+- script: |
+    echo $(versionName)
+    echo $(SomeVar)
+    echo $(FromRun)
   displayName: 'Run a one-line script'
 
