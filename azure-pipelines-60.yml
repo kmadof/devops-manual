@@ -1,7 +1,6 @@
 # https://stackoverflow.com/questions/67603812/how-can-i-prompt-for-variables-when-launching-azure-devops-pipelines
 
-trigger:
-- master
+trigger: none
 
 pool:
   vmImage: ubuntu-latest
