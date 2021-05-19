@@ -1,0 +1,16 @@
+# https://stackoverflow.com/questions/67601763/azure-pipeline-yaml-pipeline/67601835#67601835
+
+trigger:
+  batch: True
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
