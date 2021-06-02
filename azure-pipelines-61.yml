@@ -12,6 +12,10 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+- bash: |
+    echo '$(my-actual)'
+    echo '${{ parameters.desired }}'
+    
 - bash: echo "EXECUTION REQUIRED ${DESIRED} vs ${ACTUAL})"
   condition: and(succeeded(), ne('${{ parameters.desired }}', '$(my-actual)'))
   displayName: "Detected: Necessary"
