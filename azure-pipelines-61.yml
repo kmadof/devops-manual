@@ -15,10 +15,31 @@ steps:
 - bash: |
     echo '$(my-actual)'
     echo '${{ parameters.desired }}'
-    
+
+- bash: |
+    echo "##vso[task.setvariable variable=skipsubsequent]false"
+    if [ "${{ parameters.desired }}" == "$(my-actual)" ]; then
+      echo "##vso[task.setvariable variable=skipsubsequent]true"
+    fi
+
+- bash: echo "EXECUTION REQUIRED ${DESIRED} vs ${ACTUAL})"
+  condition: and(succeeded(), eq(variables['skipsubsequent'], 'false'))
+  displayName: "Detected: Necessary"
+  env:
+    ACTAUL: $(my-actual)
+    DESIRED: ${{ parameters.desired }}
+
+- bash: echo "execution NOT required ${DESIRED} vs ${ACTUAL})"
+  condition: and(succeeded(), eq(variables['skipsubsequent'], 'true'))
+  displayName: "Detected: Unnecessary"
+  env:
+    ACTAUL: $(my-actual)
+    DESIRED: ${{ parameters.desired }}
+
 - bash: echo "EXECUTION REQUIRED ${DESIRED} vs ${ACTUAL})"
   condition: and(succeeded(), ne('${{ parameters.desired }}', '$(my-actual)'))
   displayName: "Detected: Necessary"
+  enabled: false
   env:
     ACTAUL: $(my-actual)
     DESIRED: ${{ parameters.desired }}
@@ -26,6 +47,7 @@ steps:
 - bash: echo "execution NOT required ${DESIRED} vs ${ACTUAL})"
   condition: and(succeeded(), eq('${{ parameters.desired }}', '$(my-actual)'))
   displayName: "Detected: Unnecessary"
+  enabled: false
   env:
     ACTAUL: $(my-actual)
     DESIRED: ${{ parameters.desired }}
