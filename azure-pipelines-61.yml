@@ -1,0 +1,27 @@
+# https://stackoverflow.com/questions/67763204/azure-pipelines-compare-key-vault-secrets-in-condition
+parameters:
+- name: desired
+  displayName: Desired
+  type: string
+  default: test
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- bash: echo "EXECUTION REQUIRED ${DESIRED} vs ${ACTUAL})"
+  condition: and(succeeded(), ne('${{ parameters.desired }}', '$(my-actual)'))
+  displayName: "Detected: Necessary"
+  env:
+    ACTAUL: $(my-actual)
+    DESIRED: ${{ parameters.desired }}
+
+- bash: echo "execution NOT required ${DESIRED} vs ${ACTUAL})"
+  condition: and(succeeded(), eq('${{ parameters.desired }}', '$(my-actual)'))
+  displayName: "Detected: Unnecessary"
+  env:
+    ACTAUL: $(my-actual)
+    DESIRED: ${{ parameters.desired }}
