@@ -7,5 +7,6 @@ pool:
 
 steps:
 - powershell: $PSVersionTable.PSVersion
-- powershell: |
+- pwsh: $PSVersionTable.PSVersion
+- pwsh: |
     '{ "key":"value1", "Key":"value2" }' | ConvertFrom-Json -AsHashtable
