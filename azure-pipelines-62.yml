@@ -1,6 +1,5 @@
 # https://stackoverflow.com/questions/67829317/how-to-use-powershell-7-from-azuredevops-with-aws-tools
-trigger:
-- master
+trigger: none
 
 pool:
   vmImage: windows-latest
