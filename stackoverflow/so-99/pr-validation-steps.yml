@@ -1,0 +1,11 @@
+parameters:
+- name: UnitTestsProjectPaths
+  type: object
+  default:
+    - '1.Tests/1.Tests.csproj'
+    - '2/2.Tests/2.Tests.csproj'
+    - '3/3.Tests/3.Tests.csproj'
+
+steps:
+  - ${{ each UnitTestsProjectPath in parameters.UnitTestsProjectPaths }}:
+    - bash: echo 'Run unit tests in ${{ UnitTestsProjectPath }} and collect coverage'
