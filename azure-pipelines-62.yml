@@ -9,7 +9,9 @@ steps:
 - pwsh: $PSVersionTable.PSVersion
 - pwsh: |
     '{ "key":"value1", "Key":"value2" }' | ConvertFrom-Json -AsHashtable
-- pwsh: Install-Module -name AWSPowerShell.NetCore
+- pwsh: Install-Module -name AWSPowerShell.NetCore -Scope CurrentUser -Force
 - pwsh: |
     Import-Module AWSPowerShell.NetCore
     Get-Module -ListAvailable
+
+    Get-AWSPowerShellVersion
