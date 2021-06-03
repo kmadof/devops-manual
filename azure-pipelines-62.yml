@@ -1,0 +1,11 @@
+# https://stackoverflow.com/questions/67829317/how-to-use-powershell-7-from-azuredevops-with-aws-tools
+trigger:
+- master
+
+pool:
+  vmImage: windows-latest
+
+steps:
+- powershell: $PSVersionTable.PSVersion
+- powershell: |
+    '{ "key":"value1", "Key":"value2" }' | ConvertFrom-Json -AsHashtable
