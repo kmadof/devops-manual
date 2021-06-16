@@ -1,0 +1,18 @@
+parameters:
+- name: 'instances'
+  type: object
+  default: {}
+- name: 'server'
+  type: string
+  default: ''
+- name: 'command'
+  type: string
+  default: 'ls'
+
+steps:
+- ${{ each instance in parameters.instances }}:
+  - script: echo ${{ parameters.server }}:${{ instance }}
+
+- bash: |
+    az version
+    eval $(${{ parameters.command }})
