@@ -1,3 +1,5 @@
+trigger: none
+
 pool:
   name: Azure Pipelines
   vmImage: ubuntu-latest
@@ -28,5 +30,7 @@ stages :
             - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-cli.TerraformCLI@0
               displayName: 'init'
               inputs:
+                workingDirectory: $(System.DefaultWorkingDirectory)/terraform/
                 command: 'init'
                 commandOptions: -backend=false
+                workingDir: 
