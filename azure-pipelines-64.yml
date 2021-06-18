@@ -61,6 +61,14 @@ stages:
   - job: B1
     steps:
     - script: echo hello from Stage B
+    
+- stage: BD
+  condition: and(succeeded(), eq(dependencies.A.outputs['Deploy.printvar.shouldrun'], 'true'))
+  dependsOn: A
+  jobs:
+  - job: BD1
+    steps:
+    - script: echo hello from Stage BDeploy
 
 - stage: BB
   condition: in(dependencies.A.result, 'Succeeded', 'SucceededWithIssues', 'Skipped')
