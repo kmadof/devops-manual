@@ -23,4 +23,4 @@ jobs:
   - bash: echo "$(sub)"
   - template: templates/azure-cli.yaml
     parameters:
-      serviceConnectionName: $(sub)
+      serviceConnectionName: ${{ variables.sub }}
