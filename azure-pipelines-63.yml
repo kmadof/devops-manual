@@ -8,6 +8,7 @@ stages:
 - stage: A
   jobs:
   - deployment: A1
+    environment: Dev
     strategy:
      runOnce:
        deploy:
