@@ -21,9 +21,6 @@ jobs:
          sub: ${{ subscription }}
   steps:
   - bash: echo "$(sub)"
-  - task: AzureCLI@2
-    inputs:
-      azureSubscription: $(sub)
-      scriptType: 'pscore'
-      scriptLocation: 'inlineScript'
-      inlineScript: 'az --version'
+  - template: templates/azure-cli.yaml
+    parameters:
+      serviceConnectionName: $(sub)
