@@ -21,8 +21,12 @@ stages :
               inputs:
                 terraformVersion: '0.14.11'
             - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-cli.TerraformCLI@0
+              displayName: 'version'
+              inputs:
+                command: 'version'
+
+            - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-cli.TerraformCLI@0
               displayName: 'init'
               inputs:
                 command: 'init'
-                workingDirectory: $(terraform-working-directory)
                 commandOptions: -backend=false
