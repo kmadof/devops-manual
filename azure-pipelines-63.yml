@@ -91,11 +91,13 @@ stages:
   dependsOn: A
   variables:
     ZY: $[ convertToJson(dependencies.A.outputs) ]
+    ZZ: $[ convertToJson(stageDependencies.A) ]
   jobs:
   - job: Z1
     steps:
     - script: |
         echo "$(ZY)"
+        echo "$(ZZ)"
 
 - stage: B
   condition: and(succeeded(), eq(dependencies.A.outputs['A1_Dev_deploy.Output.printvar.shouldrun'], 'true'))
