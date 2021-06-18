@@ -84,9 +84,8 @@ stages:
      runOnce:
        deploy:
         steps:
-        - script: |
-            echo $(AX)
-            echo $(AY)
+        - script: 
+            echo "$(AY)"
 
 - stage: Z
   dependsOn: A
@@ -96,8 +95,7 @@ stages:
   - job: Z1
     steps:
     - script: |
-        echo $(ZX)
-        echo $(ZY)
+        echo "$(ZY)"
 
 - stage: B
   condition: and(succeeded(), eq(dependencies.A.outputs['A1_Dev_deploy.Output.printvar.shouldrun'], 'true'))
