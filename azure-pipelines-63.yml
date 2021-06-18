@@ -20,7 +20,84 @@ stages:
         - pwsh: |
             Write-Host "$(Agent.JobName)"
             Write-Host "$(System.JobName)"
+  - deployment: A2
+    dependsOn: A1
+    condition: and(succeeded(), eq(dependencies.A1.outputs['printvar.shouldrun'], 'true'))
+    environment: Dev
+    strategy:
+     runOnce:
+       deploy:
+        steps:
+          - script: echo hello from Stage A2
+  - deployment: A3
+    dependsOn: A1
+    condition: and(succeeded(), eq(dependencies.A1.outputs['A1.printvar.shouldrun'], 'true'))
+    environment: Dev
+    strategy:
+     runOnce:
+       deploy:
+        steps:
+          - script: echo hello from Stage A3
+  - deployment: A4
+    dependsOn: A1
+    condition: and(succeeded(), eq(dependencies.A1.outputs['A1_Dev.printvar.shouldrun'], 'true'))
+    environment: Dev
+    strategy:
+     runOnce:
+       deploy:
+        steps:
+          - script: echo hello from Stage A4
+  - deployment: A5
+    dependsOn: A1
+    condition: and(succeeded(), eq(dependencies.A1.outputs['A1_Dev_deploy.printvar.shouldrun'], 'true'))
+    environment: Dev
+    strategy:
+     runOnce:
+       deploy:
+        steps:
+          - script: echo hello from Stage A5
+  - deployment: A6
+    dependsOn: A1
+    condition: and(succeeded(), eq(dependencies.A1.outputs['deploy.printvar.shouldrun'], 'true'))
+    environment: Dev
+    strategy:
+     runOnce:
+       deploy:
+        steps:
+          - script: echo hello from Stage A6
+  - deployment: A7
+    dependsOn: A1
+    condition: and(succeeded(), eq(dependencies.A1.outputs['deploy.printvar.shouldrun'], 'true'))
+    environment: Dev
+    strategy:
+     runOnce:
+       deploy:
+        steps:
+          - script: echo hello from Stage A7
 
+  - deployment: AX
+    dependsOn: A1
+    variables:
+      AY: $[ convertToJson(dependencies.A1.outputs) ]
+    environment: Dev
+    strategy:
+     runOnce:
+       deploy:
+        steps:
+        - script: |
+            echo $(AX)
+            echo $(AY)
+
+- stage: Z
+  dependsOn: A
+  variables:
+    ZY: $[ convertToJson(dependencies.A.outputs) ]
+  jobs:
+  - job: Z1
+    steps:
+    - script: |
+        echo $(ZX)
+        echo $(ZY)
 
 - stage: B
   condition: and(succeeded(), eq(dependencies.A.outputs['A1_Dev_deploy.Output.printvar.shouldrun'], 'true'))
