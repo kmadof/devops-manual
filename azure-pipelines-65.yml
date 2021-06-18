@@ -18,7 +18,9 @@ stages :
       runOnce:
         deploy:
           steps:
-          - bash: echo "$(System.DefaultWorkingDirectory)/terraform/"
+          - bash: |
+              echo "$(System.DefaultWorkingDirectory)/terraform/"
+              ls $(System.DefaultWorkingDirectory)/terraform/
           - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-installer.TerraformInstaller@0
             displayName: 'install'
             inputs:
