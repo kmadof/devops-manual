@@ -20,7 +20,7 @@ stages:
 
 
 - stage: B
-  condition: and(succeeded(), eq(dependencies.A.outputs['deploy.printvar.shouldrun'], 'true'))
+  condition: and(succeeded(), eq(dependencies.A.outputs['A1.Output.printvar.shouldrun'], 'true'))
   dependsOn: A
   jobs:
   - job: B1
@@ -28,7 +28,7 @@ stages:
     - script: echo hello from Stage B
 
 - stage: C
-  condition: and(succeeded(), eq(dependencies.A.outputs['deploy.printvar.shouldrun'], 'true'))
+  condition: and(succeeded(), eq(dependencies.A.outputs['A1.Output.printvar.shouldrun'], 'true'))
   dependsOn: A
   jobs:
   - deployment: C1
