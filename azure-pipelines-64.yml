@@ -1,0 +1,126 @@
+# https://stackoverflow.com/questions/68028216/azure-devops-use-a-variable-as-a-condition-between-deployment-stages
+trigger: none
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+- stage: A
+  jobs:
+  - deployment: A1
+    environment: Dev
+    strategy:
+     runOnce:
+       deploy:
+        steps:
+        - bash: echo "##vso[task.setvariable variable=shouldrun;isOutput=true]true"
+        # or on Windows:
+        # - script: echo ##vso[task.setvariable variable=shouldrun;isOutput=true]true
+          name: printvar
+        - pwsh: |
+            Write-Host "$(Agent.JobName)"
+            Write-Host "$(System.JobName)"
+  - deployment: A3
+    dependsOn: A1
+    condition: and(succeeded(), eq(dependencies.A1.outputs['A1.printvar.shouldrun'], 'true'))
+    environment: Dev
+    strategy:
+     runOnce:
+       deploy:
+        steps:
+          - script: echo hello from Stage A3
+
+  - deployment: AX
+    dependsOn: A1
+    variables:
+      AY: $[ convertToJson(dependencies.A1.outputs) ]
+    environment: Dev
+    strategy:
+     runOnce:
+       deploy:
+        steps:
+        - script: 
+            echo "$(AY)"
+
+- stage: Z
+  dependsOn: A
+  variables:
+    ZY: $[ convertToJson(dependencies.A.outputs) ]
+    ZZ: $[ convertToJson(stageDependencies.A) ]
+  jobs:
+  - job: Z1
+    steps:
+    - script: |
+        echo "$(ZY)"
+        echo "$(ZZ)"
+
+- stage: B
+  condition: and(succeeded(), eq(dependencies.A.outputs['A1.printvar.shouldrun'], 'true'))
+  dependsOn: A
+  jobs:
+  - job: B1
+    steps:
+    - script: echo hello from Stage B
+
+- stage: BB
+  condition: in(dependencies.A.result, 'Succeeded', 'SucceededWithIssues', 'Skipped')
+  dependsOn: A
+  jobs:
+  - job: BB1
+    steps:
+    - script: echo hello from Stage BB
+
+- stage: BBB
+  condition: in(dependencies.A.result, 'Succeeded', 'SucceededWithIssues', 'Skipped')
+  variables: 
+    shouldrun: $[stageDependencies.A.A1.outputs['printvar.shouldrun']]
+  dependsOn: A
+  jobs:
+  - job: BBB1
+    condition: eq(variables.shouldRun, 'true')
+    steps:
+    - script: echo hello from Stage BBB
+
+- stage: C
+  condition: and(succeeded(), eq(dependencies.A.outputs['A1_Dev.Output.printvar.shouldrun'], 'true'))
+  dependsOn: A
+  jobs:
+  - deployment: C1
+    environment: Dev
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - script: echo hello from Stage C
+
+- stage: D
+  dependsOn: []
+  jobs:
+  - job: D1
+    steps:
+    - bash: echo "##vso[task.setvariable variable=shouldrun;isOutput=true]true"
+    # or on Windows:
+    # - script: echo ##vso[task.setvariable variable=shouldrun;isOutput=true]true
+      name: printvar
+
+
+- stage: E
+  condition: and(succeeded(), eq(dependencies.D.outputs['D1.printvar.shouldrun'], 'true'))
+  dependsOn: D
+  jobs:
+  - job: E1
+    steps:
+    - script: echo hello from Stage E
+
+- stage: F
+  condition: and(succeeded(), eq(dependencies.D.outputs['D1.printvar.shouldrun'], 'true'))
+  dependsOn: D
+  jobs:
+  - deployment: F1
+    environment: Dev
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - script: echo hello from Stage F
+
