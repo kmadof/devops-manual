@@ -18,19 +18,19 @@ stages :
       runOnce:
         deploy:
           steps:
-            - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-installer.TerraformInstaller@0
-              displayName: 'install'
-              inputs:
-                terraformVersion: '0.14.11'
-            - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-cli.TerraformCLI@0
-              displayName: 'version'
-              inputs:
-                command: 'version'
+          - bash: echo "$(System.DefaultWorkingDirectory)/terraform/"
+          - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-installer.TerraformInstaller@0
+            displayName: 'install'
+            inputs:
+              terraformVersion: '0.14.11'
+          - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-cli.TerraformCLI@0
+            displayName: 'version'
+            inputs:
+              command: 'version'
 
-            - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-cli.TerraformCLI@0
-              displayName: 'init'
-              inputs:
-                workingDirectory: $(System.DefaultWorkingDirectory)/terraform/
-                command: 'init'
-                commandOptions: -backend=false
-                workingDir: 
+          - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-cli.TerraformCLI@0
+            displayName: 'init'
+            inputs:
+              workingDirectory: $(System.DefaultWorkingDirectory)/terraform/
+              command: 'init'
+              commandOptions: -backend=false
