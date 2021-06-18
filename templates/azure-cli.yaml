@@ -1,0 +1,11 @@
+parameters:
+- name: 'serviceConnectionName'  # defaults for any parameters that aren't specified
+  type: string
+
+steps:
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: ${{ parameters.serviceConnectionName }}
+    scriptType: 'pscore'
+    scriptLocation: 'inlineScript'
+    inlineScript: 'az --version'
