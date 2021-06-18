@@ -1,0 +1,29 @@
+# https://stackoverflow.com/questions/68037078/azuredevops-can-we-pass-dynamic-value-as-service-connection-in-yaml
+
+parameters:
+- name: subscriptions
+  type: object
+  default: 
+  - 'rg-the-code-manual'
+  - 'full-subscription'
+
+trigger: none
+
+pool:
+  vmImage: ubuntu-latest
+
+jobs:
+- job: RunOnEveryAgent
+  strategy:
+    matrix:
+       ${{ each subscription in parameters.subscriptions }}:
+        ${{ subscription }}:
+         sub: ${{ subscription }}
+  steps:
+  - echo $(sub)
+  - task: AzureCLI@2
+    inputs:
+      azureSubscription: $(sub)
+      scriptType: 'pscore'
+      scriptLocation: 'inlineScript'
+      inlineScript: 'az --version'
