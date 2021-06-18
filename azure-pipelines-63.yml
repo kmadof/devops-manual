@@ -100,7 +100,7 @@ stages:
         echo "$(ZZ)"
 
 - stage: B
-  condition: and(succeeded(), eq(dependencies.A.outputs['A1_Dev_deploy.Output.printvar.shouldrun'], 'true'))
+  condition: and(succeeded(), eq(dependencies.A.A1.Outputs['printvar.shouldrun'], 'true'))
   dependsOn: A
   jobs:
   - job: B1
