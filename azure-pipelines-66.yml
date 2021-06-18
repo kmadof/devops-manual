@@ -20,7 +20,7 @@ jobs:
         ${{ subscription }}:
          sub: ${{ subscription }}
   steps:
-  - echo $(sub)
+  - bash: echo "$(sub)"
   - task: AzureCLI@2
     inputs:
       azureSubscription: $(sub)
