@@ -17,7 +17,7 @@ stages:
         # or on Windows:
         # - script: echo ##vso[task.setvariable variable=shouldrun;isOutput=true]true
           name: printvar
-        - pwsh:
+        - pwsh: |
             Write-Host "$(Agent.JobName)"
             Write-Host "$(System.JobName)"
 
