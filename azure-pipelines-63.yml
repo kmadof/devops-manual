@@ -38,3 +38,35 @@ stages:
         deploy:
           steps:
           - script: echo hello from Stage C
+
+- stage: D
+  dependsOn: []
+  jobs:
+  - job: D1
+    steps:
+    - bash: echo "##vso[task.setvariable variable=shouldrun;isOutput=true]true"
+    # or on Windows:
+    # - script: echo ##vso[task.setvariable variable=shouldrun;isOutput=true]true
+      name: printvar
+
+
+- stage: E
+  condition: and(succeeded(), eq(dependencies.D.outputs['D1.printvar.shouldrun'], 'true'))
+  dependsOn: D
+  jobs:
+  - job: E1
+    steps:
+    - script: echo hello from Stage E
+
+- stage: F
+  condition: and(succeeded(), eq(dependencies.D.outputs['D1.printvar.shouldrun'], 'true'))
+  dependsOn: D
+  jobs:
+  - deployment: F1
+    environment: Dev
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - script: echo hello from Stage F
+
