@@ -100,12 +100,20 @@ stages:
         echo "$(ZZ)"
 
 - stage: B
-  condition: and(succeeded(), eq(dependencies.A.A1.Outputs['printvar.shouldrun'], 'true'))
+  condition: and(succeeded(), eq(dependencies.A.outputs['A1.printvar.shouldrun'], 'true'))
   dependsOn: A
   jobs:
   - job: B1
     steps:
     - script: echo hello from Stage B
+
+- stage: BB
+  condition: in(dependencies.A.result, 'Succeeded', 'SucceededWithIssues', 'Skipped')
+  dependsOn: A
+  jobs:
+  - job: BB1
+    steps:
+    - script: echo hello from Stage BB
 
 - stage: C
   condition: and(succeeded(), eq(dependencies.A.outputs['A1_Dev.Output.printvar.shouldrun'], 'true'))
