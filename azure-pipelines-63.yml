@@ -1,0 +1,27 @@
+# https://stackoverflow.com/questions/68028216/azure-devops-use-a-variable-as-a-condition-between-deployment-stages
+trigger: none
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+- stage: A
+  jobs:
+  - deployment: A1
+    strategy:
+     runOnce:
+       deploy:
+        steps:
+        - bash: echo "##vso[task.setvariable variable=shouldrun;isOutput=true]true"
+        # or on Windows:
+        # - script: echo ##vso[task.setvariable variable=shouldrun;isOutput=true]true
+          name: printvar
+
+
+- stage: B
+  condition: and(succeeded(), eq(dependencies.A.outputs['A1.printvar.shouldrun'], 'true'))
+  dependsOn: A
+  jobs:
+  - job: B1
+    steps:
+    - script: echo hello from Stage B
