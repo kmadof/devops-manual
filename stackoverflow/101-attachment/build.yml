@@ -12,9 +12,6 @@ steps:
     Write-Host "##vso[task.addattachment type=myattachmenttype;name=myattachmentname1;]$(System.DefaultWorkingDirectory)/filename.txt"
     Write-Host "##vso[task.uploadsummary]$(System.DefaultWorkingDirectory)/filename.txt"
 
-    Write-Host "##vso[task.addattachment type=myattachmenttype;name=myattachmentname2;]filename.txt"
-    Write-Host "##vso[task.uploadsummary]filename.txt"
-
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
