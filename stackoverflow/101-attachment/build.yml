@@ -11,3 +11,6 @@ steps:
     cat filename.txt
     Write-Host ##vso[task.addattachment type=myattachmenttype;name=myattachmentname;]$(System.DefaultWorkingDirectory)/filename.txt
     Write-Host ##vso[task.uploadsummary]$(System.DefaultWorkingDirectory)/filename.txt
+
+    Write-Host ##vso[task.addattachment type=myattachmenttype;name=myattachmentname;]filename.txt
+    Write-Host ##vso[task.uploadsummary]filename.txt
