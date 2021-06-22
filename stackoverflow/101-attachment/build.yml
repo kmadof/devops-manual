@@ -111,3 +111,10 @@ steps:
 
         Write-Host "##vso[task.uploadsummary]$(Build.SourcesDirectory)/testsummary2.md"
         Write-Host "##vso[task.addattachment type=myattachmenttype;name=SomeName;]$(Build.SourcesDirectory)/testsummary2.md"
+
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+        
+        Write-Host "##vso[task.addattachment type=terraform-plan;name=SomeName;]$(Build.SourcesDirectory)/testsummary3.md"
