@@ -1,0 +1,11 @@
+name: $(date:yyyy).$(date:MM).$(date:dd)$(rev:.r)
+
+trigger: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- pwsh: |
+    echo some-text  > filename.txt
+    ##vso[task.addattachment type=myattachmenttype;name=myattachmentname;]filename.txt
