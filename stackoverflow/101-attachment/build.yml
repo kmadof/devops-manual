@@ -103,11 +103,11 @@ steps:
                 - Test3
         "@
 
-        New-Item -Path . -Name "testsummary.md" -ItemType "file" -Value $content
+        New-Item -Path . -Name "testsummary2.md" -ItemType "file" -Value $content
 
         Get-Location
 
         Get-ChildItem
 
-        Write-Host "##vso[task.uploadsummary]$(Build.SourcesDirectory)/testsummary.md"
-        Write-Host "##vso[task.addattachment type=myattachmenttype;name=SomeName;]$(Build.SourcesDirectory)/testsummary.md"
+        Write-Host "##vso[task.uploadsummary]$(Build.SourcesDirectory)/testsummary2.md"
+        Write-Host "##vso[task.addattachment type=myattachmenttype;name=SomeName;]$(Build.SourcesDirectory)/testsummary2.md"
