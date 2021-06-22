@@ -10,3 +10,4 @@ steps:
     echo some-text  > filename.txt
     cat filename.txt
     ##vso[task.addattachment type=myattachmenttype;name=myattachmentname;]filename.txt
+    ##vso[task.uploadsummary]filename.txt
