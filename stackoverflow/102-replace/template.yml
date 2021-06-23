@@ -1,0 +1,10 @@
+parameters:
+  Server: ''
+
+steps:
+- powershell: echo "${{ parameters.Server }}"
+- powershell: echo "${{ replace(parameters.Server, '\\', '\') }}"
+- powershell: echo "${{ replace(parameters.Server, '\\\\', '\') }}"
+- powershell: echo "${{ replace(parameters.Server, '\\\\', '\\') }}"
+- powershell: echo "${{ replace(parameters.Server, '\', '\\') }}"
+- powershell: echo "${{ replace(parameters.Server, 'parameters', 'xxx') }}"
