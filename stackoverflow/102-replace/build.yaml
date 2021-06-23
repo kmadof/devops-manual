@@ -1,0 +1,12 @@
+trigger: none
+
+pr: none
+
+variables:
+  - name: 'Server.Variable'
+    value: 'host\\path'
+
+steps:
+- template: template.yml
+  parameters:
+    Server: $(Server.Variable)
