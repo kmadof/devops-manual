@@ -2,6 +2,7 @@ parameters:
   Server: ''
 
 steps:
+- powershell: echo "$[ replace(parameters.Server, '\\', '\') ]"
 - powershell: echo "${{ parameters.Server }}"
 - powershell: echo "${{ replace(parameters.Server, '\\', '\') }}"
 - powershell: echo "${{ replace(parameters.Server, '\\\\', '\') }}"
