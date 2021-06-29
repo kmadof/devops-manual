@@ -1,0 +1,33 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+- stage: A
+  jobs:
+  - deployment: A1
+    environment: Dev
+    strategy:
+     runOnce:
+       deploy:
+        steps:
+        - bash: echo "##vso[task.setvariable variable=shouldrun;isOutput=true]true"
+          name: printvar
+        - pwsh: |
+            Write-Host "$(Agent.JobName)"
+            Write-Host "$(System.JobName)"
+
+- stage: B
+  condition: and(succeeded(), eq(dependencies.A.outputs['A1.printvar.shouldrun'], 'true'))
+  dependsOn: A
+  jobs:
+  - job: B1
+    steps:
+    - script: echo hello from Stage B
