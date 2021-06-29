@@ -1,0 +1,18 @@
+#https://stackoverflow.com/questions/68181244/can-vue-cli-run-on-be-run-installed-on-azure-pipelines
+
+trigger: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.12'
+  displayName: 'Install Node.js'
+- script: |
+    npm install -g @vue/cli@latest
+    npm i -g @vue/cli-service-global
+    echo '<template><h1>Hello!</h1></template>' > App.vue
+    vue serve
+  displayName: 'npm install and build'
