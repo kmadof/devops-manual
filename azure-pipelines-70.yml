@@ -1,0 +1,17 @@
+trigger: none
+
+
+resources:
+  pipelines:
+    - pipeline: 02-understanding-stages-pipeline
+      project: azure-devops-kubernetes-terraform
+      branch: master
+      source: 02-understanding-stages-pipeline
+      trigger:
+        branches:
+          - master
+        stages:
+          - Build
+          - DevDeploy
+steps:
+- script: echo 'siema'
