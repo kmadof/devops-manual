@@ -3,15 +3,14 @@ trigger: none
 
 resources:
   pipelines:
-    - pipeline: 02-understanding-stages-pipeline
-      project: azure-devops-kubernetes-terraform
+    - pipeline: pipelineUnderstanding
       branch: master
-      source: 02-understanding-stages-pipeline
+      source: kmadof.dm-so-47-multi-stage
       trigger:
         branches:
           - master
         stages:
           - Build
-          - DevDeploy
+          - Deploy
 steps:
 - script: echo 'siema'
