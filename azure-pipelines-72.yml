@@ -9,10 +9,12 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-variables:
-  currentTimeStamp: $(Get-Date -Format yyyyMMddhhmmss)
-
 steps:
+- pwsh: |
+   Write-Host "Setting up the date time for build variable"
+   $date=$(Get-Date -format yyyyMMdd-Hmmss)
+   Write-Host "##vso[task.setvariable variable=currentTimeStamp]$date"
+  displayName: 'Geting timestamp'
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: '$(Pipeline.Workspace)'
