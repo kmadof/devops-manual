@@ -9,14 +9,28 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- pwsh: |
-   Write-Host "Setting up the date time for build variable"
-   $date=$(Get-Date -format yyyyMMdd-Hmmss)
-   Write-Host "##vso[task.setvariable variable=currentTimeStamp]$date"
-  displayName: 'Geting timestamp'
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: '$(Pipeline.Workspace)'
-    artifact: 'ArtifactName-$(currentTimeStamp)'
-    publishLocation: 'pipeline'
+variables:
+  secondTimeStamp: $(Get-Date -Format yyyyMMddhhmmss)
+
+jobs:
+- job:
+  steps:
+  - pwsh: |
+      Write-Host "Setting up the date time for build variable"
+      $date=$(Get-Date -format yyyyMMdd-Hmmss)
+      Write-Host "##vso[task.setvariable variable=currentTimeStamp]$date"
+    displayName: 'Geting timestamp'
+
+  - task: PublishPipelineArtifact@1
+    inputs:
+      targetPath: '$(Pipeline.Workspace)'
+      artifact: 'ArtifactName-$(currentTimeStamp)'
+      publishLocation: 'pipeline'
+- job:
+  steps:
+   
+  - task: PublishPipelineArtifact@1
+    inputs:
+      targetPath: '$(Pipeline.Workspace)'
+      artifact: 'ArtifactName-$(secondTimeStamp)'
+      publishLocation: 'pipeline'
