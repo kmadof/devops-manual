@@ -4,7 +4,7 @@ trigger: none
 jobs:
 - job:
   variables:
-    a: $[format('{0}&sub-key={1}', variables.Url, variables.SubscriptionKey]
+    a: $[format('{0}&sub-key={1}', variables.Url, variables.SubscriptionKey)]
   steps:
     - task: PowerShell@2
       inputs:
