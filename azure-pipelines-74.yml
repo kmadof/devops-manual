@@ -1,0 +1,17 @@
+# https://stackoverflow.com/questions/68291494/in-yaml-how-to-passing-multiple-arguments-to-powershell-script/68291729#68291729
+trigger: none
+
+jobs:
+- job:
+  variables:
+    a: $[format('{0}&sub-key={1}', variables.Url, variables.SubscriptionKey]
+  steps:
+    - task: PowerShell@2
+      inputs:
+        targetType: 'filepath'
+        filePath: $(System.DefaultWorkingDirectory)/psscript.ps1
+        arguments: >
+            -ContainerName $(ContainerName)
+            -Url $(a)
+      displayName: 'Uploading files'
+
