@@ -9,5 +9,5 @@ pool:
 
 steps:
 - bash: |
-    echo ${{ parameters.Multiline }} >> script.txt
+    printf "${{ parameters.Multiline }}" >> script.txt
     cat script.txt
