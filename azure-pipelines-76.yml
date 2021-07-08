@@ -9,17 +9,17 @@ pool:
 
 steps:
 - bash: |
-    echo <<< EOL
+    echo "
     ${{ parameters.Multiline }}
-    EOL >> script.txt
+    " >> script.txt
     cat script.txt
   continueOnError: true
 - bash: |
-    echo <<< EOL
+    echo "
     line 1,
     line 2,
     line 3,
     line 4
     line ...
-    EOL >> script2.txt
+    " >> script2.txt
     cat script2.txt
