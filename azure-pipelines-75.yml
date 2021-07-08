@@ -1,0 +1,14 @@
+# https://stackoverflow.com/questions/68299269/how-do-i-autoincrement-xamarin-android-build-and-version-numbers-in-azure-pipeli
+
+trigger: none
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  major: 1
+  # define minor as a counter with the prefix as variable major, and seed as 100.
+  minor: $[counter(variables['major'], 100)]
+
+steps:
+- bash: echo $(minor)
