@@ -1,0 +1,12 @@
+# https://stackoverflow.com/questions/68390160/how-to-use-go-beta-rc-version-in-azure-pipeline
+
+trigger: none
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+  - task: GoTool@0
+    displayName: Install Go tools in version $(go_version)
+    inputs:
+      version: 1.10
