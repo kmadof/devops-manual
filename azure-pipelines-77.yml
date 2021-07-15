@@ -1,0 +1,19 @@
+parameters:
+- name: apps
+  type: object
+  default:
+    - JustGoTestAgain
+    - justgotesttwo
+    - and so on
+steps:
+- ${{ each app in parameters.apps}}:
+ - task: AzureWebApp@1
+   displayName: 'Azure Web App Deploy ${{ app }}'
+   continueOnError: true
+   inputs:
+     azureSubscription: '$(Parameters.connectedServiceName)'
+     appType: webApp
+     ResourceGroupName: $(group)
+     appName: ${{ app }}
+     package: '$(build.artifactstagingdirectory)/**/*.zip'
+
