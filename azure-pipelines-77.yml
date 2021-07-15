@@ -1,3 +1,6 @@
+# https://stackoverflow.com/questions/68378428/deploy-packages-to-multiple-webapp-service-by-azure-pipeline-single-stage/68378661?noredirect=1#comment120865259_68378661
+trigger: none
+
 parameters:
 - name: apps
   type: object
@@ -5,15 +8,16 @@ parameters:
     - JustGoTestAgain
     - justgotesttwo
     - and so on
+
 steps:
 - ${{ each app in parameters.apps}}:
- - task: AzureWebApp@1
-   displayName: 'Azure Web App Deploy ${{ app }}'
-   continueOnError: true
-   inputs:
-     azureSubscription: '$(Parameters.connectedServiceName)'
-     appType: webApp
-     ResourceGroupName: $(group)
-     appName: ${{ app }}
-     package: '$(build.artifactstagingdirectory)/**/*.zip'
+  - task: AzureWebApp@1
+    displayName: 'Azure Web App Deploy ${{ app }}'
+    continueOnError: true
+    inputs:
+      azureSubscription: '$(Parameters.connectedServiceName)'
+      appType: webApp
+      ResourceGroupName: $(group)
+      appName: ${{ app }}
+      package: '$(build.artifactstagingdirectory)/**/*.zip'
 
