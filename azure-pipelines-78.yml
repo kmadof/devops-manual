@@ -9,4 +9,4 @@ steps:
   - task: GoTool@0
     displayName: Install Go tools in version $(go_version)
     inputs:
-      version: 1.10
+      version: 1.17rc1
