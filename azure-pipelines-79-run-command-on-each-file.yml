@@ -9,5 +9,7 @@ pool:
 steps:
 - task: CmdLine@2
   inputs:
-    script: 'for /r %%v in (*) do cat "%%v"'
+    script: |
+      dir /a-D /S /B
+      for /r %%v in (*) do cat "%%v"
     workingDirectory: '$(Build.ArtifactStagingDirectory)'
