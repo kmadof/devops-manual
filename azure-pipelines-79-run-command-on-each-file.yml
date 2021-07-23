@@ -1,0 +1,13 @@
+# https://stackoverflow.com/questions/68492499/listing-all-files-in-a-folder-from-an-azure-pipeline/68499756?noredirect=1#comment121066403_68499756
+
+
+trigger: none
+
+pool:
+  vmImage: windows-latest
+
+steps:
+- task: CmdLine@2
+  inputs:
+    script: 'for /r %%v in (*) do cat "%%v"'
+    workingDirectory: '$(Build.ArtifactStagingDirectory)'
