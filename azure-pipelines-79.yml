@@ -10,6 +10,9 @@ jobs:
   variables:
     AY: $[ convertToJson(variables) ]
   steps:
-  - script: 
-      echo "$(AY)"
+  - pwsh: |
+      $metadata = "$(AY)" | ConvertFrom-Json
+
+      $metadata | Get-Member -MemberType NoteProperty | % { $o = $metadata.($_.Name); Write-Host "##vso[task.setvariable variable=$($_.Name);isOutput=true]$o"
+      
         
