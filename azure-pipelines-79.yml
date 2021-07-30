@@ -1,0 +1,15 @@
+# https://stackoverflow.com/questions/68587746/how-to-list-echo-all-variables-defined-in-azure-pipeline
+
+trigger: none 
+
+pool:
+  vmImage: ubuntu-latest
+
+jobs:
+- job: AX
+  variables:
+    AY: $[ convertToJson(dependencies.A1.outputs) ]
+  steps:
+  - script: 
+      echo "$(AY)"
+        
