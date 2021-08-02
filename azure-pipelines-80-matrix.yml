@@ -3,36 +3,44 @@ name: Build Docker images and push to Registry
 
 trigger: none
 
-pool:
-  vmImage: ubuntu-latest
-
 strategy:
   maxParallel: 8
   matrix:
     a-server:
       service: a-server
       path: somepath
+      imageName: ubuntu-latest
     b-server:
       service: b-server
       path: somepath
+      imageName: ubuntu-latest
     c-server:
       service: c-server
       path: somepath
+      imageName: ubuntu-latest
     d-server:
       service: d-server
       path: somepath
+      imageName: ubuntu-latest
     e-server:
       service: e-server
       path: somepath
+      imageName: ubuntu-latest
     f-server:
       service: f-server
       path: somepath
+      imageName: ubuntu-latest
     g-server:
       service: g-server
       path: somepath
+      imageName: ubuntu-latest
     h-server:
       service: h-server
       path: somepath
+      imageName: ubuntu-latest
+
+pool:
+  vmImage: $(imageName)
 
 steps:
 
