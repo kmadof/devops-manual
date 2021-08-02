@@ -4,11 +4,9 @@ strategy:
   matrix:
     a_server:
       service: "a-server"
-      path: "somepath"
       imageName: "ubuntu-latest"
     b_server:
       service: "b-server"
-      path: "somepath"
       imageName: "ubuntu-latest"
   maxParallel: 2
 
@@ -17,5 +15,4 @@ pool:
 
 steps:
 - script: | 
-    echo '$(path)'
     echo '$(service)'
