@@ -1,0 +1,42 @@
+#https://stackoverflow.com/questions/68611813/azure-devops-yaml-pipeline-matrix-strategy-errorunable-to-locate-executable
+name: Build Docker images and push to Registry
+
+trigger: none
+
+pool:
+  vmImage: ubuntu-latest
+
+strategy:
+  maxParallel: 8
+  matrix:
+    a-server:
+      service: a-server
+      path: somepath
+    b-server:
+      service: b-server
+      path: somepath
+    c-server:
+      service: c-server
+      path: somepath
+    d-server:
+      service: d-server
+      path: somepath
+    e-server:
+      service: e-server
+      path: somepath
+    f-server:
+      service: f-server
+      path: somepath
+    g-server:
+      service: g-server
+      path: somepath
+    h-server:
+      service: h-server
+      path: somepath
+
+steps:
+
+- script: |
+    echo '$(service)'
+    echo '$(path)'
+  displayName: 'Login to AWS'
