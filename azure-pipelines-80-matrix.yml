@@ -9,38 +9,30 @@ strategy:
     a_server:
       service: a-server
       imagePath: somepath
-      imageName: ubuntu-latest
     b_server:
       service: b-server
       imagePath: somepath
-      imageName: ubuntu-latest
     c_server:
       service: c-server
       imagePath: somepath
-      imageName: ubuntu-latest
     d_server:
       service: d-server
       imagePath: somepath
-      imageName: ubuntu-latest
     e_server:
       service: e-server
       imagePath: somepath
-      imageName: ubuntu-latest
     f_server:
       service: f-server
       imagePath: somepath
-      imageName: ubuntu-latest
     g_server:
       service: g-server
       imagePath: somepath
-      imageName: ubuntu-latest
     h_server:
       service: h-server
       imagePath: somepath
-      imageName: ubuntu-latest
 
 pool:
-  vmImage: $(imageName)
+  vmImage: ubuntu-latest
 
 steps:
 
