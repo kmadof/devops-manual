@@ -1,0 +1,16 @@
+# https://stackoverflow.com/questions/tagged/azure-automation+or+azure-devops+or+azure-pipelines+or+github-actions?sort=Newest&uqlId=34750
+
+trigger: none
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: oneLuckiDevJson2Variable@1
+  inputs:
+    jsonFile: 'vars.json'
+    shouldPrefixVariables: true
+
+- script: |
+    ls .
+    cat vars.json
