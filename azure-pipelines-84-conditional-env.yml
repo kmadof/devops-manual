@@ -1,0 +1,18 @@
+#https://stackoverflow.com/questions/68742346/azure-pipeline-deploy-job-with-dynamic-environment/68748704#68748704
+
+trigger: none
+
+jobs:  
+- deployment: DeployWeb
+  displayName: deploy Web App
+  ${{ if eq(variables['Build.SourceBranchName'], 'master') }}:
+    environment: 'Dev'
+  ${{ if ne(variables['Build.SourceBranchName'], 'master') }}:
+    environment: 'campo-dev'
+  strategy:
+    # Default deployment strategy, more coming...
+    runOnce:
+      deploy:
+        steps:
+        - checkout: self 
+        - script: echo my first deployment
