@@ -7,6 +7,10 @@ trigger: none
 
 variables:
 - group: Some-secrets
+- name: var2
+  value: true
+- name: var1
+  value: $[or(eq(variables['var2'], true), ne(variables['Mode'], 'dev'))]
 
 
 pool:
@@ -15,4 +19,8 @@ pool:
 steps:
 - script: env | sort
   displayName: 'Display env variables'
+
+- script: |
+    echo "$(var1)"
+    echo "$(var2)"
 
