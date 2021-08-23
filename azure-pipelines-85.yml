@@ -1,0 +1,22 @@
+#https://stackoverflow.com/questions/68895721/azure-pipelines-yaml-parameter-inside-parameter-name-dynamic-parameter-name
+
+parameters:
+- name: Deploy_Test1
+  type: boolean
+  default: false
+- name: Tests
+  type: object
+  default:
+    - "Test1"
+    - "Test2"
+
+trigger: none
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- ${{ each test in parameters.Tests}}:
+  - ${{ each parameter in parameters }}:
+    - ${{ if eq(parameter.key, format('Deploy_{0}', test)) }}:
+      - script: echo ${{ parameter.value }}
