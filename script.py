@@ -1,7 +1,7 @@
 import os
 
-usernameot = data["usernameot"]
-passwordot = data["passwordot"]
+usernameot = os.environ["usernameot"]
+passwordot = os.environ["passwordot"]
 
 echo usernameot
 
