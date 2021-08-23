@@ -24,3 +24,17 @@ steps:
     echo "$(var1)"
     echo "$(var2)"
 
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.8'
+    addToPath: true
+- script: |
+    python -m pip install --upgrade pip
+    printenv
+- task: Pythonscript@0
+  inputs:
+    scriptSource: 'filePath'
+    scriptPath: './script.py'
+  env:
+    usernameot: $(usernameot)
+    passwordot: $(passwordot)
