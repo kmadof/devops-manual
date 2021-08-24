@@ -1,0 +1,8 @@
+# https://stackoverflow.com/questions/68903831/azuredevops-yaml-template-expression-as-parameter-default-value
+trigger: none
+
+pool:
+  vmImage: windows-2019
+
+steps:
+- template: parameter-with-default-runtime-template.yml
