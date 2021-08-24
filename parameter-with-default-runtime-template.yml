@@ -1,6 +1,6 @@
 parameters:
   - name: paramOne
-    default: ${{ lower(replace(variables['System.TeamProject'],' ','')) }}
+    default: $[lower(replace(variables['System.TeamProject'],' ',''))]
     type: string
 steps:
 - task: PowerShell@2
