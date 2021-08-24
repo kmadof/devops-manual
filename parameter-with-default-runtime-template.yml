@@ -2,9 +2,18 @@ parameters:
   - name: paramOne
     default: $[lower(replace(variables['System.TeamProject'],' ',''))]
     type: string
+  - name: paramTwo
+    default: $(runtimeVar)
+    type: string
+  - name: paramThree
+    default: $(compileVar)
+    type: string
 steps:
 - task: PowerShell@2
   displayName: "Run PowerShell script"
   inputs:
     targetType: 'inline'
-    script: Write-Host "${{parameters.paramOne}}"
+    script: |
+      Write-Host "${{parameters.paramOne}}"
+      Write-Host "${{parameters.paramTwo}}"
+      Write-Host "${{parameters.paramThree}}"

@@ -1,6 +1,10 @@
 # https://stackoverflow.com/questions/68903831/azuredevops-yaml-template-expression-as-parameter-default-value
 trigger: none
 
+variables:
+  runtimeVar: $[lower(replace(variables['System.TeamProject'],' ',''))]
+  compileVar: ${{ lower(replace(variables['System.TeamProject'],' ','')) }}
+
 pool:
   vmImage: windows-2019
 
