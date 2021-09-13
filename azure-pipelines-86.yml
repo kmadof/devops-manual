@@ -1,0 +1,21 @@
+parameters:
+  - name: A
+    default: true
+  - name: B
+    default: false
+
+trigger: none
+
+pool:
+  vmImage: ubuntu-latest
+
+
+
+stages:
+- stage: A
+  variables:
+    cond: $[or(eq(${{ parameters.A }}, true), eq(${{ parameters.B}}, true))]
+  jobs:
+  - job: Build
+    steps:
+      - pwsh: echo "$(cond)"
