@@ -21,4 +21,4 @@ stages:
       - pwsh: echo "$(cond)"
       - template: template-booleanParameter.yml
         parameters:
-          booleanParameter: or(eq(${{ parameters.A }}, true), eq(${{ parameters.B}}, true))
+          booleanParameter: $[or(eq(${{ parameters.A }}, true), eq(${{ parameters.B}}, true))]
