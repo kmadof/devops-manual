@@ -1,0 +1,17 @@
+#VARIABLES
+variables:
+  BuildPlatform: 'x64'
+  BuildConfiguration: 'release'
+
+#PARAMETERS
+parameters:
+- name: 'MATLAB-upgrade'
+  displayName: 'Upgrade Matlab binaries'
+  type: boolean
+  default: false
+
+#STEPS
+steps:
+- pwsh: |
+    echo "$(BuildPlatform)"
+    echo "${{ parameters.MATLAB-upgrade}}"
