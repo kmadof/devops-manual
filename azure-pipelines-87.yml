@@ -1,3 +1,6 @@
+#https://stackoverflow.com/questions/69175794/yaml-pipeline-doesnt-compile-parameter-unexpected-value-in-azure-devops-serv/69177164#69177164
+trigger: none
+
 #VARIABLES
 variables:
   BuildPlatform: 'x64'
@@ -5,7 +8,7 @@ variables:
 
 #PARAMETERS
 parameters:
-- name: 'MATLAB-upgrade'
+- name: 'MATLAB_upgrade'
   displayName: 'Upgrade Matlab binaries'
   type: boolean
   default: false
@@ -14,4 +17,4 @@ parameters:
 steps:
 - pwsh: |
     echo "$(BuildPlatform)"
-    echo "${{ parameters.MATLAB-upgrade}}"
+    echo "${{ parameters.MATLAB_upgrade}}"
