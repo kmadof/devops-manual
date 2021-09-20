@@ -1,0 +1,20 @@
+parameters:
+- name: project
+  type: string
+  default: proj1
+  values:
+  - proj1
+  - proj2
+  - proj3
+
+trigger: none
+
+steps:
+- ${{ if or(eq(parameters.project, 'proj1'), eq(parameters.project, 'proj2')) }}: # 1st if
+  - bash: |
+      echo "Hello"
+    name: hello
+- ${{ if eq(parameters.project, 'proj3') }}: # 2nd if
+  - bash: |
+      echo "Hi"
+    name: hi
