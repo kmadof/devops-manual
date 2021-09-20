@@ -1,11 +1,5 @@
 trigger: none
 
-parameters:
-- name: xcodeVersion
-  displayName: 'XCode version'
-  type: string
-  default: '11.0'
-
 pool:
   name: Default
   demands:
