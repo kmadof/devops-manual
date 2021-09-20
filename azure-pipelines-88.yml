@@ -1,0 +1,27 @@
+trigger: none
+
+parameters:
+- name: xcodeVersion
+  displayName: 'XCode version'
+  type: string
+  default: '11.0'
+
+variables:
+- name: xcodeVersionVariable
+  value: '$'
+
+pool:
+  name: Default
+  demands:
+  - XCODE_VERSION -equals $(xcodeVersionVariable) # Demands selected dynamically
+
+jobs:
+- job:
+  displayName: 'Job 1'
+  steps:
+  - task: Bash@3
+    inputs:
+      targetType: 'inline' 
+      script: |
+        echo "XCode version..."
+        /usr/bin/xcodebuild -version
