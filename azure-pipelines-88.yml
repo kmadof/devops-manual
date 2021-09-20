@@ -6,10 +6,6 @@ parameters:
   type: string
   default: '11.0'
 
-variables:
-- name: xcodeVersionVariable
-  value: '$'
-
 pool:
   name: Default
   demands:
