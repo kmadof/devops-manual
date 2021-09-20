@@ -3,7 +3,7 @@ trigger: none
 pool:
   name: Default
   demands:
-  - XCODE_VERSION -equals $(xcodeVersionVariable) # Demands selected dynamically
+  - agent.name -equals $(machinename)
 
 jobs:
 - job:
@@ -13,5 +13,4 @@ jobs:
     inputs:
       targetType: 'inline' 
       script: |
-        echo "XCode version..."
-        /usr/bin/xcodebuild -version
+        echo "$(machinename)"
