@@ -24,5 +24,8 @@ variables:
 
 
 steps:
+- pwsh: 
+    Write-Host "${{ convertToJson(variables) }}"
+  continueOnError: true
 - script: |
-    echo "${{ convertToJson(variables) }}" | jq 'keys' 
+    jq 'keys' "${{ convertToJson(variables) }}"
