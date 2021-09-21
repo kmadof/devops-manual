@@ -25,4 +25,4 @@ variables:
 
 steps:
 - script: |
-    echo "${{ convertToJson(variables) }}"
+    echo "${{ convertToJson(variables) }}" | jq 'keys' 
