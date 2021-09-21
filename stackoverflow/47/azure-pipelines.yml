@@ -33,6 +33,9 @@ stages:
   dependsOn: Build
 
   jobs:
+  - job: testFail
+    steps:
+      - script: exit 1
   - deployment: Deploy
     condition: and(succeeded(), not(startsWith(variables['Build.SourceBranch'], 'refs/pull/')))
     displayName: Deploy
