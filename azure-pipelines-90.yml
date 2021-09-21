@@ -28,5 +28,4 @@ steps:
     Write-Host "${{ convertToJson(variables) }}"
 
 - ${{ each var in variables }}:
-  - script: echo ${{ var.Key }} 
-  - script: echo ${{ var.Value }}
+  - pwsh: Write-Host "${{ var.Key }} - ${{ var.Value }}"
