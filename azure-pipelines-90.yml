@@ -26,6 +26,3 @@ variables:
 steps:
 - pwsh: 
     Write-Host "${{ convertToJson(variables) }}"
-  continueOnError: true
-- script: |
-    jq 'keys' "${{ convertToJson(variables) }}"
