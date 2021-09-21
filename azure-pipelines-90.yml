@@ -1,0 +1,28 @@
+
+# https://stackoverflow.com/questions/69263433/how-to-iterate-all-the-variables-from-a-variables-template-file-in-azure-pipelin/69265041#69265041
+
+trigger: none
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+- name: DB_HOSTNAME
+  value: 10.123.56.222
+- name: DB_PORTNUMBER
+  value: 1521
+- name: USERNAME
+  value: TEST
+- name: PASSWORD
+  value: TEST
+- name: SCHEMANAME
+  value: SCHEMA  
+- name: ACTIVEMQNAME
+  value: 10.123.56.223
+- name: ACTIVEMQPORT
+  value: 8161
+
+
+steps:
+- script: |
+    echo "${{ convertToJson(variables) }}"
