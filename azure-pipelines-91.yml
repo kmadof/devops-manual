@@ -5,17 +5,17 @@ pool:
   vmImage: ubuntu-latest
 
 jobs:
-- job: A
+- job: JobA
   steps:
   - pwsh: |
       $json="{'job1': {'Work': 'work1'}, 'job2': {'Work': 'work2'}}"
       Write-Host "##vso[task.setvariable variable=$targets;isOutput=true]'$json'"
 
 - job: buildSrc
-  dependsOn: A
+  dependsOn: JobA
   displayName: Build source
   strategy:
-    matrix: $[ variables.targets ]
+    matrix: $[ dependencies.JobA.outputs['targets'] ]
   steps:
   - pwsh: Write-Host "${{ convertToJson(variables) }}"
     displayName: 'Print all variables via expression'
