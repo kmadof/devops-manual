@@ -17,6 +17,8 @@ jobs:
   displayName: Build source
   strategy:
     matrix: $[ dependencies.JobA.outputs['targets'] ]
+  variables:
+    targets: $[ dependencies.JobA.outputs['targets'] ]
   steps:
   - pwsh: Write-Host "${{ convertToJson(variables) }}"
     displayName: 'Print all variables via expression'
