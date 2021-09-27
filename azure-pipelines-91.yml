@@ -11,14 +11,17 @@ jobs:
       $json="{'job1': {'Work': 'work1'}, 'job2': {'Work': 'work2'}}"
       #$json=$json| ConvertTo-Json -Compress
       Write-Host "##vso[task.setvariable variable=targets;isOutput=true]$json"
+    name: setTargets
+  - script: echo $(setTargets.targets)
+    name: echovar
 
 - job: buildSrc
   dependsOn: JobA
   displayName: Build source
   strategy:
-    matrix: $[ dependencies.JobA.outputs['targets'] ]
+    matrix: $[ dependencies.JobA.outputs['setTargets.targets'] ]
   variables:
-    targets: $[ dependencies.JobA.outputs['targets'] ]
+    targets: $[ dependencies.JobA.outputs['setTargets.targets'] ]
   steps:
   - pwsh: Write-Host "${{ convertToJson(variables) }}"
     displayName: 'Print all variables via expression'
