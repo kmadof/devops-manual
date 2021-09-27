@@ -9,8 +9,8 @@ jobs:
   steps:
   - pwsh: |
       $json="{'job1': {'Work': 'work1'}, 'job2': {'Work': 'work2'}}"
-      $json=$json| ConvertTo-Json -Compress
-      Write-Host "##vso[task.setvariable variable=$targets;isOutput=true]$json"
+      #$json=$json| ConvertTo-Json -Compress
+      Write-Host "##vso[task.setvariable variable=targets;isOutput=true]$json"
 
 - job: buildSrc
   dependsOn: JobA
