@@ -1,0 +1,15 @@
+# https://stackoverflow.com/questions/69374945/azure-pipeline-azurepowershell5-fails
+
+trigger: none
+
+pool:
+  vmImage: windows-latest
+
+steps:
+- task: AzurePowerShell@5
+  inputs:
+    azureSubscription: 'rg-the-code-manual'
+    ScriptType: 'InlineScript'
+    Inline: 'Write-Host "Hello World"'
+    azurePowerShellVersion: 'LatestVersion'
+    pwsh: true
