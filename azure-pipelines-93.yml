@@ -12,5 +12,7 @@ variables:
     buildVersion: 'none-master'
 
 steps:
-- script: echo $(buildVersion)
+- script: |
+    echo "$(Build.SourceBranchName)"
+    echo "$(buildVersion)"
   displayName: 'Display buildVersion'
