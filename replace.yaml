@@ -1,0 +1,26 @@
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+ System.Debug: true
+ one: actual-value
+ two: actual-value
+ MappedValue: actual-value
+ three: $(MappedValue)
+ four: actual-value
+ five: $(MappedValue)
+ Six: $(MappedValue)
+
+steps:
+  - task: FileTransform@2
+    displayName: V2 - Transform
+    inputs:
+      folderPath: ./
+      jsonTargetFiles: settings.json
+      xmlTargetFiles: ''
+      xmlTransformationRules: ''
+
+  - pwsh: "Get-ChildItem Env:"
+ 
+  - publish: settings.json
+    artifact: settings.json
