@@ -1,0 +1,15 @@
+trigger: none
+pr: none
+
+variables:
+  Version.Major: 4
+  Version.Minor: 3
+  Version.Build: 2
+  Version.Revision: 16
+  Version.Counter: $[counter(format('{0}.{1}.{2}.{3}', variables['Version.Major'], variables['Version.Minor'], variables['Version.Build'], variables['Version.Revision']), 1) ]
+
+
+
+
+steps:
+- script: echo '$(Version.Counter)'
