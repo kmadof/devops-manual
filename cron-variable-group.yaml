@@ -12,4 +12,4 @@ variables:
 - group: BranchVariables
 
 steps:
-- script: ech "hello $(test)"
+- script: echo "hello $(test)"
