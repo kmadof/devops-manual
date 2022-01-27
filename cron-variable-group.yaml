@@ -1,5 +1,5 @@
-# trigger: none
-# pr: none
+trigger: none
+pr: none
 schedules:
 - cron: "0 0 * * *"
   displayName: Daily midnight build when changes have been pushed
@@ -8,8 +8,9 @@ schedules:
     include:
     - branch1
     - branch2
-# variables:
-# - group: BranchVariables
+    - master
+variables:
+- group: BranchVariables
 
 steps:
 - script: echo "hello $(test)"
