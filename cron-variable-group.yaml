@@ -1,0 +1,15 @@
+trigger: none
+pr: none
+schedules:
+- cron: "0 0 * * *"
+  displayName: Daily midnight build when changes have been pushed
+  always: true
+  branches:
+    include:
+    - branch1
+    - branch2
+variables:
+- group: BranchVariables
+
+steps:
+- script: ech "hello $(test)"
