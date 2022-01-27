@@ -8,8 +8,8 @@ schedules:
     include:
     - branch1
     - branch2
-variables:
-- group: BranchVariables
+# variables:
+# - group: BranchVariables
 
 steps:
 - script: echo "hello $(test)"
