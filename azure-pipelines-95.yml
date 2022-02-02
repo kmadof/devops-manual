@@ -20,7 +20,7 @@ variables:
     value: Debug
   ${{ if and(eq(variables['Build.SourceBranch'], 'refs/heads/test'), eq(parameters.BuildConfiguration, 'Default')) }}:
     value: Release
-  ${{ if and(eq(variables['Build.SourceBranch'], 'refs/heads/,master'), eq(parameters.BuildConfiguration, 'Default')) }}:
+  ${{ if and(eq(variables['Build.SourceBranch'], 'refs/heads/master'), eq(parameters.BuildConfiguration, 'Default')) }}:
     value: Release
   ${{ else }}:
     value: ${{parameters.BuildConfiguration}}
