@@ -16,12 +16,14 @@ parameters:
 
 variables:
 - name: buildConfiguration
-  ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/develop') }}:
-    value: ${{ coalesce(parameters.BuildConfiguration, 'Debug') }}
-  ${{ elseif eq(variables['Build.SourceBranch'], 'refs/heads/test') }}:
-    value: ${{ coalesce(parameters.BuildConfiguration, 'Release') }}
-  ${{ elseif eq(variables['Build.SourceBranch'], 'refs/heads/master') }}:
-    value: ${{ coalesce(parameters.BuildConfiguration, 'Release') }}
+  ${{ if and(eq(variables['Build.SourceBranch'], 'refs/heads/develop'), eq(eq(variables['Build.SourceBranch'], 'refs/heads/develop'),' ')) }}:
+    value: Debug
+  ${{ if and(eq(variables['Build.SourceBranch'], 'refs/heads/test'), eq(eq(variables['Build.SourceBranch'], 'refs/heads/develop'),' ')) }}:
+    value: Release
+  ${{ if and(eq(variables['Build.SourceBranch'], 'refs/heads/,master'), eq(eq(variables['Build.SourceBranch'], 'refs/heads/develop'),' ')) }}:
+    value: Release
+  ${{ else }}:
+    value: ${{parameters.BuildConfiguration}}
 
 steps:
 - script: echo $(buildConfiguration)
