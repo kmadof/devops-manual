@@ -8,11 +8,11 @@ pool:
 parameters:
 - name: BuildConfiguration
   displayName: Build Configuration
-  default: ''
+  default: ' '
   values:
   - Debug
   - Release
-  - ''
+  - ' '
 
 variables:
 - name: buildConfiguration
