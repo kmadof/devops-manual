@@ -24,15 +24,10 @@ variables:
     value: Release
   ${{ else }}:
     value: ${{parameters.BuildConfiguration}}
-- name: branchTest
-  value: ${{ eq(variables['Build.SourceBranch'], 'refs/heads/,master') }}
-- name: parameterTest
-  value: ${{ eq(parameters.BuildConfiguration, 'Default') }}
+
 
 steps:
 - script: |
     echo $(buildConfiguration)
     echo $(Build.SourceBranch)
-    echo $(branchTest)
-    echo $(parameterTest)
 
