@@ -16,11 +16,11 @@ parameters:
 
 variables:
 - name: buildConfiguration
-  ${{ if and(eq(variables['Build.SourceBranch'], 'refs/heads/develop'), eq(parameters.BuildConfiguration, 'refs/heads/develop'),'Default') }}:
+  ${{ if and(eq(variables['Build.SourceBranch'], 'refs/heads/develop'), eq(parameters.BuildConfiguration, 'Default')) }}:
     value: Debug
-  ${{ if and(eq(variables['Build.SourceBranch'], 'refs/heads/test'), eq(parameters.BuildConfiguration, 'refs/heads/develop'),'Default') }}:
+  ${{ if and(eq(variables['Build.SourceBranch'], 'refs/heads/test'), eq(parameters.BuildConfiguration, 'Default')) }}:
     value: Release
-  ${{ if and(eq(variables['Build.SourceBranch'], 'refs/heads/,master'), eq(parameters.BuildConfiguration, 'refs/heads/develop'),'Default') }}:
+  ${{ if and(eq(variables['Build.SourceBranch'], 'refs/heads/,master'), eq(parameters.BuildConfiguration, 'Default')) }}:
     value: Release
   ${{ else }}:
     value: ${{parameters.BuildConfiguration}}
