@@ -27,7 +27,7 @@ variables:
 - name: branchTest
   value: ${{ eq(variables['Build.SourceBranch'], 'refs/heads/,master') }}
 - name: parameterTest
-  value: ${{ eq(parameters.BuildConfiguration, 'Default')) }}
+  value: ${{ eq(parameters.BuildConfiguration, 'Default') }}
 
 steps:
 - script: |
