@@ -26,4 +26,7 @@ variables:
     value: ${{parameters.BuildConfiguration}}
 
 steps:
-- script: echo $(buildConfiguration)
+- script: |
+    echo $(buildConfiguration)
+    echo $(Build.SourceBranch)
+
