@@ -12,6 +12,7 @@ parameters:
   values:
   - Debug
   - Release
+  - ''
 
 variables:
 - name: buildConfiguration
