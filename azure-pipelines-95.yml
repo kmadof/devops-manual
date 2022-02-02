@@ -8,19 +8,19 @@ pool:
 parameters:
 - name: BuildConfiguration
   displayName: Build Configuration
-  default: ' '
+  default: Default
   values:
   - Debug
   - Release
-  - ' '
+  - Default
 
 variables:
 - name: buildConfiguration
-  ${{ if and(eq(variables['Build.SourceBranch'], 'refs/heads/develop'), eq(parameters.BuildConfiguration, 'refs/heads/develop'),' ') }}:
+  ${{ if and(eq(variables['Build.SourceBranch'], 'refs/heads/develop'), eq(parameters.BuildConfiguration, 'refs/heads/develop'),'Default') }}:
     value: Debug
-  ${{ if and(eq(variables['Build.SourceBranch'], 'refs/heads/test'), eq(parameters.BuildConfiguration, 'refs/heads/develop'),' ') }}:
+  ${{ if and(eq(variables['Build.SourceBranch'], 'refs/heads/test'), eq(parameters.BuildConfiguration, 'refs/heads/develop'),'Default') }}:
     value: Release
-  ${{ if and(eq(variables['Build.SourceBranch'], 'refs/heads/,master'), eq(parameters.BuildConfiguration, 'refs/heads/develop'),' ') }}:
+  ${{ if and(eq(variables['Build.SourceBranch'], 'refs/heads/,master'), eq(parameters.BuildConfiguration, 'refs/heads/develop'),'Default') }}:
     value: Release
   ${{ else }}:
     value: ${{parameters.BuildConfiguration}}
