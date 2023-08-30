@@ -26,4 +26,5 @@ stages:
         echo "isProduction: $(isProduction)"
         echo "isStaging: $(isStaging)"
         echo "Build.SourceBranch $(Build.SourceBranch)"
+        echo "production"
     
