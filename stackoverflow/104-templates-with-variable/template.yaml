@@ -13,7 +13,7 @@ stages:
         echo "${{ lower(parameters.serviceName) }}"
         name=${{ parameters.serviceName }}
         lowercase_name=$(echo "$name" | tr '[:upper:]' '[:lower:]')
-        echo "##vso[task.setvariable variable=lowerName;]$lowercase_name"
+        echo "##vso[task.setvariable variable=lowerName;]'$lowercase_name'"
 
     - script: echo $(lowerName)
     - script: echo $(lowerName2)
