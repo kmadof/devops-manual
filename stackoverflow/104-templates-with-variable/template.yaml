@@ -5,7 +5,7 @@ parameters:
 stages:
 - stage: A
   variables:
-    lowerName2: ${{ lower(parameters.serviceName) }}
+    lowerName2: $[ lower(${{ parameters.serviceName }})]
   jobs:
   - job: A1
     steps:
