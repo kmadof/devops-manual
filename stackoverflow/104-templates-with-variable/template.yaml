@@ -5,15 +5,15 @@ parameters:
 stages:
 - stage: A
   variables:
-    lowerName2: $[ lower(${{ parameters.serviceName }})]
+    lowerName2: ${{ lower(parameters.serviceName) }}
   jobs:
   - job: A1
     steps:
     - script: |
         echo "${{ lower(parameters.serviceName) }}"
-        name=${{ lower(parameters.serviceName) }}
-        echo "$name"
-        echo "##vso[task.setvariable variable=lowerName;]$name"
+        name=${{ parameters.serviceName }}
+        lowercase_name=$(echo "$name" | tr '[:upper:]' '[:lower:]')
+        echo "##vso[task.setvariable variable=lowerName;]$lowercase_name"
 
     - script: echo $(lowerName)
     - script: echo $(lowerName2)
