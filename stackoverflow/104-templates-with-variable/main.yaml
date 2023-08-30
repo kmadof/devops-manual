@@ -1,0 +1,7 @@
+variables:
+  serviceName: $(System.TeamProject)
+
+stages:
+- template: template.yaml
+  parameters:
+    serviceName: ${{ variables.serviceName }}

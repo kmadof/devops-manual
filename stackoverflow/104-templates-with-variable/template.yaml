@@ -1,0 +1,10 @@
+parameters:
+- name: serviceName
+  type: string
+
+steps:
+- script: |
+    name=${{ lower(parameters.serviceName) }}
+    echo "##vso[task.setvariable variable=lowerName;]$name"
+
+- script: echo $(lowerName)
