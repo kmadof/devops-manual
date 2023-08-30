@@ -13,4 +13,3 @@ stages:
         echo "##vso[task.setvariable variable=lowerName;]'$lowercase_name'"
 
     - script: echo $(lowerName)
-    - script: echo $(lowerName2)
