@@ -1,0 +1,29 @@
+trigger:
+- staging
+- production
+
+resources:
+  pipelines:
+  - pipeline: contentPipeline   # Name of the pipeline resource
+    source: firstpipeline       # Name of the triggering pipeline
+    trigger: 
+      branches:
+        include:
+        - staging
+        - production
+variables:
+  - name: isProduction
+    value: $[eq(variables['Build.SourceBranch'], 'refs/heads/production')]
+  - name: isStaging
+    value: $[eq(variables['Build.SourceBranch'], 'refs/heads/staging')]
+
+stages:
+- stage: A
+  jobs:
+  - job: A1
+    steps:
+    - script: |
+        echo "isProduction: $(isProduction)"
+        echo "isStaging: $(isStaging)"
+        echo "Build.SourceBranch $(Build.SourceBranch)""
+    
