@@ -1,6 +1,8 @@
 pool:
   vmImage: 'windows-latest'
 
+trigger: none
+
 variables:
  System.Debug: true
  one: actual-value
