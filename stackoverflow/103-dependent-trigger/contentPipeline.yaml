@@ -1,10 +1,11 @@
 trigger:
 - staging
 - production
+- master
 
 resources:
   pipelines:
-  - pipeline: contentPipeline   # Name of the pipeline resource
+  - pipeline: firstpipeline   # Name of the pipeline resource
     source: firstpipeline       # Name of the triggering pipeline
     trigger: 
       branches:
