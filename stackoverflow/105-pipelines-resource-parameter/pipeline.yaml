@@ -1,0 +1,25 @@
+# https://stackoverflow.com/questions/77130391/parameterize-resources-pipelines-pipeline-source-value-in-ado
+trigger: none
+
+variables:
+- name: TheProjectName
+  value: kmadof
+
+pr: none
+
+resources:        
+  pipelines:
+  - pipeline: build_pipeline  
+    source: $(TheProjectName).devops-manual (14)
+    branch: master
+    trigger:
+     branches:
+     - '*'
+
+steps:
+- bash: env | sort
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      echo 'Hello world'
