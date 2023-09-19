@@ -1,3 +1,10 @@
+parameters:
+- name: projectName
+  displayName: Project name
+  type: string
+  default: kmadof
+
+
 # https://stackoverflow.com/questions/77130391/parameterize-resources-pipelines-pipeline-source-value-in-ado
 trigger: none
 
@@ -10,7 +17,7 @@ pr: none
 resources:        
   pipelines:
   - pipeline: build_pipeline  
-    source: $(TheProjectName).devops-manual (14)
+    source: ${{ parameters.projectName }}.devops-manual (14)
     branch: master
     trigger:
      branches:
