@@ -32,3 +32,12 @@ jobs:
     - template: templates/azure-cli.yaml
       parameters:
         serviceConnectionName: 'full-subscription'
+  - task: AzureCLI@2
+    inputs:
+      azureSubscription: 'full-subscription'
+      scriptType: pscore
+      scriptLocation: 'inlineScript'
+      inlineScript: az account show
+  - template: templates/azure-cli.yaml
+    parameters:
+      serviceConnectionName: 'full-subscription'
