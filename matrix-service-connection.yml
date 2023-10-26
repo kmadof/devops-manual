@@ -1,0 +1,24 @@
+trigger: none
+
+pool:
+  vmImage: ubuntu-latest
+
+jobs:
+- job: RunOnEveryAgent
+  strategy:
+    matrix:
+       resourceGroup:
+          subscription: 'rg-the-code-manual'
+       subscription:
+          subscription: 'full-subscription'
+  steps:
+  - bash: echo "$(subscription)"
+  - task: AzureCLI@2
+    inputs:
+      azureSubscription: ${{ subscription }}
+      scriptType: pscore
+      scriptLocation: 'inlineScript'
+      inlineScript: az account show
+  - template: templates/azure-cli.yaml
+    parameters:
+      serviceConnectionName: ${{ subscription }}
