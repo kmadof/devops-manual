@@ -4,21 +4,31 @@ pool:
   vmImage: ubuntu-latest
 
 jobs:
-- job: RunOnEveryAgent
+- job: RunOnEveryEnv
   strategy:
     matrix:
-       resourceGroup:
-          subscription: 'rg-the-code-manual'
-       subscription:
-          subscription: 'full-subscription'
+       uat:
+          env: 'uat'
+       prod:
+          env: 'prod'
   steps:
-  - bash: echo "$(subscription)"
-  - task: AzureCLI@2
-    inputs:
-      azureSubscription: ${{ subscription }}
-      scriptType: pscore
-      scriptLocation: 'inlineScript'
-      inlineScript: az account show
-  - template: templates/azure-cli.yaml
-    parameters:
-      serviceConnectionName: ${{ subscription }}
+  - ${{ if eq(env, 'uat')}}:
+    - task: AzureCLI@2
+      inputs:
+        azureSubscription: 'rg-the-code-manual'
+        scriptType: pscore
+        scriptLocation: 'inlineScript'
+        inlineScript: az account show
+    - template: templates/azure-cli.yaml
+      parameters:
+        serviceConnectionName: 'rg-the-code-manual'
+  - ${{ elseif eq(env, 'prod')}}:
+    - task: AzureCLI@2
+      inputs:
+        azureSubscription: 'full-subscription'
+        scriptType: pscore
+        scriptLocation: 'inlineScript'
+        inlineScript: az account show
+    - template: templates/azure-cli.yaml
+      parameters:
+        serviceConnectionName: 'full-subscription'
