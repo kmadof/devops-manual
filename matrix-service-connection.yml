@@ -12,6 +12,7 @@ jobs:
        prod:
           env: 'prod'
   steps:
+  - script: echo '$(env)'
   - ${{ if eq(variables.env, 'uat')}}:
     - task: AzureCLI@2
       inputs:
