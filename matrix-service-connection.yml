@@ -12,7 +12,7 @@ jobs:
        prod:
           env: 'prod'
   steps:
-  - ${{ if eq(env, 'uat')}}:
+  - ${{ if eq(variables.env, 'uat')}}:
     - task: AzureCLI@2
       inputs:
         azureSubscription: 'rg-the-code-manual'
@@ -22,7 +22,7 @@ jobs:
     - template: templates/azure-cli.yaml
       parameters:
         serviceConnectionName: 'rg-the-code-manual'
-  - ${{ elseif eq(env, 'prod')}}:
+  - ${{ elseif eq(variables.env, 'prod')}}:
     - task: AzureCLI@2
       inputs:
         azureSubscription: 'full-subscription'
